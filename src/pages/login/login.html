@@ -1,0 +1,27 @@
+
+<ion-content padding class="csLoginScreen">
+    
+    <h3>GINGER</h3>
+        <ion-list>
+             <ion-card>
+                <ion-item>
+                    
+                    <ion-label stacked>Email</ion-label>
+                    <ion-input type="text" name="email"></ion-input>
+                </ion-item>
+            </ion-card>
+            <ion-card>
+              <ion-item>
+                  
+                    <ion-icon [name]=icon color="primary" item-right (click)="EyeOffClicked(icon)"></ion-icon>
+                    <ion-label stacked>Password</ion-label>
+                    <ion-input [type]="type" name="password"></ion-input>
+                
+                </ion-item> 
+            </ion-card>   
+         </ion-list>
+ 
+            <button class="signin-button" ion-button full  type="submit">Login</button>
+            
+  
+</ion-content>

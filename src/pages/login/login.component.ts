@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
+  
 })
 
 export class LoginPage {
@@ -11,5 +12,26 @@ export class LoginPage {
   constructor(public navCtrl: NavController) {
 
   }
+
+
+  icon :string = "md-eye";
+  type : string = "password";
+
+  EyeOffClicked(param){
+      if(param === "md-eye"){
+       
+       this.type = "password";   
+       this.icon = "md-eye-off";
+    }
+    else{
+     
+      this.type = "text";
+      this.icon = "md-eye";
+    }
+  
+   
+  }
+
+
 
 }

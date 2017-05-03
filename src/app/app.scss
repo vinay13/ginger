@@ -14,3 +14,38 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+
+
+$primary-color :white;
+$font-lg : 18px;
+$font-md : 16px;
+$font-sm : 12px;
+$full-width: 100%;
+$full-height : 100%;
+$transparent : transparent;
+
+
+.noBorder-item{
+    .item-inner{
+        border-bottom : 0px !important;
+    }
+}
+
+.no-padding-l {
+  padding-left: 0px !important;
+}
+
+.no-padding-r {
+  padding-right: 0px !important;
+}
+
+.no-padding-b {
+  padding-bottom: 0px !important;
+}
+
+.no-padding-t {
+  padding-top: 0px !important;
+}
+
