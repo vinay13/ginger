@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {} from '../about/';
 
 @Component({
   selector: 'page-login',
@@ -31,6 +32,11 @@ export class LoginPage {
   
    
   }
+
+  UserLogin(){  
+    this.navCtrl.push();
+  }
+
 
 
 

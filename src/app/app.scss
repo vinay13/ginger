@@ -49,3 +49,15 @@ $transparent : transparent;
   padding-top: 0px !important;
 }
 
+.gingerCenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.LoginLogo {
+    @extend .gingerCenter;
+    width: 30%;
+    color:white;
+}
+
