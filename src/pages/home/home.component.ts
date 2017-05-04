@@ -2,6 +2,7 @@ import { Component,OnInit , ViewChild } from '@angular/core';
 import { NavController , Slides , ActionSheetController } from 'ionic-angular';
 import { SearchComponent } from '../search/search.component';
 
+
 @Component({
     selector : 'page-home',
     templateUrl : 'home.html'
@@ -9,14 +10,15 @@ import { SearchComponent } from '../search/search.component';
 
 export class HomeComponent implements OnInit{
 
-      @ViewChild('mySlider') slider: Slides;
+  @ViewChild('mySlider') slider: Slides;
   selectedSegment: string;
   slides: any;
 
   constructor(public navCtrl: NavController,
-                public actionSheetCtrl : ActionSheetController) {
+              public actionSheetCtrl : ActionSheetController) {
 
-    this.selectedSegment = 'first';
+                  
+  this.selectedSegment = 'first';
     this.slides = [
       {
         id: "first",
@@ -31,11 +33,16 @@ export class HomeComponent implements OnInit{
         title: "Third Slide"
       }
     ];
-  }
+              }
+
+
+         
 
   searchButton(){
       this.navCtrl.push(SearchComponent);
   }
+
+
 
   onSegmentChanged(segmentButton) {
     console.log("Segment changed to", segmentButton.value);

@@ -7,8 +7,8 @@
 <ion-content>
    
     <ion-list>
-        <ion-item *ngFor="let item of items" (ngClick)="TagsClick(item)">
-            <ion-icon name="search"></ion-icon>
+        <ion-item *ngFor="let item of items" (click)="TagsClick(item)">
+            <ion-icon name="search" padding></ion-icon>
             {{ item }}
         </ion-item>
     </ion-list>

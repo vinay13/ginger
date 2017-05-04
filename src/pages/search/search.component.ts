@@ -37,7 +37,7 @@ export class SearchComponent{
     }
 }
 
-TagsClick(){
-    console.log('tags clicked');
+TagsClick(item){
+    console.log('search gif with tag name',item);
 }
 }

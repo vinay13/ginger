@@ -1,4 +1,10 @@
 <ion-toolbar>
+
+    <span>Ginger </span>
+   
+        <ion-icon class="search-icon" name="search" (click)="searchButton()"></ion-icon>
+    
+
   <ion-segment [(ngModel)]="selectedSegment" (ionChange)="onSegmentChanged($event)">
     <ion-segment-button value="first">
       Tab1
@@ -19,11 +25,14 @@
 
 <ion-content padding>
 
+
+
+
   <ion-slides #mySlider (ionDidChange)="onSlideChanged($event)">
     <ion-slide *ngFor="let slide of slides">
       <h1>{{ slide.title }}</h1>
   
-      <button ion-button (click)="searchButton()">search here</button>
+      
     </ion-slide>
   </ion-slides>
 

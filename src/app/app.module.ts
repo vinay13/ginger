@@ -8,6 +8,9 @@ import { LoginPage } from '../pages/login/login.component';
 import { HomeComponent } from '../pages/home/home.component';
 import { SearchComponent } from '../pages/search/search.component';
 
+//third party imports 
+import { SuperTabsModule } from 'ionic2-super-tabs';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -22,7 +25,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    SuperTabsModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
