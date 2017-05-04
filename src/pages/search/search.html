@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar primary>
        <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   </ion-navbar>
 </ion-header>
@@ -7,7 +7,7 @@
 <ion-content>
    
     <ion-list>
-        <ion-item *ngFor="let item of items">
+        <ion-item *ngFor="let item of items" (ngClick)="TagsClick(item)">
             <ion-icon name="search"></ion-icon>
             {{ item }}
         </ion-item>

@@ -35,6 +35,9 @@ export class SearchComponent{
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
+}
 
-    }
+TagsClick(){
+    console.log('tags clicked');
+}
 }

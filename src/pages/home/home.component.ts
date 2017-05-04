@@ -59,21 +59,16 @@ export class HomeComponent implements OnInit{
       title: 'Upload GIF',
       buttons: [
         {
-          text: 'Destructive',
-          role: 'destructive',
+          text: 'Device Gallery',
+          icon : 'md-document',
           handler: () => {
             console.log('Destructive clicked');
           }
         },{
-          text: 'Archive',
+          text: 'Web Url',
+          icon: 'md-link',
           handler: () => {
             console.log('Archive clicked');
-          }
-        },{
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
           }
         }
       ]
