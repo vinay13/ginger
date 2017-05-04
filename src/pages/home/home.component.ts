@@ -31,9 +31,13 @@ export class HomeComponent implements OnInit{
       {
         id: "third",
         title: "Third Slide"
+      },
+      {
+          id: "fourth",
+          title: "fourth slide"
       }
     ];
-              }
+         }
 
 
          
@@ -67,6 +71,7 @@ export class HomeComponent implements OnInit{
       buttons: [
         {
           text: 'Device Gallery',
+          role: 'destructive',
           icon : 'md-document',
           handler: () => {
             console.log('Destructive clicked');

@@ -11,6 +11,10 @@ import { SearchComponent } from '../pages/search/search.component';
 //third party imports 
 import { SuperTabsModule } from 'ionic2-super-tabs';
 
+//import services 
+import {CommonService} from '../services/common.service';
+import {HomeService} from '../services/home.service';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -40,7 +44,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CommonService,
+    HomeService
   ]
 })
 export class AppModule {}
