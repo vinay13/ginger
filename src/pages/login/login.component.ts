@@ -33,9 +33,9 @@ export class LoginPage {
    
   }
 
-  UserLogin(){  
-    this.navCtrl.push();
-  }
+  // UserLogin(){  
+  //   this.navCtrl.push();
+  // }
 
 
 
