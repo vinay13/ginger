@@ -1,0 +1,35 @@
+<ion-content>
+    <h3>home page</h3>
+
+    <div padding>
+        <ion-segment [(ngModel)]="pet">
+            <ion-segment-button value="kittens">
+               Emotions
+    </ion-segment-button>
+    <ion-segment-button value="puppies">
+      Actions
+    </ion-segment-button>
+  </ion-segment>
+</div>
+
+<div [ngSwitch]="pet">
+  <ion-list *ngSwitchCase="'Emotions'">
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img src="img/thumbnail-puppy-1.jpg">
+      </ion-thumbnail>
+      <h2>f sf</h2>
+    </ion-item>
+    
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'Actions'">
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img src="img/thumbnail-kitten-1.jpg">
+      </ion-thumbnail>
+      <h2>fdfef</h2>
+    </ion-item>
+  </ion-list>
+</div>  
+</ion-content>
