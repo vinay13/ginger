@@ -1,11 +1,66 @@
+<ion-toolbar>
+  <ion-segment [(ngModel)]="selectedSegment" (ionChange)="onSegmentChanged($event)">
+    <ion-segment-button value="first">
+      Tab1
+    </ion-segment-button>
+    <ion-segment-button value="second">
+      Tab2
+    </ion-segment-button>
+    <ion-segment-button value="third">
+      Tab3
+    </ion-segment-button>
+    <ion-segment-button value="fourth">
+      Tab4
+    </ion-segment-button>
+    
+
+  </ion-segment>
+</ion-toolbar>
+
+<ion-content padding>
+
+  <ion-slides #mySlider (ionDidChange)="onSlideChanged($event)">
+    <ion-slide *ngFor="let slide of slides">
+      <h1>{{ slide.title }}</h1>
+  
+      <button ion-button (click)="searchButton()">search here</button>
+    </ion-slide>
+  </ion-slides>
+
+    <ion-fab bottom right>
+      <button ion-fab mini (click)="presentActionSheet()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+
+
+
+</ion-content>
+
+
+
+<!--
 <ion-content>
-    <h3>home page</h3>
+    
+<ion-searchbar (ioninput)="getItems($event)"></ion-searchbar>
+    <ion-list>
+        <ion-item *ngFor="let item of items">
+            {{ item }}
+        </ion-item>
+    </ion-list>
 
     <div padding>
         <ion-segment [(ngModel)]="pet">
-            <ion-segment-button value="kittens">
+                  <ion-segment-button value="kittens">
+               Trending
+    </ion-segment-button>
+
+            <ion-segment-button value="rat">
                Emotions
     </ion-segment-button>
+
+          <ion-segment-button value="cat">
+               Emotions2
+    </ion-segment-button>
+    
     <ion-segment-button value="puppies">
       Actions
     </ion-segment-button>
@@ -32,4 +87,4 @@
     </ion-item>
   </ion-list>
 </div>  
-</ion-content>
+</ion-content>-->
