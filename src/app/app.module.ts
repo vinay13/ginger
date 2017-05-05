@@ -7,6 +7,7 @@ import { AboutPage } from '../pages/about/about';
 import { LoginPage } from '../pages/login/login.component'; 
 import { HomeComponent } from '../pages/home/home.component';
 import { SearchComponent } from '../pages/search/search.component';
+import { GifDetailComponent } from '../pages/home/gifdetail/gifdetail.component';
 
 //third party imports 
 import { SuperTabsModule } from 'ionic2-super-tabs';
@@ -25,7 +26,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     LoginPage,
     HomeComponent,
-    SearchComponent
+    SearchComponent,
+    GifDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     LoginPage,
     HomeComponent,
-    SearchComponent
+    SearchComponent,
+    GifDetailComponent
 
   ],
   providers: [
@@ -49,4 +52,5 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomeService
   ]
 })
+
 export class AppModule {}
