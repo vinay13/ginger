@@ -5,6 +5,13 @@
 * Mobile web app development
 * Web Mobile MVP
 
+### Design assets ###
+
+* Google Drive
+https://goo.gl/NdnyJH
+
+* Contact @mrclco for more details
+
 ### How do I get set up? (Vinay or Palani - Please Edit)###
 
 * Summary of set up
