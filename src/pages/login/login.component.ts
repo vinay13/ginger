@@ -29,8 +29,6 @@ export class LoginPage {
       this.type = "text";
       this.icon = "md-eye";
     }
-  
-   
   }
 
   UserLogin(){  

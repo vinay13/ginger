@@ -1,0 +1,36 @@
+<ion-header >
+    <ion-navbar class="navbar-color">
+        <ion-title>Select your idiom</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content class="idiom-content">
+    <ion-grid>
+        <ion-row>
+             <ion-col col-6 class="idiom-title" [style.color]="selectedIdiom(color)">
+                 <div>
+                    <p> English </p>
+                 </div>
+             </ion-col>
+
+             <ion-col col-6 class="idiom-title">
+                 <div>
+                    <p> Hindi </p>
+                 </div>
+             </ion-col>
+
+             <ion-col col-6 class="idiom-title">
+                 <div>
+                    <p> Tamil </p>
+                 </div>
+             </ion-col>
+             <ion-col col-6 class="idiom-title">
+                 <div>
+                    <p> Telugu </p>
+                 </div>
+             </ion-col>
+
+        </ion-row>
+    </ion-grid>
+</ion-content>
