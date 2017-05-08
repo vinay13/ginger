@@ -1,7 +1,7 @@
 import { Component,OnInit , ViewChild } from '@angular/core';
 import { NavController , Slides , ActionSheetController } from 'ionic-angular';
 import { SearchComponent } from '../search/search.component';
-
+import { GifDetailComponent } from './gifdetail/gifdetail.component';
 
 @Component({
     selector : 'page-home',
@@ -88,6 +88,10 @@ export class HomeComponent implements OnInit{
     actionSheet.present();
   }
 
+
+  navGifDetail(){
+    this.navCtrl.push(GifDetailComponent);
+  }
 
 
     ngOnInit(): void {}

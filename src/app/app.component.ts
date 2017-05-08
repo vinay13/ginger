@@ -12,7 +12,7 @@ import { IdiomComponent } from '../pages/idiom/idiom.component';
 })
 
 export class MyApp {
-  rootPage:any = LoginPage;
+  rootPage:any = IdiomComponent;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
