@@ -1,11 +1,13 @@
 <ion-header>
 <ion-toolbar color="secondary" >
 
-<div class="home-icon">
-  <img src="../assets/icon/icon.png" style="width:30px; height:30px;"/>
-</div>
-<ion-icon class="search-icon" name="search" (click)="searchButton()"></ion-icon>
-    
+<div class="header-home">
+  <div class="home-icon">
+     <img src="../assets/icon/icon.png" style="width:30px; height:30px;"/>
+  </div>
+  <span class="idiom-name" (click)="navIdiom()">{{ selectedIdiom }} </span>  
+  <ion-icon class="search-icon" name="search" (click)="searchButton()"></ion-icon>
+</div>  
 
   <ion-segment  [(ngModel)]="selectedSegment" (ionChange)="onSegmentChanged($event)">
     <ion-segment-button class="tabs-style" value="first">

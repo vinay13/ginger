@@ -1,7 +1,8 @@
 import { Component,OnInit , ViewChild } from '@angular/core';
-import { NavController , Slides , ActionSheetController } from 'ionic-angular';
+import { NavController , Slides , ActionSheetController , NavParams } from 'ionic-angular';
 import { SearchComponent } from '../search/search.component';
 import { GifDetailComponent } from './gifdetail/gifdetail.component';
+import { IdiomComponent } from '../idiom/idiom.component';
 
 @Component({
     selector : 'page-home',
@@ -14,8 +15,12 @@ export class HomeComponent implements OnInit{
   selectedSegment: string;
   slides: any;
 
+  public selectedIdiom;
   constructor(public navCtrl: NavController,
+              public navParams : NavParams,
               public actionSheetCtrl : ActionSheetController) {
+
+         this.selectedIdiom =  this.navParams.get('idiom');
 
                   
   this.selectedSegment = 'first';
@@ -46,6 +51,9 @@ export class HomeComponent implements OnInit{
       this.navCtrl.push(SearchComponent);
   }
 
+  navIdiom(){
+     this.navCtrl.push(IdiomComponent);
+  }
 
 
   onSegmentChanged(segmentButton) {

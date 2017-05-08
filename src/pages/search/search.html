@@ -1,12 +1,12 @@
 <ion-header>
   <ion-navbar color="primary">
-       <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+       <ion-searchbar (ionInput)="getItems($event)" ></ion-searchbar>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="background-theme">
    
-    <ion-list>
+    <ion-list >
         <ion-item class="search-items" *ngFor="let item of items" (click)="TagsClick(item)">
             <ion-icon name="search" padding></ion-icon>
             {{ item }}

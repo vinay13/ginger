@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { NavController,NavParams} from 'ionic-angular';
+import { SearchResultComponent } from './searchResult/search-result.component';
+
 
 @Component({
     selector : 'page-search',
@@ -11,8 +14,9 @@ export class SearchComponent{
     searchQuery : string = '';
     items : string[];
 
-    constructor(){
-        this.initializeitems();
+    constructor(private navCtrl : NavController,
+                private navParmas : NavParams){
+       // this.initializeitems();
     }
 
 
@@ -39,5 +43,8 @@ export class SearchComponent{
 
 TagsClick(item){
     console.log('search gif with tag name',item);
+    this.navCtrl.push(SearchResultComponent,{
+        'sitem' : item 
+    });
 }
 }

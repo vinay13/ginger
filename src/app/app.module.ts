@@ -9,6 +9,7 @@ import { HomeComponent } from '../pages/home/home.component';
 import { SearchComponent } from '../pages/search/search.component';
 import { GifDetailComponent } from '../pages/home/gifdetail/gifdetail.component';
 import { IdiomComponent } from '../pages/idiom/idiom.component';
+import { SearchResultComponent } from '../pages/search/searchResult/search-result.component';
 
 //third party imports 
 import { SuperTabsModule } from 'ionic2-super-tabs';
@@ -29,7 +30,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomeComponent,
     SearchComponent,
     GifDetailComponent,
-    IdiomComponent
+    IdiomComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomeComponent,
     SearchComponent,
     GifDetailComponent,
-    IdiomComponent
+    IdiomComponent,
+    SearchResultComponent
 
   ],
   providers: [

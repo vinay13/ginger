@@ -4,19 +4,29 @@
 
 
 .idiom-title {
-    height: 120px;
+    height: 140px;
     width: 100%;
     display: table-cell;
     text-align: center;
     vertical-align: middle;
     border-radius: 50%;
-    background: #5d5d57;
-    padding: 20px;
-    font-size: 23px;
+    background: #28323f;
+    padding-top: 27px;
+    font-weight: 400;
+    font-size: 1.9rem;
     margin: 10px;
     color: white;
 }
 
 .selectedchange{
-    background-color: red;
+    background-color: rgba(132, 37, 64, 0.85);
+}
+
+.idiom-button{
+ background-color: white;
+ color: #00b6ff;
+}
+
+.button-style{
+    float: center;
 }

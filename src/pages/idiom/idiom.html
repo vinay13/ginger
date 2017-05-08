@@ -1,4 +1,4 @@
-<ion-header >
+<ion-header>
     <ion-navbar class="navbar-color">
         <ion-title>Select your idiom</ion-title>
     </ion-navbar>
@@ -12,6 +12,20 @@
                     <p> {{ idiom.name }} </p>
                  </div>
              </ion-col>
+        </ion-row>
+    </ion-grid>
+    
+    <ion-grid>
+        <ion-row>
+            <ion-col col-4>
+            </ion-col>
+
+            <ion-col col-4 class="button-style">
+                <button class="idiom-button" ion-button full [hidden]="showbutton" (click)="navHomePage()">Get started </button>
+            </ion-col>
+
+            <ion-col col-4>
+            </ion-col>
         </ion-row>
     </ion-grid>
 </ion-content>

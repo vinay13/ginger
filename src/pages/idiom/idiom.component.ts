@@ -1,5 +1,6 @@
- import { Component } from '@angular/core';
-
+import { Component } from '@angular/core';
+import { NavController,NavParams } from 'ionic-angular'; 
+import { HomeComponent } from '../home/home.component'; 
 
  @Component({
      selector : 'page-idiom',
@@ -9,7 +10,8 @@
  export class IdiomComponent{
 
      public selectedHero : string = "white";
-     constructor(){
+     constructor( private navCtrl : NavController ,
+                  private navparams : NavParams){
         //  this.selectedIdiom();
      }
 
@@ -17,18 +19,26 @@
                         {"id":1 , "name": "Hindi"},
                         {"id":2 , "name": "English"},
                         {"id":3 , "name": "Tamil"},
-                        {"id":4 , "name": "Telugu"}
+                        {"id":4 , "name": "Telugu"},
+                        {"id":5 , "name": "Kannada"},
+                        {"id":6 , "name": "Malayalam"}
                     ];
 
      public selectedIndex: number = -1;
      public bgcolor : string ;
+     public showbutton = true;
+
      selectedIdiom(index){
           this.selectedIndex = index;
-          console.log('index',index);
-        //  if( i == 0){
-        //     this.bgcolor = "red";
-        //  }
-            
+          this.showbutton = false;
+          console.log('index',index);    
+     }
+
+     navHomePage(){
+         console.log('idiom',this.idioms[this.selectedIndex].name);
+         this.navCtrl.push(HomeComponent,{
+             'idiom': this.idioms[this.selectedIndex].name 
+         });
      }
 
 
