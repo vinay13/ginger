@@ -3,6 +3,7 @@ import { NavController , Slides , ActionSheetController , NavParams } from 'ioni
 import { SearchComponent } from '../search/search.component';
 import { GifDetailComponent } from './gifdetail/gifdetail.component';
 import { IdiomComponent } from '../idiom/idiom.component';
+import { HomeService } from '../../services/home.service';
 
 @Component({
     selector : 'page-home',
@@ -18,11 +19,11 @@ export class HomeComponent implements OnInit{
   public selectedIdiom;
   constructor(public navCtrl: NavController,
               public navParams : NavParams,
-              public actionSheetCtrl : ActionSheetController) {
+              public actionSheetCtrl : ActionSheetController,
+              public _homeserv : HomeService) {
 
-         this.selectedIdiom =  this.navParams.get('idiom');
-
-                  
+  this.selectedIdiom =  this.navParams.get('idiom');
+               
   this.selectedSegment = 'first';
     this.slides = [
       {
@@ -42,10 +43,8 @@ export class HomeComponent implements OnInit{
           title: "fourth slide"
       }
     ];
-         }
-
-
-         
+}
+   
 
   searchButton(){
       this.navCtrl.push(SearchComponent);
@@ -70,6 +69,13 @@ export class HomeComponent implements OnInit{
     this.selectedSegment = currentSlide.id;
   }
 
+
+  public trendingGIFs = [];
+  getTrendingGIFs(){
+    this._homeserv.getTrendingGifs()
+    .subscribe( (data) => { this.trendingGIFs = data },
+                () => console.log('trendingGifs',this.trendingGIFs))
+  }
 
 
 
@@ -102,5 +108,7 @@ export class HomeComponent implements OnInit{
   }
 
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+      this.getTrendingGIFs();
+    }
 }
