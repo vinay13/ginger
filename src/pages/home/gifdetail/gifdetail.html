@@ -1,5 +1,11 @@
 <ion-header>
     <ion-navbar color="primary">
+        <ion-icon class="favorite-icon" name="md-heart-outline"></ion-icon>
+         <ion-buttons end>
+            <button ion-button icon-only (click)="presentPopover($event)">
+                <ion-icon name="more"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
@@ -17,6 +23,11 @@
         <img class="social-icons" src="../../assets/icon/instagram.png" />
     </div>
 
+    <div class="gif-tags">
+        <span class="tags-style"> abc </span>
+        <span class="tags-style"> xyz </span>
+        <span class="tags-style"> ram </span>
+    </div>
 
     <ion-grid>
         <ion-row>

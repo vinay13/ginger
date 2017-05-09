@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { PopoverController } from 'ionic-angular';
+import { PopOverComponent } from './popover';
 
 @Component({
     selector : 'page-gifdetail',
@@ -10,7 +11,11 @@ import { Component } from '@angular/core';
 
 export class GifDetailComponent {
 
-    constructor(){}
+    constructor(public popoverCtrl : PopoverController){}
 
+    presentPopover(){
+        let popover = this.popoverCtrl.create(PopOverComponent);
+        popover.present();
+    }
     
 }

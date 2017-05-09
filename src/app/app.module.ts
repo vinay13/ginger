@@ -12,7 +12,7 @@ import { SearchComponent } from '../pages/search/search.component';
 import { GifDetailComponent } from '../pages/home/gifdetail/gifdetail.component';
 import { IdiomComponent } from '../pages/idiom/idiom.component';
 import { SearchResultComponent } from '../pages/search/searchResult/search-result.component';
-
+import { PopOverComponent } from '../pages/home/gifdetail/popover';
 //third party imports 
 import { SuperTabsModule } from 'ionic2-super-tabs';
 
@@ -33,7 +33,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SearchComponent,
     GifDetailComponent,
     IdiomComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    PopOverComponent
   ],
   imports: [
     HttpModule,
@@ -50,7 +51,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SearchComponent,
     GifDetailComponent,
     IdiomComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    PopOverComponent
 
   ],
   providers: [
