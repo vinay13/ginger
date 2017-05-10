@@ -7,7 +7,7 @@ import { Http, XHRBackend, RequestOptions, Request, RequestOptionsArgs, Response
 
 
 @Injectable()
-export class HomeService{
+export class UploadGifService{
 
     public baseUrl : string = "https://violet.mobigraph.co/ginger/";
     public serverUrl : string;

@@ -13,13 +13,17 @@ import { GifDetailComponent } from '../pages/home/gifdetail/gifdetail.component'
 import { IdiomComponent } from '../pages/idiom/idiom.component';
 import { SearchResultComponent } from '../pages/search/searchResult/search-result.component';
 import { PopOverComponent } from '../pages/home/gifdetail/popover';
+
 //third party imports 
 import { SuperTabsModule } from 'ionic2-super-tabs';
 
 //import services 
 import {CommonService} from '../services/common.service';
 import {HomeService} from '../services/home.service';
+import {UploadGifService} from '../services/upload.service';
+import {SearchService} from '../services/search.service';
 
+//other imports
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
