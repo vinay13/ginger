@@ -11,9 +11,8 @@ import { HomeComponent } from '../home/home.component';
 export class LoginPage {
 
   constructor(public navCtrl: NavController) {
-
+    
   }
-
 
   icon :string = "md-eye";
   type : string = "password";

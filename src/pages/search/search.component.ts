@@ -19,7 +19,6 @@ export class SearchComponent{
        // this.initializeitems();
     }
 
-
     initializeitems(){
         this.items = [
             'Happy',
@@ -29,6 +28,7 @@ export class SearchComponent{
             'Hell'
         ];
     }
+
 
     getItems(ev : any){
         this.initializeitems();

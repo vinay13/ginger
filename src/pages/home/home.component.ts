@@ -4,6 +4,7 @@ import { SearchComponent } from '../search/search.component';
 import { GifDetailComponent } from './gifdetail/gifdetail.component';
 import { IdiomComponent } from '../idiom/idiom.component';
 import { HomeService } from '../../services/home.service';
+import { LoginPage } from '../login/login.component';
 
 @Component({
     selector : 'page-home',
@@ -78,6 +79,9 @@ export class HomeComponent implements OnInit{
   }
 
 
+  checklogin(){
+    this.navCtrl.push(LoginPage);
+  }
 
   presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
