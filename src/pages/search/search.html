@@ -6,7 +6,7 @@
 
 <ion-content class="background-theme">
     <ion-list >
-        <ion-item class="search-items" *ngFor="let item of items" (click)="TagsClick(item)">
+        <ion-item class="search-items" *ngFor="let item of suggestedText" (click)="TagsClick(item)">
             <ion-icon name="search" padding></ion-icon>
             {{ item }}
         </ion-item>

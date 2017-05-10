@@ -6,6 +6,7 @@ import { IdiomComponent } from '../idiom/idiom.component';
 import { HomeService } from '../../services/home.service';
 import { LoginPage } from '../login/login.component';
 
+
 @Component({
     selector : 'page-home',
     templateUrl : 'home.html'

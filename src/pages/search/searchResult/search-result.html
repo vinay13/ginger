@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-navbar color="primary">
-       <ion-searchbar   [(ngModel)]="searchItem" [showCancelButton]="true" (ionInput)="getItems($event)" ></ion-searchbar>
+  <ion-navbar class="navbar-style">
+       <ion-searchbar  [(ngModel)]="searchItem" [showCancelButton]="true"  (ionInput)="getItems($event)" ></ion-searchbar>
   </ion-navbar>
 </ion-header>
 
@@ -13,6 +13,10 @@
     
     <ion-grid>
         <ion-row>
+            <ion-col col-6 *ngFor="let gifs of searchedGifs">
+                <img src={{gifs.url}}>
+            </ion-col>        
+
             <ion-col col-6>
                 <img src="https://media.giphy.com/media/xUA7bcNOGl78PkVLYA/giphy.gif">
             </ion-col>

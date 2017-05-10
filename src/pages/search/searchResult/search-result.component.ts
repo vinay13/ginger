@@ -1,5 +1,6 @@
 import { Component , OnInit } from '@angular/core';
-import {NavParams} from 'ionic-angular';
+import { NavParams} from 'ionic-angular';
+import { SearchService } from '../../../services/search.service';
 
 @Component({
     selector : 'page-search-result',
@@ -10,11 +11,24 @@ import {NavParams} from 'ionic-angular';
 export class SearchResultComponent implements OnInit {
 
     public searchItem;
-    constructor(private navparams : NavParams){
-        this.searchItem = this.navparams.get('sitem');
+    public searchedGifs = [];
+    constructor(private navparams : NavParams,
+                private _searchService : SearchService ){
+       
     }
+
+
+    getSearchGifs(item){
+        this._searchService.GetGifsSearch(item)
+        .subscribe( (res) => { this.searchedGifs = res },
+                    () => console.log('related gifs',this.searchedGifs))
+    }
+
     ngOnInit(){
-        
+         this.searchItem = this.navparams.get('sitem');
+         this.getSearchGifs(this.searchItem);
+      //  this.searchedGifs = this.navparams.get('relatedgifs');
+      //  console.log('seeergifs',this.searchedGifs);
     }
 
     getItems(){

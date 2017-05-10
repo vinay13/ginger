@@ -7,7 +7,7 @@ import { Http, XHRBackend, RequestOptions, Request, RequestOptionsArgs, Response
 
 
 @Injectable()
-export class UploadGifService{
+export class LoginService{
 
     public baseUrl : string = "https://violet.mobigraph.co/ginger/";
     public serverUrl : string;
@@ -17,8 +17,7 @@ export class UploadGifService{
 
     setHeader() {
         this.headers = new Headers({
-            'Content-Type' : 'application/json',
-            'Authorization' : 'Bearer 5ede123sae3333444'
+        'Content-Type' : 'application/json'
         });
         this.options = new RequestOptions({
          headers : this.headers
@@ -29,24 +28,12 @@ export class UploadGifService{
         return this.options;
     }
 
-
-
-    UploadGifs(){
-        let file = {
-            "tags": "[Water , Tired]",
-            "categories" : "Tired",
-            "gif" : "file_name",
-            "idom" : "hindi"
-        }
-
+    public userlogin(){
         this.getHeader();
-		return this.http.post(this.baseUrl + 'uploadGif', this.options)
-			   .map(this.extractData)
-			   .catch(this.handleError);
-	}
-
-
-    
+        this.http.post(this.baseUrl+'login',this.options)
+            .map(this.extractData)
+            .catch(this.handleError)
+    }
 
     private extractData(res: Response) {
 		if (res.status === 204) { return res; }

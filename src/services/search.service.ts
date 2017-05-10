@@ -28,17 +28,20 @@ export class SearchService{
         return this.options;
     }
 
-
-    TextSuggestions(){
+    TextSuggestions(text){
         this.getHeader();
-		return this.http.post(this.baseUrl + 'tamil/suggest/Water', this.options)
+		return this.http.get(this.baseUrl + 'hindi/suggest/' + text, this.options)
 			   .map(this.extractData)
 			   .catch(this.handleError);
 	}
 
-
+    GetGifsSearch(text){
+        this.getHeader();
+        return this.http.get(this.baseUrl + 'hindi/gifs/' + text,this.options)
+                .map(this.extractData)
+                .catch(this.handleError)
+    }
     
-
     private extractData(res: Response) {
 		if (res.status === 204) { return res; }
 		let body = res.json();

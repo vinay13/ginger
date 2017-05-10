@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HomeComponent } from '../home/home.component';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'page-login',
@@ -18,14 +19,15 @@ export class LoginPage {
   type : string = "password";
 
   EyeOffClicked(param){
+    console.log('clickkk eyeoff');
       if(param === "md-eye"){
        
-       this.type = "password";   
+       this.type = "text";   
        this.icon = "md-eye-off";
     }
     else{
      
-      this.type = "text";
+      this.type = "password";
       this.icon = "md-eye";
     }
   }

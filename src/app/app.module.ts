@@ -57,14 +57,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     IdiomComponent,
     SearchResultComponent,
     PopOverComponent
-
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommonService,
-    HomeService
+    HomeService,
+    SearchService,
+    UploadGifService
   ]
 })
 
