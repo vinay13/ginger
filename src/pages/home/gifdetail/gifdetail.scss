@@ -20,6 +20,7 @@
     padding : 5px;
     color: white;
     font-size : 17px;
+    border: 1px solid #2b3b50;
 }
 
 .tags-style{
@@ -42,4 +43,16 @@
     font-size: 25px;
     float: right;
     color: white;
+}
+
+.more-socialIcons{
+    font-size: 50px;
+    font-weight: 700;
+    color: white;
+}
+
+.navbar {
+    .toolbar-background {
+	    background: transparent;
+    }
 }
