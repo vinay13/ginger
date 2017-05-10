@@ -5,7 +5,7 @@ import { GifDetailComponent } from './gifdetail/gifdetail.component';
 import { IdiomComponent } from '../idiom/idiom.component';
 import { HomeService } from '../../services/home.service';
 import { LoginPage } from '../login/login.component';
-
+import { UploadComponent } from '../upload/upload.component';
 
 @Component({
     selector : 'page-home',
@@ -100,6 +100,7 @@ export class HomeComponent implements OnInit{
           icon: 'md-link',
           handler: () => {
             console.log('Archive clicked');
+            this.navCtrl.push(UploadComponent);
           }
         }
       ]

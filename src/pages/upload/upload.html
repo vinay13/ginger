@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>
+            Enter URL to Upload
+        </ion-title> 
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="content-background">
+    
+    <ion-list class="upload-urlbar">
+        <ion-card >
+            <ion-item>
+                <ion-icon name="md-clipboard" item-right></ion-icon>
+                <!--<ion-label stacked>Upload Url</ion-label>-->
+                <ion-input placeholder="Enter Web Addres(URL)" type="text" value=""></ion-input>
+            </ion-item>
+        </ion-card>
+
+    </ion-list>
+    <div class="upload-comment">
+         <p> Make sure your link contains a .gif </p>
+         <p> extension and http:// or https:// </p>
+    </div>
+
+    <div class="upload-button">
+        <button  ion-button >Upload</button>
+    </div>
+    
+</ion-content>
