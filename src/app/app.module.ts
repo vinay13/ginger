@@ -13,6 +13,7 @@ import { SearchResultComponent } from '../pages/search/searchResult/search-resul
 import { UploadComponent } from '../pages/upload/upload.component';
 import { ProfileComponent } from '../pages/profile/profile.component';
 import { ProfileEditComponent } from '../pages/profile/edit/profile-edit.component';
+import { SettingsComponent } from '../pages/profile/settings/settings.component';
 import { PopOverComponent } from '../pages/home/gifdetail/popover';
 
 //third party imports 
@@ -23,6 +24,7 @@ import {CommonService} from '../services/common.service';
 import {HomeService} from '../services/home.service';
 import {UploadGifService} from '../services/upload.service';
 import {SearchService} from '../services/search.service';
+import {ProfileService} from '../services/profile.service';
 
 //other imports
 import { StatusBar } from '@ionic-native/status-bar';
@@ -41,7 +43,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SearchResultComponent,
     UploadComponent,
     ProfileComponent,
-    ProfileEditComponent,
+    ProfileEditComponent,   
+    SettingsComponent, 
     PopOverComponent
   ],
   imports: [
@@ -63,6 +66,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     UploadComponent,
     ProfileComponent,
     ProfileEditComponent,
+    SettingsComponent,
     PopOverComponent
   ],
   providers: [
@@ -72,7 +76,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     CommonService,
     HomeService,
     SearchService,
-    UploadGifService
+    UploadGifService,
+    ProfileService
   ]
 })
 

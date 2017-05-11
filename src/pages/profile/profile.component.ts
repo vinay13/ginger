@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ProfileEditComponent } from './edit/profile-edit.component'; 
+import { SettingsComponent } from './settings/settings.component';
 
 @Component({
     selector : 'page-profile',
@@ -14,6 +15,9 @@ export class ProfileComponent {
     ProfileEdit(){
         this.navCtrl.push(ProfileEditComponent);
     }
-    
 
+    SettingsNav(){
+        this.navCtrl.push(SettingsComponent);
+    }
+    
 }
