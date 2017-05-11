@@ -6,6 +6,7 @@ import { IdiomComponent } from '../idiom/idiom.component';
 import { HomeService } from '../../services/home.service';
 import { LoginPage } from '../login/login.component';
 import { UploadComponent } from '../upload/upload.component';
+import { ProfileComponent } from '../profile/profile.component';
 
 @Component({
     selector : 'page-home',
@@ -108,6 +109,9 @@ export class HomeComponent implements OnInit{
     actionSheet.present();
   }
 
+  userProfile(){
+    this.navCtrl.push(ProfileComponent);
+  }
 
   navGifDetail(){
     this.navCtrl.push(GifDetailComponent);

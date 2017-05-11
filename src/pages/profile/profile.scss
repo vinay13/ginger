@@ -1,0 +1,38 @@
+.profile-image {
+    width:100px;
+    margin: 0px auto 0px auto;
+    text-align: center;
+    padding: 10px 0;
+    overflow: hidden;    
+}
+.profile-image img {
+    margin: 0px auto 0px auto;
+}
+
+.content-background{
+     background-color :  #2b3b50; 
+     color : white;
+}
+
+.card-style{
+    color : white;
+    text-align: center;
+    background: #ff1943; /* Old browsers */
+    background: -moz-linear-gradient(top, #ff1943 0%, #d0043e 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #ff1943 0%,#d0043e 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #ff1943 0%,#d0043e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.settings-icon{  
+    font-size: 30px;
+    position: right;
+    float: right;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.navbar{
+    .toolbar-background {
+	    background: #ff1943 !important;
+    }
+}

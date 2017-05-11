@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
-
 import { AboutPage } from '../pages/about/about';
 import { LoginPage } from '../pages/login/login.component'; 
 import { HomeComponent } from '../pages/home/home.component';
@@ -12,6 +11,8 @@ import { GifDetailComponent } from '../pages/home/gifdetail/gifdetail.component'
 import { IdiomComponent } from '../pages/idiom/idiom.component';
 import { SearchResultComponent } from '../pages/search/searchResult/search-result.component';
 import { UploadComponent } from '../pages/upload/upload.component';
+import { ProfileComponent } from '../pages/profile/profile.component';
+import { ProfileEditComponent } from '../pages/profile/edit/profile-edit.component';
 import { PopOverComponent } from '../pages/home/gifdetail/popover';
 
 //third party imports 
@@ -39,6 +40,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     IdiomComponent,
     SearchResultComponent,
     UploadComponent,
+    ProfileComponent,
+    ProfileEditComponent,
     PopOverComponent
   ],
   imports: [
@@ -58,6 +61,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     IdiomComponent,
     SearchResultComponent,
     UploadComponent,
+    ProfileComponent,
+    ProfileEditComponent,
     PopOverComponent
   ],
   providers: [

@@ -1,8 +1,8 @@
 <ion-header>
-<ion-toolbar color="secondary" >
+<ion-toolbar class="navbar" >
 
 <div class="header-home">
-  <div class="home-icon">
+  <div class="home-icon" (click)="userProfile()">
      <img src="../assets/icon/icon.png" style="width:30px; height:30px;"/>
   </div>
   <span class="idiom-name" (click)="navIdiom()">{{ selectedIdiom }} </span>  
