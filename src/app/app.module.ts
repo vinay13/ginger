@@ -14,6 +14,7 @@ import { UploadComponent } from '../pages/upload/upload.component';
 import { ProfileComponent } from '../pages/profile/profile.component';
 import { ProfileEditComponent } from '../pages/profile/edit/profile-edit.component';
 import { SettingsComponent } from '../pages/profile/settings/settings.component';
+import { AddTagsComponent } from '../pages/upload/add-tags/add-tags.component';
 import { PopOverComponent } from '../pages/home/gifdetail/popover';
 
 //third party imports 
@@ -44,7 +45,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     UploadComponent,
     ProfileComponent,
     ProfileEditComponent,   
-    SettingsComponent, 
+    SettingsComponent,
+    AddTagsComponent, 
     PopOverComponent
   ],
   imports: [
@@ -67,6 +69,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfileComponent,
     ProfileEditComponent,
     SettingsComponent,
+    AddTagsComponent,
     PopOverComponent
   ],
   providers: [

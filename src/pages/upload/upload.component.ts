@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AddTagsComponent } from './add-tags/add-tags.component'; 
+import { NavController } from 'ionic-angular';
 
 @Component({
     selector : 'page-upload',
@@ -7,7 +9,11 @@ import { Component } from '@angular/core';
 
 export class UploadComponent {
 
-    constructor(){}
+    constructor(private navCtrl : NavController ){}
 
-    
+    AddTags(){
+        console.log('upload click1');
+        this.navCtrl.push(AddTagsComponent);
+    }
+
 }

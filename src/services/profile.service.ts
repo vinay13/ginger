@@ -17,8 +17,9 @@ export class ProfileService{
 
     setHeader() {
         this.headers = new Headers({
-        'Content-Type' : 'application/json'
-        });
+            'Content-Type' : 'application/json',
+            'Authorization' : 'Bearer' + 'eyyyyyyyyyyyyyy'
+    });
         this.options = new RequestOptions({
          headers : this.headers
         });
@@ -34,6 +35,13 @@ export class ProfileService{
 			   .map(this.extractData)
 			   .catch(this.handleError);
 	}
+
+    GetUserProfile(){
+        this.getHeader();
+        return this.http.get(this.baseUrl + 'profile',this.options)
+                .map(this.extractData)
+                .catch(this.handleError)         
+    }
 
     private extractData(res: Response) {
 		if (res.status === 204) { return res; }
