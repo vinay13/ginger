@@ -11,6 +11,8 @@ export class UploadComponent {
 
     constructor(private navCtrl : NavController ){}
 
+    
+
     AddTags(){
         console.log('upload click1');
         this.navCtrl.push(AddTagsComponent);

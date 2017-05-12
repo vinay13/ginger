@@ -3,22 +3,30 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-import { Http, XHRBackend, RequestOptions, Request, RequestOptionsArgs, Response, Headers } from '@angular/http';
-
+import {Http, XHRBackend, RequestOptions, Request, RequestOptionsArgs, Response, Headers } from '@angular/http';
+import {Configuration} from './app.constant';
 
 @Injectable()
 export class UploadGifService{
 
-    public baseUrl : string = "https://violet.mobigraph.co/ginger/";
+    public url:string;
     public serverUrl : string;
     public headers;
     public options;
-    constructor(private http : Http){}
+    constructor(private http : Http,
+                private _config : Configuration){
+                    this.getUrl();
+                    this.getHeader();
+                }
+
+    getUrl(){
+        this.url = this._config.baseUrl;
+    }            
 
     setHeader() {
         this.headers = new Headers({
             'Content-Type' : 'application/json',
-            'Authorization' : 'Bearer 5ede123sae3333444'
+            'Authorization' : 'Bearer' + 'localstorage.getItem()'
         });
         this.options = new RequestOptions({
          headers : this.headers
@@ -29,8 +37,6 @@ export class UploadGifService{
         return this.options;
     }
 
-
-
     UploadGifs(){
         let file = {
             "tags": "[Water , Tired]",
@@ -38,15 +44,10 @@ export class UploadGifService{
             "gif" : "file_name",
             "idom" : "hindi"
         }
-
-        this.getHeader();
-		return this.http.post(this.baseUrl + 'uploadGif', this.options)
+		return this.http.post(this.url + 'uploadGif', this.options)
 			   .map(this.extractData)
 			   .catch(this.handleError);
 	}
-
-
-    
 
     private extractData(res: Response) {
 		if (res.status === 204) { return res; }

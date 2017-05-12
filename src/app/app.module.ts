@@ -21,12 +21,12 @@ import { PopOverComponent } from '../pages/home/gifdetail/popover';
 import { SuperTabsModule } from 'ionic2-super-tabs';
 
 //import services 
-import {CommonService} from '../services/common.service';
 import {HomeService} from '../services/home.service';
 import {UploadGifService} from '../services/upload.service';
 import {SearchService} from '../services/search.service';
 import {ProfileService} from '../services/profile.service';
-
+import {Configuration} from '../services/app.constant';
+import {CustomService} from '../services/custom.service';
 //other imports
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -76,11 +76,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CommonService,
     HomeService,
     SearchService,
     UploadGifService,
-    ProfileService
+    ProfileService,
+    Configuration,
+    CustomService
+
   ]
 })
 

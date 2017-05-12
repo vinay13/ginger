@@ -4,7 +4,8 @@ import { SearchService } from '../../../services/search.service';
 
 @Component({
     selector : 'page-search-result',
-    templateUrl: 'search-result.html'
+    templateUrl: 'search-result.html',
+   // styleUrls : ['./search-result.scss']
 })
 
 
@@ -25,7 +26,7 @@ export class SearchResultComponent implements OnInit {
     }
 
     ngOnInit(){
-         this.searchItem = this.navparams.get('sitem');
+         this.searchItem = this.navparams.get('sitem') || this.navparams.get('tag');
          this.getSearchGifs(this.searchItem);
       //  this.searchedGifs = this.navparams.get('relatedgifs');
       //  console.log('seeergifs',this.searchedGifs);

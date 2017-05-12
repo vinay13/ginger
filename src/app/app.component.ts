@@ -7,7 +7,6 @@ import { LoginPage } from '../pages/login/login.component';
 import { IdiomComponent } from '../pages/idiom/idiom.component';
 
 
-
 @Component({
   templateUrl: 'app.html',
 })
