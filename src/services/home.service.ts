@@ -38,12 +38,12 @@ export class HomeService{
         return this.options;
     }
 
-    // getTrendingGifs(){
+    getTrendingGifs(){
         
-	// 	return this.http.get(this.url + 'tamil/gifs', this.options)
-	// 		   .map(this.extractData)
-	// 		   .catch(this.handleError);
-	// }
+		return this.http.get(this.url + 'tamil/gifs', this.options)
+			   .map(this.extractData)
+			   .catch(this.handleError);
+	}
 
     // getTrendingGifs(){
         
