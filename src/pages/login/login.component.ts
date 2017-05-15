@@ -11,7 +11,11 @@ import { LoginService } from '../../services/login.service';
 
 export class LoginPage {
 
-  constructor(public navCtrl: NavController) {
+  public email;
+  public password;
+
+  constructor(public navCtrl: NavController,
+              public _authServ: LoginService) {
     
   }
 
@@ -32,8 +36,28 @@ export class LoginPage {
     }
   }
 
-  UserLogin(){  
+  NavLogin(){  
     this.navCtrl.push(HomeComponent);
+  }
+
+
+  
+  UserLogin() {
+    let data = {
+      emailId: this.email,
+      password: this.password
+    }
+
+    this._authServ.verifyUser(data).subscribe((res) => {
+      this.verifySuccessfully(res);
+      this. NavLogin();
+    }, (err) => {
+      console.log('err');
+    });
+  }
+
+  public verifySuccessfully(res) {
+    localStorage.setItem("access_token", res.token);
   }
 
 

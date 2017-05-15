@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { PopoverController } from 'ionic-angular';
 import { PopOverComponent } from './popover';
 import { SearchResultComponent } from '../../search/searchResult/search-result.component';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 
 @Component({
     selector : 'page-gifdetail',
@@ -13,7 +13,8 @@ import { NavController } from 'ionic-angular';
 export class GifDetailComponent {
 
     constructor(public popoverCtrl : PopoverController,
-                public navCtrl : NavController){}
+                public navCtrl : NavController,
+                public toastCtrl : ToastController){}
 
 
     presentPopover(){
@@ -26,5 +27,17 @@ export class GifDetailComponent {
             'tag' : tag
         });
     }
+
+    Addfavorites(){
+       this.presentToast();
+    }
+
+     presentToast(){
+        let toast = this.toastCtrl.create({
+            message: 'Added to favorites list',
+            duration: 3000
+        });
+    toast.present();
+  }
     
 }

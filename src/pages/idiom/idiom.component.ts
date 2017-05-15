@@ -16,12 +16,12 @@ import { HomeComponent } from '../home/home.component';
      }
 
      public idioms = [
-                        {"id":1 , "name": "Hindi"},
-                        {"id":2 , "name": "English"},
-                        {"id":3 , "name": "Tamil"},
-                        {"id":4 , "name": "Telugu"},
-                        {"id":5 , "name": "Kannada"},
-                        {"id":6 , "name": "Malayalam"}
+                        {"id":1 , "name": "hindi"},
+                        {"id":2 , "name": "english"},
+                        {"id":3 , "name": "tamil"},
+                        {"id":4 , "name": "telugu"},
+                        {"id":5 , "name": "kannada"},
+                        {"id":6 , "name": "malayalam"}
                     ];
 
      public selectedIndex: number = -1;

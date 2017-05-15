@@ -38,19 +38,16 @@ export class HomeService{
         return this.options;
     }
 
-    getTrendingGifs(){
+    getTrendingGifs(idiom){
+        console.log('idiom3',idiom);
         
-		return this.http.get(this.url + 'tamil/gifs', this.options)
+		return this.http.get(this.url+idiom+'/gifs', this.options)
 			   .map(this.extractData)
 			   .catch(this.handleError);
 	}
 
-    // getTrendingGifs(){
-        
-	// 	return this.http.get("src/services/gif.json", this.options)
-	// 		   .map(this.extractData)
-	// 		   .catch(this.handleError);
-	// }
+    // getCategories(){
+    // }
 
     private extractData(res: Response) {
 		if (res.status === 204) { return res; }

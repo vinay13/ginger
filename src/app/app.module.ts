@@ -27,6 +27,7 @@ import {SearchService} from '../services/search.service';
 import {ProfileService} from '../services/profile.service';
 import {Configuration} from '../services/app.constant';
 import {CustomService} from '../services/custom.service';
+import {LoginService} from '../services/login.service';
 //other imports
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -80,6 +81,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SearchService,
     UploadGifService,
     ProfileService,
+    LoginService,
     Configuration,
     CustomService
 

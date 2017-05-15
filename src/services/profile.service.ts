@@ -14,7 +14,10 @@ export class ProfileService{
     public headers;
     public options;
     constructor(private http : Http,
-                private _config : Configuration){}
+                private _config : Configuration){
+                    this.getUrl();
+                    this.setHeader();
+                }
 
     getUrl(){
         this.url = this._config.baseUrl;
@@ -23,7 +26,7 @@ export class ProfileService{
     setHeader() {
         this.headers = new Headers({
             'Content-Type' : 'application/json',
-            'Authorization' : 'Bearer' + ''
+            'Authorization' : 'Bearer' + ' ' + localStorage.getItem('access_token')
     });
         this.options = new RequestOptions({
          headers : this.headers

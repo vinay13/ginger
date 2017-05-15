@@ -3,11 +3,11 @@ import { NavController,NavParams} from 'ionic-angular';
 import { SearchResultComponent } from './searchResult/search-result.component';
 import { SearchService } from '../../services/search.service'; 
 
+
 @Component({
     selector : 'page-search',
     templateUrl : 'search.html'
 })
-
 
 export class SearchComponent{
 
@@ -18,7 +18,8 @@ export class SearchComponent{
                 private navParmas : NavParams,
                 private _searchservice : SearchService){
                 // this.initializeitems();
-              //  this.getSuggestedItems(text);
+               //  this.getSuggestedItems(text);
+              
     }
 
     // initializeitems(){

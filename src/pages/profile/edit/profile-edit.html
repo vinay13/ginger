@@ -11,19 +11,19 @@
     <ion-list>
         <ion-item class="edit-input">
             <ion-label stacked>Username</ion-label>
-                <ion-input type="text" name="username">
+                <ion-input type="text" name="_id" [(ngModel)]="userInfo._id">
             </ion-input>
         </ion-item>
 
         <ion-item class="edit-input">
             <ion-label stacked>Name</ion-label>
-                <ion-input type="text" name="name">
+                <ion-input type="text" name="fullName" [(ngModel)]="userInfo.fullName">
             </ion-input>
         </ion-item>
 
         <ion-item class="edit-input">
             <ion-label stacked>Web</ion-label>
-                <ion-input type="text" name="web">
+                <ion-input type="text" name="webLink" [(ngModel)]="userInfo.webLink">
             </ion-input>
         </ion-item>
     </ion-list>

@@ -7,6 +7,7 @@ import { HomeService } from '../../services/home.service';
 import { LoginPage } from '../login/login.component';
 import { UploadComponent } from '../upload/upload.component';
 import { ProfileComponent } from '../profile/profile.component';
+import { CustomService } from '../../services/custom.service';
 
 @Component({
     selector : 'page-home',
@@ -23,9 +24,11 @@ export class HomeComponent implements OnInit{
   constructor(public navCtrl: NavController,
               public navParams : NavParams,
               public actionSheetCtrl : ActionSheetController,
-              public _homeserv : HomeService) {
+              public _homeserv : HomeService,
+              public cs : CustomService) {
 
-  this.selectedIdiom =  this.navParams.get('idiom');
+              this.selectedIdiom = this.navParams.get('idiom');
+              this.getTrendingGIFs();
                
   this.selectedSegment = 'first';
     this.slides = [
@@ -48,7 +51,6 @@ export class HomeComponent implements OnInit{
     ];
 }
    
-
   searchButton(){
       this.navCtrl.push(SearchComponent);
   }
@@ -56,7 +58,6 @@ export class HomeComponent implements OnInit{
   navIdiom(){
      this.navCtrl.push(IdiomComponent);
   }
-
 
   onSegmentChanged(segmentButton) {
     console.log("Segment changed to", segmentButton.value);
@@ -72,20 +73,19 @@ export class HomeComponent implements OnInit{
     this.selectedSegment = currentSlide.id;
   }
 
-
   public trendingGIFs = [];
   getTrendingGIFs(){
-    this._homeserv.getTrendingGifs()
-    .subscribe( (data) => { this.trendingGIFs = data },
+    this.cs.showLoader();
+    this._homeserv.getTrendingGifs(this.selectedIdiom)
+    .subscribe( (data) => { this.trendingGIFs = data ; this.cs.hideLoader(); },
                 () => console.log('trendingGifs',this.trendingGIFs))
   }
-
 
   checklogin(){
     this.navCtrl.push(LoginPage);
   }
 
-  presentActionSheet() {
+  presentActionSheet(){
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Upload GIF',
       buttons: [
@@ -117,8 +117,7 @@ export class HomeComponent implements OnInit{
     this.navCtrl.push(GifDetailComponent);
   }
 
-
-    ngOnInit(): void {
-      this.getTrendingGIFs();
-    }
+  ngOnInit(): void {
+    
+  }
 }

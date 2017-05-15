@@ -28,12 +28,26 @@ export class LoginService{
         return this.options;
     }
 
-    public userlogin(){
+    public verifyUser(body){
         this.getHeader();
-        this.http.post(this.baseUrl+'login',this.options)
+       return this.http.post(this.baseUrl+'signin',body,this.options)
             .map(this.extractData)
             .catch(this.handleError)
     }
+
+
+    // verifyUser(data): Observable<any[]> {
+    //     return this.http.post(this.baseUrl + "/oauth/token?grant_type=password&username="+data.username+"&password="+data.password, {})
+    //                 .map(this.extractData)
+    //                 .catch(this.handleError);
+    // }
+
+
+
+
+
+
+
 
     private extractData(res: Response) {
 		if (res.status === 204) { return res; }
