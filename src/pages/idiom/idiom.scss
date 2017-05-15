@@ -19,10 +19,7 @@
 }
 
 .selectedchange{
-   // background-color: rgba(132, 37, 64, 0.85);
-   background: -moz-linear-gradient(top, #ff1943 0%, #d0043e 100%); /* FF3.6-15 */
-         background: -webkit-linear-gradient(top, #ff1943 0%,#d0043e 100%); /* Chrome10-25,Safari5.1-6 */
-         background: linear-gradient(to bottom, #ff1943 0%,#d0043e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background : linear-gradient(45deg, rgba(122, 104, 190, 0.85) 0%, rgba(247, 48, 39, 0.87) 100%) !important;
 }
 
 .idiom-button{

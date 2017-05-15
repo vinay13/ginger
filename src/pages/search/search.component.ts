@@ -59,6 +59,17 @@ export class SearchComponent{
                     () => console.log('related gifs',this.searchedGifs))
     }
 
+    someFunction(event: KeyboardEvent) { 
+        let val = (<HTMLInputElement>event.target).value;
+        this.getSearchGifs(val);
+
+        this.navCtrl.push(SearchResultComponent,{
+            'sitem' : val ,
+            'relatedgifs' :  this.searchedGifs
+      });
+    }
+
+
     TagsClick(item){
          console.log('search gif with tag name',item);
          this.getSearchGifs(item);

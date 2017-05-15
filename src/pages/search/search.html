@@ -1,6 +1,9 @@
 <ion-header>
-  <ion-navbar color="primary" class="navbar">
-       <ion-searchbar (ionInput)="getItems($event)" ></ion-searchbar>
+  <ion-navbar class="navbar">
+       <ion-searchbar 
+       (ionInput)="getItems($event)"
+       (keyup.enter)="someFunction($event)" 
+        ></ion-searchbar>
   </ion-navbar>
 </ion-header>
 
