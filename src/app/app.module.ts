@@ -14,18 +14,19 @@ import { UploadComponent } from '../pages/upload/upload.component';
 import { ProfileComponent } from '../pages/profile/profile.component';
 import { ProfileEditComponent } from '../pages/profile/edit/profile-edit.component';
 import { SettingsComponent } from '../pages/profile/settings/settings.component';
+import { AddTagsComponent } from '../pages/upload/add-tags/add-tags.component';
 import { PopOverComponent } from '../pages/home/gifdetail/popover';
 
 //third party imports 
 import { SuperTabsModule } from 'ionic2-super-tabs';
 
 //import services 
-import {CommonService} from '../services/common.service';
 import {HomeService} from '../services/home.service';
 import {UploadGifService} from '../services/upload.service';
 import {SearchService} from '../services/search.service';
 import {ProfileService} from '../services/profile.service';
-
+import {Configuration} from '../services/app.constant';
+import {CustomService} from '../services/custom.service';
 //other imports
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -44,7 +45,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     UploadComponent,
     ProfileComponent,
     ProfileEditComponent,   
-    SettingsComponent, 
+    SettingsComponent,
+    AddTagsComponent, 
     PopOverComponent
   ],
   imports: [
@@ -67,17 +69,20 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfileComponent,
     ProfileEditComponent,
     SettingsComponent,
+    AddTagsComponent,
     PopOverComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CommonService,
     HomeService,
     SearchService,
     UploadGifService,
-    ProfileService
+    ProfileService,
+    Configuration,
+    CustomService
+
   ]
 })
 

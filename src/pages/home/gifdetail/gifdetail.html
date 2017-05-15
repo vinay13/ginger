@@ -13,7 +13,7 @@
 <ion-content class="gifdetail-content">
 
     <div>
-        <img class="Gifdetail" src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">
+        <img class="Gifdetail" src="https://media.giphy.com/media/MxjV8LTB7KBwc/giphy.gif">
     </div>
 
     <div class="social-sharing">
@@ -25,10 +25,9 @@
     </div>
 
     <div class="gif-tags">
-        <span class="tags-style"> abc </span>
-        <span class="tags-style"> xyz </span>
-        <span class="tags-style"> ram </span>
-        
+        <ion-badge class="tag-badge" item-right color="secondary" (click)="TagClicked('Horror')">Horror</ion-badge>
+        <ion-badge class="tag-badge" item-right color="secondary" (click)="TagClicked('Doggy')">Doggy</ion-badge>
+        <ion-badge class="tag-badge" item-right color="secondary" (click)="TagClicked('Happy')">Happy</ion-badge>
     </div>
 
     <ion-grid>
