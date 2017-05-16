@@ -8,6 +8,8 @@ import { LoginPage } from '../login/login.component';
 import { UploadComponent } from '../upload/upload.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { CustomService } from '../../services/custom.service';
+import { Camera } from '@ionic-native/camera';
+import {AddTagsComponent} from '../upload/add-tags/add-tags.component';
 
 @Component({
     selector : 'page-home',
@@ -25,7 +27,8 @@ export class HomeComponent implements OnInit{
               public navParams : NavParams,
               public actionSheetCtrl : ActionSheetController,
               public _homeserv : HomeService,
-              public cs : CustomService) {
+              public cs : CustomService,
+              public cameraa : Camera) {
 
               this.selectedIdiom = this.navParams.get('idiom');
               this.getTrendingGIFs();
@@ -73,11 +76,13 @@ export class HomeComponent implements OnInit{
     this.selectedSegment = currentSlide.id;
   }
 
-  public trendingGIFs = [];
+  public trendingGIFs: any;
+  public gifs: Array<any> = []; 
   getTrendingGIFs(){
     this.cs.showLoader();
     this._homeserv.getTrendingGifs(this.selectedIdiom)
-    .subscribe( (data) => { this.trendingGIFs = data ; this.cs.hideLoader(); },
+    .subscribe( (result) => { this.trendingGIFs = result ; this.gifs = this.gifs.concat(this.trendingGIFs.data);  this.cs.hideLoader(); },
+                (err) => {  this.cs.hideLoader(); },
                 () => console.log('trendingGifs',this.trendingGIFs))
   }
 
@@ -94,6 +99,7 @@ export class HomeComponent implements OnInit{
           role: 'destructive',
           icon : 'md-document',
           handler: () => {
+            this.ImagePick();
             console.log('Destructive clicked');
           }
         },{
@@ -108,6 +114,27 @@ export class HomeComponent implements OnInit{
     });
     actionSheet.present();
   }
+
+
+  base64Image;
+  ImageFile;
+  public ImagePick(){
+   
+    this.cameraa.getPicture({
+        destinationType: this.cameraa.DestinationType.DATA_URL,
+        sourceType        : this.cameraa.PictureSourceType.PHOTOLIBRARY
+    }).then((imagedata)=>{
+      this.base64Image = 'data:image/jpeg;base64,' + imagedata;
+      this.ImageFile = imagedata ;
+       this.navCtrl.push(AddTagsComponent,{
+        'gifpath' :  this.base64Image
+      });    
+    },(err)=>{
+      console.log(err);
+    });
+}
+
+
 
   userProfile(){
     this.navCtrl.push(ProfileComponent);

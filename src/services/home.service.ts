@@ -11,6 +11,7 @@ import { Configuration } from './app.constant';
 export class HomeService{
 
     public url;
+    public giphyurl = 'http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC';
     public serverUrl : string;
     public headers;
     public options;
@@ -38,10 +39,18 @@ export class HomeService{
         return this.options;
     }
 
-    getTrendingGifs(idiom){
+    // getTrendingGifs(idiom){
+    //     console.log('idiom3',idiom);
+        
+	// 	return this.http.get(this.url+idiom+'/gifs', this.options)
+	// 		   .map(this.extractData)
+	// 		   .catch(this.handleError);
+	// }
+
+        getTrendingGifs(idiom){
         console.log('idiom3',idiom);
         
-		return this.http.get(this.url+idiom+'/gifs', this.options)
+		return this.http.get(this.giphyurl, this.options)
 			   .map(this.extractData)
 			   .catch(this.handleError);
 	}

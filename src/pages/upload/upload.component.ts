@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { AddTagsComponent } from './add-tags/add-tags.component'; 
 import { NavController } from 'ionic-angular';
 
@@ -7,15 +7,24 @@ import { NavController } from 'ionic-angular';
     templateUrl: 'upload.html'
 })
 
-export class UploadComponent {
+export class UploadComponent implements OnInit {
 
-    constructor(private navCtrl : NavController ){}
+    UploadGif: any;
+    constructor(private navCtrl : NavController ){
 
-    
+        this.UploadGif = {
+            "tags" : [],
+            "categories": [],
+            "gif":"abc.gif",
+            "idiom":"hindi"             
+        }
+    }
 
     AddTags(){
         console.log('upload click1');
         this.navCtrl.push(AddTagsComponent);
     }
+
+    ngOnInit(){}
 
 }

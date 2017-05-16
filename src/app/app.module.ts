@@ -19,7 +19,7 @@ import { PopOverComponent } from '../pages/home/gifdetail/popover';
 
 //third party imports 
 import { SuperTabsModule } from 'ionic2-super-tabs';
-
+import { Camera } from '@ionic-native/camera';
 //import services 
 import {HomeService} from '../services/home.service';
 import {UploadGifService} from '../services/upload.service';
@@ -83,7 +83,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfileService,
     LoginService,
     Configuration,
-    CustomService
+    CustomService,
+    Camera
 
   ]
 })
