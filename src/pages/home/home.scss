@@ -73,3 +73,18 @@
     bottom: 0;
     left: 0; 
 }
+
+
+
+.ios ,.md {
+    page-home{
+        .pins{
+            column-count : 2;
+        }
+        .pin{
+            display: inline-block;
+            margin : -1px -3px -9px -9px;
+            padding: 0px;
+        }
+    }
+}

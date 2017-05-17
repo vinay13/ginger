@@ -10,7 +10,8 @@ import { ProfileComponent } from '../profile/profile.component';
 import { CustomService } from '../../services/custom.service';
 import { Camera } from '@ionic-native/camera';
 import {AddTagsComponent} from '../upload/add-tags/add-tags.component';
-
+import { FileChooser } from '@ionic-native/file-chooser';
+import { File } from '@ionic-native/file';
 @Component({
     selector : 'page-home',
     templateUrl : 'home.html'
@@ -28,7 +29,9 @@ export class HomeComponent implements OnInit{
               public actionSheetCtrl : ActionSheetController,
               public _homeserv : HomeService,
               public cs : CustomService,
-              public cameraa : Camera) {
+              public cameraa : Camera,
+              public fileChooser : FileChooser,
+              public file : File) {
 
               this.selectedIdiom = this.navParams.get('idiom');
               this.getTrendingGIFs();
@@ -37,19 +40,17 @@ export class HomeComponent implements OnInit{
     this.slides = [
       {
         id: "first",
-        title: "First Slide"
+        title: "The newest,most trending gifs on the interwebs"
       },
       {
         id: "second",
-        title: "Second Slide"
       },
       {
         id: "third",
-        title: "Third Slide"
+      
       },
       {
           id: "fourth",
-          title: "fourth slide"
       }
     ];
 }
@@ -99,7 +100,8 @@ export class HomeComponent implements OnInit{
           role: 'destructive',
           icon : 'md-document',
           handler: () => {
-            this.ImagePick();
+           // this.ImagePick();
+            this.ChooseFile();
             console.log('Destructive clicked');
           }
         },{
@@ -124,7 +126,7 @@ export class HomeComponent implements OnInit{
         destinationType: this.cameraa.DestinationType.DATA_URL,
         sourceType        : this.cameraa.PictureSourceType.PHOTOLIBRARY
     }).then((imagedata)=>{
-      this.base64Image = 'data:image/jpeg;base64,' + imagedata;
+      this.base64Image = 'data:image/gif;base64,' + imagedata;
       this.ImageFile = imagedata ;
        this.navCtrl.push(AddTagsComponent,{
         'gifpath' :  this.base64Image
@@ -134,6 +136,14 @@ export class HomeComponent implements OnInit{
     });
 }
 
+
+  public imageFile : any;  
+  public data_response; 
+  ChooseFile(){
+      this.fileChooser.open()
+        .then(uri => {console.log(uri); this.imageFile = uri } )
+        .catch(e => console.log(e));
+    }
 
 
   userProfile(){
