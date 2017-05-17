@@ -74,7 +74,17 @@
     left: 0; 
 }
 
+.segment-ios .segment-button{
+    border-color: transparent !important;
+}
 
+.segment-ios .segment-button.segment-activated {
+    background-color: rgb(179, 68, 93);
+}
+
+.segment-md .segment-button.segment-activated {
+    border-color: white !important;
+}
 
 .ios ,.md {
     page-home{

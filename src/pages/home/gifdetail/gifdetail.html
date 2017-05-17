@@ -17,11 +17,13 @@
     </div>
 
     <div class="social-sharing">
-        <img class="social-icons" src="../../assets/icon/whatsapp.png"/>
+        <img class="social-icons" src="../../assets/icon/whatsapp.png" (click)="shareGif()"/>
         <img class="social-icons" src="../../assets/icon/twitter.png"/>
         <img class="social-icons" src="../../assets/icon/facebook.png"/>
         <img class="social-icons" src="../../assets/icon/instagram.png" />
-        <ion-icon class="more-socialIcons" name="ios-more-outline" ></ion-icon>
+        <span class="social-icons">
+            <ion-icon class="more-socialIcons" name="ios-more-outline" ></ion-icon>
+        </span>
     </div>
 
     <div class="gif-tags">
@@ -30,29 +32,21 @@
         <ion-badge class="tag-badge" item-right color="secondary" (click)="TagClicked('Happy')">Happy</ion-badge>
     </div>
 
-    <ion-grid>
-        <ion-row>
-            <ion-col col-6>
-                 <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">
-            </ion-col>
-             <ion-col col-6>
-                <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">
-            </ion-col>
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">     
-            </ion-col>
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/91000000">     
-            </ion-col>
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/91000000">     
-            </ion-col>
-            
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/91000000">     
-            </ion-col>
 
-            
-        </ion-row>
-    </ion-grid>
+    <div class="pins">
+        <div class="pin">
+             <img src="https://media.giphy.com/media/l0Iy9Cmo47OtCv4xG/giphy.gif">
+        </div>
+        <div class="pin">
+            <img src="https://media.giphy.com/media/12nDZFClQlLh4I/giphy.gif">
+        </div>
+    
+         <div class="pin">
+              <img src="https://media.giphy.com/media/3o6YglDndxKdCNw7q8/giphy.gif">
+        </div>
+        <div class="pin">
+            <img src="https://media.giphy.com/media/l0IyhbLtVpyGcYVuU/giphy.gif">
+        </div>
+    </div>
+
 </ion-content>

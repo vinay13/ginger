@@ -34,33 +34,17 @@
 
   <ion-slides #mySlider (ionDidChange)="onSlideChanged($event)">
     <ion-slide *ngFor="let slide of slides">
-      <!--<h1></h1>-->
-      <span style="color:#fff">{{ slide.title }}</span>
-
-    <!--<ion-grid>
-      <ion-row row-2>
-            <ion-col col-6 *ngFor="let gif of gifs">
-             
-                <img src={{gif.images.original.url}}>
-            
-            </ion-col>
-
-        </ion-row>
-   </ion-grid>-->
-
+     <span style="color:#fff">{{ slide.title }}</span>
       <div class="pins">
-        <div class="pin" *ngFor="let gif of gifs">
+        <div class="pin" *ngFor="let gif of gifs" (click)="navGifDetail()">
               <img src={{gif.images.original.url}}>
         </div>
       </div>
-
     </ion-slide>
   </ion-slides>
- <!--<ion-fab right top> 
-    <button  ion-fab (click)="ImagePick()"><ion-icon name="ios-camera-outline"></ion-icon></button>
-</ion-fab> -->
-    <ion-fab bottom right>
-      <button ion-fab  (click)="presentActionSheet()"><ion-icon name="md-cloud-upload"></ion-icon></button>
-    </ion-fab>
+
+  <ion-fab bottom right>
+    <button ion-fab  (click)="presentActionSheet()"><ion-icon name="md-cloud-upload"></ion-icon></button>
+  </ion-fab>
 
 </ion-content>
