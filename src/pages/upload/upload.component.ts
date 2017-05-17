@@ -9,20 +9,15 @@ import { NavController } from 'ionic-angular';
 
 export class UploadComponent implements OnInit {
 
-    UploadGif: any;
-    constructor(private navCtrl : NavController ){
+   
+    weburl;
+    constructor(private navCtrl : NavController ){}
 
-        this.UploadGif = {
-            "tags" : [],
-            "categories": [],
-            "gif":"abc.gif",
-            "idiom":"hindi"             
-        }
-    }
-
-    AddTags(){
+    AddTags(weburl){
         console.log('upload click1');
-        this.navCtrl.push(AddTagsComponent);
+        this.navCtrl.push(AddTagsComponent,{
+            'weburl' : weburl 
+        });
     }
 
     ngOnInit(){}

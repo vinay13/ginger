@@ -17,16 +17,18 @@ export class UploadGifService{
                 private _config : Configuration){
                     this.getUrl();
                     this.getHeader();
+                    this.setHeader();
                 }
 
     getUrl(){
         this.url = this._config.baseUrl;
+        console.log('localstorage',localStorage.getItem('access_token'));
     }            
 
     setHeader() {
         this.headers = new Headers({
             'Content-Type' : 'application/json',
-            'Authorization' : 'Bearer' + 'localstorage.getItem()'
+            'Authorization' : 'Bearer'+' '+ localStorage.getItem('access_token')
         });
         this.options = new RequestOptions({
          headers : this.headers
@@ -37,14 +39,9 @@ export class UploadGifService{
         return this.options;
     }
 
-    UploadGifs(){
-        let file = {
-            "tags": "[Water , Tired]",
-            "categories" : "Tired",
-            "gif" : "file_name",
-            "idom" : "hindi"
-        }
-		return this.http.post(this.url + 'uploadGif', this.options)
+    UploadGifsByUrl(body){
+   
+		return this.http.post('https://violet.mobigraph.co/ginger/uploadFromUrl',body, this.options)
 			   .map(this.extractData)
 			   .catch(this.handleError);
 	}

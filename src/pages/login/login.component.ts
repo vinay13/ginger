@@ -53,6 +53,7 @@ export class LoginPage {
       this. NavLogin();
     }, (err) => {
       console.log('err');
+      alert('err');
     });
   }
 

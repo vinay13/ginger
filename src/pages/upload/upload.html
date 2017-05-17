@@ -13,7 +13,7 @@
             <ion-item>
                 <ion-icon name="md-clipboard" item-right></ion-icon>
                 <!--<ion-label stacked>Upload Url</ion-label>-->
-                <ion-input placeholder="Enter Web Addres(URL)" type="text" value=""></ion-input>
+                <ion-input placeholder="Enter Web Addres(URL)" type="text" [(ngModel)]="weburl"></ion-input>
             </ion-item>
         </ion-card>
 
@@ -24,7 +24,7 @@
     </div>
 
     <div class="upload-button" >
-         <button ion-button (click)="AddTags()">Upload</button>
+         <button ion-button (click)="AddTags(weburl)">Upload</button>
     </div>
 
    
