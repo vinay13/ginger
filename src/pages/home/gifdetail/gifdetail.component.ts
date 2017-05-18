@@ -57,5 +57,17 @@ export class GifDetailComponent {
          alert("failed")
       })
   }
+
+  shareGifTwitter(){
+      this.cs.showLoader();
+    this.socialSharing.shareViaTwitter("message",this.gifurl,"https://giphy.com")
+        .then(()=>{
+            this.cs.hideLoader();
+        },
+        ()=>{
+         alert("failed")
+         this.cs.hideLoader();
+      })
+  }
   
 }

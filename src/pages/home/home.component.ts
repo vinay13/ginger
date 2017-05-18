@@ -130,7 +130,7 @@ export class HomeComponent implements OnInit{
         destinationType: this.cameraa.DestinationType.DATA_URL,
         sourceType        : this.cameraa.PictureSourceType.PHOTOLIBRARY
     }).then((imagedata)=>{
-      this.base64Image = 'data:image/gif;base64,' + imagedata;
+      this.base64Image = 'data:image/jpeg;base64,' + imagedata;
       this.ImageFile = imagedata ;
        this.navCtrl.push(AddTagsComponent,{
         'gifpath' :  this.base64Image
