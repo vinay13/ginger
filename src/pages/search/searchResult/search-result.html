@@ -11,7 +11,7 @@
     </div>
 
      <div class="pins">
-         <div class="pin" *ngFor="let gifs of searchedGifs">
+         <div class="pin" *ngFor="let gifs of searchedGifs" (click)="viewGif(gifs.url)">
             <img src={{gifs.url}}>
          </div>
 
@@ -26,6 +26,7 @@
         <div class="pin">
             <img src="https://media.giphy.com/media/xUPGcw4AIPGBlWK1he/giphy.gif">
         </div>
+        
       </div>
    
 </ion-content>

@@ -150,8 +150,10 @@ export class HomeComponent implements OnInit{
     this.navCtrl.push(ProfileComponent);
   }
 
-  navGifDetail(){
-    this.navCtrl.push(GifDetailComponent);
+  navGifDetail(url){
+    this.navCtrl.push(GifDetailComponent,{
+      'url' : url
+    });
   }
 
   ngOnInit(): void {

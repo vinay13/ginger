@@ -25,10 +25,10 @@ export class AddTagsComponent {
 
     ngOnInit(){
         this.formgif =  {
-            "url": "https://media.giphy.com/media/l4FGoVDgNCpllIfSw/giphy.gif",
-            "idiom": "Tamil",
-            "categories": ["NBA"],
-            "tags": ["NBA"]
+            "url": this.gifurl,
+            "idiom": "Hindi",
+            "categories": ["Movie"],
+            "tags": ["Movie","MovieStar"]
         } 
     }              
               
@@ -36,7 +36,7 @@ export class AddTagsComponent {
     response;
     UploadGif(){
         this._uploadserv.UploadGifsByUrl(this.formgif)
-            .subscribe( (res) => { this.response = res; this.navCtrl.push(GifDetailComponent);},
+            .subscribe( (res) => { this.response = res; this.navCtrl.push(GifDetailComponent,{'url':this.response.url});},
                     () => { console.log(this.response);})
         this.presentLoading();
         this.presentToast();   

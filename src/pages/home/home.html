@@ -36,7 +36,7 @@
     <ion-slide *ngFor="let slide of slides">
      <span style="color:#fff">{{ slide.title }}</span>
       <div class="pins">
-        <div class="pin" *ngFor="let gif of gifs" (click)="navGifDetail()">
+        <div class="pin" *ngFor="let gif of gifs" (click)="navGifDetail(gif.images.original.url)">
               <img src={{gif.images.original.url}}>
         </div>
       </div>

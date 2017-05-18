@@ -40,8 +40,6 @@ export class LoginPage {
     this.navCtrl.push(HomeComponent);
   }
 
-
-  
   UserLogin() {
     let data = {
       emailId: this.email,
@@ -60,8 +58,4 @@ export class LoginPage {
   public verifySuccessfully(res) {
     localStorage.setItem("access_token", res.token);
   }
-
-
-
-
 }

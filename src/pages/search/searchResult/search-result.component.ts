@@ -1,7 +1,8 @@
 import {Component,OnInit} from '@angular/core';
-import {NavParams} from 'ionic-angular';
+import {NavParams,NavController} from 'ionic-angular';
 import {SearchService} from '../../../services/search.service';
 import {CustomService} from '../../../services/custom.service';
+import {GifDetailComponent} from '../../home/gifdetail/gifdetail.component';
 
 @Component({
     selector : 'page-search-result',
@@ -9,17 +10,14 @@ import {CustomService} from '../../../services/custom.service';
    // styleUrls : ['./search-result.scss']
 })
 
-
 export class SearchResultComponent implements OnInit {
 
     public searchItem;
     public searchedGifs = [];
     constructor(private navparams : NavParams,
                 private _searchService : SearchService,
-                private cs : CustomService ){
-       
-    }
-
+                private cs : CustomService ,
+                private navCtrl : NavController){}
 
     getSearchGifs(item){
         this.cs.showLoader();
@@ -39,5 +37,11 @@ export class SearchResultComponent implements OnInit {
     getItems(){
         return this.searchItem;
     }
-    
+
+    viewGif(url){
+        this.navCtrl.push(GifDetailComponent,{
+            'url': url
+        });
+    } 
+
 } 
