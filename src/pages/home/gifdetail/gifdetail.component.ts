@@ -5,6 +5,7 @@ import { SearchResultComponent } from '../../search/searchResult/search-result.c
 import { NavController, ToastController , NavParams } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { CustomService } from '../../../services/custom.service';
+import { HomeService } from '../../services/home.service';
 
 @Component({
     selector : 'page-gifdetail',
@@ -20,7 +21,6 @@ export class GifDetailComponent {
                 private socialSharing: SocialSharing,
                 private cs : CustomService,
                 public navparams : NavParams){
-                    
                     this.gifurl = this.navparams.get('url');
                 }
 

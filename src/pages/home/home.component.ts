@@ -9,9 +9,10 @@ import { UploadComponent } from '../upload/upload.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { CustomService } from '../../services/custom.service';
 import { Camera } from '@ionic-native/camera';
-import {AddTagsComponent} from '../upload/add-tags/add-tags.component';
+import { AddTagsComponent } from '../upload/add-tags/add-tags.component';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { File } from '@ionic-native/file';
+
 @Component({
     selector : 'page-home',
     templateUrl : 'home.html'
@@ -32,7 +33,8 @@ export class HomeComponent implements OnInit{
               public cameraa : Camera,
               public fileChooser : FileChooser,
               public file : File) {
-
+              
+              this.tabsData();
               this.selectedIdiom = this.navParams.get('idiom');
               this.getTrendingGIFs();
                
@@ -47,10 +49,12 @@ export class HomeComponent implements OnInit{
       },
       {
         id: "third",
-      
       },
       {
           id: "fourth",
+      },
+      {
+        id : "fifth"
       }
     ];
 }
@@ -154,6 +158,13 @@ export class HomeComponent implements OnInit{
     this.navCtrl.push(GifDetailComponent,{
       'url' : url
     });
+  }
+
+  public tabs;
+  tabsData(){
+    this._homeserv.mainTabs()
+    .subscribe( (res) => { this.tabs = res.main },
+                () => {console.log('tabs',this.tabs)})
   }
 
   ngOnInit(): void {

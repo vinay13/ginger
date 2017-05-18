@@ -11,6 +11,10 @@
 </div>  
 
   <ion-segment  [(ngModel)]="selectedSegment" (ionChange)="onSegmentChanged($event)">
+    <!--<ion-segment-button *ngFor="let tab of tabs" class="tabs-style" value="first">
+      {{ tab.displayName }}
+    </ion-segment-button>-->
+    
     <ion-segment-button class="tabs-style" value="first">
       Trending
     </ion-segment-button>
@@ -22,6 +26,9 @@
     </ion-segment-button>
     <ion-segment-button value="fourth">
       Movies
+    </ion-segment-button>
+     <ion-segment-button value="fifth">
+      Cricket
     </ion-segment-button>
     
 
@@ -37,7 +44,7 @@
      <span style="color:#fff">{{ slide.title }}</span>
       <div class="pins">
         <div class="pin" *ngFor="let gif of gifs" (click)="navGifDetail(gif.images.original.url)">
-              <img src={{gif.images.original.url}}>
+              <img class="gifpin" src={{gif.images.original.url}}>
         </div>
       </div>
     </ion-slide>
