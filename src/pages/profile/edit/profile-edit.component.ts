@@ -22,4 +22,6 @@ export class ProfileEditComponent {
         .subscribe( (data) => { this.userInfo = data},
                         () =>  console.log('userInfo',this.userInfo))
     }
+
+
 }

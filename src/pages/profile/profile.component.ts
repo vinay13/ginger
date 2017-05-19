@@ -35,4 +35,11 @@ export class ProfileComponent {
                     () => {console.log(this.profiledata)})
     }
 
+    Uploadedgifs = [];
+    GifUploadedviaUser(){
+        this._proServ.getGifsUploadedByUrl()
+        .subscribe( (data) => { this.Uploadedgifs = data;},
+                    (err) => { console.log(err)})
+    }
+
 }
