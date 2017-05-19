@@ -53,7 +53,7 @@ export class ProfileService{
 
     getGifsUploadedByUrl(){
         this.getHeader();
-        return this.http.get(this.url+'uploaded/gifs',this.options)
+        return this.http.get(this.url+'gifs/mygifs',this.options)
             .map(this.extractData)
             .catch(this.handleError)
     }

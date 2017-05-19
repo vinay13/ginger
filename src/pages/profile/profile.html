@@ -2,7 +2,6 @@
     <ion-navbar class="navbar">
         <ion-title >
             {{profiledata.userName}}
-            abc
         </ion-title>
 
         <ion-icon class="settings-icon" name="settings" item-right (click)="SettingsNav()"></ion-icon>
@@ -15,11 +14,13 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png">
         </div>
         <p>{{profiledata.webLink}}</p>
-        <p>xyzz</p>
         <button ion-button (click)="ProfileEdit()">Edit</button>
    </div>
    
    <div class="pins">
+       <div class="pin" *ngFor="let a of Uploadedgifs">
+           <img src="{{a.url}}">
+       </div>
         <div class="pin" >
               <img src="https://media.giphy.com/media/xUA7bcNOGl78PkVLYA/giphy.gif">
         </div>

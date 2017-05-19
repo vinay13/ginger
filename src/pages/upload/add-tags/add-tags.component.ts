@@ -21,7 +21,7 @@ export class AddTagsComponent {
                 public navparams : NavParams,
                 public _uploadserv : UploadGifService ){
                 //    this.gifurl = this.navparams.get('gifpath');
-                    this.gifurl = this.navparams.get('weburl');
+                    this.gifurl = this.navparams.get('weburl') || this.navparams.get('gifpath') ;
                 }
 
     ngOnInit(){

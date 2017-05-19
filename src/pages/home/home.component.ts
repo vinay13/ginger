@@ -104,8 +104,8 @@ export class HomeComponent implements OnInit{
           role: 'destructive',
           icon : 'md-document',
           handler: () => {
-           // this.ImagePick();
-            this.ChooseFile();
+            this.ImagePick();
+           // this.ChooseFile();
             console.log('Destructive clicked');
           }
         },{
@@ -120,6 +120,7 @@ export class HomeComponent implements OnInit{
     });
     actionSheet.present();
   }
+
 
 
   base64Image;
@@ -163,7 +164,7 @@ export class HomeComponent implements OnInit{
   public tabs;
   tabsData(){
     this._homeserv.mainTabs()
-    .subscribe( (res) => { this.tabs = res.main },
+    .subscribe((res) => { this.tabs = res.main },
                 () => {console.log('tabs',this.tabs)})
   }
 
