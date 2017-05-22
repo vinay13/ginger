@@ -52,6 +52,7 @@ export class GifDetailComponent {
         this.navCtrl.push(GifDetailComponent,{
             'url': url
         });
+        
     }
 
     Addfavorites(){

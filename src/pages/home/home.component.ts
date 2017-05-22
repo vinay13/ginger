@@ -129,12 +129,13 @@ export class HomeComponent implements OnInit{
    
     this.cameraa.getPicture({
         destinationType: this.cameraa.DestinationType.DATA_URL,
-        sourceType        : this.cameraa.PictureSourceType.PHOTOLIBRARY
+        mediaType : this.cameraa.MediaType.ALLMEDIA,
+        sourceType     : this.cameraa.PictureSourceType.SAVEDPHOTOALBUM
     }).then((imagedata)=>{
-      this.base64Image = 'data:image/jpeg;base64,' + imagedata;
+      this.base64Image = 'data:image/gif;base64,' + imagedata;
       this.ImageFile = imagedata ;
        this.navCtrl.push(AddTagsComponent,{
-        'gifpath' :  this.base64Image
+        'gifpath' :  imagedata
       });    
     },(err)=>{
       console.log(err);
