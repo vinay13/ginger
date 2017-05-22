@@ -32,8 +32,8 @@
 
 
     <div class="pins">
-        <div class="pin">
-             <img class="gifpin" src="https://media.giphy.com/media/l0Iy9Cmo47OtCv4xG/giphy-downsized.gif">
+        <div class="pin" *ngFor="let rgifs of recomns">
+             <img class="gifpin" src={{rgifs.images.downsized.url}} (click)="GIFviewer(rgifs.images.downsized.url)">
         </div>
 
         <div class="pin">

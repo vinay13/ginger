@@ -5,7 +5,7 @@ import { SearchResultComponent } from '../../search/searchResult/search-result.c
 import { NavController, ToastController , NavParams } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { CustomService } from '../../../services/custom.service';
-import { HomeService } from '../../services/home.service';
+import { HomeService } from '../../../services/home.service';
 
 @Component({
     selector : 'page-gifdetail',
@@ -15,14 +15,25 @@ import { HomeService } from '../../services/home.service';
 export class GifDetailComponent {
 
     public gifurl;
+    public recomns : any;
     constructor(public popoverCtrl : PopoverController,
                 public navCtrl : NavController,
                 public toastCtrl : ToastController,
                 private socialSharing: SocialSharing,
+                private _homeserv: HomeService,
                 private cs : CustomService,
                 public navparams : NavParams){
                     this.gifurl = this.navparams.get('url');
+                    this.RecommendedGifs();
                 }
+
+    
+    RecommendedGifs(){
+        this._homeserv.getTrendingGifs('hindi')
+            .subscribe( (res) => {this.recomns = res.data},
+                        (err) => console.log(err),
+                        () => console.log(this.recomns))
+    }
 
     presentPopover(){
         let popover = this.popoverCtrl.create(PopOverComponent);
@@ -32,6 +43,12 @@ export class GifDetailComponent {
     TagClicked(tag){
         this.navCtrl.push(SearchResultComponent,{
             'tag' : tag
+        });
+    }
+
+    GIFviewer(url){
+        this.navCtrl.push(GifDetailComponent,{
+            'url': url
         });
     }
 
