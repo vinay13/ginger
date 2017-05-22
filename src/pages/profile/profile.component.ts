@@ -4,6 +4,7 @@ import { ProfileEditComponent } from './edit/profile-edit.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ProfileService} from '../../services/profile.service';
 import { CustomService } from '../../services/custom.service';
+import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
 
 @Component({
     selector : 'page-profile',
@@ -26,6 +27,12 @@ export class ProfileComponent {
         this.navCtrl.push(ProfileEditComponent,{
             'data' : this.profiledata
         });
+    }
+
+    gifViewer(url){
+        this.navCtrl.push(GifDetailComponent,{
+            "url" : url
+        })
     }
 
     SettingsNav(){

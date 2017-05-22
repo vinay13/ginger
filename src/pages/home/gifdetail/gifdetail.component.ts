@@ -35,9 +35,11 @@ export class GifDetailComponent {
                         () => console.log(this.recomns))
     }
 
-    presentPopover(){
+    presentPopover(myEvent){
         let popover = this.popoverCtrl.create(PopOverComponent);
-        popover.present();
+        popover.present({
+            ev: myEvent
+        });
     }
 
     TagClicked(tag){
@@ -85,6 +87,25 @@ export class GifDetailComponent {
          alert("failed")
          this.cs.hideLoader();
       })
+  }
+
+  shareGifFacebook(){
+      this.cs.showLoader();
+      this.socialSharing.shareViaFacebook("message",this.gifurl,"https://giphy.com")
+        .then(() => {
+            this.cs.hideLoader();
+        },
+        () => { alert("U don't have facebook app"); this.cs.hideLoader(); } )
+  }
+
+
+  shareGifInstagram(){
+      this.cs.showLoader();
+      this.socialSharing.shareViaInstagram("message", this.gifurl)
+            .then(() => {
+                this.cs.hideLoader();
+            },
+            ()=> { alert("U don't have Instagram app"); this.cs.hideLoader(); })
   }
   
 }
