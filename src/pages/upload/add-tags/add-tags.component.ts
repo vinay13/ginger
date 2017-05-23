@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { GifDetailComponent } from '../../home/gifdetail/gifdetail.component';
 import { NavController,NavParams,LoadingController,ToastController } from 'ionic-angular';
 import { UploadGifService } from '../../../services/upload.service';
-// import { Transfer , TransferObject } from  '@ionic-native/transfer';
+import { Transfer , TransferObject } from  '@ionic-native/transfer';
+import {CustomService} from '../../../services/custom.service';
+//import * as _ from 'underscore';
 
 @Component({
     selector : 'page-add-tags',
@@ -18,11 +20,13 @@ export class AddTagsComponent {
     constructor(public navCtrl: NavController,
                 public loadingCtrl: LoadingController ,
                 public toastCtrl: ToastController,
-                public navparams : NavParams,
-                public _uploadserv : UploadGifService ){
+                public navparams: NavParams,
+                public _uploadserv: UploadGifService,
+                public transfer: Transfer,
+                public cs: CustomService){
                 //    this.gifurl = this.navparams.get('gifpath');
                     this.gifurl = this.navparams.get('weburl') || this.navparams.get('gifpath') ;
-                }
+             }
 
     ngOnInit(){
         this.formgif =  {
@@ -36,51 +40,50 @@ export class AddTagsComponent {
 
     response;
     UploadGif(){
+        this.cs.showLoader();
         this._uploadserv.UploadGifsByUrl(this.formgif)
-            .subscribe( (res) => { this.response = res; this.navCtrl.push(GifDetailComponent,{'url':this.response.url});},
-                    () => { console.log(this.response);})
-        this.presentLoading();
-        this.presentToast();   
+            .subscribe( (res) => { this.response = res; this.presentToast(); this.cs.hideLoader(); this.navCtrl.push(GifDetailComponent,{'url':this.response.url});},
+                        (err) => { this.cs.hideLoader(); alert(err);},
+                        () => { console.log(this.response);})    
     }
+
+
+  //  _.uniqueId()
 
 
 //   public data_response;
 //   public base64Image;
-//   uploadPic(){
+//   uploadGifviaGallery(){
 //     const fileTransfer: TransferObject = this.transfer.create();
 //     //let ft = new Transfer();
-//         let filename = _.uniqueId() + ".jpg";
+//         let filename = 1223334444 + ".gif";
+      
 //         let options = {
 //             fileKey: 'file',
 //             fileName: filename,
-//             mimeType: 'image/jpeg',
+//             mimeType: 'image/gif',
 //             chunkedMode: false,
 //             headers: {
 //                 'Content-Type' : undefined
 //             },
 //             params: {
-//                 "file": filename
+//                 "url": this.gifurl,
+//                 "idiom": "Hindi",
+//                 "categories": ["Movie"],
+//                 "tags": ["Movie","MovieStar"]
 //             }
 //         }; 
       
-//         fileTransfer.upload(this.base64Image, "https://yugma-testing.appspot.com/upload-file", options, false)
-//         .then((result: any) => {
-//            console.log('success');
-//            this.data_response = result ; 
-//            alert(result);
-//         }).catch((error: any) => {
+//         fileTransfer.upload(this.gifurl,'https://violet.mobigraph.co/ginger/uploadGif', options, false)
+//             .then((result: any) => {
+//               console.log('success');
+//               this.data_response = result ; 
+//               alert(result);
+//           }).catch((error: any) => {
 //             console.log(error);
 //         }); 
-//     }
+//      }
 
-
-
-    presentLoading(){
-        let loader = this.loadingCtrl.create({
-            duration: 3000
-        });
-        loader.present();
-    }
 
     presentToast(){
         let toast = this.toastCtrl.create({

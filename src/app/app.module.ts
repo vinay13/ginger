@@ -17,6 +17,7 @@ import { SettingsComponent } from '../pages/profile/settings/settings.component'
 import { AddTagsComponent } from '../pages/upload/add-tags/add-tags.component';
 import { PopOverComponent } from '../pages/home/gifdetail/popover';
 import { SocialSharing } from '@ionic-native/social-sharing'; 
+import { Transfer } from '@ionic-native/transfer';
 
 //third party imports 
 import { SuperTabsModule } from 'ionic2-super-tabs';
@@ -52,7 +53,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfileEditComponent,   
     SettingsComponent,
     AddTagsComponent, 
-    PopOverComponent
+    PopOverComponent 
   ],
   imports: [
     HttpModule,
@@ -90,6 +91,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     CustomService,
     Camera,
     File,
+    Transfer,
     FileChooser,
     SocialSharing
 
