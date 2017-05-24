@@ -16,9 +16,13 @@ import { ProfileEditComponent } from '../pages/profile/edit/profile-edit.compone
 import { SettingsComponent } from '../pages/profile/settings/settings.component';
 import { AddTagsComponent } from '../pages/upload/add-tags/add-tags.component';
 import { PopOverComponent } from '../pages/home/gifdetail/popover';
+import { SocialSharing } from '@ionic-native/social-sharing'; 
 
 //third party imports 
 import { SuperTabsModule } from 'ionic2-super-tabs';
+import { Camera } from '@ionic-native/camera';
+import { File } from '@ionic-native/file';
+import { FileChooser } from '@ionic-native/file-chooser';
 
 //import services 
 import {HomeService} from '../services/home.service';
@@ -83,7 +87,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfileService,
     LoginService,
     Configuration,
-    CustomService
+    CustomService,
+    Camera,
+    File,
+    FileChooser,
+    SocialSharing
 
   ]
 })

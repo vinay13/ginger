@@ -12,7 +12,7 @@
 }
 
 .home-content{
-    background-color: #2b3b50;
+    background-color: #000000;
 }
 
 .tabs-style{
@@ -33,11 +33,9 @@
 }
 
 .idiom-name{
-    
     font-size : 20px;
     color:#fff;
     display:inline-block;
-   
     margin:10px 10px 0 0;
     padding:5px 10px
 }
@@ -72,4 +70,56 @@
     right: 0;
     bottom: 0;
     left: 0; 
+}
+
+.segment-ios .segment-button{
+    border-color: transparent !important;
+}
+
+.segment-ios .segment-button.segment-activated {
+    background-color: rgb(179, 68, 93);
+}
+
+.segment-md .segment-button.segment-activated {
+    border-color: white !important;
+}
+
+.fab-ios , .fab-md{
+    color : white !important;
+    background-color : red !important;
+}
+
+.ios ,.md {
+    page-home{
+        .pins{
+            column-count : 2;
+        }
+        .pin{
+            display: inline-block;
+            margin : -1px -5px -9px -9px;
+            padding: 0px;
+        }
+        .gifpin{
+            background: #00e589;
+        }
+    }
+}
+
+
+ion-segment {
+    display: block;
+    white-space: nowrap;
+    font-size: 0;
+    overflow: auto;
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        display: none;
+    }
+
+    ion-segment-button.segment-button {
+        display: inline-block;
+        min-width: 100px;
+        width: auto;
+    }
 }

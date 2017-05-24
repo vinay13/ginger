@@ -3,7 +3,7 @@
 
 <div class="header-home">
   <div class="home-icon" (click)="userProfile()">
-     <img src="../assets/icon/icon.png" style="width:30px; height:30px;"/>
+     <img src="assets/icon/icon.png" style="width:30px; height:30px;"/>
   </div>
   <span class="idiom-name" (click)="navIdiom()">{{ selectedIdiom }} </span>  
   <ion-icon class="search-icon" name="search" (click)="searchButton()"></ion-icon>
@@ -11,6 +11,10 @@
 </div>  
 
   <ion-segment  [(ngModel)]="selectedSegment" (ionChange)="onSegmentChanged($event)">
+    <!--<ion-segment-button *ngFor="let tab of tabs" class="tabs-style" value="first">
+      {{ tab.displayName }}
+    </ion-segment-button>-->
+    
     <ion-segment-button class="tabs-style" value="first">
       Trending
     </ion-segment-button>
@@ -23,6 +27,9 @@
     <ion-segment-button value="fourth">
       Movies
     </ion-segment-button>
+     <ion-segment-button value="fifth">
+      Cricket
+    </ion-segment-button>
     
 
   </ion-segment>
@@ -32,123 +39,19 @@
 
 <ion-content class="home-content">
 
-
-
-
   <ion-slides #mySlider (ionDidChange)="onSlideChanged($event)">
     <ion-slide *ngFor="let slide of slides">
-      <h1>{{ slide.title }}</h1>
-
-    <ion-grid >
-        <ion-row >
-            <ion-col col-6 *ngFor="let trend of trendingGIFs">
-              <img src={{trend.url}}>
-            </ion-col>
-
-          <ion-col col-6>
-              <img src="https://media.giphy.com/media/MxjV8LTB7KBwc/giphy.gif">
-          </ion-col>
-
-          <ion-col col-6>
-              <img src="https://media.giphy.com/media/xUPGctftozEFipUic0/giphy.gif">
-          </ion-col>
-            <ion-col col-6 (click)="navGifDetail()">
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">     
-            </ion-col>
-            <ion-col col-6>
-                <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">
-            </ion-col>
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">     
-            </ion-col>
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/91000000">     
-            </ion-col>
-                <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">     
-            </ion-col>
-            <ion-col col-6>
-                <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">
-            </ion-col>
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">     
-            </ion-col>
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/91000000">     
-            </ion-col>
-      
-      
-        </ion-row>
-        <ion-row>
-            <ion-col col-6>
-                <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">
-            </ion-col>
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">     
-            </ion-col>
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/91000000">     
-            </ion-col>
-              <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/91000000">     
-            </ion-col>
-              <ion-col col-6>
-                <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">
-            </ion-col>
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">     
-            </ion-col>
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/91000000">     
-            </ion-col>
-              <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/91000000">     
-            </ion-col>
-              <ion-col col-6>
-                <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">
-            </ion-col>
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">     
-            </ion-col>
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/91000000">     
-            </ion-col>
-              <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/91000000">     
-            </ion-col>
-              <ion-col col-6>
-                <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">
-            </ion-col>
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">     
-            </ion-col>
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/91000000">     
-            </ion-col>
-              <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/91000000">     
-            </ion-col>
-              <ion-col col-6>
-                <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">
-            </ion-col>
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/af010000">     
-            </ion-col>
-             <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/91000000">     
-            </ion-col>
-              <ion-col col-6>
-               <img src="https://violet.mobigraph.co/1bf8fdd79ab2d67d41ed761e8b2b8308fc35/91000000">     
-            </ion-col>
-        </ion-row>
-   </ion-grid>
-
-
+     <span style="color:#fff">{{ slide.title }}</span>
+      <div class="pins">
+        <div class="pin" *ngFor="let gif of gifs" (click)="navGifDetail(gif.images.downsized.url)">
+              <img class="gifpin" src={{gif.images.downsized.url}}>
+        </div>
+      </div>
     </ion-slide>
   </ion-slides>
 
-    <ion-fab bottom right>
-      <button ion-fab  (click)="presentActionSheet()"><ion-icon name="md-cloud-upload"></ion-icon></button>
-    </ion-fab>
+  <ion-fab bottom right>
+    <button ion-fab  (click)="presentActionSheet()"><ion-icon name="md-cloud-upload"></ion-icon></button>
+  </ion-fab>
 
 </ion-content>

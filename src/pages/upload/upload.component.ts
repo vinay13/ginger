@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { AddTagsComponent } from './add-tags/add-tags.component'; 
 import { NavController } from 'ionic-angular';
 
@@ -7,15 +7,19 @@ import { NavController } from 'ionic-angular';
     templateUrl: 'upload.html'
 })
 
-export class UploadComponent {
+export class UploadComponent implements OnInit {
 
+   
+    weburl;
     constructor(private navCtrl : NavController ){}
 
-    
-
-    AddTags(){
+    AddTags(weburl){
         console.log('upload click1');
-        this.navCtrl.push(AddTagsComponent);
+        this.navCtrl.push(AddTagsComponent,{
+            'weburl' : weburl 
+        });
     }
+
+    ngOnInit(){}
 
 }

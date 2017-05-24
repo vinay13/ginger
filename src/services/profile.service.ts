@@ -51,6 +51,13 @@ export class ProfileService{
                 .catch(this.handleError)
     }
 
+    getGifsUploadedByUrl(){
+        this.getHeader();
+        return this.http.get(this.url+'gifs/mygifs',this.options)
+            .map(this.extractData)
+            .catch(this.handleError)
+    }
+
     private extractData(res: Response) {
 		if (res.status === 204) { return res; }
 		let body = res.json();

@@ -40,8 +40,6 @@ export class LoginPage {
     this.navCtrl.push(HomeComponent);
   }
 
-
-  
   UserLogin() {
     let data = {
       emailId: this.email,
@@ -53,14 +51,11 @@ export class LoginPage {
       this. NavLogin();
     }, (err) => {
       console.log('err');
+      alert('err');
     });
   }
 
   public verifySuccessfully(res) {
     localStorage.setItem("access_token", res.token);
   }
-
-
-
-
 }

@@ -11,7 +11,8 @@ export class ProfileEditComponent {
 
     public userInfo;
     constructor(public proServ : ProfileService,
-                public navparams : NavParams ){
+                public navparams : NavParams,
+                public navCtrl : NavController ){
       // this.getUserInfo();
         this.userInfo = this.navparams.get('data')
        console.log('user',this.userInfo);
@@ -22,4 +23,10 @@ export class ProfileEditComponent {
         .subscribe( (data) => { this.userInfo = data},
                         () =>  console.log('userInfo',this.userInfo))
     }
+
+    SaveProfile(){
+        this.navCtrl.pop();
+    }
+
+
 }

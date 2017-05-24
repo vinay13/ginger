@@ -8,6 +8,10 @@ import { LoginPage } from '../login/login.component';
 import { UploadComponent } from '../upload/upload.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { CustomService } from '../../services/custom.service';
+import { Camera } from '@ionic-native/camera';
+import { AddTagsComponent } from '../upload/add-tags/add-tags.component';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { File } from '@ionic-native/file';
 
 @Component({
     selector : 'page-home',
@@ -25,8 +29,12 @@ export class HomeComponent implements OnInit{
               public navParams : NavParams,
               public actionSheetCtrl : ActionSheetController,
               public _homeserv : HomeService,
-              public cs : CustomService) {
-
+              public cs : CustomService,
+              public cameraa : Camera,
+              public fileChooser : FileChooser,
+              public file : File) {
+              
+              this.tabsData();
               this.selectedIdiom = this.navParams.get('idiom');
               this.getTrendingGIFs();
                
@@ -34,19 +42,19 @@ export class HomeComponent implements OnInit{
     this.slides = [
       {
         id: "first",
-        title: "First Slide"
+        title: "The newest,most trending gifs"
       },
       {
         id: "second",
-        title: "Second Slide"
       },
       {
         id: "third",
-        title: "Third Slide"
       },
       {
           id: "fourth",
-          title: "fourth slide"
+      },
+      {
+        id : "fifth"
       }
     ];
 }
@@ -73,11 +81,13 @@ export class HomeComponent implements OnInit{
     this.selectedSegment = currentSlide.id;
   }
 
-  public trendingGIFs = [];
+  public trendingGIFs: any;
+  public gifs: Array<any> = []; 
   getTrendingGIFs(){
     this.cs.showLoader();
     this._homeserv.getTrendingGifs(this.selectedIdiom)
-    .subscribe( (data) => { this.trendingGIFs = data ; this.cs.hideLoader(); },
+    .subscribe( (result) => { this.trendingGIFs = result ; this.gifs = this.gifs.concat(this.trendingGIFs.data);  this.cs.hideLoader(); },
+                (err) => {  this.cs.hideLoader(); },
                 () => console.log('trendingGifs',this.trendingGIFs))
   }
 
@@ -94,6 +104,8 @@ export class HomeComponent implements OnInit{
           role: 'destructive',
           icon : 'md-document',
           handler: () => {
+            this.ImagePick();
+           // this.ChooseFile();
             console.log('Destructive clicked');
           }
         },{
@@ -109,12 +121,52 @@ export class HomeComponent implements OnInit{
     actionSheet.present();
   }
 
+
+
+  base64Image;
+  ImageFile;
+  public ImagePick(){
+   
+    this.cameraa.getPicture({
+        destinationType: this.cameraa.DestinationType.DATA_URL,
+        mediaType : this.cameraa.MediaType.ALLMEDIA,
+        sourceType     : this.cameraa.PictureSourceType.SAVEDPHOTOALBUM
+    }).then((imagedata)=>{
+      this.base64Image = 'data:image/gif;base64,' + imagedata;
+      this.ImageFile = imagedata ;
+       this.navCtrl.push(AddTagsComponent,{
+        'gifpath' :  imagedata
+      });    
+    },(err)=>{
+      console.log(err);
+    });
+}
+
+
+  public imageFile : any;  
+  public data_response; 
+  ChooseFile(){
+      this.fileChooser.open()
+        .then(uri => {console.log(uri); this.imageFile = uri } )
+        .catch(e => console.log(e));
+    }
+
+
   userProfile(){
     this.navCtrl.push(ProfileComponent);
   }
 
-  navGifDetail(){
-    this.navCtrl.push(GifDetailComponent);
+  navGifDetail(url){
+    this.navCtrl.push(GifDetailComponent,{
+      'url' : url
+    });
+  }
+
+  public tabs;
+  tabsData(){
+    this._homeserv.mainTabs()
+    .subscribe((res) => { this.tabs = res.main },
+                () => {console.log('tabs',this.tabs)})
   }
 
   ngOnInit(): void {

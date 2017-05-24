@@ -1,6 +1,8 @@
-import { Component , OnInit } from '@angular/core';
-import { NavParams} from 'ionic-angular';
-import { SearchService } from '../../../services/search.service';
+import {Component,OnInit} from '@angular/core';
+import {NavParams,NavController} from 'ionic-angular';
+import {SearchService} from '../../../services/search.service';
+import {CustomService} from '../../../services/custom.service';
+import {GifDetailComponent} from '../../home/gifdetail/gifdetail.component';
 
 @Component({
     selector : 'page-search-result',
@@ -8,20 +10,20 @@ import { SearchService } from '../../../services/search.service';
    // styleUrls : ['./search-result.scss']
 })
 
-
 export class SearchResultComponent implements OnInit {
 
     public searchItem;
     public searchedGifs = [];
     constructor(private navparams : NavParams,
-                private _searchService : SearchService ){
-       
-    }
-
+                private _searchService : SearchService,
+                private cs : CustomService ,
+                private navCtrl : NavController){}
 
     getSearchGifs(item){
+        this.cs.showLoader();
         this._searchService.GetGifsSearch(item)
-        .subscribe( (res) => { this.searchedGifs = res },
+        .subscribe( (res) => { this.searchedGifs = res; this.cs.hideLoader(); },
+                    (err) => { this.cs.hideLoader();},
                     () => console.log('related gifs',this.searchedGifs))
     }
 
@@ -35,5 +37,11 @@ export class SearchResultComponent implements OnInit {
     getItems(){
         return this.searchItem;
     }
-    
+
+    viewGif(url){
+        this.navCtrl.push(GifDetailComponent,{
+            'url': url
+        });
+    } 
+
 } 

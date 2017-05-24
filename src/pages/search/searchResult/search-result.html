@@ -10,28 +10,23 @@
         87,168 GIFS found for {{searchItem}}
     </div>
 
-    
-    <ion-grid>
-        <ion-row>
-            <ion-col col-6 *ngFor="let gifs of searchedGifs">
-                <img src={{gifs.url}}>
-            </ion-col>        
+     <div class="pins">
+         <div class="pin" *ngFor="let gifs of searchedGifs" (click)="viewGif(gifs.url)">
+            <img class="gifpin" src={{gifs.url}}>
+     </div>
 
-            <ion-col col-6>
-                <img src="https://media.giphy.com/media/xUA7bcNOGl78PkVLYA/giphy.gif">
-            </ion-col>
+        <div class="pin">
+            <img class="gifpin" src="https://media.giphy.com/media/xUPGcw4AIPGBlWK1he/giphy-downsized.gif">
+        </div>
 
-            <ion-col col-6>
-                <img src="https://media.giphy.com/media/xUPGcw4AIPGBlWK1he/giphy.gif">
-            </ion-col>
-          
-               
-               <ion-col col-6>
-                <img src="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif">
-            </ion-col>
-               <ion-col col-6>
-                <img src="https://media.giphy.com/media/mXggOh7xql7MI/giphy.gif">
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+        <div class="pin">
+            <img class="gifpin" src="https://media.giphy.com/media/xUA7bcNOGl78PkVLYA/giphy-downsized.gif">
+        </div>
+
+        <div class="pin">
+            <img class="gifpin" src="http://media2.giphy.com/media/3og0IRl2CEqW1iYEIo/giphy-downsized.gif">
+        </div>
+        
+</div>
+   
 </ion-content>
