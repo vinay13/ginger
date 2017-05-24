@@ -37,17 +37,17 @@ export class GifDetailComponent {
 			if(this.loadProgress < 100){
 				this.loadProgress++;
                 
-                if(this.loadProgress == 10){
+                if(this.loadProgress == 40){
                     this.gifurl = this.gifobject.images.downsized.url;
                 }
 
-                if(this.loadProgress == 30){
-                     console.log(this.gifurl);
-                    this.gifurl = this.gifobject.images.downsized_medium.url;
-                    console.log(this.gifurl);
-                }
+                // if(this.loadProgress == 50){
+                //      console.log(this.gifurl);
+                //     this.gifurl = this.gifobject.images.downsized_medium.url;
+                //     console.log(this.gifurl);
+                // }
 
-                if(this.loadProgress == 60)
+                if(this.loadProgress == 80)
                 {
                     console.log(this.gifurl);
                     this.gifurl = this.gifobject.images.original.url;
@@ -55,7 +55,7 @@ export class GifDetailComponent {
                 }
 			}
 
-		}, 1000);
+		}, 100);
 
 	}            
 
