@@ -15,6 +15,7 @@ import { HomeService } from '../../../services/home.service';
 export class GifDetailComponent {
 
     public gifurl;
+    public gifobject;
     public recomns : any;
     constructor(public popoverCtrl : PopoverController,
                 public navCtrl : NavController,
@@ -23,10 +24,11 @@ export class GifDetailComponent {
                 private _homeserv: HomeService,
                 private cs : CustomService,
                 public navparams : NavParams){
-                    this.gifurl = this.navparams.get('url');
+                    this.gifobject = this.navparams.get('url');
+                    this.gifurl = this.gifobject.images.downsized_still.url;
                     this.RecommendedGifs();
                 }
-                
+
     loadProgress: number = 0;	            
     ionViewDidLoad(){
 
@@ -34,9 +36,26 @@ export class GifDetailComponent {
 
 			if(this.loadProgress < 100){
 				this.loadProgress++;
+                
+                if(this.loadProgress == 10){
+                    this.gifurl = this.gifobject.images.downsized.url;
+                }
+
+                if(this.loadProgress == 30){
+                     console.log(this.gifurl);
+                    this.gifurl = this.gifobject.images.downsized_medium.url;
+                    console.log(this.gifurl);
+                }
+
+                if(this.loadProgress == 60)
+                {
+                    console.log(this.gifurl);
+                    this.gifurl = this.gifobject.images.original.url;
+                    console.log(this.gifurl);
+                }
 			}
 
-		}, 50);
+		}, 1000);
 
 	}            
 
