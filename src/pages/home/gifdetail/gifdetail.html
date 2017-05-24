@@ -13,7 +13,8 @@
     <div class="gifviewer">
         <img class="Gifdetail" src={{gifurl}}>
     </div>
-    <progress-bar [progress]="loadProgress"></progress-bar>
+   <progress-bar [hidden]="hidebar" [progress]="loadProgress"></progress-bar>
+  
 
     <div class="social-sharing">
         <img class="social-icons" src="assets/icon/whatsapp.png" (click)="shareGif()"/>

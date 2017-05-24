@@ -29,7 +29,8 @@ export class GifDetailComponent {
                     this.RecommendedGifs();
                 }
 
-    loadProgress: number = 0;	            
+    loadProgress: number = 0;
+    public hidebar = false;	            
     ionViewDidLoad(){
 
 		setInterval(() => {
@@ -37,25 +38,24 @@ export class GifDetailComponent {
 			if(this.loadProgress < 100){
 				this.loadProgress++;
                 
-                if(this.loadProgress == 40){
+                if(this.loadProgress == 10){
                     this.gifurl = this.gifobject.images.downsized.url;
                 }
 
-                // if(this.loadProgress == 50){
-                //      console.log(this.gifurl);
-                //     this.gifurl = this.gifobject.images.downsized_medium.url;
-                //     console.log(this.gifurl);
-                // }
-
-                if(this.loadProgress == 80)
+                if(this.loadProgress == 30)
                 {
                     console.log(this.gifurl);
                     this.gifurl = this.gifobject.images.original.url;
                     console.log(this.gifurl);
                 }
+
+                if(this.loadProgress == 99)
+                {
+                    this.hidebar = true;
+                }
 			}
 
-		}, 100);
+		}, 70);
 
 	}            
 

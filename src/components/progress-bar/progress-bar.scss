@@ -7,16 +7,18 @@ progress-bar {
 		border: 1px solid #dcdcdc;
 		color: #fff;
 		border-radius: 20px;
+        position:absolute;
+        margin-top: -4px;
 	}
 
-    $sen : #0644a5;
+    
 	.progress-inner {
-		min-width: 15%;
+		min-width: 0%;
 		white-space: nowrap;
 		overflow: hidden;
 		border-radius: 20px;
 		background-color: map-get($colors,secondary);
-        height: 4px;
+        height: 5px;
 	}
 
 }

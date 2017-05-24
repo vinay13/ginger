@@ -1,10 +1,11 @@
 page-gifdetail{
-    
+
 }
 
 .Gifdetail{
     width:100%;
     height:100%;
+    position: relative;
 }
 
 .gifdetail-content{
@@ -16,6 +17,7 @@ page-gifdetail{
     //height : 50px;
     background-color: #232830;
     padding-left: 8px;
+    padding-top: 4px;
 }
 
 .gif-tags{
@@ -24,7 +26,7 @@ page-gifdetail{
     padding : 5px;
     color: white;
     font-size : 17px;
-    border: 1px solid #2b3b50;
+    border-top: 1px solid #2b3b50;
 }
 
 .tags-style{
