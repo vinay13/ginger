@@ -26,6 +26,19 @@ export class GifDetailComponent {
                     this.gifurl = this.navparams.get('url');
                     this.RecommendedGifs();
                 }
+                
+    loadProgress: number = 0;	            
+    ionViewDidLoad(){
+
+		setInterval(() => {
+
+			if(this.loadProgress < 100){
+				this.loadProgress++;
+			}
+
+		}, 50);
+
+	}            
 
     
     RecommendedGifs(){

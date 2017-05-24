@@ -9,11 +9,13 @@ import { Http, XHRBackend, RequestOptions, Request, RequestOptionsArgs, Response
 @Injectable()
 export class LoginService{
 
-    public baseUrl : string = "https://violet.mobigraph.co/ginger/";
+    public baseUrl : string = "https://violet.mobigraph.co/ginger";
     public serverUrl : string;
     public headers;
     public options;
-    constructor(private http : Http){}
+    constructor(private http : Http){
+      this.setHeader();
+    }
 
     setHeader() {
         this.headers = new Headers({
@@ -24,17 +26,16 @@ export class LoginService{
         });
     }
 
-    getHeader() {
+    getHeader(){
         return this.options;
     }
 
     public verifyUser(body){
         this.getHeader();
-       return this.http.post(this.baseUrl+'signin',body,this.options)
+       return this.http.post(this.baseUrl+'/signin',body,this.options)
             .map(this.extractData)
             .catch(this.handleError)
     }
-
 
     // verifyUser(data): Observable<any[]> {
     //     return this.http.post(this.baseUrl + "/oauth/token?grant_type=password&username="+data.username+"&password="+data.password, {})
@@ -42,14 +43,7 @@ export class LoginService{
     //                 .catch(this.handleError);
     // }
 
-
-
-
-
-
-
-
-    private extractData(res: Response) {
+  private extractData(res: Response) {
 		if (res.status === 204) { return res; }
 		let body = res.json();
         console.log('data',body);

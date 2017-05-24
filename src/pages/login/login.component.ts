@@ -40,19 +40,25 @@ export class LoginPage {
     this.navCtrl.push(HomeComponent);
   }
 
-  UserLogin() {
+  Loginresponse : any;
+  UserLogin(){
     let data = {
       emailId: this.email,
       password: this.password
     }
 
-    this._authServ.verifyUser(data).subscribe((res) => {
+    alert(data);
+    this._authServ.verifyUser(data)
+    .subscribe(
+    (res) => {
+      this.Loginresponse = res;
       this.verifySuccessfully(res);
-      this. NavLogin();
-    }, (err) => {
-      console.log('err');
-      alert('err');
-    });
+      this.NavLogin();
+    },
+    (err) => {
+      console.log(err);
+      alert(err);
+    })
   }
 
   public verifySuccessfully(res) {

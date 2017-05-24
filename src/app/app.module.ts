@@ -24,6 +24,8 @@ import { SuperTabsModule } from 'ionic2-super-tabs';
 import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
+//custom component
+import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 
 //import services 
 import {HomeService} from '../services/home.service';
@@ -53,7 +55,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfileEditComponent,   
     SettingsComponent,
     AddTagsComponent, 
-    PopOverComponent 
+    PopOverComponent,
+    ProgressBarComponent 
   ],
   imports: [
     HttpModule,

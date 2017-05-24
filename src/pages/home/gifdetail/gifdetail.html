@@ -13,6 +13,7 @@
     <div class="gifviewer">
         <img class="Gifdetail" src={{gifurl}}>
     </div>
+    <progress-bar [progress]="loadProgress"></progress-bar>
 
     <div class="social-sharing">
         <img class="social-icons" src="assets/icon/whatsapp.png" (click)="shareGif()"/>
@@ -40,7 +41,7 @@
             <img class="gifpin" src="https://media.giphy.com/media/12nDZFClQlLh4I/giphy-downsized.gif">
         </div>
 
-         <div class="pin">
+        <div class="pin">
               <img class="gifpin" src="https://media.giphy.com/media/3o6YglDndxKdCNw7q8/giphy-downsized.gif">
         </div>
         
