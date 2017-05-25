@@ -42,16 +42,14 @@ export class LoginPage {
 
   Loginresponse : any;
   UserLogin(){
-    let data = {
-      emailId: this.email,
-      password: this.password
-    }
+    let datalogin = {"emailId": this.email,"password": this.password }
 
-    alert(data);
-    this._authServ.verifyUser(data)
+    console.log('login',datalogin);
+    this._authServ.verifyUser(datalogin)
     .subscribe(
     (res) => {
       this.Loginresponse = res;
+      console.log('res',res.token);
       this.verifySuccessfully(res);
       this.NavLogin();
     },

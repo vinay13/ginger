@@ -3,12 +3,10 @@ progress-bar {
 	.progress-outer {
 		width: 100%;
 		text-align: center;
-		background-color: #f4f4f4;
-		border: 1px solid #dcdcdc;
 		color: #fff;
 		border-radius: 20px;
         position:absolute;
-        margin-top: -4px;
+        margin-top: -7px;
 	}
 
     
@@ -16,9 +14,8 @@ progress-bar {
 		min-width: 0%;
 		white-space: nowrap;
 		overflow: hidden;
-		border-radius: 20px;
 		background-color: map-get($colors,secondary);
-        height: 5px;
+        height: 7px;
 	}
 
 }

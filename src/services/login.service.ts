@@ -14,27 +14,34 @@ export class LoginService{
     public headers;
     public options;
     constructor(private http : Http){
-      this.setHeader();
+     // this.setHeader();
     }
 
-    setHeader() {
-        this.headers = new Headers({
-        'Content-Type' : 'application/json'
-        });
-        this.options = new RequestOptions({
-         headers : this.headers
-        });
-    }
+    // setHeader() {
+    //     this.headers = new Headers({
+    //       "Content-Type" : "application/json"
+    //     });
+    //     this.options = new RequestOptions({
+    //      headers : this.headers
+    //     });
+    // }
 
     getHeader(){
         return this.options;
     }
 
     public verifyUser(body){
-        this.getHeader();
-       return this.http.post(this.baseUrl+'/signin',body,this.options)
-            .map(this.extractData)
-            .catch(this.handleError)
+        let bodyString = JSON.stringify(body);
+        console.log('bs',bodyString);
+        let headers = new Headers({
+          "Content-Type" : "application/json"
+        });
+        let options = new RequestOptions({
+         headers : this.headers
+        });
+       return this.http.post(this.baseUrl+'/signin',body,options)
+                        .map((res:Response) => res.json()) 
+                         .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
     }
 
     // verifyUser(data): Observable<any[]> {

@@ -48,8 +48,6 @@ export class HomeService{
 	// }
 
      public getTrendingGifs(idiom){
-        console.log('idiom3',idiom);
-        
 		return this.http.get(this.giphyurl, this.options)
 			   .map(this.extractData)
 			   .catch(this.handleError);
