@@ -6,6 +6,8 @@ import { NavController, ToastController , NavParams } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { CustomService } from '../../../services/custom.service';
 import { HomeService } from '../../../services/home.service';
+import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
+import { File } from '@ionic-native/file';
 
 @Component({
     selector : 'page-gifdetail',
@@ -23,6 +25,8 @@ export class GifDetailComponent {
                 private socialSharing: SocialSharing,
                 private _homeserv: HomeService,
                 private cs : CustomService,
+                private transfer: Transfer, 
+                private file: File,
                 public navparams : NavParams){
                     this.gifobject = this.navparams.get('url');
                     this.gifurl = this.gifobject.images.downsized_still.url;
@@ -140,5 +144,20 @@ export class GifDetailComponent {
             },
             ()=> { alert("U don't have Instagram app"); this.cs.hideLoader(); })
   }
-  
+
+
+  download() {
+  const fileTransfer: TransferObject = this.transfer.create();
+  this.cs.showLoader();
+    // const imageLocation = `${cordova.file.applicationDirectory}www/assets/img/${image}`;
+   fileTransfer.download( this.gifurl,this.file.dataDirectory).then((entry) => {
+    alert('download complete: ' + entry.toURL());
+    alert('success');
+    this.cs.hideLoader();
+  }, (error) => {
+    console.log('err',error);
+    alert('err');
+    this.cs.hideLoader();
+  });
+  }
 }
