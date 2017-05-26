@@ -24,8 +24,10 @@ import { SuperTabsModule } from 'ionic2-super-tabs';
 import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
+
 //custom component
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
+import { NoInternetComponent } from '../components/noInternet/noInternet.component';
 
 //import services 
 import {HomeService} from '../services/home.service';
@@ -35,6 +37,8 @@ import {ProfileService} from '../services/profile.service';
 import {Configuration} from '../services/app.constant';
 import {CustomService} from '../services/custom.service';
 import {LoginService} from '../services/login.service';
+import {NetworkService} from '../services/network.service';
+
 //other imports
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -56,7 +60,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SettingsComponent,
     AddTagsComponent, 
     PopOverComponent,
-    ProgressBarComponent 
+    ProgressBarComponent,
+    NoInternetComponent 
   ],
   imports: [
     HttpModule,
@@ -79,7 +84,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfileEditComponent,
     SettingsComponent,
     AddTagsComponent,
-    PopOverComponent
+    PopOverComponent,
   ],
   providers: [
     StatusBar,
@@ -92,6 +97,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LoginService,
     Configuration,
     CustomService,
+    NetworkService,
     Camera,
     File,
     Transfer,
