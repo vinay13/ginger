@@ -5,6 +5,9 @@
 </ion-header>
 
 <ion-content padding="10px" class="idiom-content">
+
+    <!--<button ion-button round (click)="checkNetwork()">network</button>-->
+
     <ion-grid>
         <ion-row>
              <ion-col col-5 [ngClass]="{'idiom-title' : true , 'selectedchange': (selectedIndex === ind) }" *ngFor="let idiom of idioms; let ind = index" (click)="selectedIdiom(ind)" [style.background-color]= bgcolor>

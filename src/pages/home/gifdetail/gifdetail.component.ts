@@ -29,7 +29,7 @@ export class GifDetailComponent {
                 private file: File,
                 public navparams : NavParams){
                     this.gifobject = this.navparams.get('url');
-                    this.gifurl = this.gifobject.images.downsized_still.url;
+                    this.gifurl =  this.gifobject.images.downsized_still.url;
                     this.RecommendedGifs();
                 }
 

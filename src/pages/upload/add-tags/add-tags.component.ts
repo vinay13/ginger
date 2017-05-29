@@ -40,14 +40,14 @@ export class AddTagsComponent {
     }              
               
 
-    // response;
-    // UploadGif(){
-    //     this.cs.showLoader();
-    //     this._uploadserv.UploadGifsByUrl(this.formgif)
-    //         .subscribe( (res) => { this.response = res; this.presentToast(); this.cs.hideLoader(); this.navCtrl.push(GifDetailComponent,{'url':this.response.url});},
-    //                     (err) => { this.cs.hideLoader(); alert(err);},
-    //                     () => { console.log(this.response);})    
-    // }
+    response;
+    UploadGif(){
+        this.cs.showLoader();
+        this._uploadserv.UploadGifsByUrl(this.formgif)
+            .subscribe( (res) => { this.response = res; this.presentToast(); this.cs.hideLoader(); this.navCtrl.push(GifDetailComponent,{'url':this.response});},
+                        (err) => { this.cs.hideLoader(); alert(err);},
+                        () => { console.log(this.response);})    
+    }
 
 
   //  _.uniqueId()

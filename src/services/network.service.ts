@@ -13,26 +13,44 @@ export class NetworkService {
   constructor(public platform: Platform,
               public network : Network){
     this.onDevice = this.platform.is('cordova');
+   this.disconnect();
+    this.connect();
+   
   }
 
   disconnect(){ 
     let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
-      alert('network was disconnected :-(');
+      this.checkConnection();
     });
  
-     disconnectSubscription.unsubscribe();
+     //disconnectSubscription.unsubscribe();
   }
 
   connect(){
       let connectSubscription = this.network.onConnect().subscribe(() => {
       alert('network connected!');
-      setTimeout(() => {
-        if (this.network.type === 'wifi') {
-          alert('we got a wifi connection, woohoo!');
-        }
-      }, 3000);
+       this.checkConnection();
   });
 
     //connectSubscription.unsubscribe();
   }
-}
+
+
+  public states = {};
+  checkConnection(){
+    let networkState = this.network.type;
+      this.states[Connection.WIFI]   = 'WiFi connection';
+      this.states[Connection.CELL_4G] = "4G connection";
+      this.states[Connection.CELL_2G] = "Cell 2G connection";
+      this.states[Connection.CELL_3G] = "Cell 3G connection";
+      this.states[Connection.NONE]     = 'No network connection';
+      alert('Connection: ' + this.states[networkState]);
+  }
+  
+  }
+
+
+
+
+
+
