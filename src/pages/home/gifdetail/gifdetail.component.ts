@@ -6,6 +6,8 @@ import { NavController, ToastController , NavParams } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { CustomService } from '../../../services/custom.service';
 import { HomeService } from '../../../services/home.service';
+import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
+import { File } from '@ionic-native/file';
 
 @Component({
     selector : 'page-gifdetail',
@@ -15,6 +17,7 @@ import { HomeService } from '../../../services/home.service';
 export class GifDetailComponent {
 
     public gifurl;
+    public gifobject;
     public recomns : any;
     constructor(public popoverCtrl : PopoverController,
                 public navCtrl : NavController,
@@ -22,10 +25,43 @@ export class GifDetailComponent {
                 private socialSharing: SocialSharing,
                 private _homeserv: HomeService,
                 private cs : CustomService,
+                private transfer: Transfer, 
+                private file: File,
                 public navparams : NavParams){
-                    this.gifurl = this.navparams.get('url');
+                    this.gifobject = this.navparams.get('url');
+                    this.gifurl = this.gifobject.images.downsized_still.url;
                     this.RecommendedGifs();
                 }
+
+    loadProgress: number = 0;
+    public hidebar = false;	            
+    ionViewDidLoad(){
+
+		setInterval(() => {
+
+			if(this.loadProgress < 100){
+				this.loadProgress++;
+                
+                if(this.loadProgress == 10){
+                    this.gifurl = this.gifobject.images.downsized.url;
+                }
+
+                if(this.loadProgress == 30)
+                {
+                    console.log(this.gifurl);
+                    this.gifurl = this.gifobject.images.original.url;
+                    console.log(this.gifurl);
+                }
+
+                if(this.loadProgress == 99)
+                {
+                    this.hidebar = true;
+                }
+			}
+
+		}, 70);
+
+	}            
 
     
     RecommendedGifs(){
@@ -108,5 +144,20 @@ export class GifDetailComponent {
             },
             ()=> { alert("U don't have Instagram app"); this.cs.hideLoader(); })
   }
-  
+
+
+  download() {
+  const fileTransfer: TransferObject = this.transfer.create();
+  this.cs.showLoader();
+    // const imageLocation = `${cordova.file.applicationDirectory}www/assets/img/${image}`;
+   fileTransfer.download( this.gifurl,this.file.dataDirectory).then((entry) => {
+    alert('download complete: ' + entry.toURL());
+    alert('success');
+    this.cs.hideLoader();
+  }, (error) => {
+    console.log('err',error);
+    alert('err');
+    this.cs.hideLoader();
+  });
+  }
 }

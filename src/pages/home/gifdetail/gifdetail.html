@@ -13,12 +13,15 @@
     <div class="gifviewer">
         <img class="Gifdetail" src={{gifurl}}>
     </div>
+   <progress-bar [hidden]="hidebar" [progress]="loadProgress"></progress-bar>
+  
 
     <div class="social-sharing">
         <img class="social-icons" src="assets/icon/whatsapp.png" (click)="shareGif()"/>
         <img class="social-icons" src="assets/icon/twitter.png" (click)="shareGifTwitter()"/>
         <img class="social-icons" src="assets/icon/facebook.png" (click)="shareGifFacebook()"/>
         <img class="social-icons" src="assets/icon/instagram.png" (click)="shareGifInstagram()"/>
+        <img class="social-icons" src="assets/icon/download.png" (click)="download()"/>
         <span class="social-icons">
             <ion-icon class="more-socialIcons" name="ios-more-outline" ></ion-icon>
         </span>
@@ -33,14 +36,14 @@
 
     <div class="pins">
         <div class="pin" *ngFor="let rgifs of recomns">
-             <img class="gifpin" src={{rgifs.images.downsized.url}} (click)="GIFviewer(rgifs.images.downsized.url)">
+             <img class="gifpin" src={{rgifs.images.downsized.url}} (click)="GIFviewer(rgifs)">
         </div>
 
         <div class="pin">
             <img class="gifpin" src="https://media.giphy.com/media/12nDZFClQlLh4I/giphy-downsized.gif">
         </div>
 
-         <div class="pin">
+        <div class="pin">
               <img class="gifpin" src="https://media.giphy.com/media/3o6YglDndxKdCNw7q8/giphy-downsized.gif">
         </div>
         

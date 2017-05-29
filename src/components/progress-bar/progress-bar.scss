@@ -1,0 +1,21 @@
+progress-bar {
+
+	.progress-outer {
+		width: 100%;
+		text-align: center;
+		color: #fff;
+		border-radius: 20px;
+        position:absolute;
+        margin-top: -7px;
+	}
+
+    
+	.progress-inner {
+		min-width: 0%;
+		white-space: nowrap;
+		overflow: hidden;
+		background-color: map-get($colors,secondary);
+        height: 7px;
+	}
+
+}

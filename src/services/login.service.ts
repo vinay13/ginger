@@ -9,32 +9,40 @@ import { Http, XHRBackend, RequestOptions, Request, RequestOptionsArgs, Response
 @Injectable()
 export class LoginService{
 
-    public baseUrl : string = "https://violet.mobigraph.co/ginger/";
+    public baseUrl : string = "https://violet.mobigraph.co/ginger";
     public serverUrl : string;
     public headers;
     public options;
-    constructor(private http : Http){}
-
-    setHeader() {
-        this.headers = new Headers({
-        'Content-Type' : 'application/json'
-        });
-        this.options = new RequestOptions({
-         headers : this.headers
-        });
+    constructor(private http : Http){
+     // this.setHeader();
     }
 
-    getHeader() {
+    // setHeader() {
+    //     this.headers = new Headers({
+    //       "Content-Type" : "application/json"
+    //     });
+    //     this.options = new RequestOptions({
+    //      headers : this.headers
+    //     });
+    // }
+
+    getHeader(){
         return this.options;
     }
 
     public verifyUser(body){
-        this.getHeader();
-       return this.http.post(this.baseUrl+'signin',body,this.options)
-            .map(this.extractData)
-            .catch(this.handleError)
+        let bodyString = JSON.stringify(body);
+        console.log('bs',bodyString);
+        let headers = new Headers({
+          "Content-Type" : "application/json"
+        });
+        let options = new RequestOptions({
+         headers : this.headers
+        });
+       return this.http.post(this.baseUrl+'/signin',body,options)
+                        .map((res:Response) => res.json()) 
+                         .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
     }
-
 
     // verifyUser(data): Observable<any[]> {
     //     return this.http.post(this.baseUrl + "/oauth/token?grant_type=password&username="+data.username+"&password="+data.password, {})
@@ -42,14 +50,7 @@ export class LoginService{
     //                 .catch(this.handleError);
     // }
 
-
-
-
-
-
-
-
-    private extractData(res: Response) {
+  private extractData(res: Response) {
 		if (res.status === 204) { return res; }
 		let body = res.json();
         console.log('data',body);
