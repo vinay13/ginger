@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AboutPage } from '../pages/about/about';
 import { LoginPage } from '../pages/login/login.component';
 import { IdiomComponent } from '../pages/idiom/idiom.component';
-
+import { NetworkService } from '../services/network.service';
 
 @Component({
   templateUrl: 'app.html',
@@ -14,12 +14,15 @@ import { IdiomComponent } from '../pages/idiom/idiom.component';
 export class MyApp {
   rootPage:any = IdiomComponent;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, 
+              statusBar: StatusBar, 
+              splashScreen: SplashScreen,
+              network : NetworkService
+  ) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      network.connect();
     });
   }
 }

@@ -101,6 +101,14 @@ export class GifDetailComponent {
             duration: 3000
         });
     toast.present();
+}
+
+    downloadToast(){
+        let toast = this.toastCtrl.create({
+            message: 'GIF Saved!',
+            duration: 3000
+        });
+    toast.present();
     }
 
    shareGif(){
@@ -150,12 +158,11 @@ export class GifDetailComponent {
   const fileTransfer: TransferObject = this.transfer.create();
   this.cs.showLoader();
     // const imageLocation = `${cordova.file.applicationDirectory}www/assets/img/${image}`;
-   fileTransfer.download( this.gifurl,this.file.dataDirectory).then((entry) => {
-    alert('download complete: ' + entry.toURL());
-    alert('success');
+   fileTransfer.download( this.gifurl,this.file.dataDirectory+'abc.gif').then((entry) => {
+    //alert('download complete: ' + entry.toURL());
     this.cs.hideLoader();
+    this.downloadToast(); 
   }, (error) => {
-    console.log('err',error);
     alert('err');
     this.cs.hideLoader();
   });

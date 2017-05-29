@@ -15,37 +15,24 @@ export class NetworkService {
     this.onDevice = this.platform.is('cordova');
   }
 
-  disconnect(){
-
- 
+  disconnect(){ 
     let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
-  console.log('network was disconnected :-(');
-});
+      alert('network was disconnected :-(');
+    });
  
-// stop disconnect watch
-disconnectSubscription.unsubscribe();
-}
+     disconnectSubscription.unsubscribe();
+  }
 
+  connect(){
+      let connectSubscription = this.network.onConnect().subscribe(() => {
+      alert('network connected!');
+      setTimeout(() => {
+        if (this.network.type === 'wifi') {
+          alert('we got a wifi connection, woohoo!');
+        }
+      }, 3000);
+  });
 
-
-
-connect(){
-
-
-// watch network for a connection
-let connectSubscription = this.network.onConnect().subscribe(() => {
-  console.log('network connected!');
-  // We just got a connection but we need to wait briefly
-   // before we determine the connection type. Might need to wait.
-  // prior to doing any api requests as well.
-  setTimeout(() => {
-    if (this.network.type === 'wifi') {
-      console.log('we got a wifi connection, woohoo!');
-    }
-  }, 3000);
-});
-
-// stop connect watch
-connectSubscription.unsubscribe();
-}
+    //connectSubscription.unsubscribe();
+  }
 }
