@@ -42,7 +42,7 @@ import {NetworkService} from '../services/network.service';
 //other imports
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { Network } from '@ionic-native/network';
 
 @NgModule({
   declarations: [
@@ -102,7 +102,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     File,
     Transfer,
     FileChooser,
-    SocialSharing
+    SocialSharing,
+    Network
 
   ]
 })

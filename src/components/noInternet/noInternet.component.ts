@@ -7,7 +7,7 @@ declare var someGlobal;
   selector: 'no-internet',
   template: `
     <ion-header>
-      <nl-navbar [title]="title"></nl-navbar>
+      <ion-navbar></ion-navbar>
     </ion-header>
     <ion-content class="csGrayBackground">
         <ion-list class="no-comment">
