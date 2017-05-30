@@ -13,7 +13,7 @@ export class NetworkService {
   constructor(public platform: Platform,
               public network : Network){
     this.onDevice = this.platform.is('cordova');
-   this.disconnect();
+    this.disconnect();
     this.connect();
    
   }
@@ -43,7 +43,7 @@ export class NetworkService {
       this.states[Connection.CELL_4G] = "4G connection";
       this.states[Connection.CELL_2G] = "Cell 2G connection";
       this.states[Connection.CELL_3G] = "Cell 3G connection";
-      this.states[Connection.NONE]     = 'No network connection';
+      this.states[Connection.NONE]    = 'No network connection';
       alert('Connection: ' + this.states[networkState]);
   }
   

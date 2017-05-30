@@ -23,7 +23,6 @@ import { Transfer } from '@ionic-native/transfer';
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
-import { FileChooser } from '@ionic-native/file-chooser';
 
 //custom component
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
@@ -43,6 +42,21 @@ import {NetworkService} from '../services/network.service';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Network } from '@ionic-native/network';
+import { GooglePlus } from '@ionic-native/google-plus';
+import { CloudSettings,CloudModule } from '@ionic/cloud-angular';
+
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': '700193'
+  },
+  'auth': {
+    'google': {
+      'webClientId': '802921815833-vi6nrrotqau2c7c436j55c04r520lr8r.apps.googleusercontent.com',
+      'scope': []
+    }
+  }
+}
+
 
 @NgModule({
   declarations: [
@@ -67,6 +81,7 @@ import { Network } from '@ionic-native/network';
     HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    CloudModule.forRoot(cloudSettings),
     SuperTabsModule.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -101,9 +116,9 @@ import { Network } from '@ionic-native/network';
     Camera,
     File,
     Transfer,
-    FileChooser,
     SocialSharing,
-    Network
+    Network,
+    GooglePlus,
 
   ]
 })

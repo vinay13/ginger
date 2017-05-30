@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HomeComponent } from '../home/home.component';
 import { LoginService } from '../../services/login.service';
+//import { GooglePlus } from '@ionic-native/google-plus';
+import { GoogleAuth , User } from '@ionic/cloud-angular';
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
-  
 })
 
 export class LoginPage {
@@ -15,7 +16,9 @@ export class LoginPage {
   public password;
 
   constructor(public navCtrl: NavController,
-              public _authServ: LoginService) {
+              public _authServ: LoginService,
+              public googleAuth : GoogleAuth,
+              public user : User) {
     
   }
 
@@ -46,20 +49,27 @@ export class LoginPage {
 
     console.log('login',datalogin);
     this._authServ.verifyUser(datalogin)
-    .subscribe(
-    (res) => {
-      this.Loginresponse = res;
-      console.log('res',res.token);
-      this.verifySuccessfully(res);
-      this.NavLogin();
-    },
-    (err) => {
-      console.log(err);
-      alert(err);
-    })
+      .subscribe(
+        (res) => {
+          this.Loginresponse = res;
+          console.log('res',res.token);
+          this.verifySuccessfully(res);
+          this.NavLogin();
+      },
+      (err) => {
+        console.log(err);
+        alert(err);
+      })
   }
 
   public verifySuccessfully(res) {
     localStorage.setItem("access_token", res.token);
+  }
+
+  public googleLogin(){
+    this.googleAuth.login()
+      .then((res) => {console.log(res),alert(JSON.stringify(res))
+      })
+      .catch(err => {console.log(err),alert(err)})
   }
 }

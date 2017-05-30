@@ -31,7 +31,6 @@ export class HomeComponent implements OnInit{
               public _homeserv : HomeService,
               public cs : CustomService,
               public cameraa : Camera,
-              public fileChooser : FileChooser,
               public file : File) {
               
               this.tabsData();
@@ -143,13 +142,13 @@ export class HomeComponent implements OnInit{
 }
 
 
-  public imageFile : any;  
-  public data_response; 
-  ChooseFile(){
-      this.fileChooser.open()
-        .then(uri => {console.log(uri); this.imageFile = uri } )
-        .catch(e => console.log(e));
-    }
+  // public imageFile : any;  
+  // public data_response; 
+  // ChooseFile(){
+  //     this.fileChooser.open()
+  //       .then(uri => {console.log(uri); this.imageFile = uri } )
+  //       .catch(e => console.log(e));
+  //   }
 
 
   userProfile(){
