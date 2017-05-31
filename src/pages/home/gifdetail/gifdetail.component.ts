@@ -158,7 +158,7 @@ export class GifDetailComponent {
   const fileTransfer: TransferObject = this.transfer.create();
   this.cs.showLoader();
     // const imageLocation = `${cordova.file.applicationDirectory}www/assets/img/${image}`;
-   fileTransfer.download( this.gifurl,this.file.dataDirectory+'abc.gif').then((entry) => {
+   fileTransfer.download( this.gifurl,this.file.dataDirectory).then((entry) => {
     //alert('download complete: ' + entry.toURL());
     this.cs.hideLoader();
     this.downloadToast(); 
