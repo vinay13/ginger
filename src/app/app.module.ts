@@ -43,19 +43,19 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Network } from '@ionic-native/network';
 import { GooglePlus } from '@ionic-native/google-plus';
-import { CloudSettings,CloudModule } from '@ionic/cloud-angular';
+//import { CloudSettings,CloudModule } from '@ionic/cloud-angular';
 
-const cloudSettings: CloudSettings = {
-  'core': {
-    'app_id': '700193'
-  },
-  'auth': {
-    'google': {
-      'webClientId': '802921815833-vi6nrrotqau2c7c436j55c04r520lr8r.apps.googleusercontent.com',
-      'scope': []
-    }
-  }
-}
+// const cloudSettings: CloudSettings = {
+//   'core': {
+//     'app_id': '700193'
+//   },
+//   'auth': {
+//     'google': {
+//       'webClientId': '802921815833-vi6nrrotqau2c7c436j55c04r520lr8r.apps.googleusercontent.com',
+//       'scope': []
+//     }
+//   }
+// }
 
 
 @NgModule({
@@ -81,7 +81,7 @@ const cloudSettings: CloudSettings = {
     HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    CloudModule.forRoot(cloudSettings),
+ //   CloudModule.forRoot(cloudSettings),
     SuperTabsModule.forRoot()
   ],
   bootstrap: [IonicApp],

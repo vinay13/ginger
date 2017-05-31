@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HomeComponent } from '../home/home.component';
 import { LoginService } from '../../services/login.service';
-//import { GooglePlus } from '@ionic-native/google-plus';
-import { GoogleAuth , User } from '@ionic/cloud-angular';
+import { GooglePlus } from '@ionic-native/google-plus';
+//import { GoogleAuth , User } from '@ionic/cloud-angular';
 
 @Component({
   selector: 'page-login',
@@ -17,8 +17,8 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController,
               public _authServ: LoginService,
-              public googleAuth : GoogleAuth,
-              public user : User) {
+              public googlePlus : GooglePlus,
+             ) {
     
   }
 
@@ -67,9 +67,8 @@ export class LoginPage {
   }
 
   public googleLogin(){
-    this.googleAuth.login()
-      .then((res) => {console.log(res),alert(JSON.stringify(res))
-      })
+    this.googlePlus.login({})
+      .then((res) => {alert(JSON.stringify(res)); this.navCtrl.push(HomeComponent)})
       .catch(err => {console.log(err),alert(err)})
   }
 }
