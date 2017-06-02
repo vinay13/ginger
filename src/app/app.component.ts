@@ -19,7 +19,7 @@ export class MyApp {
               splashScreen: SplashScreen,){
     platform.ready().then(() => {
       statusBar.styleDefault();
-      splashScreen.hide();
+   //   splashScreen.hide();
     });
   }
 }

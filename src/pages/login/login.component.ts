@@ -75,12 +75,12 @@ export class LoginPage {
   public fbresponse : any;
   public facebookLogin(){
     this.fb.login(['email'])
-      .then((res: FacebookLoginResponse) => { this.fbresponse = res, alert(JSON.stringify(res)), this.navCtrl.push(HomeComponent)})
+      .then((res: FacebookLoginResponse) => { this.fbresponse = JSON.stringify(res), this.postacesstoken(), alert(JSON.stringify(res)), this.navCtrl.push(HomeComponent)})
       .catch(e => alert(e));
   }
 
   public postacesstoken(){
-     
+     alert(this.fbresponse.authResponse);
   }
 
 }
