@@ -43,6 +43,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Network } from '@ionic-native/network';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { Facebook } from '@ionic-native/facebook';
 //import { CloudSettings,CloudModule } from '@ionic/cloud-angular';
 
 // const cloudSettings: CloudSettings = {
@@ -119,6 +120,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
     SocialSharing,
     Network,
     GooglePlus,
+    Facebook
 
   ]
 })

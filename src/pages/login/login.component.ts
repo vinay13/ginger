@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { HomeComponent } from '../home/home.component';
 import { LoginService } from '../../services/login.service';
 import { GooglePlus } from '@ionic-native/google-plus';
-//import { GoogleAuth , User } from '@ionic/cloud-angular';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 @Component({
   selector: 'page-login',
@@ -18,6 +18,7 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
               public _authServ: LoginService,
               public googlePlus : GooglePlus,
+              public fb : Facebook
              ) {
     
   }
@@ -33,7 +34,6 @@ export class LoginPage {
        this.icon = "md-eye-off";
     }
     else{
-     
       this.type = "password";
       this.icon = "md-eye";
     }
@@ -71,4 +71,16 @@ export class LoginPage {
       .then((res) => {alert(JSON.stringify(res)); this.navCtrl.push(HomeComponent)})
       .catch(err => {console.log(err),alert(err)})
   }
+
+  public fbresponse : any;
+  public facebookLogin(){
+    this.fb.login(['email'])
+      .then((res: FacebookLoginResponse) => { this.fbresponse = res, alert(JSON.stringify(res)), this.navCtrl.push(HomeComponent)})
+      .catch(e => alert(e));
+  }
+
+  public postacesstoken(){
+     
+  }
+
 }

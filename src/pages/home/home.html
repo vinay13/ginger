@@ -44,7 +44,7 @@
      <span style="color:#fff">{{ slide.title }}</span>
       <div class="pins">
         <div class="pin" *ngFor="let gif of gifs" (click)="navGifDetail(gif)">
-              <img class="gifpin" src={{gif.images.downsized_still.url}}>
+              <img class="gifpin" src={{gif.images.downsized.url}}>
         </div>
       </div>
     </ion-slide>
