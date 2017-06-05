@@ -12,10 +12,11 @@ import { Camera } from '@ionic-native/camera';
 import { AddTagsComponent } from '../upload/add-tags/add-tags.component';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { File } from '@ionic-native/file';
+import { AppRateService } from '../../services/apprate.service';
 
 @Component({
     selector : 'page-home',
-    templateUrl : 'home.html'
+    templateUrl : 'home.html',
 })
 
 export class HomeComponent implements OnInit{
@@ -37,26 +38,26 @@ export class HomeComponent implements OnInit{
               this.selectedIdiom = this.navParams.get('idiom');
               this.getTrendingGIFs();
                
-  this.selectedSegment = 'first';
-    this.slides = [
-      {
-        id: "first",
-        title: "The newest,most trending gifs"
-      },
-      {
-        id: "second",
-      },
-      {
-        id: "third",
-      },
-      {
-          id: "fourth",
-      },
-      {
-        id : "fifth"
-      }
-    ];
-}
+              this.selectedSegment = 'first';
+                this.slides = [
+                    {
+                      id: "first",
+                      title: "The newest,most trending gifs"
+                    },
+                    {
+                      id: "second",
+                    },
+                    {
+                      id: "third",
+                    },
+                    {
+                        id: "fourth",
+                    },
+                    {
+                      id : "fifth"
+                    }
+                ];
+          }
    
   searchButton(){
       this.navCtrl.push(SearchComponent);

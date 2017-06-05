@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Network } from '@ionic-native/network';
 import { Platform } from 'ionic-angular';
 
-
 declare var Connection;
  
 @Injectable()
@@ -11,11 +10,11 @@ export class NetworkService {
   onDevice: boolean;
  
   constructor(public platform: Platform,
-              public network : Network){
+              public network : Network,){
     this.onDevice = this.platform.is('cordova');
     this.disconnect();
     this.connect();
-   
+    
   }
 
   disconnect(){ 

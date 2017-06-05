@@ -37,6 +37,7 @@ import {Configuration} from '../services/app.constant';
 import {CustomService} from '../services/custom.service';
 import {LoginService} from '../services/login.service';
 import {NetworkService} from '../services/network.service';
+import {AppRateService} from '../services/apprate.service';
 
 //other imports
 import { StatusBar } from '@ionic-native/status-bar';
@@ -44,20 +45,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Network } from '@ionic-native/network';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { Facebook } from '@ionic-native/facebook';
-//import { CloudSettings,CloudModule } from '@ionic/cloud-angular';
-
-// const cloudSettings: CloudSettings = {
-//   'core': {
-//     'app_id': '700193'
-//   },
-//   'auth': {
-//     'google': {
-//       'webClientId': '802921815833-vi6nrrotqau2c7c436j55c04r520lr8r.apps.googleusercontent.com',
-//       'scope': []
-//     }
-//   }
-// }
-
+import { AppRate } from '@ionic-native/app-rate';
 
 @NgModule({
   declarations: [
@@ -82,7 +70,6 @@ import { Facebook } from '@ionic-native/facebook';
     HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
- //   CloudModule.forRoot(cloudSettings),
     SuperTabsModule.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -120,8 +107,9 @@ import { Facebook } from '@ionic-native/facebook';
     SocialSharing,
     Network,
     GooglePlus,
-    Facebook
-
+    Facebook,
+    AppRate,
+    AppRateService
   ]
 })
 
