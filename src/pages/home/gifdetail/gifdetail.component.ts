@@ -158,8 +158,8 @@ export class GifDetailComponent {
   const fileTransfer: TransferObject = this.transfer.create();
   this.cs.showLoader();
     // const imageLocation = `${cordova.file.applicationDirectory}www/assets/img/${image}`;
-   fileTransfer.download( this.gifurl,this.file.dataDirectory).then((entry) => {
-    //alert('download complete: ' + entry.toURL());
+   fileTransfer.download( this.gifurl,this.file.applicationDirectory+'ginger'+'aa.gif').then((entry) => {
+   //fileTransfer.download(url, cordova.file.externalRootDirectory + {{appName}} + 'filename')
     this.cs.hideLoader();
     this.downloadToast(); 
   }, (error) => {

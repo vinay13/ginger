@@ -28,7 +28,6 @@ export class NetworkService {
 
   connect(){
       let connectSubscription = this.network.onConnect().subscribe(() => {
-      alert('network connected!');
        this.checkConnection();
   });
 
