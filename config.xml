@@ -12,7 +12,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <access origin="market:*" launch-external="yes"/>
+    <access launch-external="yes" origin="market:*" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
@@ -81,6 +81,7 @@
     </platform>
     <engine name="android" spec="^6.2.3" />
     <plugin name="com.megster.cordova.FileChooser" spec="http://github.com/don/cordova-filechooser.git" />
+    <plugin name="cordova-plugin-apprate" spec="^1.3.0" />
     <plugin name="cordova-plugin-camera" spec="~2.1.1" />
     <plugin name="cordova-plugin-console" spec="1.0.5" />
     <plugin name="cordova-plugin-device" spec="1.1.4" />
@@ -98,5 +99,4 @@
     <plugin name="cordova-plugin-whitelist" spec="1.3.1" />
     <plugin name="cordova-plugin-x-socialsharing" spec="~5.1.8" />
     <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
-    <plugin name="cordova-plugin-apprate" spec="^1.3.0" />
 </widget>

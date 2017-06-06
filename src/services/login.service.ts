@@ -31,15 +31,16 @@ export class LoginService{
     }
 
     public verifyUser(body){
-        let bodyString = JSON.stringify(body);
+       let bodyString = JSON.parse(JSON.stringify(body));
         console.log('bs',bodyString);
+        console.log('bs',body);
         let headers = new Headers({
           "Content-Type" : "application/json"
         });
         let options = new RequestOptions({
          headers : this.headers
         });
-       return this.http.post(this.baseUrl+'/signin',body,options)
+       return this.http.post(this.baseUrl+'/signin',bodyString,options)
                         .map((res:Response) => res.json()) 
                          .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
     }

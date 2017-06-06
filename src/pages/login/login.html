@@ -1,37 +1,46 @@
-<ion-header>
+<ion-header >
     <ion-navbar class="navbar">
         <ion-title>Sign In to Upload</ion-title>
     </ion-navbar>
 </ion-header>
 
-<ion-content padding class="csLoginScreen">
-    
-    <h3 class="LoginLogo">GINGER</h3>
-        <ion-list>
-             <ion-card>
+<ion-content class="background">
+     <ion-card class="login-content">
+         <ion-card-header class="card-header">
+            <h1>Ginger</h1>
+         </ion-card-header>
+
+
+         <ion-card-content>
+            <form  [formGroup]="loginform" >
+        
+            <ion-list no-line>
                 <ion-item>
-                    <ion-label stacked>Email</ion-label>
-                    <ion-input type="text" name="email" [(ngModel)]="email"></ion-input>
+                    <ion-input type="text" placeholder="Email" name="email" formControlName="emailId"></ion-input>
                 </ion-item>
-            </ion-card>
-            <ion-card>
+               
               <ion-item>
-                  
                     <ion-icon [name]=icon color="primary" item-right (click)="EyeOffClicked(icon)"></ion-icon>
-                    <ion-label stacked>Password</ion-label>
-                    <ion-input [type]="type" name="password" [(ngModel)]="password"></ion-input>
-                
-                </ion-item> 
-            </ion-card>   
-         </ion-list>
+                    <ion-input type="password" placeholder="Password" name="password" formControlName="password"></ion-input>         
+                </ion-item>   
+            </ion-list>
+         
+                <a> Don't have an account? sign up </a>
  
-            <button class="signin-button" ion-button full  type="submit" (click)="UserLogin()">Login</button>
+            <button ion-button block outline color="light" type="submit" (click)="UserLogin()">Login</button>
            
-            <button class="loginBtn loginBtn--facebook" (click)="facebookLogin()">
+           <h2> OR </h2>
+
+            <button ion-button block class="loginBtn loginBtn--facebook" (click)="facebookLogin()">
                  Login with Facebook
             </button>
 
-            <button class="loginBtn loginBtn--google" (click)="googleLogin()">
+
+            <button ion-button block class="loginBtn loginBtn--google" (click)="googleLogin()">
                  Login with Google
             </button>
+            
+             </form>
+         </ion-card-content>
+    </ion-card>
 </ion-content>
