@@ -95,32 +95,36 @@ export class HomeComponent implements OnInit{
     this.navCtrl.push(LoginPage);
   }
 
-  presentActionSheet(){
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Upload GIF',
-      buttons: [
-        {
-          text: 'Device Gallery',
-          role: 'destructive',
-          icon : 'md-document',
-          handler: () => {
-            this.ImagePick();
-           // this.ChooseFile();
-            console.log('Destructive clicked');
-          }
-        },{
-          text: 'Web Url',
-          icon: 'md-link',
-          handler: () => {
-            console.log('Archive clicked');
-            this.navCtrl.push(UploadComponent);
-          }
-        }
-      ]
-    });
-    actionSheet.present();
+  UploadviaWeb(){
+    this.navCtrl.push(UploadComponent);
   }
 
+
+  // presentActionSheet(){
+  //   let actionSheet = this.actionSheetCtrl.create({
+  //     title: 'Upload GIF',
+  //     buttons: [
+  //       {
+  //         text: 'Device Gallery',
+  //         role: 'destructive',
+  //         icon : 'md-document',
+  //         handler: () => {
+  //           this.ImagePick();
+  //          // this.ChooseFile();
+  //           console.log('Destructive clicked');
+  //         }
+  //       },{
+  //         text: 'Web Url',
+  //         icon: 'md-link',
+  //         handler: () => {
+  //           console.log('Archive clicked');
+  //           this.navCtrl.push(UploadComponent);
+  //         }
+  //       }
+  //     ]
+  //   });
+  //   actionSheet.present();
+  // }
 
 
   base64Image;

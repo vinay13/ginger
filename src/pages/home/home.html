@@ -50,8 +50,16 @@
     </ion-slide>
   </ion-slides>
 
-  <ion-fab bottom right>
+  <!--<ion-fab bottom right>
     <button ion-fab  (click)="presentActionSheet()"><ion-icon name="md-cloud-upload"></ion-icon></button>
+  </ion-fab>-->
+
+  <ion-fab right bottom>
+    <button ion-fab color="facebook"><ion-icon name="md-cloud-upload"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab><ion-icon name="md-document" (click)="ImagePick()"></ion-icon></button>
+      <button ion-fab><ion-icon name="md-link" (click)="UploadviaWeb()"></ion-icon></button>
+    </ion-fab-list>
   </ion-fab>
 
 </ion-content>
