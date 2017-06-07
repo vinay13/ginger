@@ -51,12 +51,13 @@ export class HomeService{
 		return this.http.get(this.giphyurl, this.options)
 			   .map(this.extractData)
 			   .catch(this.handleError);
-	  }
+	}
 
-      public getrecommendGifs(){
-          return this.http.get("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=american+psycho",this.options)
-                .map(this.extractData)
-                .catch(this.handleError)
+      //using mobigraph api
+      public getRelatedGifs(){
+          return this.http.get("https://violet.mobigraph.co/ginger/hindi/relatedGifs/5927d4f79900006e015c67af/0/10",this.options)
+                    .map(this.extractData)
+                    .catch(this.handleError)
       }
 
      public mainTabs(){

@@ -67,13 +67,14 @@ export class LoginPage implements OnInit{
     localStorage.setItem("access_token", res.token);
   }
 
+  public googleResponse;
   public googleLogin(){
     this.googlePlus.login({
       'scopes': 'profile email https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile', 
       'webClientId': '802921815833-vi6nrrotqau2c7c436j55c04r520lr8r.apps.googleusercontent.com',
       'offline': true,
     })
-      .then((res) => {alert(JSON.stringify(res)); this.navCtrl.push(HomeComponent)})
+      .then((res) => {this.googleResponse = JSON.stringify(res);  alert(JSON.stringify(res)); this.navCtrl.push(HomeComponent)})
       .catch(err => {console.log(err),alert(err)})
   }
 
@@ -86,6 +87,7 @@ export class LoginPage implements OnInit{
 
   public postacesstoken(){
      alert(this.fbresponse.authResponse);
+     alert(this.googleResponse.access_token);
   }
 
   ngOnInit(){

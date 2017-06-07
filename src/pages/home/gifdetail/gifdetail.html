@@ -33,10 +33,10 @@
         <ion-badge class="tag-badge" item-right color="secondary" (click)="TagClicked('Happy')">Happy</ion-badge>
     </div>
 
-    <div class="related-gifs">RELATED GIFS</div>
+    <div class="related-gifs"><b>{{totalcount}}</b> RELATED GIFS</div>
     <div class="pins">
         <div class="pin" *ngFor="let rgifs of recomns">
-             <img class="gifpin" src={{rgifs.images.downsized.url}} (click)="GIFviewer(rgifs)">
+             <img class="gifpin" src={{rgifs.url}} (click)="GIFviewer(rgifs)">
         </div>
 
         <div class="pin">

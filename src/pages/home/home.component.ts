@@ -96,7 +96,9 @@ export class HomeComponent implements OnInit{
   }
 
   UploadviaWeb(){
+    this.cs.showLoader();
     this.navCtrl.push(UploadComponent);
+    this.cs.hideLoader();
   }
 
 
@@ -130,7 +132,7 @@ export class HomeComponent implements OnInit{
   base64Image;
   ImageFile;
   public ImagePick(){
-   
+   this.cs.showLoader();
     this.cameraa.getPicture({
         destinationType: this.cameraa.DestinationType.DATA_URL,
         mediaType : this.cameraa.MediaType.ALLMEDIA,
@@ -138,11 +140,13 @@ export class HomeComponent implements OnInit{
     }).then((imagedata)=>{
       this.base64Image = 'data:image/gif;base64,' + imagedata;
       this.ImageFile = imagedata ;
+      this.cs.hideLoader();
        this.navCtrl.push(AddTagsComponent,{
         'gifpath' :  imagedata
       });    
     },(err)=>{
       console.log(err);
+      this.cs.hideLoader();
     });
 }
 

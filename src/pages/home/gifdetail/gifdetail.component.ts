@@ -63,12 +63,12 @@ export class GifDetailComponent {
 
 	}            
 
-    
+    public totalcount;
     RecommendedGifs(){
-        this._homeserv.getTrendingGifs('hindi')
-            .subscribe( (res) => {this.recomns = res.data},
+        this._homeserv.getRelatedGifs()
+            .subscribe( (res) => {this.recomns = res.contents, this.totalcount = res.totalCount},
                         (err) => console.log(err),
-                        () => console.log(this.recomns))
+                        () => console.log('related gifs',this.totalcount))
     }
 
     presentPopover(myEvent){
@@ -87,8 +87,7 @@ export class GifDetailComponent {
     GIFviewer(url){
         this.navCtrl.push(GifDetailComponent,{
             'url': url
-        });
-        
+        });   
     }
 
     Addfavorites(){
