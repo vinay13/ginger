@@ -45,6 +45,23 @@ export class LoginService{
                          .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
     }
 
+
+
+    public gAuthCallback(body){
+         console.log('gauthbody',body);
+         let headers = new Headers({
+          "Content-Type" : "application/json"
+        });
+        let options = new RequestOptions({
+         headers : this.headers
+        });
+      return this.http.post(this.baseUrl+"/gauth/oauth2callback?code="+body+"&state="+"45",options)
+                .map((res : Response) => res.json())
+                .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+    }
+
+
+
     // verifyUser(data): Observable<any[]> {
     //     return this.http.post(this.baseUrl + "/oauth/token?grant_type=password&username="+data.username+"&password="+data.password, {})
     //                 .map(this.extractData)

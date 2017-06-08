@@ -74,20 +74,26 @@ export class LoginPage implements OnInit{
       'webClientId': '802921815833-vi6nrrotqau2c7c436j55c04r520lr8r.apps.googleusercontent.com',
       'offline': true,
     })
-      .then((res) => {this.googleResponse = JSON.stringify(res);  alert(JSON.stringify(res)); this.navCtrl.push(HomeComponent)})
+      .then((res) => {this.googleResponse = JSON.stringify(res);alert(this.googleResponse.data.serverAuthCode); alert(this.googleResponse.serverAuthCode); this.gauthcallBack(); this.navCtrl.push(HomeComponent)})
       .catch(err => {console.log(err),alert(err)})
   }
 
   public fbresponse : any;
   public facebookLogin(){
     this.fb.login(['email'])
-      .then((res: FacebookLoginResponse) => { this.fbresponse = JSON.stringify(res), this.postacesstoken(), alert(JSON.stringify(res)), this.navCtrl.push(HomeComponent)})
+      .then((res: FacebookLoginResponse) => { this.fbresponse = JSON.stringify(res), this.postacesstoken() , this.navCtrl.push(HomeComponent)})
       .catch(e => alert(e));
   }
 
   public postacesstoken(){
-     alert(this.fbresponse.authResponse);
+  //   alert(this.fbresponse.authResponse);
      alert(this.googleResponse.access_token);
+  }
+
+  public gauthcallBack(){
+    this._authServ.gAuthCallback(this.googleResponse.data.serverAuthCode)
+      .subscribe((res) => {alert(JSON.stringify(res))}, 
+                 (err) => alert(err))      
   }
 
   ngOnInit(){
