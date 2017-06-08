@@ -31,16 +31,7 @@
     float: center;
 }
 
-.navbar{
-    .toolbar-background {
-	     //background: #ff1943 !important;
-         background: -moz-linear-gradient(top, #ff1943 0%, #d0043e 100%); /* FF3.6-15 */
-         background: -webkit-linear-gradient(top, #ff1943 0%,#d0043e 100%); /* Chrome10-25,Safari5.1-6 */
-         background: linear-gradient(to bottom, #ff1943 0%,#d0043e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    }
-    .toolbar-title{
-        color: white !important;
-    }
-    
+.toolbar-title {
+    color: white !important;
 }
 

@@ -4,6 +4,7 @@
     float: right;
     margin-right: 10px;
     padding: 10px;
+    color: #35EC97;
 }
 
 .home-toolbar{
@@ -12,7 +13,7 @@
 }
 
 .home-content{
-    background-color: #000000;
+    background-color: #202E3F;
 }
 
 .tabs-style{
@@ -43,15 +44,6 @@
 .header-home{
     overflow:hidden; 
     text-align: center;
-}
-
-//background: #ff1943 !important;
-.navbar{
-    .toolbar-background {
-        background: linear-gradient(45deg, rgba(129,98,246,0.85) 0%, rgba(250,119,117,0.85) 100%) !important;
-        background-repeat: no-repeat;
-        background-position: 50% 50%;
-    }
 }
 
 .tabs-style {
@@ -85,25 +77,29 @@
 }
 
 .fab-ios , .fab-md{
-    color : white !important;
-    background-color : red !important;
+    color : #8463F2 !important;
+    background-color : white !important;
+    box-shadow: 0 6px 8px 0 rgba(132,99,242,0.5);
 }
 
 .ios ,.md {
     page-home{
         .pins{
             column-count : 2;
+            margin-left: 12px; margin-right: 12px;
         }
         .pin{
             display: inline-block;
-            margin : -1px -5px -9px -9px;
+            margin : -0px -6px -0px -6px;
             padding: 0px;
         }
         .gifpin{
+            border-radius: 5px;
             background: #00e589;
         }
     }
 }
+
 
 
 ion-segment {
@@ -122,4 +118,14 @@ ion-segment {
         min-width: 100px;
         width: auto;
     }
+}
+
+.gin-trend-bar {
+    height: auto;
+    background: transparent;
+    padding: 6pt 10pt 8pt 10pt;
+        span {
+            color: white;
+            font-size: 10pt;
+        }       
 }

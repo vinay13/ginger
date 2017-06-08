@@ -38,7 +38,7 @@
 
   <ion-slides #mySlider (ionDidChange)="onSlideChanged($event)">
     <ion-slide *ngFor="let slide of slides">
-     <span style="color:#fff">{{ slide.title }}</span>
+     <div class="gin-trend-bar"><span>{{ slide.title }}</span></div>
       <div class="pins">
         <div class="pin" *ngFor="let gif of gifs" (click)="navGifDetail(gif)">
               <img class="gifpin" src={{gif.images.downsized.url}}>
@@ -52,7 +52,7 @@
   </ion-fab>-->
 
   <ion-fab right bottom>
-    <button ion-fab color="facebook"><ion-icon name="md-cloud-upload"></ion-icon></button>
+    <button ion-fab color="facebook"><ion-icon name="md-download"></ion-icon></button>
     <ion-fab-list side="left">
       <button ion-fab><ion-icon name="md-document" (click)="ImagePick()"></ion-icon></button>
       <button ion-fab><ion-icon name="md-link" (click)="UploadviaWeb()"></ion-icon></button>
