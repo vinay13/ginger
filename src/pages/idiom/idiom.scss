@@ -1,30 +1,49 @@
-.idiom-content{
-    background-color: #2b3b50;
+.toolbar-title {
+    color: white !important;
 }
 
+page-idiom {
+    .background {
+      background-color: #212E40 !important;
+}
+}
+
+//* {
+//  border: 1px solid blue;
+//}
+
 .idiom-title {
-    height: 118px;
-    width: 10px;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
+    color: white;
+    width: 100pt;
+    height: 100pt;
     border-radius: 50%;
     background: #28323f;
     font-weight: 400;
     font-size: 1.9rem;;
-    color: white;
+    margin-left: auto; 
+    margin-right: auto;
+    // Center text horizontal
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .selectedchange{
   background : linear-gradient(45deg, #8162F6, #FA7875 100%) !important;
 }
 
+.gin-content {
+    width: 300px;
+    height: 300px;
+    position: relative;
+}
+
+
+
 //.idiom-button{
 // background-color: white;
 // color: #00b6ff;
 //}
 
-.toolbar-title {
-    color: white !important;
-}
+
 
