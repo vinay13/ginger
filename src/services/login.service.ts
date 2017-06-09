@@ -48,16 +48,16 @@ export class LoginService{
 
 
     public gAuthCallback(body){
-         console.log('gauthbody',body);
+         alert(body);
+         let bodyString = JSON.parse(JSON.stringify(body));
          let headers = new Headers({
           "Content-Type" : "application/json"
         });
         let options = new RequestOptions({
          headers : this.headers
         });
-      return this.http.post(this.baseUrl+"/gauth/oauth2callback?code="+body+"&state="+"45",options)
-                .map((res : Response) => res.json())
-                .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+      return this.http.post(this.baseUrl+"/gauth/oauth2callback?code="+bodyString+"&state="+"51",options)
+              
     }
 
 

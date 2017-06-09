@@ -74,7 +74,7 @@ export class LoginPage implements OnInit{
       'webClientId': '802921815833-vi6nrrotqau2c7c436j55c04r520lr8r.apps.googleusercontent.com',
       'offline': true,
     })
-      .then((res) => {this.googleResponse = JSON.stringify(res);alert(res); alert(this.googleResponse); alert(res.serverAuthCode); alert(res.email); this.gauthcallBack(res.serverAuthCode); this.navCtrl.push(HomeComponent)})
+      .then((res) => {this.googleResponse = JSON.stringify(res); alert(this.googleResponse); alert(res.serverAuthCode); this.gauthcallBack(res.serverAuthCode); this.navCtrl.push(HomeComponent)})
       .catch(err => {console.log(err),alert(err)})
   }
 
@@ -93,8 +93,8 @@ export class LoginPage implements OnInit{
 
   public gauthcallBack(serverauthcode){
     this._authServ.gAuthCallback(serverauthcode)
-      .subscribe((res) => {alert(JSON.stringify(res))}, 
-                 (err) => alert(err))      
+      .subscribe((res) => {alert("success"); alert(JSON.stringify(res))}, 
+                 (err) => {alert(serverauthcode); alert(err)})      
   }
 
   ngOnInit(){
