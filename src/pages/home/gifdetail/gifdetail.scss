@@ -1,16 +1,22 @@
-page-gifdetail{
-// .navbar{
-//     .toolbar-background {
-//         background: transparent!important;
-//         background-repeat: no-repeat;
-//         background-position: 50% 50%;
-//     }
-// }
+
+//page-gifdetail .navbar {
+//    .toolbar-background {
+//    background: rgba(255,255,255,.10) !important; 
+//    }
+//}
+// Doesn't work, try https://github.com/HsuanXyz/ionic2-transparent-bar/blob/master/src/pages/transparent-bar/transparent-bar.html
+ 
+.platform-ios.platform-cordova:not(.fullscreen) .has-header {
+  /*top:0px;*/
+}
+.gifviewer {
+    width: 100%;
+    height: auto;
 }
 
 .Gifdetail{
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     position: relative;
 }
 
@@ -20,8 +26,7 @@ page-gifdetail{
 
 .social-sharing{
     width : 100%;
-    //height : 50px;
-    background-color: #232830;
+    height : 50px;
     padding-left: 8px;
 }
 
@@ -33,7 +38,6 @@ page-gifdetail{
 
 .gif-tags{
     width : 100%;
-    background-color: #232830;
     padding : 5px;
     color: white;
     font-size : 17px;
@@ -74,15 +78,8 @@ page-gifdetail{
     margin: 2px;
 }
 
-
-
-.gifviewer{
-    width: 100%;
-    height:260px;  
-}
-
 .ios ,.md {
-    page-gifdetail{
+    page-gifdetail {
         .pins{
             column-count : 2;
         }
