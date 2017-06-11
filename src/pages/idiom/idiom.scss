@@ -17,7 +17,7 @@ page-idiom {
     width: 100pt;
     height: 100pt;
     border-radius: 50%;
-    background: #28323f;
+    background: #324053;
     font-weight: 400;
     font-size: 1.9rem;;
     margin-left: auto; 
@@ -29,7 +29,12 @@ page-idiom {
 }
 
 .selectedchange{
-  background : linear-gradient(45deg, #8162F6, #FA7875 100%) !important;
+    font-weight: 600;
+    background-image: -webkit-linear-gradient(bottom left, #8162F6, #FA7875 100%) !important;
+    background-image: -moz-linear-gradient(bottom left, #8162F6, #FA7875 100%) !important;
+    background-image: -o-linear-gradient(bottom left, #8162F6, #FA7875 100%) !important;
+    background-image: linear-gradient(to top right, #8162F6, #FA7875 100%) !important;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.30);
 }
 
 .gin-content {
@@ -37,13 +42,3 @@ page-idiom {
     height: 300px;
     position: relative;
 }
-
-
-
-//.idiom-button{
-// background-color: white;
-// color: #00b6ff;
-//}
-
-
-
