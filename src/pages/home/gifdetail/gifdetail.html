@@ -1,6 +1,8 @@
 <ion-header>
     <ion-navbar class="navbar">
+        
         <ion-icon class="favorite-icon" name="md-heart-outline" (click)="Addfavorites()"></ion-icon>
+         <ion-icon class="search-icon" name="search" (click)="searchButton()"></ion-icon>
          <ion-buttons end>
             <button ion-button icon-only (click)="presentPopover($event)">
                 <ion-icon name="more"></ion-icon>

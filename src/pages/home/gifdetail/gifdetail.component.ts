@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PopoverController } from 'ionic-angular';
 import { PopOverComponent } from './popover';
+import { SearchComponent } from '../../search/search.component';
 import { SearchResultComponent } from '../../search/searchResult/search-result.component';
 import { NavController, ToastController , NavParams } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
@@ -82,6 +83,10 @@ export class GifDetailComponent {
         this.navCtrl.push(SearchResultComponent,{
             'tag' : tag
         });
+    }
+
+    searchButton(){
+      this.navCtrl.push(SearchComponent);
     }
 
     GIFviewer(url){

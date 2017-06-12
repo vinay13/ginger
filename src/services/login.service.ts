@@ -31,32 +31,30 @@ export class LoginService{
     }
 
     public verifyUser(body){
-       let bodyString = JSON.parse(JSON.stringify(body));
-        console.log('bs',bodyString);
+
         console.log('bs',body);
+      
         let headers = new Headers({
-          "Content-Type" : "application/json"
+          'Content-Type': 'application/x-www-form-urlencoded'
         });
         let options = new RequestOptions({
-         headers : this.headers
+           headers : this.headers
         });
-       return this.http.post(this.baseUrl+'/signin',bodyString,options)
-                        .map((res:Response) => res.json()) 
-                         .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
+       return this.http.post( 'api/signin',body,options)            
     }
 
 
 
     public gAuthCallback(body){
          alert(body);
-         let bodyString = JSON.parse(JSON.stringify(body));
+       //  let bodyString = JSON.parse(JSON.stringify(body));
          let headers = new Headers({
-          "Content-Type" : "application/json"
+          'Content-Type': 'application/json'
         });
         let options = new RequestOptions({
          headers : this.headers
         });
-      return this.http.post(this.baseUrl+"/gauth/oauth2callback?code="+bodyString+"&state="+"51",options)
+      return this.http.post(this.baseUrl+"/gauth/oauth2callback?code="+body+"&state="+"51",options)
               
     }
 

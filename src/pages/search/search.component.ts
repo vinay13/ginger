@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component,Input,ViewChild } from '@angular/core';
 import { NavController,NavParams} from 'ionic-angular';
 import { SearchResultComponent } from './searchResult/search-result.component';
 import { SearchService } from '../../services/search.service'; 
-
+import { Keyboard } from '@ionic-native/keyboard';
 
 @Component({
     selector : 'page-search',
@@ -13,14 +13,24 @@ export class SearchComponent{
 
     searchQuery : string = '';
     items : string[];
-
+    @ViewChild('search') myInput ;
     constructor(private navCtrl : NavController,
                 private navParmas : NavParams,
-                private _searchservice : SearchService){
+                private _searchservice : SearchService,
+                private keyboard : Keyboard){
                 // this.initializeitems();
                //  this.getSuggestedItems(text);
               
     }
+
+ionViewDidLoad() {
+    setTimeout(() => {
+      this.myInput.setFocus();
+      this.keyboard.show();
+}, 150);
+
+
+}
 
     // initializeitems(){
     //     this.items = [
@@ -44,11 +54,21 @@ export class SearchComponent{
         }
      }
 
+
     public suggestedText = [];
     getSuggestedItems(val){
         this._searchservice.TextSuggestions(val)
         .subscribe( (data) => { this.suggestedText = data },
                     () =>  console.log('suggested text', this.suggestedText))
+    }
+    
+
+    topsearcheslist = [];
+    topsearches(){
+        this._searchservice.TopSearchesList()
+            .subscribe( (data) => { this.topsearcheslist = data },
+                        (err) => { console.log(err)},
+                        () => console.log(this.topsearcheslist))
     }
 
 

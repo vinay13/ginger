@@ -51,7 +51,6 @@ export class LoginPage implements OnInit{
         (res) => {
           this.Loginresponse = res;
          // alert(loginform.emailId);
-          console.log('res',res.token);
           this.verifySuccessfully(res);
           this.NavLogin();
       },

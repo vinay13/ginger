@@ -57,9 +57,10 @@ page-gifdetail{
 }
 
 .favorite-icon{
-    font-size: 25px;
+    font-size: 30px;
     float: right;
     color: white;
+    padding: 10px;
 }
 
 .more-socialIcons{
@@ -74,7 +75,14 @@ page-gifdetail{
     margin: 2px;
 }
 
-
+.bar-button-md[icon-only] ion-icon {
+    padding: 0 .1em;
+    min-width: 28px;
+    font-size: 1.8em;
+    line-height: .67;
+    pointer-events: none;
+    color: white;
+}
 
 .gifviewer{
     width: 100%;

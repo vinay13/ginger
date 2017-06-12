@@ -23,7 +23,7 @@ import { Transfer } from '@ionic-native/transfer';
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
-
+import { Keyboard } from '@ionic-native/keyboard';
 //custom component
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { NoInternetComponent } from '../components/noInternet/noInternet.component';
@@ -108,6 +108,7 @@ import { AppRate } from '@ionic-native/app-rate';
     Network,
     GooglePlus,
     Facebook,
+    Keyboard,
     AppRate,
     AppRateService
   ]
