@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar class="navbar">
-       <ion-searchbar  [(ngModel)]="searchItem" [showCancelButton]="true"  (ionInput)="getItems($event)" ></ion-searchbar>
+       <ion-searchbar  [(ngModel)]="searchItem" [showCancelButton]="true" 
+       (keyup.enter)="someFunction($event)"  (ionInput)="getItems($event)" ></ion-searchbar>
   </ion-navbar>
 </ion-header>
 

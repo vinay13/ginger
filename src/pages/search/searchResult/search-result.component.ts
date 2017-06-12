@@ -26,8 +26,8 @@ export class SearchResultComponent implements OnInit {
     getSearchGifs(item){
         this.cs.showLoader();
         this._searchService.GetGifsSearch(item)
-        .subscribe( (res) => { this.searchedGifs = res; this.cs.hideLoader(); },
-                    (err) => { this.cs.hideLoader();},
+        .subscribe( (res) => { this.searchedGifs = res; this.cs.hideLoader();  },
+                    (err) => { console.log(err); this.cs.hideLoader();},
                     () => console.log('related gifs',this.searchedGifs))
     }
 
@@ -36,6 +36,16 @@ export class SearchResultComponent implements OnInit {
          this.getSearchGifs(this.searchItem);
       //  this.searchedGifs = this.navparams.get('relatedgifs');
       //  console.log('seeergifs',this.searchedGifs);
+    }
+
+    someFunction(event: KeyboardEvent) { 
+        let val = (<HTMLInputElement>event.target).value;
+        this.getSearchGifs(val);
+
+    //     this.navCtrl.push(SearchResultComponent,{
+    //         'sitem' : val ,
+    //         'relatedgifs' :  this.searchedGifs
+    //   });
     }
 
     getItems(){
