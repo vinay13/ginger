@@ -24,6 +24,7 @@
         <img class="social-icons" src="assets/icon/facebook.png" (click)="shareGifFacebook()"/>
         <img class="social-icons" src="assets/icon/instagram.png" (click)="shareGifInstagram()"/>
         <img class="social-icons" src="assets/icon/download.png" (click)="download()"/>
+        <img class="social-icons" src="assets/icon/linkurl.png" (click)="copyUrl(gifurl)"/>
         <span class="social-icons">
             <ion-icon class="more-socialIcons" name="ios-more-outline" ></ion-icon>
         </span>
@@ -35,7 +36,10 @@
         <ion-badge class="tag-badge" item-right color="secondary" (click)="TagClicked('Happy')">Happy</ion-badge>
     </div>
 
-    <div class="related-gifs"><b>{{totalcount}}</b> RELATED GIFS</div>
+    <div>
+        <span class="related-gifs"><b>{{totalcount}}</b> RELATED GIFS</span>
+        <!--<span class="gif-source"> www.giphy.com </span>-->
+    </div>
     <div class="pins">
         <div class="pin" *ngFor="let rgifs of recomns">
              <img class="gifpin" src={{rgifs.url}} (click)="GIFviewer(rgifs)">

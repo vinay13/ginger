@@ -99,6 +99,16 @@ export class GifDetailComponent {
        this.presentToast();
     }
 
+    copyUrl(gifurl){
+        console.log('Url Copied');
+        console.log('copyURl',gifurl);
+        let toast = this.toastCtrl.create({
+            message : 'URL copied to clipboard',
+            duration : 3000
+        });
+        toast.present();
+    }
+
     presentToast(){
         let toast = this.toastCtrl.create({
             message: 'Added to favorites list',

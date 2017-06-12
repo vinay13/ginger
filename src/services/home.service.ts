@@ -55,7 +55,7 @@ export class HomeService{
 
       //using mobigraph api
       public getRelatedGifs(){
-          return this.http.get("https://violet.mobigraph.co/ginger/hindi/relatedGifs/5927d4f79900006e015c67af/0/10",this.options)
+          return this.http.get("https://violet.mobigraph.co/ginger/Hindi/relatedGifs/5927d4f79900006e015c67af/0/10",this.options)
                     .map(this.extractData)
                     .catch(this.handleError)
       }
