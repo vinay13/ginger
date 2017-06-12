@@ -14,42 +14,35 @@ export class SearchComponent{
     searchQuery : string = '';
     items : string[];
     @ViewChild('search') myInput ;
+    public TopSearchlist ;
+
     constructor(private navCtrl : NavController,
                 private navParmas : NavParams,
                 private _searchservice : SearchService,
                 private keyboard : Keyboard){
                 // this.initializeitems();
-               //  this.getSuggestedItems(text);
-              
+                //  this.getSuggestedItems(text);
+                this.TopSearchlist = true;
     }
 
-ionViewDidLoad() {
-    setTimeout(() => {
-      this.myInput.setFocus();
-      this.keyboard.show();
-}, 150);
+    ionViewDidLoad(){
+        setTimeout(() => {
+            this.myInput.setFocus();
+            this.keyboard.show();
+        }, 1000);
+    }
 
-
-}
-
-    // initializeitems(){
-    //     this.items = [
-    //         'Happy',
-    //         'Happy Songs',
-    //         'Random gifs',
-    //         'Holla',
-    //         'Hell'
-    //     ];
-    // }
-
-
-     getItems(ev : any){
+    getItems(ev : any){
         
         let val = ev.target.value;
         this.getSuggestedItems(val);
+            this.TopSearchlist = false;
+            if(val.trim() == ''){
+                this.TopSearchlist = true;
+            }
          if (val && val.trim() != '') {
-        this.suggestedText = this.suggestedText.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+             this.suggestedText = this.suggestedText.filter((item) => {
+            return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
           })
         }
      }
@@ -63,7 +56,7 @@ ionViewDidLoad() {
     }
     
 
-    topsearcheslist = [];
+    topsearcheslist = ['affhj','bffr','cff','dfff','efdfr'];
     topsearches(){
         this._searchservice.TopSearchesList()
             .subscribe( (data) => { this.topsearcheslist = data },

@@ -40,13 +40,13 @@ export class SearchService{
     }
 
     TextSuggestions(text){
-		return this.http.get(this.url + 'hindi/suggest/' + text, this.options)
+		return this.http.get(this.url + 'Hindi/suggest/' + text, this.options)
 			   .map(this.extractData)
 			   .catch(this.handleError);
 	}
 
     GetGifsSearch(text){
-        return this.http.get(this.url + 'hindi/gifs/' + text,this.options)
+        return this.http.get(this.url + 'Hindi/gifs/' + text,this.options)
                 .map(this.extractData)
                 .catch(this.handleError)
     }
