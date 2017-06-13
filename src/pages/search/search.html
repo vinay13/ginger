@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar class="navbar">
-       <ion-searchbar #search
+       <ion-searchbar
        (ionInput)="getItems($event)"
        (keyup.enter)="someFunction($event)" 
         ></ion-searchbar>
@@ -8,13 +8,7 @@
 </ion-header>
 
 <ion-content class="background-theme">
-    <ion-list *ngIf="TopSearchlist">
-        <ion-item  class="top-searches-items" *ngFor="let top of topsearcheslist" (click)="TagsClick(item)">
-            <ion-icon name="search" padding></ion-icon>
-            {{ top }}
-        </ion-item>
-    </ion-list>
-    <ion-list>
+    <ion-list >
         <ion-item class="search-items" *ngFor="let item of suggestedText" (click)="TagsClick(item)">
             <ion-icon name="search" padding></ion-icon>
             {{ item }}

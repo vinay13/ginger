@@ -1,46 +1,44 @@
-.idiom-content{
-    background-color: #2b3b50;
+.toolbar-title {
+    color: white !important;
 }
 
+page-idiom {
+    .background {
+      background-color: #212E40 !important;
+}
+}
+
+//* {
+//  border: 1px solid blue;
+//}
 
 .idiom-title {
-    height: 118px;
-    width: 118px;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 50%;
-    background: #28323f;
-    padding-top: 27px;
-    font-weight: 400;
-    font-size: 1.9rem;
-    margin: 10px;
     color: white;
+    width: 100pt;
+    height: 100pt;
+    border-radius: 50%;
+    background: #324053;
+    font-weight: 400;
+    font-size: 1.9rem;;
+    margin-left: auto; 
+    margin-right: auto;
+    // Center text horizontal
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .selectedchange{
-  background : linear-gradient(45deg, #8162F6, #FA7875 100%) !important;
+    font-weight: 600;
+    background-image: -webkit-linear-gradient(bottom left, #8162F6, #FA7875 100%) !important;
+    background-image: -moz-linear-gradient(bottom left, #8162F6, #FA7875 100%) !important;
+    background-image: -o-linear-gradient(bottom left, #8162F6, #FA7875 100%) !important;
+    background-image: linear-gradient(to top right, #8162F6, #FA7875 100%) !important;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.30);
 }
 
-.idiom-button{
- background-color: white;
- color: #00b6ff;
+.gin-content {
+    width: 300px;
+    height: 300px;
+    position: relative;
 }
-
-.button-style{
-    float: center;
-}
-
-.navbar{
-    .toolbar-background {
-	     //background: #ff1943 !important;
-         background: -moz-linear-gradient(top, #ff1943 0%, #d0043e 100%); /* FF3.6-15 */
-         background: -webkit-linear-gradient(top, #ff1943 0%,#d0043e 100%); /* Chrome10-25,Safari5.1-6 */
-         background: linear-gradient(to bottom, #ff1943 0%,#d0043e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    }
-    .toolbar-title{
-        color: white !important;
-    }
-    
-}
-
