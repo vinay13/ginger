@@ -76,23 +76,53 @@ $transparent : transparent;
   }
 }
 
-// Center
+// Center Items
 
 .gin-center {
   margin-left: auto; margin-right: auto;
 }
 
+.gin-center-txt {
+  text-align:center;
+}
 // Buttons
 
 .gin-button-1 {
   background-color: white;
-  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.30);
   font-size: 1.4rem;
   color: #35EC97;
   font-weight: 600;
-  padding: 1.8em 2.8em;
 }
 
 .gin-button-1:hover {
   background-color: #CCCCCC !important;
+}
+
+.gin-button-2 {
+  background-color: white;
+  font-size: 1.4rem;
+  color: #F3478E;
+  font-weight: 600;
+}
+
+.gin-button-2:hover {
+  background-color: #CCCCCC !important;
+}
+
+// Large Button
+
+.gin-button-lg {
+  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.30);
+  padding: 1.8em 2.8em;
+}
+
+.gin-input::-webkit-input-placeholder {
+ color:    red;
+}
+
+// Content Box
+
+.gin-box {
+  margin-left: 1%;
+  margin-right: 5%;
 }

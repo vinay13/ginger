@@ -8,7 +8,7 @@
 
 
 <ion-content class="content-background">
-    <ion-list>
+    <div class="gin-box">
         <ion-item class="edit-input">
             <ion-label stacked>Username</ion-label>
                 <ion-input type="text" name="_id" [(ngModel)]="userInfo.id">
@@ -26,10 +26,9 @@
                 <ion-input type="text" name="webLink" [(ngModel)]="userInfo.webLink">
             </ion-input>
         </ion-item>
-    </ion-list>
-
-    <div class="save-button">
-        <button ion-button (click)="SaveProfile()"> save </button>
     </div>
 
+    <div class="gin-center-txt">
+        <button class="gin-button-1 gin-button-lg" ion-button round (click)="SaveProfile()"> save </button>
+    </div>
 </ion-content>

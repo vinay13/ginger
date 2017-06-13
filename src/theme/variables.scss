@@ -61,6 +61,13 @@ $colors: (
 
 @import "ionic.theme.default";
 
+// Text Input
+$text-input-md-highlight-color: #35EC97;
+$text-input-highlight-color-valid: white;
+$label-md-text-color-focused: white;
+
+// Toggle
+$toggle-md-active-color:#35EC97;
 
 // Ionicons
 // --------------------------------------------------
