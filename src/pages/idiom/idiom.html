@@ -4,31 +4,20 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding="10px" class="idiom-content">
+<!--<button ion-button round (click)="checkNetwork()">network</button>-->
+<ion-content class="background">
 
-    <!--<button ion-button round (click)="checkNetwork()">network</button>-->
+<ion-grid>
+    <ion-row>
+        <ion-col col-6>
+            <p [ngClass]="{'idiom-title' : true , 'selectedchange': (selectedIndex === ind) }" *ngFor="let idiom of idioms; let ind = index" (click)="selectedIdiom(ind)" [style.background-color]= bgcolor> {{ idiom.name }} </p>
+        </ion-col>
+    </ion-row>
+</ion-grid>
 
-    <ion-grid>
-        <ion-row>
-             <ion-col col-5 [ngClass]="{'idiom-title' : true , 'selectedchange': (selectedIndex === ind) }" *ngFor="let idiom of idioms; let ind = index" (click)="selectedIdiom(ind)" [style.background-color]= bgcolor>
-                 <div>
-                    <p> {{ idiom.name }} </p>
-                 </div>
-             </ion-col>
-        </ion-row>
-    </ion-grid>
-    
-    <ion-grid>
-        <ion-row>
-            <ion-col col-4>
-            </ion-col>
-
-            <ion-col col-4 class="button-style">
-                <button class="idiom-button" ion-button round full [hidden]="showbutton" (click)="navHomePage()">Get started </button>
-            </ion-col>
-
-            <ion-col col-4>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+<ion-grid>
+    <ion-row>
+        <button class="gin-button-1 gin-center" ion-button round [hidden]="showbutton" (click)="navHomePage()">Get started </button>
+    </ion-row>
+</ion-grid>
 </ion-content>
