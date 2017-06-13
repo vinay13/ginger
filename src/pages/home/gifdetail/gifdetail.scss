@@ -1,18 +1,12 @@
 
-//page-gifdetail .navbar {
-//    .toolbar-background {
-//    background: rgba(255,255,255,.10) !important; 
-//    }
-//}
-// Doesn't work, try https://github.com/HsuanXyz/ionic2-transparent-bar/blob/master/src/pages/transparent-bar/transparent-bar.html
- 
-.platform-ios.platform-cordova:not(.fullscreen) .has-header {
-  /*top:0px;*/
-}
+// Transparent bat doesn't work, try https://github.com/HsuanXyz/ionic2-transparent-bar/blob/master/src/pages/transparent-bar/transparent-bar.html
+
+
 .gifviewer {
     width: 100%;
     height: auto;
 }
+
 
 .Gifdetail{
     width: 100%;
@@ -22,6 +16,12 @@
 
 .gifdetail-content{
     background-color: #212E40;
+    margin-top: -56px;
+}
+
+page-gifdetail .toolbar-background-md {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.60) 0%,rgba(0,0,0,0) 100%);
+    border-color: transparent;
 }
 
 .gif-info {
@@ -92,14 +92,18 @@
     page-gifdetail {
         .pins{
             column-count : 2;
+            margin-left: 15px; margin-right: 15px;
         }
         .pin{
             display: inline-block;
-            margin : -1px -5px -9px -9px;
+            margin : 3px -3px -0px -6px;
             padding: 0px;
         }
         .gifpin{
-            background: #00e589;
+            border-radius: 5px;
+            width: 100%;
+            height: auto;
+            background: #8463F2;
         }
     }
 }
