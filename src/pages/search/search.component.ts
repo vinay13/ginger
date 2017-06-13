@@ -29,7 +29,7 @@ export class SearchComponent{
         setTimeout(() => {
             this.myInput.setFocus();
             this.keyboard.show();
-        }, 1000);
+        }, 150);
     }
 
     getItems(ev : any){

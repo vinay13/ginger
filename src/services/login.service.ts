@@ -35,7 +35,7 @@ export class LoginService{
         console.log('bs',body);
       
         let headers = new Headers({
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/json'
         });
         let options = new RequestOptions({
            headers : this.headers
@@ -47,14 +47,16 @@ export class LoginService{
 
     public gAuthCallback(body){
          alert(body);
+         let encodedbody = encodeURIComponent(body);
        //  let bodyString = JSON.parse(JSON.stringify(body));
          let headers = new Headers({
           'Content-Type': 'application/json'
         });
+        let tbody = {};
         let options = new RequestOptions({
          headers : this.headers
         });
-      return this.http.post(this.baseUrl+"/gauth/oauth2callback?code="+body+"&state="+"51",options)
+      return this.http.post(this.baseUrl+"/gauth/oauth2callback?code="+body+"&state="+"55",tbody,this.options)
               
     }
 

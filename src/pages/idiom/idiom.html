@@ -5,12 +5,12 @@
 </ion-header>
 
 <!--<button ion-button round (click)="checkNetwork()">network</button>-->
-<ion-content class="background">
+<ion-content class="background" padding>
 
 <ion-grid>
     <ion-row>
-        <ion-col col-6>
-            <p [ngClass]="{'idiom-title' : true , 'selectedchange': (selectedIndex === ind) }" *ngFor="let idiom of idioms; let ind = index" (click)="selectedIdiom(ind)" [style.background-color]= bgcolor> {{ idiom.name }} </p>
+        <ion-col col-6  *ngFor="let idiom of idioms; let ind = index">
+            <span [ngClass]="{'idiom-title' : true , 'selectedchange': (selectedIndex === ind) }" (click)="selectedIdiom(ind)" [style.background-color]= bgcolor> {{ idiom.name }} </span>
         </ion-col>
     </ion-row>
 </ion-grid>

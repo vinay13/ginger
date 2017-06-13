@@ -26,6 +26,8 @@ export class HomeComponent implements OnInit{
   slides: any;
 
   public selectedIdiom;
+  public allgifs:boolean = false;
+  public fallgifs:boolean = true;
   constructor(public navCtrl: NavController,
               public navParams : NavParams,
               public actionSheetCtrl : ActionSheetController,
@@ -34,6 +36,7 @@ export class HomeComponent implements OnInit{
               public cameraa : Camera,
               public file : File) {
               
+             
               this.tabsData();
               this.selectedIdiom = this.navParams.get('idiom');
               this.getTrendingGIFs();
@@ -57,8 +60,20 @@ export class HomeComponent implements OnInit{
                       id : "fifth"
                     }
                 ];
+
+                 //this.allgifs = '{{'+ "gif.images.downsized_still.url" +'}}';
           }
-   
+
+         
+  // ionViewDidLoad(){
+  //       setTimeout(() => {
+  //         //  this.allgifs = true;
+  //      //   this.fallgifs = false;
+         
+  //       }, 5000);
+  // }
+
+
   searchButton(){
       this.navCtrl.push(SearchComponent);
   }
