@@ -2,7 +2,7 @@
     <ion-navbar class="navbar">
         <ion-icon class="favorite-icon" name="md-heart-outline" (click)="Addfavorites()"></ion-icon>
          <ion-buttons end>
-            <button ion-button icon-only (click)="presentPopover($event)">
+            <button class="options-icon" ion-button icon-only (click)="presentPopover($event)">
                 <ion-icon name="more"></ion-icon>
             </button>
         </ion-buttons>
@@ -13,8 +13,29 @@
     <div class="gifviewer">
         <img class="Gifdetail" src={{gifurl}}>
     </div>
-   <progress-bar [hidden]="hidebar" [progress]="loadProgress"></progress-bar>
+    <progress-bar [hidden]="hidebar" [progress]="loadProgress"></progress-bar>
   
+    <div class="gif-info">
+        <ion-grid>
+        <ion-row>
+        <ion-col col-4>
+        <ion-chip>
+            <ion-avatar>
+                <img src="assets/icon/avatar.png">
+            </ion-avatar>
+            <ion-label>@Gola</ion-label>
+        </ion-chip>
+        </ion-col>
+        <ion-col col-4>
+        <span>1298 shares</span>
+        </ion-col>
+        <ion-col col-4>
+        <label>Source</label>
+        <span>MTV.COM</span>
+        </ion-col>
+        </ion-row>
+        </ion-grid>
+    </div>
 
     <div class="social-sharing">
         <img class="social-icons" src="assets/icon/whatsapp.png" (click)="shareGif()"/>

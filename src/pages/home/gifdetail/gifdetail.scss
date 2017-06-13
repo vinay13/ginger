@@ -21,13 +21,15 @@
 }
 
 .gifdetail-content{
-     background-color: #2b3b50;
+    background-color: #212E40;
 }
 
-.social-sharing{
-    width : 100%;
-    height : 50px;
-    padding-left: 8px;
+.gif-info {
+    background-color: #2b3b50;
+    height: 45pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .related-gifs{
@@ -53,16 +55,24 @@
     font-weight: 600;
 }
 
-.social-icons{
-    width: 33px;
-    height: 33px;
+.social-sharing {
+    width : 100%;
+    padding: 2%;
+}
+
+.social-icons {
+    width: 50px;
+    height: 50px;
     margin: 2px;
-    padding: 0px;
 }
 
 .favorite-icon{
     font-size: 25px;
     float: right;
+    color: white;
+}
+
+.options-icon {
     color: white;
 }
 
