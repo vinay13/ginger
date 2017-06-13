@@ -12,23 +12,22 @@
 
   <ion-segment  [(ngModel)]="selectedSegment" (ionChange)="onSegmentChanged($event)">
     
-    <ion-segment-button class="tabs-style" value="first">
+    <ion-segment-button value="first">
       Trending
     </ion-segment-button>
-    <ion-segment-button class="home-toolbar" value="second">
+    <ion-segment-button value="second">
       Emotions
     </ion-segment-button>
     <ion-segment-button value="third">
       Actions
     </ion-segment-button>
     <ion-segment-button value="fourth">
-      Movies
+      Celebrities
     </ion-segment-button>
      <ion-segment-button value="fifth">
       Cricket
     </ion-segment-button>
     
-
   </ion-segment>
 </ion-toolbar>
 </ion-header>
@@ -38,7 +37,6 @@
 
   <ion-slides #mySlider (ionDidChange)="onSlideChanged($event)">
     <ion-slide *ngFor="let slide of slides">
-     <div class="gin-trend-bar"><span>{{ slide.title }}</span></div>
       <div class="pins">
         <div class="pin" *ngFor="let gif of gifs" (click)="navGifDetail(gif)">
               <img class="gifpin" src={{gif.images.downsized.url}}>
