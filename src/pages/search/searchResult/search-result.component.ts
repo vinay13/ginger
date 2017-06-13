@@ -12,16 +12,15 @@ import {GifDetailComponent} from '../../home/gifdetail/gifdetail.component';
 
 export class SearchResultComponent implements OnInit {
 
+
     public searchItem;
     public searchedGifs = [];
-
-
 
     constructor(private navparams : NavParams,
                 private _searchService : SearchService,
                 private cs : CustomService ,
                 private navCtrl : NavController){ 
-                } 
+    } 
 
     getSearchGifs(item){
         this.cs.showLoader();
