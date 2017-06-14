@@ -77,12 +77,19 @@ $segment-button-md-border-bottom-color: transparent;
 
 // Avatar Chip
 $chip-md-text-color: white;
-$chip-md-background-color: linear-gradient(to top right, #8162F6, #FA7875 100%) !important;
 
 // Search
 $searchbar-md-input-background-color: transparent;
 $searchbar-md-input-clear-icon-color: white;
 $searchbar-md-input-placeholder-color: #17212F;
+$searchbar-md-input-box-shadow: transparent;
+$searchbar-md-input-text-color: white;
+
+// Fab Button
+$fab-md-box-shadow: 0 6px 8px 0 rgba(0,0,0,0.50);
+$fab-md-background-color: white;
+$fab-md-text-color: #8463F2;
+$fab-md-list-button-text-color: #8463F2;
 
 // Ionicons
 // --------------------------------------------------
