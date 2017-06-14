@@ -23,7 +23,7 @@
 }
 
 .gifdetail-content {
-    background-color: #212E40;
+    background-color: #202E3F;
 }
 
 // Remove ion-content margin-top
@@ -96,6 +96,9 @@ page-gifdetail .toolbar-background-md {
     width : 100%;
     padding : 2%;
     margin: 0;
+    background-color: rgba(0,0,0,0.10)!important;
+    border-bottom: 1px solid rgba(0,0,0,0.10)!important;
+    border-top: 1px solid rgba(0,0,0,0.10)!important;
 }
 
 .tag-badge{
@@ -114,7 +117,7 @@ page-gifdetail .toolbar-background-md {
 }
 
 .related-gifs{
-    font-size: 0.9em;
+    font-size: 0.8em;
     font-weight: 600;
     margin: 6px;
     padding: 2%;
