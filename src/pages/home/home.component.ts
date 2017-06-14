@@ -42,7 +42,6 @@ export class HomeComponent implements OnInit{
                 this.slides = [
                     {
                       id: "first",
-                      title: "The newest,most trending gifs"
                     },
                     {
                       id: "second",

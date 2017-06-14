@@ -2,12 +2,15 @@
 <ion-toolbar class="navbar" >
 
 <div class="header-home">
-  <div class="home-icon" (click)="userProfile()">
+  <!-- <div class="home-icon" (click)="userProfile()">
      <img src="assets/icon/icon.png" style="width:30px; height:30px;"/>
+  </div> -->
+  <div class="hindi-icon" (click)="navIdiom()">
+     <img src="assets/icon/ic_hindi.png"/>
   </div>
-  <span class="idiom-name" (click)="navIdiom()">{{ selectedIdiom }} </span>  
-  <ion-icon class="search-icon" name="search" (click)="searchButton()"></ion-icon>
+  <span class="idiom-name" (click)="navIdiom()">{{ selectedIdiom }}</span>
   <ion-icon class="search-icon" name="md-contact" (click)="checklogin()"></ion-icon>
+  <ion-icon class="search-icon" name="search" (click)="searchButton()"></ion-icon>
 </div>  
 
   <ion-segment  [(ngModel)]="selectedSegment" (ionChange)="onSegmentChanged($event)">

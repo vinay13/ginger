@@ -12,23 +12,41 @@
 }
 
 .home-icon{
-      width: 30px;
-      height: 30px;
-      position: absolute;
-      margin: 10px;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin: 10px;
+}
+
+.hindi-icon{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    margin: 10px;
+    background: linear-gradient(to top right, #8162F6, #FA7875 100%);
+    border-radius: 50%;
+    padding: 7px;
+    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.30);
+}
+
+.idiom-icon{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin: 10px;
 }
 
 .idiom-name{
-    font-size : 20px;
-    color:#fff;
-    display:inline-block;
-    margin:10px 10px 0 0;
-    padding:5px 10px
+    font-size : 1.2em;
+    font-weight: 600;
+    color: white;
+    line-height: 56px; 
+    position: absolute;
+    margin-left: 50px;
 }
 
 .header-home{
-    overflow:hidden; 
-    text-align: center;
+    overflow: hidden; 
 }
 
 //Enable Scroll
@@ -42,7 +60,7 @@
         .pins{
             column-count : 2;
             margin-left: 15px; margin-right: 15px;
-                margin-top: 2%;
+            margin-top: 2%;
         }
         .pin{
             display: inline-block;
