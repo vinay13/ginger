@@ -13,39 +13,43 @@
     <div class="gifviewer">
         <img class="Gifdetail" src={{gifurl}}>
     </div>
+    
     <progress-bar [hidden]="hidebar" [progress]="loadProgress"></progress-bar>
   
     <div class="gif-info">
         <ion-grid>
         <ion-row>
-        <ion-col col-4>
-        <ion-chip>
-            <ion-avatar>
-                <img src="assets/icon/avatar.png">
-            </ion-avatar>
-            <ion-label>@Gola</ion-label>
-        </ion-chip>
-        </ion-col>
-        <ion-col col-4>
-        <span>1298 shares</span>
-        </ion-col>
-        <ion-col col-4>
-        <label>Source</label>
-        <span>MTV.COM</span>
-        </ion-col>
+            <ion-col col-4>
+                <ion-chip>
+                    <ion-avatar>
+                        <img src="assets/icon/avatar.png">
+                    </ion-avatar>
+                    <ion-label>Gola</ion-label>
+                    </ion-chip>
+            </ion-col>
+            <ion-col col-4>
+               <div class="gin-label">
+                <span>1.5K</span>
+                <label>shares</label>
+               </div>
+            </ion-col>
+            <ion-col col-4>
+                <div class="gin-label">
+                  <ion-icon class="ic-share-alt" name="share-alt"></ion-icon>
+                <span>MTV.COM</span>
+                </div>
+            </ion-col>
         </ion-row>
         </ion-grid>
     </div>
 
     <div class="social-sharing">
-        <img class="social-icons" src="assets/icon/whatsapp.png" (click)="shareGif()"/>
-        <img class="social-icons" src="assets/icon/twitter.png" (click)="shareGifTwitter()"/>
-        <img class="social-icons" src="assets/icon/facebook.png" (click)="shareGifFacebook()"/>
-        <img class="social-icons" src="assets/icon/instagram.png" (click)="shareGifInstagram()"/>
-        <img class="social-icons" src="assets/icon/download.png" (click)="download()"/>
-        <span class="social-icons">
-            <ion-icon class="more-socialIcons" name="ios-more-outline" ></ion-icon>
-        </span>
+        <img class="social-icons s-whatsapp" src="assets/icon/ic_whatsapp.png" (click)="shareGif()"/>
+        <img class="social-icons s-twitter" src="assets/icon/ic_twitter.png" (click)="shareGifTwitter()"/>
+        <img class="social-icons s-messenger" src="assets/icon/ic_messenger.png" (click)="shareGifFacebook()"/>
+        <img class="social-icons s-hike" src="assets/icon/ic_hike.png" (click)="shareGifInstagram()"/> <!-- Hike instead of Instagram-->
+        <img class="social-icons s-neutral" src="assets/icon/ic_link.png" />
+         <img class="social-icons s-neutral" src="assets/icon/ic_share.png" />
     </div>
 
     <div class="gif-tags">

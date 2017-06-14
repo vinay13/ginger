@@ -17,6 +17,7 @@
     background-color: #212E40;
 }
 
+// Remove ion-content margin-top
 page-gifdetail .scroll-content {
     margin-top:0px !important;   
 }
@@ -28,10 +29,23 @@ page-gifdetail .toolbar-background-md {
 
 .gif-info {
     background-color: #2b3b50;
-    height: 45pt;
+    height: 35pt;
     display: flex;
     justify-content: center;
     align-items: center;
+    .gin-label {
+        margin-top: 10px;
+    }
+    span {
+        color: #D3E0F1;
+        font-weight: 600;
+    }
+    label {
+        color: #8A9BB2;
+    }
+    .ic-share-alt {
+        color: #8A9BB2;
+    }
 }
 
 .related-gifs{
@@ -63,9 +77,30 @@ page-gifdetail .toolbar-background-md {
 }
 
 .social-icons {
-    width: 50px;
-    height: 50px;
+    width: 53px;
+    height: 53px;
+    padding: 12px;
     margin: 2px;
+    border-radius: 5px;
+}
+.s-whatsapp {
+    background-color: #51CA5E;
+}
+
+.s-twitter {
+    background-color: #50ABF1;
+}
+
+.s-messenger {
+    background-color: #0382F9;
+}
+
+.s-hike {
+    background-color: #1EA6FC;
+}
+
+.s-neutral {
+    background-color: #324053;
 }
 
 .favorite-icon{
