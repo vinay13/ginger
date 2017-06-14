@@ -7,3 +7,16 @@
     background-color : #2b3b50;
 }
 
+.searchbar-search-icon {
+    display:none;
+    width:0;
+    height:0;
+}
+
+.searchbar-input {
+    padding: 0px !important;
+    box-shadow: none !important;
+    color: white !important;
+    font-weight: 600 !important;
+    caret-color: #35EC97;
+}
