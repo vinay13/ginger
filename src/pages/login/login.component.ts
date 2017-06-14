@@ -45,7 +45,7 @@ export class LoginPage implements OnInit{
 
   Loginresponse : any;
   UserLogin(){
-    
+    console.log(this.loginform.value);
     this._authServ.verifyUser(this.loginform.value)
       .subscribe(
         (res) => {
