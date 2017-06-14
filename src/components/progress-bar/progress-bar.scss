@@ -6,7 +6,7 @@ progress-bar {
 		color: #fff;
 		border-radius: 20px;
         position:absolute;
-        margin-top: -7px;
+        margin-top: -10px;
 	}
 
     
@@ -14,7 +14,7 @@ progress-bar {
 		min-width: 0%;
 		white-space: nowrap;
 		overflow: hidden;
-		background-color: map-get($colors,secondary);
+		background-color: #8463F2;
         height: 7px;
 	}
 

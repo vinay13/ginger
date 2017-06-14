@@ -11,8 +11,11 @@
 
 .content-bg{
      background-color :  #2b3b50; 
-     color : white;
-     margin-top: -56px;
+}
+
+// Remove ion-content margin-top
+page-profile .scroll-content {
+    margin-top:0px !important;   
 }
 
 .toolbar-background-md {
