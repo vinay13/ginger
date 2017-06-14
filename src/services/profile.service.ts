@@ -6,6 +6,7 @@ import 'rxjs/add/observable/throw';
 import { Http, XHRBackend, RequestOptions, Request, RequestOptionsArgs, Response, Headers } from '@angular/http';
 import { Configuration } from './app.constant';
 
+
 @Injectable()
 export class ProfileService{
 
@@ -15,44 +16,37 @@ export class ProfileService{
     public options;
     constructor(private http : Http,
                 private _config : Configuration){
-                    this.getUrl();
-                    this.setHeader();
+                 
                 }
 
     getUrl(){
         this.url = this._config.baseUrl;
     }            
 
-    setHeader() {
-        this.headers = new Headers({
+    GetUserProfile(){
+        let headers = new Headers({
             'Content-Type' : 'application/json',
             'Authorization' : 'Bearer' + ' ' + localStorage.getItem('access_token')
-    });
-        this.options = new RequestOptions({
-         headers : this.headers
+        })
+
+        let options = new RequestOptions({
+            headers : headers
         });
-    }
 
-    getHeader() {
-        return this.options;
-    }
-
-    GetUserProfile(){
-        this.getHeader();
-        return this.http.get(this.url + 'profile',this.options)
+        return this.http.get(this.url + 'profile',options)
                 .map(this.extractData)
                 .catch(this.handleError)         
     }
 
     GetUserProfileEdit(body){
-        this.getHeader();
+        
         return this.http.put(this.url+'profile',body,this.options)
                 .map(this.extractData)
                 .catch(this.handleError)
     }
 
     getGifsUploadedByUrl(){
-        this.getHeader();
+        
         return this.http.get(this.url+'gifs/mygifs',this.options)
             .map(this.extractData)
             .catch(this.handleError)

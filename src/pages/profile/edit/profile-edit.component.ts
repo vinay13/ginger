@@ -27,6 +27,4 @@ export class ProfileEditComponent {
     SaveProfile(){
         this.navCtrl.pop();
     }
-
-
 }

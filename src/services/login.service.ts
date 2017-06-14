@@ -14,17 +14,9 @@ export class LoginService{
     public headers;
     public options;
     constructor(private http : Http){
-     // this.setHeader();
+     
     }
 
-    // setHeader() {
-    //     this.headers = new Headers({
-    //       "Content-Type" : "application/json"
-    //     });
-    //     this.options = new RequestOptions({
-    //      headers : this.headers
-    //     });
-    // }
 
     getHeader(){
         return this.options;
@@ -40,10 +32,10 @@ export class LoginService{
         let options = new RequestOptions({
            headers : this.headers
         });
-       return this.http.post( 'api/signin',body,options)            
+       return this.http.post( 'api/signin',body,options)
+               .map(this.extractData)
+               .catch(this.handleError);            
     }
-
-
 
     public gAuthCallback(body){
          alert(body);
@@ -57,35 +49,28 @@ export class LoginService{
          headers : this.headers
         });
       return this.http.post(this.baseUrl+"/gauth/oauth2callback?code="+body+"&state="+"55",tbody,this.options)
-              
+               .map(this.extractData)
+               .catch(this.handleError);
     }
 
+    private extractData(res: Response) {
+      if (res.status === 204) { return res; }
+      let body = res.json();
+          console.log('data',body);
+      return body || { };
+    }
 
-
-    // verifyUser(data): Observable<any[]> {
-    //     return this.http.post(this.baseUrl + "/oauth/token?grant_type=password&username="+data.username+"&password="+data.password, {})
-    //                 .map(this.extractData)
-    //                 .catch(this.handleError);
-    // }
-
-  private extractData(res: Response) {
-		if (res.status === 204) { return res; }
-		let body = res.json();
-        console.log('data',body);
-		return body || { };
-	}
-
-	private handleError(error: Response | any) {
-    let errMsg: string;
-    if (error instanceof Response) {
-      errMsg = `${error.status} - ${error.ok || ''}`;
-      if (error.status === 0) {
-        errMsg = `${error.status} - "No Internet"`;
+    private handleError(error: Response | any) {
+      let errMsg: string;
+      if (error instanceof Response) {
+        errMsg = `${error.status} - ${error.ok || ''}`;
+        if (error.status === 0) {
+          errMsg = `${error.status} - "No Internet"`;
+        }
+      } else {
+        errMsg = error.message ? error.message : error.toString();
       }
-    } else {
-      errMsg = error.message ? error.message : error.toString();
+      return Observable.throw(errMsg);
     }
-    return Observable.throw(errMsg);
-  }
 
 }
