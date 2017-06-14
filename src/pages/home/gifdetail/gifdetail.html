@@ -49,13 +49,16 @@
         <img class="social-icons s-messenger" src="assets/icon/ic_messenger.png" (click)="shareGifFacebook()"/>
         <img class="social-icons s-hike" src="assets/icon/ic_hike.png" (click)="shareGifInstagram()"/> <!-- Hike instead of Instagram-->
         <img class="social-icons s-neutral" src="assets/icon/ic_link.png" />
-         <img class="social-icons s-neutral" src="assets/icon/ic_share.png" />
+        <img class="social-icons s-neutral" src="assets/icon/ic_share.png" />
     </div>
 
     <div class="gif-tags">
-        <ion-badge class="tag-badge" item-right color="secondary" (click)="TagClicked('Horror')">Horror</ion-badge>
-        <ion-badge class="tag-badge" item-right color="secondary" (click)="TagClicked('Doggy')">Doggy</ion-badge>
-        <ion-badge class="tag-badge" item-right color="secondary" (click)="TagClicked('Happy')">Happy</ion-badge>
+        <ion-badge class="tag-badge" item-right (click)="TagClicked('Horror')">Horror</ion-badge>
+        <ion-badge class="tag-badge" item-right (click)="TagClicked('Doggy')">Doggy</ion-badge>
+        <ion-badge class="tag-badge" item-right (click)="TagClicked('Happy')">Happy</ion-badge>
+        <ion-badge class="tag-badge" item-right>
+            <ion-icon class="ic-more-tag" name="md-code-working"></ion-icon>
+        </ion-badge>
     </div>
 
     <div class="related-gifs"><b>{{totalcount}}</b> RELATED GIFS</div>
