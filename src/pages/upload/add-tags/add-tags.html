@@ -7,22 +7,26 @@
 </ion-header>
 
 <ion-content class="content-background">
-    <ion-card>
-        <img class="gifviewer" [src]="gifurl">
-    </ion-card>
-
-    <ion-item class="add-source">
-        <ion-icon name="link" item-left></ion-icon>
-        <ion-input type="text" placeholder="add source"></ion-input>
-    </ion-item>
-
-    <ion-item class="add-tags-textarea">
-        <ion-label floating>Add tags</ion-label>
-        <!--<ion-textarea col="10" ></ion-textarea> -->
+<div class="gifviewer">
+        <img class="gif-uploaded" [src]="gifurl">
+</div>
+     <div class="gin-box-tag">
+    <ion-item>
+       
+         <ion-label floating>Add Source</ion-label>
+          <ion-icon name="link" item-right></ion-icon>
         <ion-input type="text"></ion-input>
     </ion-item>
 
+    <ion-item>
+       
+        <ion-label floating>Add tags</ion-label>
+         <ion-icon name="md-pricetags" item-right></ion-icon>
+        <!--<ion-textarea col="10" ></ion-textarea> -->
+        <ion-input type="text"></ion-input>
+    </ion-item>
+     </div>
     <div class="upload-button">
-        <button ion-button color="danger" (click)="UploadGif()">Upload</button>
+        <button class="gin-button-1 gin-center gin-button-lg" ion-button round (click)="UploadGif()">Upload</button>
     </div>
 </ion-content>
