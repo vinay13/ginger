@@ -18,12 +18,16 @@ import { AddTagsComponent } from '../pages/upload/add-tags/add-tags.component';
 import { PopOverComponent } from '../pages/home/gifdetail/popover';
 import { SocialSharing } from '@ionic-native/social-sharing'; 
 import { Transfer } from '@ionic-native/transfer';
+import { Page1Page } from "../pages/page1/page1";
+import { Page2Page } from "../pages/page2/page2";
+import { Page3Page } from "../pages/page3/page3";
 
 //third party imports 
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { Keyboard } from '@ionic-native/keyboard';
+
 //custom component
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { NoInternetComponent } from '../components/noInternet/noInternet.component';
@@ -64,7 +68,10 @@ import { AppRate } from '@ionic-native/app-rate';
     AddTagsComponent, 
     PopOverComponent,
     ProgressBarComponent,
-    NoInternetComponent 
+    NoInternetComponent ,
+    Page1Page,
+    Page2Page,
+    Page3Page
   ],
   imports: [
     HttpModule,
@@ -88,6 +95,9 @@ import { AppRate } from '@ionic-native/app-rate';
     SettingsComponent,
     AddTagsComponent,
     PopOverComponent,
+    Page1Page,
+    Page2Page,
+    Page3Page
   ],
   providers: [
     StatusBar,
