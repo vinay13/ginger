@@ -33,7 +33,7 @@ export class ProfileService{
             headers : headers
         });
 
-        return this.http.get(this.url + 'profile',options)
+        return this.http.get('https://violet.mobigraph.co/ginger/' + 'profile',options)
                 .map(this.extractData)
                 .catch(this.handleError)         
     }
