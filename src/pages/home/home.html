@@ -5,12 +5,18 @@
   <!-- <div class="home-icon" (click)="userProfile()">
      <img src="assets/icon/icon.png" style="width:30px; height:30px;"/>
   </div> -->
+<div class="idiom-button">
+
   <div class="hindi-icon" (click)="navIdiom()">
      <img src="assets/icon/ic_hindi.png"/>
   </div>
+
   <span class="idiom-name" (click)="navIdiom()">{{ selectedIdiom }}</span>
+</div>
+
   <ion-icon class="search-icon" name="md-contact" (click)="checklogin()"></ion-icon>
   <ion-icon class="search-icon" name="search" (click)="searchButton()"></ion-icon>
+
 </div>  
 
   <ion-segment  [(ngModel)]="selectedSegment" (ionChange)="onSegmentChanged($event)">
@@ -56,7 +62,7 @@
     <button ion-fab><ion-icon name="md-add"></ion-icon></button>
     <ion-fab-list side="left">
       <button ion-fab><ion-icon name="md-document" (click)="ImagePick()"></ion-icon></button>
-      <button ion-fab><ion-icon name="md-link" (click)="UploadviaWeb()"></ion-icon></button>
+      <button ion-fab><ion-icon name="md-link" src="/upload/upload.html" (click)="UploadviaWeb()"></ion-icon></button>
     </ion-fab-list>
   </ion-fab>
 

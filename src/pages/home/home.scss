@@ -21,28 +21,41 @@
 .hindi-icon{
     width: 32px;
     height: 32px;
-    position: absolute;
     margin: 10px;
     background: linear-gradient(to top right, #8162F6, #FA7875 100%);
     border-radius: 50%;
     padding: 7px;
-    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.30);
-}
-
-.idiom-icon{
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    margin: 10px;
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.30);
 }
 
 .idiom-name{
     font-size : 1.2em;
     font-weight: 600;
     color: white;
-    line-height: 56px; 
+    line-height: 52px; 
+
+    
+}
+
+ion-segment-button {
+    letter-spacing: 0.3px;
+    font-weight: 600 !important;
+}
+
+.idiom-button {
+    display: flex;
+  
+background: rgba(250,250,250,0.10);
     position: absolute;
-    margin-left: 50px;
+    height: 48px;
+    align-content: center;
+box-shadow: 0 1px 8px 0 rgba(0,0,0,0.20);
+    width: auto;
+    margin-top: 0.5%;
+    margin-left: -5px;
+    padding-right: 20pt;
+    border-radius: 0px 999px 999px 0px;
+ align-items: center;
 }
 
 .header-home{
