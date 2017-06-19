@@ -1,8 +1,6 @@
-<ion-header>
-    <ion-navbar class="navbar">
-        
+<ion-header no-border>
+    <ion-navbar>
         <ion-icon class="favorite-icon" name="md-heart-outline" (click)="Addfavorites()"></ion-icon>
-         <ion-icon class="search-icon" name="search" (click)="searchButton()"></ion-icon>
          <ion-buttons end>
             <button class="options-icon" ion-button icon-only (click)="presentPopover($event)">
                 <ion-icon name="more"></ion-icon>
@@ -46,15 +44,12 @@
     </div>
 
     <div class="social-sharing">
-        <img class="social-icons" src="assets/icon/whatsapp.png" (click)="shareGif()"/>
-        <img class="social-icons" src="assets/icon/twitter.png" (click)="shareGifTwitter()"/>
-        <img class="social-icons" src="assets/icon/facebook.png" (click)="shareGifFacebook()"/>
-        <img class="social-icons" src="assets/icon/instagram.png" (click)="shareGifInstagram()"/>
-        <img class="social-icons" src="assets/icon/download.png" (click)="download()"/>
-        <img class="social-icons" src="assets/icon/linkurl.png" (click)="copyUrl(gifurl)"/>
-        <span class="social-icons">
-            <ion-icon class="more-socialIcons" name="ios-more-outline" ></ion-icon>
-        </span>
+        <img class="social-icons s-whatsapp" src="assets/icon/ic_whatsapp.png" (click)="shareGif()"/>
+        <img class="social-icons s-twitter" src="assets/icon/ic_twitter.png" (click)="shareGifTwitter()"/>
+        <img class="social-icons s-messenger" src="assets/icon/ic_messenger.png" (click)="shareGifFacebook()"/>
+        <img class="social-icons s-hike" src="assets/icon/ic_hike.png" (click)="shareGifInstagram()"/> <!-- Hike instead of Instagram-->
+        <img class="social-icons s-neutral" src="assets/icon/ic_link.png" />
+        <img class="social-icons s-neutral" src="assets/icon/ic_share.png" />
     </div>
 
     <div class="gif-tags">
@@ -66,10 +61,7 @@
         </ion-badge>
     </div>
 
-    <div>
-        <span class="related-gifs"><b>{{totalcount}}</b> RELATED GIFS</span>
-        <!--<span class="gif-source"> www.giphy.com </span>-->
-    </div>
+    <div class="related-gifs"><b>{{totalcount}}</b> RELATED GIFS</div>
     <div class="pins">
         <div class="pin" *ngFor="let rgifs of recomns">
              <img class="gifpin" src={{rgifs.url}} (click)="GIFviewer(rgifs)">

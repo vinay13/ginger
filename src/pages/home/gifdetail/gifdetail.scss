@@ -1,12 +1,3 @@
-page-gifdetail{
-// .navbar{
-//     .toolbar-background {
-//         background: transparent!important;
-//         background-repeat: no-repeat;
-//         background-position: 50% 50%;
-//     }
-// }
-
 .favorite-icon{
     font-size: 25px;
     float: right;
@@ -17,6 +8,10 @@ page-gifdetail{
     color: white;
 }
 
+.ion-label{
+    color: black !important;
+}
+
 .gifviewer {
     width: 100%;
     height: auto;
@@ -24,8 +19,8 @@ page-gifdetail{
 }
 
 .Gifdetail{
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     position: relative;
     box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.40);
 }
@@ -34,11 +29,6 @@ page-gifdetail{
     background-color: #202E3F;
 }
 
-.social-sharing{
-    width : 100%;
-    //height : 50px;
-    background-color: #232830;
-    padding-left: 8px;
 // Remove ion-content margin-top
 page-gifdetail .scroll-content {
     margin-top:0px !important;   
@@ -49,13 +39,6 @@ page-gifdetail .toolbar-background-md {
     border-color: transparent;
 }
 
-.gif-tags{
-    width : 100%;
-    background-color: #232830;
-    padding : 5px;
-    color: white;
-    font-size : 17px;
-    border-top: 1px solid #2b3b50;
 .gif-info {
     background-color: #2b3b50;
     height: 35pt;
@@ -85,27 +68,20 @@ page-gifdetail .toolbar-background-md {
     padding: 2%;
 }
 
-.social-icons{
-    width: 40px;
-    height: 40px;
-    margin: 5px;
-    padding: 0px;
-}
-
-
-.gif-source{
-    color: white;
-    font-size: 16px;
-    margin-right: 5px;
-    padding-right: 4px;
-    float: right;
-}
-
-.favorite-icon{
-    font-size: 30px;
-    float: right;
-    color: white;
+.social-icons {
+    width: 42px;
+    height: 42px;
     padding: 10px;
+    margin: 2px;
+    border-radius: 5px;
+    box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.30);
+}
+.s-whatsapp {
+    background-color: #51CA5E;
+}
+
+.s-twitter {
+    background-color: #50ABF1;
 }
 
 .s-messenger {
@@ -152,22 +128,8 @@ page-gifdetail .toolbar-background-md {
     color: white;
 }
 
-.bar-button-md[icon-only] ion-icon {
-    padding: 0 .1em;
-    min-width: 28px;
-    font-size: 1.8em;
-    line-height: .67;
-    pointer-events: none;
-    color: white;
-}
-
-.gifviewer{
-    width: 100%;
-    height:260px;  
-}
-
 .ios ,.md {
-    page-gifdetail{
+    page-gifdetail {
         .pins{
             column-count : 2;
             margin-left: 16px; margin-right: 16px;
@@ -184,6 +146,4 @@ page-gifdetail .toolbar-background-md {
             background: #8463F2;
         }
     }
-}
-
 }

@@ -24,8 +24,10 @@ export class HomeComponent implements OnInit{
   @ViewChild('mySlider') slider: Slides;
   selectedSegment: string;
   slides: any;
-
-  public selectedIdiom;
+   public selectedIdiom;
+  public lang : any;  
+  
+ 
   public allgifs:boolean = false;
   public fallgifs:boolean = true;
   constructor(public navCtrl: NavController,
@@ -194,6 +196,6 @@ export class HomeComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    
+    this.lang =  "assets/icon/ic_"+ this.selectedIdiom +".png";
   }
 }

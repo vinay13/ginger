@@ -1,12 +1,14 @@
  .search-icon{  
     font-size: 30px;
+    position: right;
     float: right;
+    margin-right: 10px;
     padding: 10px;
-    color: white!important;
+    color: #35EC97;
 }
 
 .home-content{
-    background-color: #000000;
+    background-color: #202E3F;
 }
 
 .home-icon{
@@ -27,43 +29,10 @@
 }
 
 .idiom-name{
-    font-size : 20px;
-    color:#fff;
-    display:inline-block;
-    margin:10px 10px 0 0;
-    padding:5px 10px
-}
-
-.header-home{
-    overflow:hidden; 
-    text-align: center;
-}
-
-//background: #ff1943 !important;
-.navbar{
-    .toolbar-background {
-        background: linear-gradient(45deg, rgba(129,98,246,0.85) 0%, rgba(250,119,117,0.85) 100%) !important;
-        background-repeat: no-repeat;
-        background-position: 50% 50%;
-    }
-}
-
-.tabs-style {
-    font-size:20px;
-    color : white !important;
-}
-
-.segment-button{
-    color: white !important;
-
-}
-
-.toolbar-ios .segment-ios{
-    position: relative !important;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0; 
+    font-size : 1.2em;
+    font-weight: 600;
+    color: white;
+    line-height: 52px;
 }
 
 ion-segment-button {
@@ -91,27 +60,29 @@ box-shadow: 0 1px 8px 0 rgba(0,0,0,0.20);
     overflow: hidden; 
 }
 
-.fab-ios , .fab-md{
-    color : white !important;
-    background-color : red !important;
+//Enable Scroll
+.swiper-slide {
+    overflow-y: scroll;
+    display: block;
 }
 
 .ios ,.md {
     page-home {
         .pins{
             column-count : 2;
-            column-gap: 15px;
+            margin-left: 15px; margin-right: 15px;
+            margin-top: 2%;
         }
         .pin{
             display: inline-block;
-            margin : -1px -5px -9px -9px;
+            margin : -0px -6px -0px -6px;
             padding: 0px;
-           //  background-repeat: no-repeat;
-            // background-size: contain;
-            // background: #00e589;
         }
         .gifpin{
-            
+            border-radius: 5px;
+            width: 100%;
+            height: auto;
+            background: #8463F2;
         }
     }
 }
