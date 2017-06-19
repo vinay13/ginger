@@ -4,9 +4,9 @@ progress-bar {
 		width: 100%;
 		text-align: center;
 		color: #fff;
-		border-radius: 20px;
         position:absolute;
-        margin-top: -7px;
+        margin-top: -8px;
+		background-color: rgba(255,255,255,0.20);
 	}
 
     
@@ -14,7 +14,7 @@ progress-bar {
 		min-width: 0%;
 		white-space: nowrap;
 		overflow: hidden;
-		background-color: map-get($colors,secondary);
+		background-color: #35EC97;
         height: 7px;
 	}
 

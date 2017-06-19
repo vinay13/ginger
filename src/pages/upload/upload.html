@@ -7,24 +7,25 @@
 </ion-header>
 
 <ion-content class="content-background">
-    
+  <div class="gin-box-upload">
     <ion-list class="upload-urlbar">
-        <ion-card >
+        
             <ion-item>
-                <ion-icon name="md-clipboard" item-right></ion-icon>
+                <ion-icon class="paste-icon" name="md-clipboard" item-right></ion-icon>
                 <!--<ion-label stacked>Upload Url</ion-label>-->
-                <ion-input placeholder="Enter Web Addres(URL)" type="text" [(ngModel)]="weburl"></ion-input>
+                <ion-label floating>Enter Web Address(URL)</ion-label>
+                <ion-input type="text" [(ngModel)]="weburl"></ion-input>
             </ion-item>
-        </ion-card>
+    
 
     </ion-list>
+  </div>
     <div class="upload-comment">
-         <p> Make sure your link contains a .gif </p>
-         <p> extension and http:// or https:// </p>
+        <p> Make sure your link contains a <strong>.gif</strong> extension and <strong>http://</strong> or <strong>https://</strong></p>
     </div>
 
     <div class="upload-button" >
-         <button ion-button (click)="AddTags(weburl)">Upload</button>
+         <button ion-button round class="gin-button-1 gin-center gin-button-lg" (click)="AddTags(weburl)">Upload</button>
     </div>
 
    

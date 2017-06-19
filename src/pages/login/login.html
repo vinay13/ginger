@@ -15,32 +15,40 @@
             <form  [formGroup]="loginform" >
         
             <ion-list no-line>
+    <!--<div class="gin-box-login">
+        <form  [formGroup]="loginform" >
+            <div class="gin-box-login-inside">-->
                 <ion-item>
-                    <ion-input type="text" placeholder="Email" name="email" formControlName="emailId"></ion-input>
+                    <ion-label floating>Email</ion-label>
+                    <ion-input type="text" name="email" formControlName="emailId"></ion-input>
                 </ion-item>
-               
-              <ion-item>
-                    <ion-icon [name]=icon color="primary" item-right (click)="EyeOffClicked(icon)"></ion-icon>
-                    <ion-input type="password" placeholder="Password" name="password" formControlName="password"></ion-input>         
+                <ion-item>
+                    <ion-icon [name]=icon class="eye-icon" item-right (click)="EyeOffClicked(icon)"></ion-icon>
+                     <ion-label floating>Password</ion-label>
+                    <ion-input type="password" name="password" formControlName="password"></ion-input>         
                 </ion-item>   
-            </ion-list>
-         
+            </div>
+
+            <button ion-button block round class="gin-button-1 gin-button-lg" type="submit" (click)="UserLogin()">Login</button>
+
+            <h5> OR </h5>
+
+            <button ion-button block round icon-left class="gin-button-fb" (click)="facebookLogin()">
+                <ion-icon name="logo-facebook"></ion-icon> 
+                Login with Facebook
+            </button>
+
+            <button ion-button block round icon-left class="gin-button-gg" (click)="googleLogin()">
+                <ion-icon name="logo-google"></ion-icon>
+                Login with Google
+            </button>
             
- 
-            <button ion-button block outline color="light" type="submit" (click)="UserLogin()">Login</button>
-           
-           <h2> OR </h2>
-
-            <button ion-button block class="loginBtn loginBtn--facebook" (click)="facebookLogin()">
-                 Login with Facebook
-            </button>
-
-
-            <button ion-button block class="loginBtn loginBtn--google" (click)="googleLogin()">
-                 Login with Google
-            </button>
-                <a> Don't have an account? Sign up </a>
-             </form>
-         </ion-card-content>
-    </ion-card>
+            <div class="login-links">
+                <span> Don't have an account?  </span>
+                <a class="a-link"> Join Gola! </a> 
+                 <br><br>
+                <a class="a-link"> Forgot Password </a>
+            </div>
+        </form>
+    </div>
 </ion-content>

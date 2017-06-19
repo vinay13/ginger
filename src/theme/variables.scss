@@ -61,6 +61,45 @@ $colors: (
 
 @import "ionic.theme.default";
 
+// Text Input
+$text-input-md-highlight-color: #35EC97;
+$text-input-highlight-color-valid: white;
+$label-md-text-color-focused: white;
+$label-md-text-color: #8A9BB2;
+
+// Toggle
+$toggle-md-active-color:#35EC97;
+
+// Home Segment
+$segment-button-md-text-color-activated: white;
+$segment-button-md-border-color-activated: white;
+$segment-button-md-border-bottom-width: 3px;
+$segment-button-md-border-bottom-color: transparent;
+
+// Avatar Chip
+$chip-md-text-color: white;
+
+// Search
+$searchbar-md-input-background-color: transparent;
+$searchbar-md-input-clear-icon-color: white;
+$searchbar-md-input-placeholder-color: #17212F;
+$searchbar-md-input-box-shadow: transparent;
+$searchbar-md-input-text-color: white;
+
+// Fab Button
+$fab-md-box-shadow: 0 3px 18px 0 rgba(0,0,0,0.50);
+$fab-md-background-color: white;
+$fab-md-text-color: #8463F2;
+$fab-md-list-button-text-color: #8463F2;
+
+//PopOver
+$popover-md-border-radius: 12px;
+$popover-md-width: 180px;
+$popover-md-text-color: #35EC97;
+
+// Toast
+$toast-md-background: rgba(132,99,242,0.90);
+
 
 // Ionicons
 // --------------------------------------------------
