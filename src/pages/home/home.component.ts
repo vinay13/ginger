@@ -75,7 +75,9 @@ export class HomeComponent implements OnInit{
 
 
   searchButton(){
-      this.navCtrl.push(SearchComponent);
+      this.navCtrl.push(SearchComponent,{
+        'idiom':this.selectedIdiom
+      });
   }
 
   navIdiom(){

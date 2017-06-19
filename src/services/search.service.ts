@@ -39,14 +39,14 @@ export class SearchService{
         return this.options;
     }
 
-    TextSuggestions(text){
-		return this.http.get(this.url + 'Hindi/suggest/' + text, this.options)
+    TextSuggestions(idiom,text){
+		return this.http.get(this.url + idiom + '/suggest/' + text, this.options)
 			   .map(this.extractData)
 			   .catch(this.handleError);
 	}
 
-    GetGifsSearch(text){
-        return this.http.get(this.url + 'Hindi/gifs/' + text,this.options)
+    GetGifsSearch(idiom,text){
+        return this.http.get(this.url + idiom + '/gifs/' + text,this.options)
                 .map(this.extractData)
                 .catch(this.handleError)
     }

@@ -15,7 +15,7 @@ export class SearchResultComponent implements OnInit {
 
     public searchItem;
     public searchedGifs = [];
-
+    selectedIdiom = 'Hindi';
     constructor(private navparams : NavParams,
                 private _searchService : SearchService,
                 private cs : CustomService ,
@@ -24,7 +24,7 @@ export class SearchResultComponent implements OnInit {
 
     getSearchGifs(item){
         this.cs.showLoader();
-        this._searchService.GetGifsSearch(item)
+        this._searchService.GetGifsSearch(this.selectedIdiom,item)
         .subscribe( (res) => { this.searchedGifs = res; this.cs.hideLoader();  },
                     (err) => { console.log(err); this.cs.hideLoader();},
                     () => console.log('related gifs',this.searchedGifs))

@@ -13,6 +13,7 @@ export class SearchComponent{
 
     searchQuery : string = '';
     items : string[];
+    selectedIdiom;
     @ViewChild('search') myInput ;
     public TopSearchlist ;
 
@@ -20,6 +21,7 @@ export class SearchComponent{
                 private navParmas : NavParams,
                 private _searchservice : SearchService,
                 private keyboard : Keyboard){
+                    this.selectedIdiom = this.navParmas.get('idiom');
                 // this.initializeitems();
                 //  this.getSuggestedItems(text);
                 this.TopSearchlist = true;
@@ -50,7 +52,7 @@ export class SearchComponent{
 
     public suggestedText = [];
     getSuggestedItems(val){
-        this._searchservice.TextSuggestions(val)
+        this._searchservice.TextSuggestions( this.selectedIdiom,val)
         .subscribe( (data) => { this.suggestedText = data },
                     () =>  console.log('suggested text', this.suggestedText))
     }
@@ -67,7 +69,7 @@ export class SearchComponent{
 
     public searchedGifs = [];
     getSearchGifs(item){
-        this._searchservice.GetGifsSearch(item)
+        this._searchservice.GetGifsSearch(this.selectedIdiom,item)
         .subscribe( (res) => { this.searchedGifs = res },
                     () => console.log('related gifs',this.searchedGifs))
     }
