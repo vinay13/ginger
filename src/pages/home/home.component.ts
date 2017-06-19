@@ -13,6 +13,7 @@ import { AddTagsComponent } from '../upload/add-tags/add-tags.component';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { File } from '@ionic-native/file';
 import { AppRateService } from '../../services/apprate.service';
+import { ProfileService} from '../../services/profile.service';
 
 @Component({
     selector : 'page-home',
@@ -36,9 +37,11 @@ export class HomeComponent implements OnInit{
               public _homeserv : HomeService,
               public cs : CustomService,
               public cameraa : Camera,
-              public file : File) {
+              public file : File,
+              public _proServ : ProfileService) {
               
-             
+
+             this.getProfileData();
               this.tabsData();
               this.selectedIdiom = this.navParams.get('idiom');
               this.getTrendingGIFs();
@@ -104,7 +107,7 @@ export class HomeComponent implements OnInit{
   getTrendingGIFs(){
     this.cs.showLoader();
     this._homeserv.getTrendingGifs(this.selectedIdiom)
-    .subscribe( (result) => { this.trendingGIFs = result ; this.gifs = this.gifs.concat(this.trendingGIFs.data);  this.cs.hideLoader(); },
+    .subscribe( (result) => { this.trendingGIFs = result ; this.gifs = this.gifs.concat(this.trendingGIFs.contents);  this.cs.hideLoader(); },
                 (err) => {  this.cs.hideLoader(); },
                 () => console.log('trendingGifs',this.trendingGIFs))
   }
@@ -188,6 +191,14 @@ export class HomeComponent implements OnInit{
     });
   }
 
+  public profiledata;
+  getProfileData(){
+        this._proServ.GetUserProfile()
+        .subscribe( (data) => { this.profiledata = data },
+                     (err) => { alert(err);},   
+                    () => {console.log('pro',this.profiledata)})
+    }
+
   public tabs;
   tabsData(){
     this._homeserv.mainTabs()
@@ -197,5 +208,6 @@ export class HomeComponent implements OnInit{
 
   ngOnInit(): void {
     this.lang =  "assets/icon/ic_"+ this.selectedIdiom +".png";
+    
   }
 }

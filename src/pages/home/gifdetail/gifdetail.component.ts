@@ -20,6 +20,7 @@ export class GifDetailComponent {
     public gifurl;
     public gifobject;
     public recomns : any;
+    public tagslist;
     constructor(public popoverCtrl : PopoverController,
                 public navCtrl : NavController,
                 public toastCtrl : ToastController,
@@ -30,8 +31,9 @@ export class GifDetailComponent {
                 private file: File,
                 public navparams : NavParams){
                     this.gifobject = this.navparams.get('url');
-                    this.gifurl =  this.gifobject.images.downsized_still.url;
+                    this.gifurl =  this.gifobject.url;
                     this.RecommendedGifs();
+                    this.tagslist = this.gifobject.tags;
                 }
 
     loadProgress: number = 0;
@@ -44,13 +46,13 @@ export class GifDetailComponent {
 				this.loadProgress++;
                 
                 if(this.loadProgress == 10){
-                    this.gifurl = this.gifobject.images.downsized.url;
+                    this.gifurl = this.gifobject.url;
                 }
 
                 if(this.loadProgress == 30)
                 {
                     console.log(this.gifurl);
-                    this.gifurl = this.gifobject.images.original.url;
+                    this.gifurl = this.gifobject.url;
                     console.log(this.gifurl);
                 }
 
@@ -62,11 +64,14 @@ export class GifDetailComponent {
 
 		}, 70);
 
-	}            
+	} 
+
+    
+           
 
     public totalcount;
     RecommendedGifs(){
-        this._homeserv.getRelatedGifs()
+        this._homeserv.getRelatedGifs(this.gifobject.idiom,this.gifobject.id)
             .subscribe( (res) => {this.recomns = res.contents, this.totalcount = res.totalCount},
                         (err) => console.log(err),
                         () => console.log('related gifs',this.totalcount))

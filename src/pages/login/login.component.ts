@@ -40,7 +40,9 @@ export class LoginPage implements OnInit{
   }
 
   NavLogin(){  
-    this.navCtrl.push(HomeComponent);
+    this.navCtrl.push(HomeComponent,{
+        'idiom': "Telugu"
+    });
   }
 
   Loginresponse : any;

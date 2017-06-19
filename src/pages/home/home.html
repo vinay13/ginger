@@ -11,6 +11,7 @@
      <img [src]=lang/>
   </div>
 
+  <!--<h1>{{ profiledata.userName }}</h1>-->
   <span class="idiom-name" (click)="navIdiom()">{{ selectedIdiom }}</span>
 </div>
 
@@ -49,7 +50,7 @@
       <div class="pins">
         <div class="pin" *ngFor="let gif of gifs" (click)="navGifDetail(gif)">
               <!--<img *ngIf="fallgifs" class="gifpin" src="{{gif.images.downsized_still.url}}">-->
-              <img  class="gifpin" src="{{gif.images.downsized.url}}">
+              <img  class="gifpin" src="{{gif.url}}">
         </div>
       </div>
     </ion-slide>

@@ -147,3 +147,17 @@ page-gifdetail .toolbar-background-md {
         }
     }
 }
+
+
+ion-label {
+    display: block;
+    overflow: hidden;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    margin: 0;
+    font-size: inherit;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: black;
+}

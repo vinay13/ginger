@@ -53,9 +53,8 @@
     </div>
 
     <div class="gif-tags">
-        <ion-badge class="tag-badge" item-right (click)="TagClicked('Horror')">Horror</ion-badge>
-        <ion-badge class="tag-badge" item-right (click)="TagClicked('Doggy')">Doggy</ion-badge>
-        <ion-badge class="tag-badge" item-right (click)="TagClicked('Happy')">Happy</ion-badge>
+        <ion-badge  *ngFor="let tag of tagslist" class="tag-badge" item-right (click)="TagClicked(tag)">{{tag}}</ion-badge>
+
         <ion-badge class="tag-badge" item-right>
             <ion-icon class="ic-more-tag" name="md-code-working"></ion-icon>
         </ion-badge>
