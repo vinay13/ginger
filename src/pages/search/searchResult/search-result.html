@@ -12,7 +12,7 @@
     </div>
 
      <div class="pins">
-         <div class="pin" *ngFor="let gifs of searchedGifs.contents" (click)="viewGif(gifs.url)">
+         <div class="pin" *ngFor="let gifs of searchedGifs.contents" (click)="viewGif(gifs)">
             <img class="gifpin" src={{gifs.url}}>
           </div>
 

@@ -117,7 +117,9 @@ ionViewDidLoad(){
   }
 
   checklogin(){
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.push(LoginPage,{
+      'idiom': this.selectedIdiom
+    });
   }
 
   UploadviaWeb(){

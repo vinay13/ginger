@@ -1,5 +1,5 @@
 import { Component ,OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,NavParams } from 'ionic-angular';
 import { HomeComponent } from '../home/home.component';
 import { LoginService } from '../../services/login.service';
 import { GooglePlus } from '@ionic-native/google-plus';
@@ -16,12 +16,15 @@ export class LoginPage implements OnInit{
   public email;
   public password;
   public loginform : FormGroup;
-
+  public selectedIdiom; 
   constructor(public navCtrl: NavController,
+              public navparams : NavParams,
               public _authServ: LoginService,
               public googlePlus : GooglePlus,
               public fb : Facebook
-             ) {}
+             ) {
+                this.selectedIdiom = this.navparams.get('idiom');
+             }
 
   icon :string = "md-eye";
   type : string = "password";
@@ -41,7 +44,7 @@ export class LoginPage implements OnInit{
 
   NavLogin(){  
     this.navCtrl.push(HomeComponent,{
-        'idiom': "Hindi"
+        'idiom': this.selectedIdiom
     });
   }
 

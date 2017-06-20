@@ -39,8 +39,15 @@ export class ProfileService{
     }
 
     GetUserProfileEdit(body){
-        
-        return this.http.put(this.url+'profile',body,this.options)
+             let headers = new Headers({
+            'Content-Type' : 'application/json',
+            'Authorization' : 'Bearer' + ' ' + localStorage.getItem('access_token')
+        })
+
+        let options = new RequestOptions({
+            headers : headers
+        });
+        return this.http.post('https://violet.mobigraph.co/ginger/'+'profile',body,options)
                 .map(this.extractData)
                 .catch(this.handleError)
     }

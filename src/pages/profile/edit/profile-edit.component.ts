@@ -24,6 +24,13 @@ export class ProfileEditComponent {
                         () =>  console.log('userInfo',this.userInfo))
     }
 
+    public userData;
+    putUserData(userInfo){
+        this.proServ.GetUserProfileEdit(userInfo)
+        .subscribe ( (res) => { this.userData = res},
+                        () => console.log('userData',this.userData))
+    }
+
     SaveProfile(){
         this.navCtrl.pop();
     }
