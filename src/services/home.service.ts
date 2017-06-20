@@ -11,7 +11,7 @@ import { Configuration } from './app.constant';
 export class HomeService{
 
     public url;
-    public golaurl = 'https://violet.mobigraph.co/ginger/Hindi/gifs/0/100';    
+    public golaurl = 'https://violet.mobigraph.co/ginger/';   
     public giphyurl = 'http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC';
     public serverUrl : string;
     public headers;
@@ -48,8 +48,8 @@ export class HomeService{
 	// 		   .catch(this.handleError);
 	// }
 
-     public getTrendingGifs(idiom){
-		return this.http.get(this.golaurl, this.options)
+     public getTrendingGifs(idiom,pageno){
+		return this.http.get(this.golaurl+idiom+"/gifs/" + pageno + "/16", this.options)
 			   .map(this.extractData)
 			   .catch(this.handleError);
 	}

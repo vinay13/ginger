@@ -43,7 +43,7 @@
 </ion-header>
 
 
-<ion-content class="home-content">
+<ion-content scroll="true" class="home-content">
 
   <ion-slides #mySlider (ionDidChange)="onSlideChanged($event)">
     <ion-slide *ngFor="let slide of slides">
@@ -67,5 +67,11 @@
       <button ion-fab><ion-icon name="md-link" (click)="UploadviaWeb()"></ion-icon></button>
     </ion-fab-list>
   </ion-fab>
+
+<div ng-if="hasMoreData">
+    <ion-infinite-scroll  direction="x" class="con-scroll-x" has-bouncing="true" (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content ></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</div>
 
 </ion-content>

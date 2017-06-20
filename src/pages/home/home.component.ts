@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit{
   slides: any;
    public selectedIdiom;
   public lang : any;  
-  
+  public currentPage = 0;
  
   public allgifs:boolean = false;
   public fallgifs:boolean = true;
@@ -77,6 +77,9 @@ export class HomeComponent implements OnInit{
   //       }, 5000);
   // }
 
+ionViewDidLoad(){
+ // this.getTrendingGIFs();
+}
 
   searchButton(){
       this.navCtrl.push(SearchComponent,{
@@ -105,10 +108,11 @@ export class HomeComponent implements OnInit{
   public trendingGIFs: any;
   public gifs: Array<any> = []; 
   getTrendingGIFs(){
-    this.cs.showLoader();
-    this._homeserv.getTrendingGifs(this.selectedIdiom)
-    .subscribe( (result) => { this.trendingGIFs = result ; this.gifs = this.gifs.concat(this.trendingGIFs.contents);  this.cs.hideLoader(); },
-                (err) => {  this.cs.hideLoader(); },
+ //this.cs.showLoader();
+ console.log('currentpage',this.currentPage);
+    this._homeserv.getTrendingGifs(this.selectedIdiom,this.currentPage)
+    .subscribe( (result) => { this.trendingGIFs = result ; this.gifs = this.gifs.concat(this.trendingGIFs.contents); },
+                (err) => { console.log(err);},
                 () => console.log('trendingGifs',this.trendingGIFs))
   }
 
@@ -187,7 +191,8 @@ export class HomeComponent implements OnInit{
 
   navGifDetail(url){
     this.navCtrl.push(GifDetailComponent,{
-      'url' : url
+      'url' : url,
+      'idiom' : this.selectedIdiom
     });
   }
 
@@ -195,9 +200,9 @@ export class HomeComponent implements OnInit{
   getProfileData(){
         this._proServ.GetUserProfile()
         .subscribe( (data) => { this.profiledata = data },
-                     (err) => { alert(err);},   
+                    (err) => { alert(err);},   
                     () => {console.log('pro',this.profiledata)})
-    }
+  }
 
   public tabs;
   tabsData(){
@@ -205,6 +210,56 @@ export class HomeComponent implements OnInit{
     .subscribe((res) => { this.tabs = res.main },
                 () => {console.log('tabs',this.tabs)})
   }
+
+
+  //  hasMoreData;
+  //  doInfinite(infiniteScroll) {
+
+  //  this.currentPage = this.currentPage + 1;
+  //   console.log('currentpage', this.currentPage);
+  //      this._homeserv.getTrendingGifs(this.selectedIdiom, this.currentPage).subscribe(response =>
+  //       {
+  //         infiniteScroll.complete();
+  //         this.hasMoreData = true;
+  //         this.trendingGIFs = response;
+  //         this.gifs =  this.gifs.concat(this.trendingGIFs.contents); 
+  //     }, 
+  //   err => {
+  //     infiniteScroll.complete();
+  //     this.currentPage -= 1;
+  //  //   this.onError(err);
+  //   },
+  //    () => console.log('Next Page Loading completed')
+  //    );
+  // }
+
+
+
+
+
+
+
+
+  public pageno = 1;
+  doInfinite(infiniteScroll) {
+
+    let nextpage=this.pageno++;
+    console.log("next page:"+nextpage)
+    this._homeserv.getTrendingGifs(this.selectedIdiom,nextpage).subscribe(
+            data => {
+              infiniteScroll.complete();
+                this.trendingGIFs = data;
+                // for(let post of posts){
+                   this.gifs =  this.gifs.concat(this.trendingGIFs.contents); 
+                // }
+            },
+            err => {
+                console.log(err);
+            },
+            () => console.log('Next Page Loading completed')
+        );
+  infiniteScroll.complete();
+} 
 
   ngOnInit(): void {
     this.lang =  "assets/icon/ic_"+ this.selectedIdiom +".png";

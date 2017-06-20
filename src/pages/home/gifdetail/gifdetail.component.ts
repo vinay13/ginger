@@ -9,6 +9,7 @@ import { CustomService } from '../../../services/custom.service';
 import { HomeService } from '../../../services/home.service';
 import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
 import { File } from '@ionic-native/file';
+import { ProfileComponent } from '../../profile/profile.component';
 
 @Component({
     selector : 'page-gifdetail',
@@ -21,6 +22,7 @@ export class GifDetailComponent {
     public gifobject;
     public recomns : any;
     public tagslist;
+    public selectedIdiom;
     constructor(public popoverCtrl : PopoverController,
                 public navCtrl : NavController,
                 public toastCtrl : ToastController,
@@ -31,6 +33,7 @@ export class GifDetailComponent {
                 private file: File,
                 public navparams : NavParams){
                     this.gifobject = this.navparams.get('url');
+                     this.selectedIdiom = this.navparams.get('idiom');
                     this.gifurl =  this.gifobject.url;
                     this.RecommendedGifs();
                     this.tagslist = this.gifobject.tags;
@@ -86,12 +89,17 @@ export class GifDetailComponent {
 
     TagClicked(tag){
         this.navCtrl.push(SearchResultComponent,{
-            'tag' : tag
+            'tag' : tag,
+            'idiom': this.selectedIdiom
         });
     }
 
     searchButton(){
       this.navCtrl.push(SearchComponent);
+    }
+
+    userProfile(){
+        this.navCtrl.push(ProfileComponent);
     }
 
     GIFviewer(url){

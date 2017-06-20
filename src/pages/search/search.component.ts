@@ -24,6 +24,7 @@ export class SearchComponent{
                     this.selectedIdiom = this.navParmas.get('idiom');
                 // this.initializeitems();
                 //  this.getSuggestedItems(text);
+                console.log('idiom3',this.selectedIdiom);
                 this.TopSearchlist = true;
     }
 
@@ -80,7 +81,8 @@ export class SearchComponent{
 
         this.navCtrl.push(SearchResultComponent,{
             'sitem' : val ,
-            'relatedgifs' :  this.searchedGifs
+            'relatedgifs' :  this.searchedGifs,
+             'idiom' : this.selectedIdiom
       });
     }
 
@@ -91,7 +93,8 @@ export class SearchComponent{
          
          this.navCtrl.push(SearchResultComponent,{
             'sitem' : item ,
-            'relatedgifs' :  this.searchedGifs
+            'relatedgifs' :  this.searchedGifs ,
+            'idiom' : this.selectedIdiom
       });
     }
 }

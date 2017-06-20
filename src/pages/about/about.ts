@@ -30,7 +30,7 @@ export class AboutPage {
 
   constructor(public navCtrl: NavController,  private navParams: NavParams,
               public _homeserv : HomeService) {
-                  this.getTrendingGIFs();
+             //     this.getTrendingGIFs();
  const type = navParams.get('type');
     switch (type) {
       case 'icons-only':
@@ -59,11 +59,11 @@ export class AboutPage {
     public trendingGIFs: any;
     public gifs: Array<any> = [];
     public selectedIdiom = "hindi"; 
-    getTrendingGIFs(){
-    this._homeserv.getTrendingGifs(this.selectedIdiom)
-    .subscribe( (result) => { this.trendingGIFs = result ; this.gifs = this.gifs.concat(this.trendingGIFs.data);},
-                (err) => {  console.log(err); },
-                () => console.log('trendingGifs',this.trendingGIFs))
-    }
+    // getTrendingGIFs(){
+    // this._homeserv.getTrendingGifs(this.selectedIdiom)
+    // .subscribe( (result) => { this.trendingGIFs = result ; this.gifs = this.gifs.concat(this.trendingGIFs.data);},
+    //             (err) => {  console.log(err); },
+    //             () => console.log('trendingGifs',this.trendingGIFs))
+    // }
 
 }

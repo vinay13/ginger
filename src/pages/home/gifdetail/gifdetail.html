@@ -20,11 +20,12 @@
         <ion-grid>
         <ion-row>
             <ion-col col-4>
-                <ion-chip>
+                <ion-chip (click)="userProfile()">
                     <ion-avatar>
                         <img src="assets/icon/avatar.png">
                     </ion-avatar>
                     <ion-label>Gola</ion-label>
+                    
                     </ion-chip>
             </ion-col>
             <ion-col col-4>
@@ -64,19 +65,7 @@
     <div class="pins">
         <div class="pin" *ngFor="let rgifs of recomns">
              <img class="gifpin" src={{rgifs.url}} (click)="GIFviewer(rgifs)">
-        </div>
-
-        <div class="pin">
-            <img class="gifpin" src="https://media.giphy.com/media/12nDZFClQlLh4I/giphy-downsized.gif">
-        </div>
-
-        <div class="pin">
-              <img class="gifpin" src="https://media.giphy.com/media/3o6YglDndxKdCNw7q8/giphy-downsized.gif">
-        </div>
-        
-        <div class="pin">
-            <img class="gifpin" src="https://media.giphy.com/media/l0IyhbLtVpyGcYVuU/giphy-downsized.gif">
-        </div>
+        </div>   
     </div>
 
 </ion-content>

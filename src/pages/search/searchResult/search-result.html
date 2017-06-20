@@ -8,15 +8,15 @@
 
 <ion-content class="background-theme">
     <div class="search-result-header">
-        87,168 GIFS found for {{searchItem}}
+       {{searchedGifs.totalCount}} GIFS found for <b> {{searchItem}}  </b>
     </div>
 
      <div class="pins">
-         <div class="pin" *ngFor="let gifs of searchedGifs" (click)="viewGif(gifs.url)">
+         <div class="pin" *ngFor="let gifs of searchedGifs.contents" (click)="viewGif(gifs.url)">
             <img class="gifpin" src={{gifs.url}}>
-     </div>
+          </div>
 
-        <div class="pin">
+        <!--<div class="pin">
             <img class="gifpin" src="https://media.giphy.com/media/xUPGcw4AIPGBlWK1he/giphy-downsized.gif">
         </div>
 
@@ -26,8 +26,12 @@
 
         <div class="pin">
             <img class="gifpin" src="http://media2.giphy.com/media/3og0IRl2CEqW1iYEIo/giphy-downsized.gif">
-        </div>
+        </div>-->
         
 </div>
+
+ <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+ </ion-infinite-scroll>
    
 </ion-content>

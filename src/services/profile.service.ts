@@ -46,8 +46,16 @@ export class ProfileService{
     }
 
     getGifsUploadedByUrl(){
-        
-        return this.http.get(this.url+'gifs/mygifs',this.options)
+        let headers = new Headers({
+            'Content-Type' : 'application/json',
+            'Authorization' : 'Bearer' + ' ' + localStorage.getItem('access_token')
+        })
+
+        let options = new RequestOptions({
+            headers : headers
+        });
+
+        return this.http.get('https://violet.mobigraph.co/ginger/'+'gifs/mygifs',options)
             .map(this.extractData)
             .catch(this.handleError)
     }

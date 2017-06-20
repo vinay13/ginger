@@ -41,7 +41,7 @@ export class LoginPage implements OnInit{
 
   NavLogin(){  
     this.navCtrl.push(HomeComponent,{
-        'idiom': "Telugu"
+        'idiom': "Hindi"
     });
   }
 
@@ -75,7 +75,7 @@ export class LoginPage implements OnInit{
          'webClientId': '802921815833-vi6nrrotqau2c7c436j55c04r520lr8r.apps.googleusercontent.com',
          'offline': true,
       })
-         .then((res) => { this.googleResponse = JSON.stringify(res); alert(this.googleResponse); alert(res.serverAuthCode); this.gauthcallBack(res.serverAuthCode); this.navCtrl.push(HomeComponent); this.verifySuccessfully(res); })
+         .then((res) => { this.googleResponse = JSON.stringify(res);  alert(res.serverAuthCode); this.gauthcallBack(res.serverAuthCode); this.NavLogin();  })
          .catch(err => { console.log(err),alert(err)})
   }
 
@@ -94,7 +94,7 @@ export class LoginPage implements OnInit{
 
   public gauthcallBack(serverauthcode){
     this._authServ.gAuthCallback(serverauthcode)
-      .subscribe((res) => {alert("success"); alert(JSON.stringify(res))}, 
+      .subscribe((res) => {alert("success");this.verifySuccessfully(res); alert(res.token)}, 
                  (err) => {alert(serverauthcode); alert(err)})      
   }
 
