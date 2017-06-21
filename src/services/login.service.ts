@@ -23,9 +23,6 @@ export class LoginService{
     }
 
     public verifyUser(body){
-
-        console.log('bs',body);
-      
         let headers = new Headers({
           'Content-Type': 'application/json'
         });
@@ -38,7 +35,7 @@ export class LoginService{
     }
 
     public gAuthCallback(body){
-         alert(body);
+        
          let encodedbody = encodeURIComponent(body);
        //  let bodyString = JSON.parse(JSON.stringify(body));
          let headers = new Headers({

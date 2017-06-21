@@ -112,8 +112,7 @@ ionViewDidLoad(){
  console.log('currentpage',this.currentPage);
     this._homeserv.getTrendingGifs(this.selectedIdiom,this.currentPage)
     .subscribe( (result) => { this.trendingGIFs = result ; this.gifs = this.gifs.concat(this.trendingGIFs.contents); },
-                (err) => { console.log(err);},
-                () => console.log('trendingGifs',this.trendingGIFs))
+                (err) => { console.log(err);})
   }
 
   checklogin(){

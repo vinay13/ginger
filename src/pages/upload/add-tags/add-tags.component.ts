@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { GifDetailComponent } from '../../home/gifdetail/gifdetail.component';
 import { NavController,NavParams,LoadingController,ToastController } from 'ionic-angular';
 import { UploadGifService } from '../../../services/upload.service';
-import { Transfer , TransferObject } from  '@ionic-native/transfer';
+import { Transfer,TransferObject } from  '@ionic-native/transfer';
 import { File } from '@ionic-native/file';
 import {CustomService} from '../../../services/custom.service';
 import * as _ from 'underscore';
+import {FormGroup,FormControl,Validators} from '@angular/forms';
 
 @Component({
     selector : 'page-add-tags',
@@ -17,6 +18,8 @@ import * as _ from 'underscore';
 export class AddTagsComponent {
 
     public gifurl : any;
+    public selectedIdiom;
+    addtagsForm : FormGroup; 
     formgif: any;
     constructor(public navCtrl: NavController,
                 public loadingCtrl: LoadingController ,
@@ -27,8 +30,16 @@ export class AddTagsComponent {
                 public transfer: Transfer,
                 public cs: CustomService){
                 //    this.gifurl = this.navparams.get('gifpath');
+                    this.selectedIdiom = this.navparams.get('idiom');
                     this.gifurl = this.navparams.get('weburl') || this.navparams.get('gifpath') ;
-             }
+             
+                    this.addtagsForm = new FormGroup({
+                         url : new FormControl(this.gifurl),
+                         idiom : new FormControl(this.selectedIdiom),
+                         categories : new FormControl('Movie',[Validators.required]),
+                         tags : new FormControl(["Movie","MovieStar"],[Validators.required])   
+                    })
+        }
 
     ngOnInit(){
         this.formgif =  {
@@ -69,16 +80,16 @@ export class AddTagsComponent {
             },
             params: {
                 "gif": filename,
-                "idiom": "hindi",
+                "idiom": "Hindi",
                 "categories": ["Movie"],
                 "tags": ["Movie","MovieStar"]
             }
         }; 
        alert(filename);
-      // alert(this.gifurl);
+       alert(this.gifurl);
       this.cs.showLoader();
       
-        fileTransfer.upload(this.gifurl,'https://violet.mobigraph.co/ginger/uploadGif', options, false)
+        fileTransfer.upload(this.gifurl,'https://violet.mobigraph.co/ginger/uploadGif', options, true)
             .then((result: any) => {
               console.log('success');
               this.data_response = result ; 
@@ -86,7 +97,7 @@ export class AddTagsComponent {
               this.navCtrl.push(GifDetailComponent);
               alert('success');
           }).catch((error: any) => {
-                alert('error'+JSON.stringify(error));
+               alert('error'+JSON.stringify(error));
                this.cs.hideLoader();
         }); 
      }

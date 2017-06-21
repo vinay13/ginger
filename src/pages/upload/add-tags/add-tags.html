@@ -6,29 +6,30 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content class="content-background">
-<div class="gifviewer">
-        <img class="gif-uploaded" [src]="gifurl">
-</div>
+<ion-content class="content-background" > 
+    <form name="addtagsForm" [formGroup]="addtagsForm">
+    <div class="gifviewer">
+            <img class="gif-uploaded" [src]="gifurl">
+    </div>
      <div class="gin-box-tag">
     <ion-item>
-       
-         <ion-label floating>Add Source</ion-label>
+         <ion-label floating>Add Categories</ion-label>
           <ion-icon name="link" item-right></ion-icon>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" name="categories" formControlName="categories"></ion-input>
     </ion-item>
 
     <ion-item>
-       
         <ion-label floating>Add tags</ion-label>
          <ion-icon name="md-pricetags" item-right></ion-icon>
         <!--<ion-textarea col="10" ></ion-textarea> -->
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" name="tags" formControlName="tags"></ion-input>
         <!--<ion-badge item-start>tag1</ion-badge>
          <ion-badge item-start>tag2</ion-badge>-->
     </ion-item>
      </div>
     <div class="upload-button">
-        <button class="gin-button-1 gin-center gin-button-lg" ion-button round (click)="UploadGif()">Upload</button>
+        <button [disabled]="invalid" class="gin-button-1 gin-center gin-button-lg" ion-button round (click)="uploadGifviaGallery()">Upload</button>
+        <!--<button [disabled]="invalid" class="gin-button-1 gin-center gin-button-lg" ion-button round (click)="UploadGif()">Upload</button>-->
     </div>
+    </form>
 </ion-content>

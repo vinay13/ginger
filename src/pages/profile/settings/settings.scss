@@ -5,7 +5,11 @@
 
 .list-item-style{
     background-color: transparent;
-    color: white;
+    color: white !important;
+}
+
+ion-label{
+  color: white!important;
 }
 
 page-settings .item-inner {
