@@ -13,13 +13,13 @@
                     <ion-input type="text" name="email" formControlName="emailId"></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-icon [name]=icon class="eye-icon" item-right (click)="EyeOffClicked(icon)"></ion-icon>
+                    <ion-icon name="md-book" class="eye-icon" item-right (click)="EyeOffClicked(icon)"></ion-icon>
                      <ion-label floating>Password</ion-label>
                     <ion-input type="password" name="password" formControlName="password"></ion-input>         
                 </ion-item>   
             </div>
 
-            <button ion-button block round class="gin-button-1 gin-button-lg" type="submit" (click)="UserSignup()">Login</button>
+            <button ion-button block round class="gin-button-1 gin-button-lg" type="submit" (click)="UserSignup()">SignUp</button>
         </form>
     </div>
 </ion-content>

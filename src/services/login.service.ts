@@ -22,6 +22,19 @@ export class LoginService{
         return this.options;
     }
 
+    public SignupUser(xbody){
+        let jbody = JSON.stringify(xbody);
+       let headers = new Headers({
+          'Content-Type': 'application/json'
+        });
+        let options = new RequestOptions({
+           headers : headers
+        });
+       return this.http.post(this.baseUrl + '/signup',jbody,options)
+               .map(this.extractData)
+               .catch(this.handleError); 
+    }
+
     public verifyUser(body){
         let headers = new Headers({
           'Content-Type': 'application/json'
