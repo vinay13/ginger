@@ -21,17 +21,11 @@
        <div class="pin" *ngFor="let a of Uploadedgifs" (click)="gifViewer(a)">
            <img src="{{a.url}}">
        </div>
-        <div class="pin" >
-              <img src="https://media.giphy.com/media/xUA7bcNOGl78PkVLYA/giphy.gif">
-        </div>
-        <div class="pin" >
-              <img src="https://media.giphy.com/media/xUPGcw4AIPGBlWK1he/giphy.gif">
-        </div>
-        <div class="pin" >
-              <img src="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif">
-        </div>
-        <div class="pin" >
-              <img src="https://media.giphy.com/media/mXggOh7xql7MI/giphy.gif">
+
+        <div *ngIf="noUploads">
+            <ion-card>
+                <h1>No GIF's</h1>
+            </ion-card>
         </div>
     </div>
 

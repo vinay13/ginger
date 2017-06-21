@@ -13,6 +13,14 @@
      background-color :  #2b3b50; 
 }
 
+.card-md h1 {
+    margin: 0 0 2px;
+    font-size: 2.4rem;
+    font-weight: normal;
+    color: #8c194a;
+    text-align: center;
+}
+
 // Remove ion-content margin-top
 page-profile .scroll-content {
     margin-top:0px !important;   

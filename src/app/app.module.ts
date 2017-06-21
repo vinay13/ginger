@@ -5,6 +5,7 @@ import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
 import { AboutPage } from '../pages/about/about';
 import { LoginPage } from '../pages/login/login.component'; 
+import { SignupComponent } from '../pages/login/signup/signup.component';
 import { HomeComponent } from '../pages/home/home.component';
 import { SearchComponent } from '../pages/search/search.component';
 import { GifDetailComponent } from '../pages/home/gifdetail/gifdetail.component';
@@ -50,12 +51,14 @@ import { Network } from '@ionic-native/network';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { Facebook } from '@ionic-native/facebook';
 import { AppRate } from '@ionic-native/app-rate';
+import { FileChooser } from '@ionic-native/file-chooser';
 
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
     LoginPage,
+    SignupComponent,
     HomeComponent,
     SearchComponent,
     GifDetailComponent,
@@ -84,6 +87,7 @@ import { AppRate } from '@ionic-native/app-rate';
     MyApp,
     AboutPage,
     LoginPage,
+    SignupComponent,
     HomeComponent,
     SearchComponent,
     GifDetailComponent,
@@ -113,6 +117,7 @@ import { AppRate } from '@ionic-native/app-rate';
     NetworkService,
     Camera,
     File,
+    FileChooser,
     Transfer,
     SocialSharing,
     Network,

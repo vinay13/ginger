@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit{
               public cs : CustomService,
               public cameraa : Camera,
               public file : File,
+              public fileChooser : FileChooser,
               public _proServ : ProfileService) {
               
 
@@ -155,35 +156,43 @@ ionViewDidLoad(){
   // }
 
 
-  base64Image;
-  ImageFile;
-  public ImagePick(){
-   this.cs.showLoader();
-    this.cameraa.getPicture({
-        destinationType: this.cameraa.DestinationType.DATA_URL,
-        mediaType : this.cameraa.MediaType.ALLMEDIA,
-        sourceType     : this.cameraa.PictureSourceType.SAVEDPHOTOALBUM
-    }).then((imagedata)=>{
-      this.base64Image = 'data:image/gif;base64,' + imagedata;
-      this.ImageFile = imagedata ;
-      this.cs.hideLoader();
+//   base64Image;
+//   ImageFile;
+//   public ImagePick(){
+//    this.cs.showLoader();
+//     this.cameraa.getPicture({
+//         destinationType: this.cameraa.DestinationType.DATA_URL,
+//         mediaType : this.cameraa.MediaType.ALLMEDIA,
+//         sourceType     : this.cameraa.PictureSourceType.SAVEDPHOTOALBUM
+//     }).then((imagedata)=>{
+//       this.base64Image = 'data:image/gif;base64' + imagedata;
+//       this.ImageFile = imagedata ;
+//       this.cs.hideLoader();
+//        this.navCtrl.push(AddTagsComponent,{
+//         'gifpath' :  imagedata
+//       });    
+//     },(err)=>{
+//       console.log(err);
+//       this.cs.hideLoader();
+//     });
+// }
+
+
+  public imageFile : any;  
+  public data_response; 
+  ImagePick(){
+    this.cs.showLoader();
+      this.fileChooser.open()
+        .then(uri => {console.log(uri); this.imageFile = uri ; this.navAddTag(uri); } )
+        .catch(e => console.log(e));
+    }
+
+    navAddTag(uri){
+    this.cs.hideLoader();
        this.navCtrl.push(AddTagsComponent,{
-        'gifpath' :  imagedata
-      });    
-    },(err)=>{
-      console.log(err);
-      this.cs.hideLoader();
-    });
-}
-
-
-  // public imageFile : any;  
-  // public data_response; 
-  // ChooseFile(){
-  //     this.fileChooser.open()
-  //       .then(uri => {console.log(uri); this.imageFile = uri } )
-  //       .catch(e => console.log(e));
-  //   }
+        'gifpath' :  uri
+      });   
+    }
 
 
   userProfile(){

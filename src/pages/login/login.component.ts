@@ -5,7 +5,7 @@ import { LoginService } from '../../services/login.service';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
-
+import { SignupComponent } from './signup/signup.component';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -95,10 +95,16 @@ export class LoginPage implements OnInit{
      alert(this.googleResponse.access_token);
   }
 
+
+
   public gauthcallBack(serverauthcode){
     this._authServ.gAuthCallback(serverauthcode)
       .subscribe((res) => {this.verifySuccessfully(res);}, 
                  (err) => {alert(err)})      
+  }
+
+  public navSignup(){
+    this.navCtrl.push(SignupComponent);
   }
 
   ngOnInit(){

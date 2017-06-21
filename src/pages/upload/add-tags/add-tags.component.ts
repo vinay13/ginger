@@ -77,6 +77,7 @@ export class AddTagsComponent {
             mimeType: 'image/gif',
             chunkedMode: false,
             headers: {
+                 'Authorization' : 'Bearer'+' '+ localStorage.getItem('access_token')
             },
             params: {
                 "gif": filename,
