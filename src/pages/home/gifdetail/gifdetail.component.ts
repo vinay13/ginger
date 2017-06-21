@@ -108,7 +108,9 @@ export class GifDetailComponent {
         });   
     }
 
+    public favorite = false;
     Addfavorites(){
+       this.favorite = true;
        this.presentToast();
     }
 
