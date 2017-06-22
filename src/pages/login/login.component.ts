@@ -104,7 +104,9 @@ export class LoginPage implements OnInit{
   }
 
   public navSignup(){
-    this.navCtrl.push(SignupComponent);
+    this.navCtrl.push(SignupComponent,{
+      'idiom': this.selectedIdiom
+    });
   }
 
   ngOnInit(){

@@ -3,3 +3,10 @@ page-signup {
     background: #212E40;
   }
 }
+
+
+page-signup .navbar {
+  .toolbar-background {
+    background: linear-gradient(45deg, #8162F6 0%, #FA7875 100%) !important;
+  }
+}

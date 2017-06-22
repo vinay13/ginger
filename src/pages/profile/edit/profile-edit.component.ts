@@ -27,8 +27,9 @@ export class ProfileEditComponent {
     public userData;
     putUserData(userInfo){
         this.proServ.GetUserProfileEdit(userInfo)
-        .subscribe ( (res) => { this.userData = res},
-                        () => console.log('userData',this.userData))
+        .subscribe ( (res) => { this.SaveProfile(); this.userData = res ;  },
+                        (err) => { this.SaveProfile(); console.log('err',err)},
+                        () => console.log('userData', this.userData))
     }
 
     SaveProfile(){

@@ -6,20 +6,21 @@
 
 <ion-content class="background">
     <div class="gin-box-login">
-        <form [formGroup]="signupForm" >
+      
             <div class="gin-box-login-inside">
-                <ion-item>
-                    <ion-label floating>Email</ion-label>
-                    <ion-input type="text" name="email" formControlName="emailId"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-icon name="md-book" class="eye-icon" item-right (click)="EyeOffClicked(icon)"></ion-icon>
-                     <ion-label floating>Password</ion-label>
-                    <ion-input type="password" name="password" formControlName="password"></ion-input>         
-                </ion-item>   
+              
+                    <ion-item>
+                        <ion-label floating>Email</ion-label>
+                        <ion-input type="text"  [(ngModel)]="emailId"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-icon name="md-eye" class="eye-icon" item-right (click)="EyeOffClicked(icon)"></ion-icon>
+                        <ion-label floating>Password</ion-label>
+                        <ion-input type="password"  [(ngModel)]="password"></ion-input>         
+                    </ion-item> 
             </div>
 
-            <button ion-button block round class="gin-button-1 gin-button-lg" type="submit" (click)="UserSignup()">SignUp</button>
-        </form>
+            <button ion-button block round class="gin-button-1 gin-button-lg" type="submit" (click)="UserSignup(s)">SignUp</button>
+        
     </div>
 </ion-content>

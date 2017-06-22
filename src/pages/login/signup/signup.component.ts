@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {FormGroup,FormControl,Validators} from '@angular/forms';
 import {LoginService} from '../../../services/login.service';
 import {HomeComponent} from '../../home/home.component';
 
@@ -11,27 +10,35 @@ import {HomeComponent} from '../../home/home.component';
 
 export class SignupComponent{
 
-    signupForm : FormGroup;
+    
+    signupF;
+    emailId;
+    password;
+    selectedIdiom;
     constructor(public navCtrl : NavController,
                 public navparams : NavParams,
                 public _loginserv : LoginService){
-
-           this.signupForm = new FormGroup({
-               emailId : new FormControl(""),
-               partnerId : new FormControl("Ginger"),
-               password : new FormControl("")
-           })         
+      
+      this.selectedIdiom = this.navparams.get('idiom');
     }
 
     public UserSignup(){
-        
-        this._loginserv.SignupUser(this.signupForm)
+          this.signupF = {
+               "emailId" : this.emailId,
+               "partnerId" : "Ginger",
+               "password" : this.password
+           }
+        console.log(this.signupF);
+        this._loginserv.SignupUser(this.signupF)
             .subscribe( (res) => { console.log('signup',res); this.storeToken(res) ; this.navHome();},
-                        (err) => { console.log(err)})
+                        (err) => { console.log('err',err)})
     }
 
     public navHome(){
-         this.navCtrl.push(HomeComponent);   
+         this.navCtrl.push(HomeComponent,{
+             'idiom': this.selectedIdiom
+         }
+         );   
     }
 
     public storeToken(res){
