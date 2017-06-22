@@ -24,6 +24,10 @@
 
     <p> trending </p>   
 
-
+           <div class="pins">
+              <div class="pin" *ngFor="let gif of gifs" >
+                <img  class="gifpin" src="{{gif.url}}">
+              </div>
+        </div>
 
 </ion-content>

@@ -21,17 +21,23 @@ export class AboutPage {
   public page1: any = Page1Page;
   public page2: any = Page2Page;
   public page3: any = Page3Page;
-  
+ // public page4: any = this.Page4Page;
 
   showIcons: boolean = false;
   showTitles: boolean = true;
   pageTitle: string = 'abc';
-
+  title;
+  public tabdata;
+  public trendingGIFs: any;
+  public gifs: Array<any> = [];
+  public selectedIdiom = "Hindi"; 
 
   constructor(public navCtrl: NavController,  private navParams: NavParams,
               public _homeserv : HomeService) {
-             //     this.getTrendingGIFs();
- const type = navParams.get('type');
+                  
+                 this.title = 'vinay';
+                 this.tabsCategories();
+  const type = navParams.get('type');
     switch (type) {
       case 'icons-only':
         this.showTitles = false;
@@ -39,7 +45,7 @@ export class AboutPage {
         break;
 
       case 'titles-only':
-        this.showIcons = false;
+        this.showIcons = true;
         this.pageTitle += ' - Titles only';
         break;
     }
@@ -52,18 +58,14 @@ export class AboutPage {
     // this.superTabsCtrl.enableTabsSwipe(false);
   }
 
+  public tabsCategories(){
+    this._homeserv.getTabCategories(this.selectedIdiom)
+        .subscribe( (res) => { this.tabdata = res },
+                    (err) => { console.log(err)},
+                    () => { console.log('tabdata',this.tabdata)})
+  }
+
   onTabSelect(tab: { index: number; id: string; }){
       console.log(`Selected tab: `, tab);
   }
-
-    public trendingGIFs: any;
-    public gifs: Array<any> = [];
-    public selectedIdiom = "hindi"; 
-    // getTrendingGIFs(){
-    // this._homeserv.getTrendingGifs(this.selectedIdiom)
-    // .subscribe( (result) => { this.trendingGIFs = result ; this.gifs = this.gifs.concat(this.trendingGIFs.data);},
-    //             (err) => {  console.log(err); },
-    //             () => console.log('trendingGifs',this.trendingGIFs))
-    // }
-
 }

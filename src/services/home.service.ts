@@ -67,6 +67,15 @@ export class HomeService{
                     .catch(this.handleError)
      }
 
+    public getTabCategories(idiom){
+       return this.http.get('https://violet.mobigraph.co/ginger/tabs/'+idiom)
+                .map(this.extractData)
+                .catch(this.handleError)
+    }
+
+    public getTabDataviaTabId(idiom,tabid){
+        return this.http.get('https://violet.mobigraph.co/ginger/'+idiom+'/topItems/'+tabid)
+    }
 
     private extractData(res: Response) {
 		if (res.status === 204) { return res; }

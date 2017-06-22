@@ -25,6 +25,29 @@ page-page1 {
       }
 
     }
-  }
 
+ }
+ 
+}
+
+
+     .ios ,.md {
+    page-page1 {
+        .pins{
+            column-count : 2;
+            margin-left: 15px; margin-right: 15px;
+            margin-top: 2%;
+        }
+        .pin{
+            display: inline-block;
+            margin : -0px -6px -0px -6px;
+            padding: 0px;
+        }
+        .gifpin{
+            border-radius: 5px;
+            width: 100%;
+            height: auto;
+            background: #8463F2;
+        }
+    }
 }
