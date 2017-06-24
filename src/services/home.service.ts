@@ -75,6 +75,8 @@ export class HomeService{
 
     public getTabDataviaTabId(idiom,tabid){
         return this.http.get('https://violet.mobigraph.co/ginger/'+idiom+'/topItems/'+tabid)
+                .map(this.extractData)
+                .catch(this.handleError)
     }
 
     private extractData(res: Response) {
