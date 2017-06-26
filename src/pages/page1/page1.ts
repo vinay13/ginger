@@ -8,13 +8,13 @@ import { HomeService } from '../../services/home.service';
 })
 export class Page1Page {
 
-  rootNavCtrl: NavController;
+ // rootNavCtrl: NavController;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public _homeserv : HomeService){
                 this.getTrendingGIFs();
-              this.rootNavCtrl = navParams.get('rootNavCtrl');
+            //  this.rootNavCtrl = navParams.get('rootNavCtrl');
              
             }
             

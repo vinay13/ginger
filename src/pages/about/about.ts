@@ -1,4 +1,4 @@
-import { Component,Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IonicPage, NavController,NavParams , Events } from 'ionic-angular';
 import { Page1Page } from "../page1/page1";
 import { Page2Page } from "../page2/page2";
@@ -18,7 +18,7 @@ import { SearchComponent } from '../search/search.component';
   templateUrl: 'about.html'
 })
 
-export class AboutPage {
+export class AboutPage implements OnInit {
 
   public page1: any = Page1Page;
   public page2: any = Page2Page;
@@ -29,16 +29,20 @@ export class AboutPage {
   showTitles: boolean = true;
   pageTitle: string = 'abc';
   title;
+  public lang;
   public tabdata;
   public trendingGIFs: any;
   public gifs: Array<any> = [];
-  public selectedIdiom = "Hindi"; 
+  public selectedIdiom;
+   
 
   constructor(public navCtrl: NavController, 
               private navParams: NavParams,
               public _homeserv : HomeService,
               public events: Events) {
+                //  this.onTabSelect();
                   this.title = 'vinay';
+                  this.selectedIdiom = this.navParams.get('idiom') || "Hindi";
               //   this.tabsCategories();
   const type = navParams.get('type');
     switch (type) {
@@ -58,13 +62,14 @@ export class AboutPage {
 
   ionViewDidLoad(){
     this._homeserv.getTabCategories(this.selectedIdiom)
-        .subscribe( (res) => { this.tabdata = res.tabs; this.tabsLoaded = true; },
+        .subscribe( (res) => { this.tabdata = res.tabs;this.tabsLoaded = true;    },
                     (err) => { console.log(err)},
                     () => { console.log('tabdata',this.tabdata)})
 
-     
+      // this.events.publish('tab:selected',this.tabdata[0].id)
   }
 
+   
 
   ngAfterViewInit() {
       
@@ -73,17 +78,10 @@ export class AboutPage {
     // this.superTabsCtrl.enableTabsSwipe(false);
   }
 
-  // public tabsCategories(){
-  //   this._homeserv.getTabCategories(this.selectedIdiom)
-  //       .subscribe( (res) => { this.tabdata = res.tabs },
-  //                   (err) => { console.log(err)},
-  //                   () => { console.log('tabdata',this.tabdata)})
-  // }
-
-  onTabSelect(tab: { index: number; id: string; }){
-      console.log(`Selected tab: `, tab);
-      console.log('tabbb',tab.id);
-       this.events.publish('tab:selected', tab.id);
+  onTabSelect(ev : any){
+      console.log(`Selected tab: `, ev);
+      console.log('tabbb',ev.id);
+       this.events.publish('tab:selected', ev.id);
   }
 
     searchButton(){
@@ -94,5 +92,10 @@ export class AboutPage {
 
   navIdiom(){
      this.navCtrl.push(IdiomComponent);
+  }
+
+  ngOnInit(): void {
+    this.lang =  "assets/icon/ic_"+ this.selectedIdiom +".png";
+    
   }
 }

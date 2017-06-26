@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController,NavParams } from 'ionic-angular'; 
 import { HomeComponent } from '../home/home.component'; 
+import { AboutPage } from '../about/about.ts';
 
  @Component({
      selector : 'page-idiom',

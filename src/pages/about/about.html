@@ -1,16 +1,16 @@
-<ion-header no-border>
-  <ion-navbar class="navbar">
+<ion-header>
+  <ion-navbar hideBackButton  class="navbar">
     
 <div class="header-home">
   
-<div class="idiom-button" (click)="navIdiom()">
+<div class="idiom-button" >
 
-  <div class="hindi-icon" >
+  <div class="hindi-icon" (click)="navIdiom()">
      <img [src]=lang/>
   </div>
 
   <!--<h1>{{ profiledata.userName }}</h1>-->
-  <span class="idiom-name" >{{ selectedIdiom }}</span>
+  <span class="idiom-name"  (click)="navIdiom()">{{ selectedIdiom }}</span>
 </div>
 
   <ion-icon class="search-icon" name="md-contact" ></ion-icon>
@@ -20,9 +20,9 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content no-bounce>
-   <super-tabs *ngIf="tabsLoaded" id="mainTabs"  [config]="{ sideMenu: 'left' }" scrollTabs toolbarColor="light" toolbarBackground="dark" indicatorColor="yellow" badgeColor="yellow" (tabSelect)="onTabSelect($event)">
-      <super-tab *ngFor="let tab of tabdata " [swipeBackEnabled]="false" [root]="page2" [title]=tab.name [icon]="showIcons? 'home': ''" id={{tab.id}}>
+<ion-content no-bounce class="home-content">
+   <super-tabs *ngIf="tabsLoaded" no-shadow id="mainTabs"  [config]="{ sideMenu: 'left' }" scrollTabs toolbarColor="light" indicatorColor="yellow" badgeColor="yellow" (tabSelect)="onTabSelect($event)">
+      <super-tab *ngFor="let tab of tabdata " [root]="page2" [title]=tab.name [icon]="showIcons? 'home': ''" id={{tab.id}}>
       </super-tab>
       
       <!--<super-tab [root]="page2" *ngFor="let tab of tabdata " [title]=tab.name [icon]="showIcons? 'trending-up' : ''" id=page3></super-tab>-->

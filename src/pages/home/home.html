@@ -21,31 +21,33 @@
 </div>  
 
   <ion-segment  [(ngModel)]="selectedSegment" (ionChange)="onSegmentChanged($event)">
-    
-    <ion-segment-button value="first">
+ 
+   
+  <ion-segment-button value="first">
       Trending
     </ion-segment-button>
-    <ion-segment-button value="second">
+  <ion-segment-button value="second">
       Emotions
     </ion-segment-button>
     <ion-segment-button value="third">
-      Actions
+      Celebrity
     </ion-segment-button>
     <ion-segment-button value="fourth">
-      Celebrities
+      Actions
     </ion-segment-button>
-     <ion-segment-button value="fifth">
-      Cricket
-    </ion-segment-button>
-    
+       <!--<ion-segment-button *ngFor="let slide of slides; let i = index" value=slide.id>
+      {{ slide.name }}
+    </ion-segment-button>-->
   </ion-segment>
+    
+  
 </ion-toolbar>
 </ion-header>
 
 
 <ion-content scroll="true" class="home-content">
 
-  <ion-slides #mySlider (ionDidChange)="onSlideChanged($event)">
+  <ion-slides   #mySlider (ionSlideDidChange)="onSlideChanged($event)">
     <ion-slide *ngFor="let slide of slides">
       <div class="pins">
         <div class="pin" *ngFor="let gif of gifs" (click)="navGifDetail(gif)">

@@ -1,30 +1,60 @@
 page-about{
     #mainTabs{
-    .toolbar-background {
-        background: linear-gradient(45deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.85) 100%) !important;
-        background-repeat: no-repeat;
-        background-position: 50% 50%;
-        }
+        background-color: #2B3B50;
     }
 }
 
-page-about .navbar {
-  .toolbar-background {
-  // background: linear-gradient(45deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%) !important;
-   background: linear-gradient(45deg, rgba(129,98,246,0.85) 0%, rgba(250,119,117,0.85) 100%) !important;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-  }
+
+ .search-icon{  
+    font-size: 30px;
+    position: right;
+    float: right;
+    margin-right: 10px;
+    padding: 10px;
+    color: #35EC97;
+}
+
+.home-content{
+    background-color: #202E3F;
+}
+
+.home-icon{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin: 10px;
+}
+
+.hindi-icon{
+    width: 32px;
+    height: 32px;
+    margin: 10px;
+    background: linear-gradient(to top right, #8162F6, #FA7875 100%);
+    border-radius: 50%;
+    padding: 7px;
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.30);
+}
+
+.idiom-name{
+    font-size : 1.2em;
+    font-weight: 600;
+    color: white;
+    line-height: 52px;
+}
+
+ion-segment-button {
+    letter-spacing: 0.3px;
+    font-weight: 600 !important;
 }
 
 .idiom-button {
     display: flex;
   
-    background: rgba(250,250,250,0.10);
+background: rgba(250,250,250,0.10);
     position: absolute;
     height: 48px;
-    align-content: center;  
-    box-shadow: 0 1px 8px 0 rgba(0,0,0,0.20);
+    align-content: center;
+box-shadow: 0 1px 8px 0 rgba(0,0,0,0.20);
     width: auto;
     margin-top: 0.5%;
     margin-left: -5px;
@@ -33,10 +63,69 @@ page-about .navbar {
  align-items: center;
 }
 
-// .header-home{
-//     overflow: hidden; 
+.header-home{
+    overflow: hidden; 
+}
+
+//Enable Scroll
+.swiper-slide {
+    overflow-y: scroll;
+    display: block;
+}
+
+.ios ,.md {
+    page-home {
+        .pins{
+            column-count : 2;
+            margin-left: 15px; margin-right: 15px;
+            margin-top: 2%;
+        }
+        .pin{
+            display: inline-block;
+            margin : -0px -6px -0px -6px;
+            padding: 0px;
+        }
+        .gifpin{
+            border-radius: 5px;
+            width: 100%;
+            height: auto;
+            background: #8463F2;
+        }
+    }
+}
+
+
+// ion-infinite-scroll-content {
+//     display: -webkit-flex;
+//     display: -ms-flexbox;
+//     display: flex;
+//     -webkit-flex-direction: column;
+//     -ms-flex-direction: column;
+//     flex-direction: column;
+//     -webkit-justify-content: center;
+//     -ms-flex-pack: center;
+//     justify-content: center;
+//     height: 100%;
+//     min-height: 0px !important;
+//     text-align: center;
 // }
 
-.home-content{
-    background-color: #202E3F;
+
+
+ion-segment {
+    display: block;
+    white-space: nowrap;
+    font-size: 0;
+    overflow: auto;
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        display: none;
+    }
+    
+    ion-segment-button.segment-button {
+        display: inline-block;
+        min-width: 100px;
+        width: auto;
+    }
 }
