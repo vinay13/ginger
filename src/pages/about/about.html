@@ -22,7 +22,7 @@
 
 <ion-content no-bounce class="home-content">
    <super-tabs *ngIf="tabsLoaded" no-shadow id="mainTabs"  [config]="{ sideMenu: 'left' }" scrollTabs toolbarColor="light" indicatorColor="yellow" badgeColor="yellow" (tabSelect)="onTabSelect($event)">
-      <super-tab *ngFor="let tab of tabdata " [root]="page2" [title]=tab.name [icon]="showIcons? 'home': ''" id={{tab.id}}>
+      <super-tab *ngFor="let tab of tabdata " [root]="page2" [rootParams]="idiom3" [title]=tab.name [icon]="showIcons? 'home': ''" id={{tab.id}}>
       </super-tab>
       
       <!--<super-tab [root]="page2" *ngFor="let tab of tabdata " [title]=tab.name [icon]="showIcons? 'trending-up' : ''" id=page3></super-tab>-->

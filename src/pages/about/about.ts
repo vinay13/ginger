@@ -34,15 +34,23 @@ export class AboutPage implements OnInit {
   public trendingGIFs: any;
   public gifs: Array<any> = [];
   public selectedIdiom;
-   
-
+   idiom3;
+idiomdict;
   constructor(public navCtrl: NavController, 
               private navParams: NavParams,
               public _homeserv : HomeService,
               public events: Events) {
+
                 //  this.onTabSelect();
+               
                   this.title = 'vinay';
                   this.selectedIdiom = this.navParams.get('idiom') || "Hindi";
+                  this.idiomdict = {
+                    'idiom': this.selectedIdiom
+                  }
+                  this.idiom3 = this.idiomdict;
+                  console.log('aboutpageIdiom',this.selectedIdiom);
+                 // this.events.publish('idiom:selected',  this.selectedIdiom);
               //   this.tabsCategories();
   const type = navParams.get('type');
     switch (type) {
@@ -93,6 +101,8 @@ export class AboutPage implements OnInit {
   navIdiom(){
      this.navCtrl.push(IdiomComponent);
   }
+
+  
 
   ngOnInit(): void {
     this.lang =  "assets/icon/ic_"+ this.selectedIdiom +".png";

@@ -41,16 +41,16 @@ export class HomeComponent implements OnInit{
               public fileChooser : FileChooser,
               public _proServ : ProfileService) {
               this.selectedIdiom = this.navParams.get('idiom');
-  this.tabsCatdata();
+            
              this.getProfileData();
               this.tabsData();
+                this.tabsCatdata();
               
              // this.getTrendingGIFs();
            
-                 
-               
-                 this.selectedSegment = this.slides;
-                 this.tabdataViaTabID( this.selectedSegment);
+            
+                 this.selectedSegment = "1498143424424";
+                 this.tabdataViaTabID(this.selectedSegment);
                 // this.slides = [
                 //     {
                 //       id: "1498143424424",
@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit{
                 //     {
                 //       id: "def",
                 //     },
-                //     {
+                //    {
                 //       id: "third",
                 //     },
                 //     {
@@ -111,7 +111,7 @@ ionViewDidLoad(){
    
     const currentSlide = this.slides[slider.getActiveIndex()];
     this.selectedSegment = currentSlide.id;
-     this.tabdataViaTabID( this.selectedSegment);
+     this.tabdataViaTabID(this.selectedSegment);
   }
 
   public trendingGIFs: any;
@@ -143,7 +143,6 @@ ionViewDidLoad(){
         .subscribe( (res) => { this.slides = res.tabs;this.tabsLoaded = true;},
                     (err) => { console.log(err)},
                     () => { console.log('tabdata',this.slides[0].id)})
-
   }
 
   slideAddingID(){
@@ -159,10 +158,7 @@ ionViewDidLoad(){
  // public tabId = ['1498143424424','1498144144545','1498144145182','1498144145755']
  // public i = 0;
   tabdataViaTabID(tabID){
-              //  this.i += 1;
-              //  if(this.i==4){
-              //   this.i = 0;
-              //  }
+      console.log('tabiid2',tabID);
               this._homeserv.getTabDataviaTabId(this.selectedIdiom, tabID)
       .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata},
                   (err) => {console.log(err)},

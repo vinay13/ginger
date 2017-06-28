@@ -14,7 +14,7 @@ import {NoInternetComponent} from '../components/noInternet/noInternet.component
 })
 
 export class MyApp {
-  rootPage:any = IdiomComponent;
+  rootPage:any = AboutPage;
 
   constructor(platform: Platform, 
               statusBar: StatusBar, 

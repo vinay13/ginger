@@ -36,7 +36,7 @@
       Actions
     </ion-segment-button>-->
 
-      <ion-segment-button *ngFor="let slide of slides; let i = index" value="first">
+      <ion-segment-button *ngFor="let slide of slides; let i = index" value=slide.id>
       {{ slide.name }}
     </ion-segment-button>
   </ion-segment>
