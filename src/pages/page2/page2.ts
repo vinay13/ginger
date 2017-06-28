@@ -22,7 +22,7 @@ export class Page2Page implements OnInit{
                     this.tabId = id;
                 //   this.getTabdata(this.selectedIdiom,this.tabId);
                 this._homeserv.getTabDataviaTabId(this.selectedIdiom,this.tabId)
-      .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata},
+                  .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata},
                   (err) => {console.log(err)},
                   () => console.log('data',this.tabIddata ))
     

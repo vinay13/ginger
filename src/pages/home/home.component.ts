@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit{
   @ViewChild('mySlider') slider: Slides;
   selectedSegment: string;
   slides: any;
-   public selectedIdiom;
+  public selectedIdiom;
   public lang : any;  
   public currentPage = 0;
  
@@ -40,31 +40,34 @@ export class HomeComponent implements OnInit{
               public file : File,
               public fileChooser : FileChooser,
               public _proServ : ProfileService) {
-              
-
+              this.selectedIdiom = this.navParams.get('idiom');
+  this.tabsCatdata();
              this.getProfileData();
               this.tabsData();
-              this.selectedIdiom = this.navParams.get('idiom');
-              this.getTrendingGIFs();
-         //    this.tabsCatdata();
-              this.selectedSegment = 'first';
-                this.slides = [
-                    {
-                      id: "first",
-                    },
-                    {
-                      id: "second",
-                    },
-                    {
-                      id: "third",
-                    },
-                    {
-                        id: "fourth",
-                    },
-                    {
-                      id : "fifth"
-                    }
-                ];
+              
+             // this.getTrendingGIFs();
+           
+                 
+               
+                 this.selectedSegment = this.slides;
+                 this.tabdataViaTabID( this.selectedSegment);
+                // this.slides = [
+                //     {
+                //       id: "1498143424424",
+                //     },
+                //     {
+                //       id: "def",
+                //     },
+                //     {
+                //       id: "third",
+                //     },
+                //     {
+                //         id: "fourth",
+                //     },
+                //     {
+                //       id : "fifth"
+                //     }
+                // ];
 
                  //this.allgifs = '{{'+ "gif.images.downsized_still.url" +'}}';
           }
@@ -95,6 +98,9 @@ ionViewDidLoad(){
   onSegmentChanged(segmentButton) {
     console.log("Segment changed to", segmentButton.value);
     const selectedIndex = this.slides.findIndex((slide) => {
+      console.log('selectedIndex',selectedIndex);
+      console.log('segmentButton',segmentButton.value);
+      console.log('slide.id',slide.id);
       return slide.id === segmentButton.value;
     });
     this.slider.slideTo(selectedIndex);
@@ -102,9 +108,10 @@ ionViewDidLoad(){
 
   onSlideChanged(slider) {
     console.log('Slide changed');
-    this.tabdataViaTabID();
+   
     const currentSlide = this.slides[slider.getActiveIndex()];
     this.selectedSegment = currentSlide.id;
+     this.tabdataViaTabID( this.selectedSegment);
   }
 
   public trendingGIFs: any;
@@ -135,20 +142,28 @@ ionViewDidLoad(){
      this._homeserv.getTabCategories(this.selectedIdiom)
         .subscribe( (res) => { this.slides = res.tabs;this.tabsLoaded = true;},
                     (err) => { console.log(err)},
-                    () => { console.log('tabdata',this.slides)})
+                    () => { console.log('tabdata',this.slides[0].id)})
 
+  }
+
+  slideAddingID(){
+    // let dis = ["first","second","third","fourth"]
+    // for(let i=0; i < this.slides.length;i++)
+    // {
+    //   this.slides[i].add('"dis":'+ dis[i]);
+    // }
   }
 
   public tabIddata;
   
-  public tabId = ['1498143424424','1498144144545','1498144145182','1498144145755']
-  public i = 0;
-  tabdataViaTabID(){
-               this.i += 1;
-               if(this.i==4){
-                this.i = 0;
-               }
-              this._homeserv.getTabDataviaTabId(this.selectedIdiom,this.tabId[this.i])
+ // public tabId = ['1498143424424','1498144144545','1498144145182','1498144145755']
+ // public i = 0;
+  tabdataViaTabID(tabID){
+              //  this.i += 1;
+              //  if(this.i==4){
+              //   this.i = 0;
+              //  }
+              this._homeserv.getTabDataviaTabId(this.selectedIdiom, tabID)
       .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata},
                   (err) => {console.log(err)},
                   () => console.log('data',this.tabIddata ))        
@@ -201,7 +216,7 @@ ionViewDidLoad(){
 //       console.log(err);
 //       this.cs.hideLoader();
 //     });
-// }
+//}
 
 
   public imageFile : any;  
@@ -268,12 +283,6 @@ ionViewDidLoad(){
   //    () => console.log('Next Page Loading completed')
   //    );
   // }
-
-
-
-
-
-
 
 
   public pageno = 1;

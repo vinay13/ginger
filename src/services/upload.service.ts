@@ -28,7 +28,8 @@ export class UploadGifService{
     setHeader() {
         this.headers = new Headers({
             'Content-Type' : 'application/json',
-            'Authorization' : 'Bearer'+' '+ localStorage.getItem('access_token')
+            'Authorization' : 'Bearer'+' '+ localStorage.getItem('access_token'),
+            'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w'
         });
         this.options = new RequestOptions({
          headers : this.headers

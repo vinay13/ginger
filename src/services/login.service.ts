@@ -25,7 +25,8 @@ export class LoginService{
     public SignupUser(xbody){
    //     let jbody = JSON.stringify(xbody);
        let headers = new Headers({
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w'
         });
         let options = new RequestOptions({
            headers : headers
@@ -37,7 +38,8 @@ export class LoginService{
 
     public verifyUser(body){
         let headers = new Headers({
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w'
         });
         let options = new RequestOptions({
            headers : headers
@@ -52,7 +54,8 @@ export class LoginService{
          let encodedbody = encodeURIComponent(body);
        //  let bodyString = JSON.parse(JSON.stringify(body));
          let headers = new Headers({
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w'
         });
         let tbody = {};
         let options = new RequestOptions({

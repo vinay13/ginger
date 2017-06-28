@@ -34,7 +34,7 @@ export class GifDetailComponent {
                 public navparams : NavParams){
                     this.gifobject = this.navparams.get('url');
                      this.selectedIdiom = this.navparams.get('idiom');
-                    this.gifurl =  this.gifobject.url;
+               //     this.gifurl =  this.gifobject.url;
                     this.RecommendedGifs();
                     this.tagslist = this.gifobject.tags;
                 }
@@ -49,7 +49,7 @@ export class GifDetailComponent {
 				this.loadProgress++;
                 
                 if(this.loadProgress == 10){
-                    this.gifurl = this.gifobject.url;
+                    this.gifurl = this.gifobject.lowResUrl;
                 }
 
                 if(this.loadProgress == 30)

@@ -26,7 +26,8 @@ export class SearchService{
 
     setHeader() {
         this.headers = new Headers({
-            'Content-Type' : 'application/json'
+            'Content-Type' : 'application/json',
+            'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w'
         });
         this.options = new RequestOptions({
          headers : this.headers
