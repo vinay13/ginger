@@ -6,6 +6,7 @@ import { Page3Page } from "../page3/page3";
 import { HomeService } from '../../services/home.service';
 import { IdiomComponent } from '../idiom/idiom.component';
 import { SearchComponent } from '../search/search.component';
+import { LoginPage } from '../login/login.component';
 // import { SuperTabsController } from 'ionic2-super-tabs';
 // import { SuperTabsController } from '../../ionic2-super-tabs/src';
 
@@ -42,13 +43,8 @@ idiomdict;
               public events: Events) {
 
                 //  this.onTabSelect();
-               
-                  this.title = 'vinay';
-                  this.selectedIdiom = this.navParams.get('idiom') || "Hindi";
-                  this.idiomdict = {
-                    'idiom': this.selectedIdiom
-                  }
-                  this.idiom3 = this.idiomdict;
+                  this.selectedIdiom = this.navParams.get('idiom');
+                 
                   console.log('aboutpageIdiom',this.selectedIdiom);
                  // this.events.publish('idiom:selected',  this.selectedIdiom);
               //   this.tabsCategories();
@@ -70,14 +66,29 @@ idiomdict;
 
   ionViewDidLoad(){
     this._homeserv.getTabCategories(this.selectedIdiom)
-        .subscribe( (res) => { this.tabdata = res.tabs;this.tabsLoaded = true;    },
+        .subscribe( (res) => { this.tabdata = res.tabs;this.abcetc(this.tabdata[0].id);this.tabsLoaded = true;    },
                     (err) => { console.log(err)},
                     () => { console.log('tabdata',this.tabdata)})
+
+                    
 
       // this.events.publish('tab:selected',this.tabdata[0].id)
   }
 
-   
+  abcetc(tbid){
+    console.log('abctabid',tbid);
+     this.idiomdict = {
+                      'idiom': this.selectedIdiom,
+                      'tabID' : tbid
+                   }
+                  this.idiom3 = this.idiomdict;
+  }
+
+     checklogin(){
+    this.navCtrl.push(LoginPage,{
+      'idiom': this.selectedIdiom
+    });
+  }
 
   ngAfterViewInit() {
       
@@ -90,7 +101,16 @@ idiomdict;
       console.log(`Selected tab: `, ev);
       console.log('tabbb',ev.id);
        this.events.publish('tab:selected', ev.id);
+      // this.abcetc(ev.id);
   }
+
+  public tabIddata;
+  gettabdata(idiom,tabid){
+     this._homeserv.getTabDataviaTabId(idiom,tabid)
+                  .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata},
+                  (err) => {console.log(err)},
+                  () => console.log('data',this.tabIddata ))
+}
 
     searchButton(){
       this.navCtrl.push(SearchComponent,{

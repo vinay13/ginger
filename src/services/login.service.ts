@@ -17,11 +17,6 @@ export class LoginService{
      
     }
 
-
-    getHeader(){
-        return this.options;
-    }
-
     public SignupUser(xbody){
    //     let jbody = JSON.stringify(xbody);
        let headers = new Headers({
@@ -61,7 +56,7 @@ export class LoginService{
         let options = new RequestOptions({
          headers : this.headers
         });
-      return this.http.post(this.baseUrl+"/gauth/oauth2callback?code="+body+"&state="+"55",tbody,this.options)
+      return this.http.post(this.baseUrl+"/gauth/oauth2callback?code="+body+"&state="+"55",tbody,options)
                .map(this.extractData)
                .catch(this.handleError);
     }

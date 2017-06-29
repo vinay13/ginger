@@ -6,6 +6,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
+import { AboutPage } from '../about/about.ts';
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -43,7 +45,7 @@ export class LoginPage implements OnInit{
   }
 
   NavLogin(){  
-    this.navCtrl.push(HomeComponent,{
+    this.navCtrl.push(AboutPage,{
         'idiom': this.selectedIdiom
     });
   }
@@ -70,7 +72,8 @@ export class LoginPage implements OnInit{
   public verifySuccessfully(res) {
     localStorage.setItem("access_token", res.token);
   }
-
+// clientId = "802025194036-nk9ebs1d9sc4em80ore73oavctb75esk.apps.googleusercontent.com"
+// clientSecret = "Ia_HMIjBvZGbrbQpxNzcmmXp"
   public googleResponse;
   public googleLogin(){
       this.googlePlus.login({
@@ -78,14 +81,14 @@ export class LoginPage implements OnInit{
          'webClientId': '802025194036-nk9ebs1d9sc4em80ore73oavctb75esk.apps.googleusercontent.com',
          'offline': true,
       })
-         .then((res) => { this.googleResponse = JSON.stringify(res); this.gauthcallBack(res.serverAuthCode); this.NavLogin();  })
+         .then((res) => { this.googleResponse = JSON.stringify(res); this.gauthcallBack(res.serverAuthCode);  })
          .catch(err => { console.log(err),alert(err)})
   }
 
   public fbresponse : any;
   public facebookLogin(){
     this.fb.login(['email'])
-      .then((res: FacebookLoginResponse) => { this.fbresponse = JSON.stringify(res), this.postacesstoken() , this.navCtrl.push(HomeComponent)})
+      .then((res: FacebookLoginResponse) => { this.fbresponse = JSON.stringify(res), this.postacesstoken() , this.navCtrl.push(AboutPage)})
       .catch(e => alert(e));
   }
 
@@ -99,7 +102,7 @@ export class LoginPage implements OnInit{
 
   public gauthcallBack(serverauthcode){
     this._authServ.gAuthCallback(serverauthcode)
-      .subscribe((res) => {this.verifySuccessfully(res);}, 
+      .subscribe((res) => {this.verifySuccessfully(res);this.NavLogin(); }, 
                  (err) => {alert(err)})      
   }
 

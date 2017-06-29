@@ -25,7 +25,7 @@
         "@ionic-native/facebook": "^3.11.0",
         "@ionic-native/file": "^3.8.1",
         "@ionic-native/file-chooser": "^3.12.1",
-        "@ionic-native/google-plus": "^3.10.3",
+        "@ionic-native/google-plus": "^3.12.1",
         "@ionic-native/keyboard": "^3.12.1",
         "@ionic-native/network": "^3.10.3",
         "@ionic-native/social-sharing": "^3.8.1",
@@ -92,7 +92,7 @@
             "cordova-plugin-x-socialsharing": {},
             "cordova-plugin-network-information": {},
             "cordova-plugin-googleplus": {
-                "REVERSED_CLIENT_ID": "myreversedclientid"
+                "REVERSED_CLIENT_ID": "802025194036-nk9ebs1d9sc4em80ore73oavctb75esk.apps.googleusercontent.com"
             },
             "cordova-plugin-facebook4": {
                 "APP_ID": "319201518500025",

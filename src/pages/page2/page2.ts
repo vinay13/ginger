@@ -14,6 +14,7 @@ import { UploadComponent } from '../upload/upload.component';
 export class Page2Page implements OnInit{
     // celebrity page
    public tabId;
+   public tabIDD;
   public selectedIdiom;
   newselectedIdiom;
    public tabIddata; 
@@ -27,14 +28,14 @@ export class Page2Page implements OnInit{
                //  this.selectedIdiom = idiom;
                    this.rootNavCtrl = this.navparams.get('rootNavCtrl');
                  this.newselectedIdiom = this.navparams.data;
-                 
-                 console.log('newselectedIdiom',this.newselectedIdiom)
                 this.selectedIdiom = this.newselectedIdiom.idiom;
+                this.tabIDD = this.newselectedIdiom.tabID;
                  console.log('selectedIdiom',this.selectedIdiom);
+                  console.log('tabIDD',this.tabIDD);
             //  });
-             this.getTrendingGIFs();
-                 
-                        this.events.subscribe('tab:selected',(id) => {
+              //  this.getTrendingGIFs();
+                this.gettabdata(this.selectedIdiom,this.tabIDD);   
+                this.events.subscribe('tab:selected',(id) => {
                              this.tabId = id;
                              this.gettabdata(this.selectedIdiom,id);
                         });
@@ -44,24 +45,19 @@ export class Page2Page implements OnInit{
                 }
                 
 
-     public trendingGIFs: any;
-  public gifs: Array<any> = []; 
-  getTrendingGIFs(){
- //this.cs.showLoader();
- //this.selectedIdiom = idiom;
- console.log('currentpage',1);
-    this._homeserv.getTrendingGifs(this.selectedIdiom,1)
-    .subscribe( (result) => { this.trendingGIFs = result ; this.gifs = this.gifs.concat(this.trendingGIFs.contents); },
-                
-    )}
+  // public trendingGIFs: any;
+   public gifs: Array<any> = []; 
+  // getTrendingGIFs(){
+  // console.log('currentpage',1);
+  //   this._homeserv.getTrendingGifs(this.selectedIdiom,1)
+  //   .subscribe( (result) => { this.trendingGIFs = result ; this.gifs = this.gifs.concat(this.trendingGIFs.contents); },           
+  //   )}
 
 gettabdata(idiom,tabid){
      this._homeserv.getTabDataviaTabId(idiom,tabid)
                   .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata},
                   (err) => {console.log(err)},
                   () => console.log('data',this.tabIddata ))
-    
-                   console.log('tabId',this.tabId);
 }
 
     
@@ -77,6 +73,9 @@ gettabdata(idiom,tabid){
       
 
      }
+
+
+
 
     ngOnInit(){
       // this.getTrendingGIFs();
