@@ -17,6 +17,7 @@ export class SearchService{
     constructor(private http : Http,
                 private _config : Configuration){
                     this.getUrl();
+                    this.setHeader();
                     this.getHeader();
                 }
 

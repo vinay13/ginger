@@ -19,6 +19,7 @@ export class HomeService{
     constructor(private http : Http,
                 private _config : Configuration){
                     this.getUrl();
+                    this.setHeader();
                     this.getHeader();
                 }
 
@@ -69,13 +70,13 @@ export class HomeService{
      }
 
     public getTabCategories(idiom){
-       return this.http.get('https://violet.mobigraph.co/ginger/tabs/'+idiom)
+       return this.http.get('https://violet.mobigraph.co/ginger/tabs/'+idiom,this.options)
                 .map(this.extractData)
                 .catch(this.handleError)
     }
 
     public getTabDataviaTabId(idiom,tabid){
-        return this.http.get('https://violet.mobigraph.co/ginger/'+idiom+'/topItems/'+tabid)
+        return this.http.get('https://violet.mobigraph.co/ginger/'+idiom+'/topItems/'+tabid,this.options)
                 .map(this.extractData)
                 .catch(this.handleError)
     }

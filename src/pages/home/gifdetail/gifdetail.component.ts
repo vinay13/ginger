@@ -74,7 +74,7 @@ export class GifDetailComponent {
 
     public totalcount;
     RecommendedGifs(){
-        this._homeserv.getRelatedGifs(this.gifobject.idiom,this.gifobject.id)
+        this._homeserv.getRelatedGifs(this.selectedIdiom,this.gifobject.gifId)
             .subscribe( (res) => {this.recomns = res.contents, this.totalcount = res.totalCount},
                         (err) => console.log(err),
                         () => console.log('related gifs',this.totalcount))

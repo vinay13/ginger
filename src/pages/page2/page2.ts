@@ -18,14 +18,14 @@ export class Page2Page implements OnInit{
   newselectedIdiom;
    public tabIddata; 
      // public tabId = 1498144144545;
-      
+      rootNavCtrl: NavController;
     constructor(public navCtrl: NavController, 
                 public navparams: NavParams,
                 public _homeserv : HomeService,
                 public events : Events) {
               // this.events.subscribe('idiom:selected',(idiom) => {
                //  this.selectedIdiom = idiom;
-                 
+                   this.rootNavCtrl = this.navparams.get('rootNavCtrl');
                  this.newselectedIdiom = this.navparams.data;
                  
                  console.log('newselectedIdiom',this.newselectedIdiom)
@@ -66,7 +66,8 @@ gettabdata(idiom,tabid){
 
     
      navGifDetail(url){
-    this.navCtrl.push(GifDetailComponent,{
+       console.log('navgifdetail',this.selectedIdiom);
+    this.rootNavCtrl.push(GifDetailComponent,{
       'url' : url,
       'idiom' : this.selectedIdiom
     });

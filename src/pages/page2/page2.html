@@ -1,7 +1,7 @@
 <ion-content padding class="home-content">
 
         <div class="pins">
-              <div class="pin" *ngFor="let gif of gifs" >
+              <div class="pin" *ngFor="let gif of gifs" (click)="navGifDetail(gif)" >
                 <img  class="gifpin" src="{{gif.url}}">
               </div>
         </div>

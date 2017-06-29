@@ -75,7 +75,7 @@ export class LoginPage implements OnInit{
   public googleLogin(){
       this.googlePlus.login({
          'scopes': 'profile email https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile', 
-         'webClientId': '802921815833-vi6nrrotqau2c7c436j55c04r520lr8r.apps.googleusercontent.com',
+         'webClientId': '802025194036-nk9ebs1d9sc4em80ore73oavctb75esk.apps.googleusercontent.com',
          'offline': true,
       })
          .then((res) => { this.googleResponse = JSON.stringify(res); this.gauthcallBack(res.serverAuthCode); this.NavLogin();  })
