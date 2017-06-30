@@ -74,10 +74,32 @@ gettabdata(idiom,tabid){
 
      }
 
+  public pageno = 1;
+  public trendingGIFs;
+  doInfinite(infiniteScroll) {
 
+    let nextpage=this.pageno++;
+    console.log("next page:"+nextpage)
+    this._homeserv.getTrendingGifs(this.selectedIdiom,nextpage).subscribe(
+            data => {
+              infiniteScroll.complete();
+                this.trendingGIFs = data;
+                console.log('scroll',this.trendingGIFs );
+                // for(let post of posts){
+                   this.gifs =  this.gifs.concat(this.trendingGIFs.contents); 
+                // }
+            },
+            err => {
+                console.log(err);
+            },
+            () => console.log('Next Page Loading completed')
+        );
+  infiniteScroll.complete();
+} 
 
 
     ngOnInit(){
+     
       // this.getTrendingGIFs();
    //   this.gettabdata();
     }

@@ -172,6 +172,24 @@ export class GifDetailComponent {
         () => { alert("U don't have facebook app"); this.cs.hideLoader(); } )
   }
 
+  sharegifviaHike(){
+      this.cs.showLoader();
+      this.socialSharing.shareVia('hike',"message","fds",this.gifurl,"https://gola.com")
+      .then(() => {
+          this.cs.hideLoader();
+      },
+      () => { alert('u dont have hike app'); this.cs.hideLoader();})
+  }
+
+    sharegifviaMessenger(){
+      this.cs.showLoader();
+      this.socialSharing.shareVia('Messenger',"message","fds",this.gifurl,"https://gola.com")
+      .then(() => {
+          this.cs.hideLoader();
+      },
+      () => { alert('u dont have hike app'); this.cs.hideLoader();})
+  }
+
 
   shareGifInstagram(){
       this.cs.showLoader();

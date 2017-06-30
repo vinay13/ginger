@@ -122,7 +122,7 @@ idiomdict;
      this.navCtrl.push(IdiomComponent);
   }
 
-  
+
 
   ngOnInit(): void {
     this.lang =  "assets/icon/ic_"+ this.selectedIdiom +".png";

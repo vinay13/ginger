@@ -1,9 +1,15 @@
-<ion-content padding class="home-content">
+<ion-content  class="home-content">
 
         <div class="pins">
               <div class="pin" *ngFor="let gif of gifs" (click)="navGifDetail(gif)" >
                 <img  class="gifpin" src="{{gif.url}}">
               </div>
         </div>
+
+
+    <ion-infinite-scroll  direction="x" class="con-scroll-x" has-bouncing="true" (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content ></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
 
 </ion-content>

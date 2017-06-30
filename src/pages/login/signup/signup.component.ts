@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {LoginService} from '../../../services/login.service';
 import {HomeComponent} from '../../home/home.component';
+import {AboutPage} from '../../about/about.ts';
 
 @Component({
     selector: "page-signup",
@@ -9,7 +10,6 @@ import {HomeComponent} from '../../home/home.component';
 })
 
 export class SignupComponent{
-
     
     signupF;
     emailId;
