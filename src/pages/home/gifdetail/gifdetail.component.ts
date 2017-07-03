@@ -71,8 +71,6 @@ export class GifDetailComponent {
 	} 
 
     
-           
-
     public totalcount;
     RecommendedGifs(){
         let gifId = this.gifobject.gifId || this.gifobject.id;

@@ -12,7 +12,7 @@ export class Configuration {
     public options;
     constructor(){}
 
-    public baseUrl : string = "https://violet.mobigraph.co/ginger/";
+    public baseUrl : string = "https://grey.mobigraph.co/ginger/";
    
     getAuthToken(){
         let token = localStorage.getItem('auth_token');

@@ -57,7 +57,8 @@ export class SearchResultComponent implements OnInit {
 
     viewGif(url){
         this.navCtrl.push(GifDetailComponent,{
-            'url': url
+            'url': url,
+            'idiom' : this.selectedIdiom
         });
     } 
 

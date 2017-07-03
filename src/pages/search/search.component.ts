@@ -26,6 +26,7 @@ export class SearchComponent{
                 //  this.getSuggestedItems(text);
                 console.log('idiom3',this.selectedIdiom);
                 this.TopSearchlist = true;
+                this.topsearches();
     }
 
     ionViewDidLoad(){
@@ -59,12 +60,12 @@ export class SearchComponent{
     }
     
 
-    topsearcheslist = ['affhj','bffr','cff','dfff','efdfr'];
+    topsearcheslist;
     topsearches(){
-        this._searchservice.TopSearchesList()
+        this._searchservice.TopSearchesList(this.selectedIdiom,1498280399797)
             .subscribe( (data) => { this.topsearcheslist = data },
                         (err) => { console.log(err)},
-                        () => console.log(this.topsearcheslist))
+                        () => console.log('topsearcheslist',this.topsearcheslist))
     }
 
 

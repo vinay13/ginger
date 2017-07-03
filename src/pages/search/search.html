@@ -11,9 +11,10 @@
 <ion-content class="background-theme">
 
     <ion-list *ngIf="TopSearchlist">
-        <ion-item  class="top-searches-items" *ngFor="let top of topsearcheslist" (click)="TagsClick(item)">
+        <ion-item  class="top-searches-items" *ngFor="let top of topsearcheslist" (click)="TagsClick(top.text)">
            <ion-icon name="search" padding></ion-icon>
-            {{ top }}
+            {{ top.text }}
+            <img style="width:150px; float:right;"src={{top.url}} />
         </ion-item>
     </ion-list>
     

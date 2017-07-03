@@ -6,6 +6,7 @@ import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
 import { IdiomComponent } from '../idiom/idiom.component';
 import { LoginPage } from '../login/login.component';
 import { UploadComponent } from '../upload/upload.component';
+import {CustomService} from '../../services/custom.service';
 
 @Component({
   selector: 'page-page2',
@@ -23,7 +24,8 @@ export class Page2Page implements OnInit{
     constructor(public navCtrl: NavController, 
                 public navparams: NavParams,
                 public _homeserv : HomeService,
-                public events : Events) {
+                public events : Events,
+                public cs : CustomService) {
               // this.events.subscribe('idiom:selected',(idiom) => {
                //  this.selectedIdiom = idiom;
                    this.rootNavCtrl = this.navparams.get('rootNavCtrl');
@@ -47,21 +49,16 @@ export class Page2Page implements OnInit{
 
   // public trendingGIFs: any;
    public gifs: Array<any> = []; 
-  // getTrendingGIFs(){
-  // console.log('currentpage',1);
-  //   this._homeserv.getTrendingGifs(this.selectedIdiom,1)
-  //   .subscribe( (result) => { this.trendingGIFs = result ; this.gifs = this.gifs.concat(this.trendingGIFs.contents); },           
-  //   )}
 
-gettabdata(idiom,tabid){
+
+  gettabdata(idiom,tabid){
      this._homeserv.getTabDataviaTabId(idiom,tabid)
                   .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata},
                   (err) => {console.log(err)},
                   () => console.log('data',this.tabIddata ))
-}
+  }
 
-    
-     navGifDetail(url){
+  navGifDetail(url){
        console.log('navgifdetail',this.selectedIdiom);
     this.rootNavCtrl.push(GifDetailComponent,{
       'url' : url,
@@ -97,10 +94,15 @@ gettabdata(idiom,tabid){
   infiniteScroll.complete();
 } 
 
+  UploadviaWeb(){
+    this.cs.showLoader();
+    this.navCtrl.push(UploadComponent);
+    this.cs.hideLoader();
+  }
+
 
     ngOnInit(){
-     
       // this.getTrendingGIFs();
-   //   this.gettabdata();
+      //   this.gettabdata();
     }
 }
