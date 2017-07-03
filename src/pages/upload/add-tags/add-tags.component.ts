@@ -90,7 +90,7 @@ export class AddTagsComponent {
        alert(this.gifurl);
       this.cs.showLoader();
       
-        fileTransfer.upload(this.gifurl,'https://violet.mobigraph.co/ginger/uploadGif', options, true)
+        fileTransfer.upload(this.gifurl,' https://grey.mobigraph.co/ginger/uploadGif', options, true)
             .then((result: any) => {
               console.log('success');
               this.data_response = result ; 

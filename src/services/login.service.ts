@@ -9,7 +9,7 @@ import { Http, XHRBackend, RequestOptions, Request, RequestOptionsArgs, Response
 @Injectable()
 export class LoginService{
 
-    public baseUrl : string = "https://violet.mobigraph.co/ginger";
+    public baseUrl : string = "https://grey.mobigraph.co/ginger";
     public serverUrl : string;
     public headers;
     public options;

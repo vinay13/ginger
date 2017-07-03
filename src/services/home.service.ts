@@ -11,7 +11,7 @@ import { Configuration } from './app.constant';
 export class HomeService{
 
     public url;
-    public golaurl = 'https://violet.mobigraph.co/ginger/';   
+    public golaurl = 'https://grey.mobigraph.co/';   
     public giphyurl = 'http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC';
     public serverUrl : string;
     public headers;
@@ -58,7 +58,7 @@ export class HomeService{
 
       //using mobigraph api
       public getRelatedGifs(idiom, id){
-          return this.http.get("https://violet.mobigraph.co/ginger/"+idiom+"/relatedGifs/"+id+"/0/20",this.options)
+          return this.http.get(this.golaurl+"ginger/"+idiom+"/relatedGifs/"+id+"/0/20",this.options)
                     .map(this.extractData)
                     .catch(this.handleError)
       }
@@ -70,13 +70,13 @@ export class HomeService{
      }
 
     public getTabCategories(idiom){
-       return this.http.get('https://violet.mobigraph.co/ginger/tabs/'+idiom,this.options)
+       return this.http.get(this.golaurl+'ginger/tabs/'+idiom,this.options)
                 .map(this.extractData)
                 .catch(this.handleError)
     }
 
     public getTabDataviaTabId(idiom,tabid){
-        return this.http.get('https://violet.mobigraph.co/ginger/'+idiom+'/topItems/'+tabid,this.options)
+        return this.http.get(this.golaurl+'ginger/'+idiom+'/topItems/'+tabid,this.options)
                 .map(this.extractData)
                 .catch(this.handleError)
     }

@@ -10,7 +10,7 @@ import { Configuration } from './app.constant';
 export class SearchService{
 
     public url;
-    public baseUrl : string = "https://violet.mobigraph.co/ginger/";
+    public baseUrl : string = "https://grey.mobigraph.co/ginger/";
     public serverUrl : string;
     public headers;
     public options;

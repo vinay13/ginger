@@ -35,6 +35,7 @@ export class GifDetailComponent {
                     this.gifobject = this.navparams.get('url');
                      this.selectedIdiom = this.navparams.get('idiom');
                //     this.gifurl =  this.gifobject.url;
+                    console.log('gifobject',this.gifobject);
                     this.RecommendedGifs();
                     this.tagslist = this.gifobject.tags;
                 }
@@ -48,16 +49,16 @@ export class GifDetailComponent {
 			if(this.loadProgress < 100){
 				this.loadProgress++;
                 
-                if(this.loadProgress == 10){
-                    this.gifurl = this.gifobject.lowResUrl;
+                if(this.loadProgress == 1){
+                    this.gifurl = this.gifobject.url;
                 }
 
-                if(this.loadProgress == 30)
-                {
-                    console.log(this.gifurl);
-                    this.gifurl = this.gifobject.url;
-                    console.log(this.gifurl);
-                }
+                // if(this.loadProgress == 30)
+                // {
+                //     console.log(this.gifurl);
+                //     this.gifurl = this.gifobject.url;
+                //     console.log(this.gifurl);
+                // }
 
                 if(this.loadProgress == 99)
                 {
@@ -74,7 +75,8 @@ export class GifDetailComponent {
 
     public totalcount;
     RecommendedGifs(){
-        this._homeserv.getRelatedGifs(this.selectedIdiom,this.gifobject.gifId)
+        let gifId = this.gifobject.gifId || this.gifobject.id;
+        this._homeserv.getRelatedGifs(this.selectedIdiom,gifId)
             .subscribe( (res) => {this.recomns = res.contents, this.totalcount = res.totalCount},
                         (err) => console.log(err),
                         () => console.log('related gifs',this.totalcount))
@@ -104,7 +106,8 @@ export class GifDetailComponent {
 
     GIFviewer(url){
         this.navCtrl.push(GifDetailComponent,{
-            'url': url
+            'url': url,
+            'idiom':this.selectedIdiom
         });   
     }
 

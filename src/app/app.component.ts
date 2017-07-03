@@ -25,5 +25,9 @@ export class MyApp {
       statusBar.styleDefault(); 
       splashScreen.hide();
     });
+    
+    platform.resume.subscribe(() => {
+      //call the api to check if user's email is login
+    })
   }
 }

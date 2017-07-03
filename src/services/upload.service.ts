@@ -42,7 +42,7 @@ export class UploadGifService{
 
     UploadGifsByUrl(body){
    
-		return this.http.post('https://violet.mobigraph.co/ginger/uploadFromUrl',body, this.options)
+		return this.http.post('https://grey.mobigraph.co/ginger/uploadFromUrl',body, this.options)
 			   .map(this.extractData)
 			   .catch(this.handleError);
 	}

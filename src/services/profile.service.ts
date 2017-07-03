@@ -33,7 +33,7 @@ export class ProfileService{
             headers : headers
         });
 
-        return this.http.get('https://violet.mobigraph.co/ginger/' + 'profile',options)
+        return this.http.get('https://grey.mobigraph.co/ginger/' + 'profile',options)
                 .map(this.extractData)
                 .catch(this.handleError)         
     }
@@ -47,7 +47,7 @@ export class ProfileService{
         let options = new RequestOptions({
             headers : headers
         });
-        return this.http.post('https://violet.mobigraph.co/ginger/'+'profile',body,options)
+        return this.http.post('https://grey.mobigraph.co/ginger/'+'profile',body,options)
                 .map(this.extractData)
                 .catch(this.handleError)
     }
@@ -62,7 +62,7 @@ export class ProfileService{
             headers : headers
         });
 
-        return this.http.get('https://violet.mobigraph.co/ginger/'+'gifs/mygifs',options)
+        return this.http.get('https://grey.mobigraph.co/ginger/'+'gifs/mygifs',options)
             .map(this.extractData)
             .catch(this.handleError)
     }
