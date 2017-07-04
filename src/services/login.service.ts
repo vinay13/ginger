@@ -9,7 +9,7 @@ import { Http, XHRBackend, RequestOptions, Request, RequestOptionsArgs, Response
 @Injectable()
 export class LoginService{
 
-    public baseUrl : string = "https://grey.mobigraph.co/ginger";
+    public baseUrl : string = "https://goladev.mobigraph.co/ginger";
     public serverUrl : string;
     public headers;
     public options;
@@ -59,6 +59,22 @@ export class LoginService{
       return this.http.post(this.baseUrl+"/gauth/oauth2callback?code="+body+"&state="+"55",tbody,options)
                .map(this.extractData)
                .catch(this.handleError);
+    }
+
+    public checkEmailActivated(){
+      
+      let headers = new Headers({
+          'Content-Type': 'application/json',
+          'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w'
+      });
+
+      let options = new RequestOptions({
+           headers : headers
+      });
+  
+      return this.http.get(this.baseUrl + "email/verification",options)
+                  .map(this.extractData)
+                  .catch(this.handleError)
     }
 
     private extractData(res: Response) {

@@ -18,6 +18,7 @@ import {FormGroup,FormControl,Validators} from '@angular/forms';
 export class AddTagsComponent {
 
     public gifurl : any;
+    public uploadBtn;
     public selectedIdiom;
     addtagsForm : FormGroup; 
     formgif: any;
@@ -32,7 +33,11 @@ export class AddTagsComponent {
                 //    this.gifurl = this.navparams.get('gifpath');
                     this.selectedIdiom = this.navparams.get('idiom');
                     this.gifurl = this.navparams.get('weburl') || this.navparams.get('gifpath') ;
-             
+                    if(this.navparams.get('weburl') != ''){
+                        this.uploadBtn = this.UploadGif();
+                    }else{
+                        this.uploadBtn = this.uploadGifviaGallery();
+                    }
                     this.addtagsForm = new FormGroup({
                          url : new FormControl(this.gifurl),
                          idiom : new FormControl(this.selectedIdiom),
@@ -53,6 +58,7 @@ export class AddTagsComponent {
 
     response;
     UploadGif(){
+        alert('UploadGif is click');
         this.cs.showLoader();
         this._uploadserv.UploadGifsByUrl(this.formgif)
             .subscribe( (res) => { this.response = res; this.presentToast(); this.cs.hideLoader(); this.navCtrl.push(GifDetailComponent,{'url':this.response});},
@@ -67,6 +73,7 @@ export class AddTagsComponent {
   public data_response;
  // public base64Image;
   uploadGifviaGallery(){
+     alert('uploadGifviaGallery is clicked');
     const fileTransfer: TransferObject = this.transfer.create();
     //let ft = new Transfer();
         let filename = _.uniqueId() + ".gif";
@@ -81,7 +88,7 @@ export class AddTagsComponent {
             },
             params: {
                 "gif": filename,
-                "idiom": "Hindi",
+                "idiom": "Tamil",
                 "categories": ["Movie"],
                 "tags": ["Movie","MovieStar"]
             }
@@ -90,7 +97,7 @@ export class AddTagsComponent {
        alert(this.gifurl);
       this.cs.showLoader();
       
-        fileTransfer.upload(this.gifurl,' https://grey.mobigraph.co/ginger/uploadGif', options, true)
+        fileTransfer.upload(this.gifurl,'https://goladev.mobigraph.co/ginger/uploadGif', options, true)
             .then((result: any) => {
               console.log('success');
               this.data_response = result ; 
