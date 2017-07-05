@@ -37,14 +37,36 @@ export class AboutPage implements OnInit {
   public selectedIdiom;
    idiom3;
 idiomdict;
+// @Output()
+// tabSelect: EventEmitter<any> = new EventEmitter<any>();
+//  onTabSelect(index: number) {
+//     this.tabSelect.emit(index);
+//   }
   constructor(public navCtrl: NavController, 
               private navParams: NavParams,
               public _homeserv : HomeService,
               public events: Events) {
 
-                //  this.onTabSelect();
+                    
+                  
                   this.selectedIdiom = this.navParams.get('idiom');
                  
+                  //testing
+
+                    this._homeserv.getTabCategories(this.selectedIdiom)
+                    .subscribe( (res) => { this.tabdata = res.tabs;this.onTabSelect(this.tabdata[0]);this.abcetc(this.tabdata[0].id);this.tabsLoaded = true;    },
+                    (err) => { console.log(err)},
+                    () => { console.log('tabdata',this.tabdata[0].id)})
+
+
+
+                  //end here
+
+
+
+
+
+
                   console.log('aboutpageIdiom',this.selectedIdiom);
                  // this.events.publish('idiom:selected',  this.selectedIdiom);
               //   this.tabsCategories();
@@ -64,25 +86,27 @@ idiomdict;
 
   tabsLoaded =  false;
 
-  ionViewDidLoad(){
-    this._homeserv.getTabCategories(this.selectedIdiom)
-        .subscribe( (res) => { this.tabdata = res.tabs;this.abcetc(this.tabdata[0].id);this.tabsLoaded = true;    },
-                    (err) => { console.log(err)},
-                    () => { console.log('tabdata',this.tabdata)})
+  ngOnInit(){
+    this.lang =  "assets/icon/ic_"+ this.selectedIdiom +".png";
+  
 
-                    
-
-      // this.events.publish('tab:selected',this.tabdata[0].id)
   }
 
   abcetc(tbid){
     console.log('abctabid',tbid);
-     this.idiomdict = {
+       this.idiomdict = {
                       'idiom': this.selectedIdiom,
-                      'tabID' : tbid
+                      'index' : 0,
+                      'tabid' : tbid
                    }
-                  this.idiom3 = this.idiomdict;
+     this.idiom3 = this.idiomdict;
+   //this.gettabdata(this.selectedIdiom,tbid);           
   }
+
+  arbittt(ftdataa){
+  
+  }
+ 
 
      checklogin(){
     this.navCtrl.push(LoginPage,{
@@ -97,20 +121,21 @@ idiomdict;
     // this.superTabsCtrl.enableTabsSwipe(false);
   }
 
+   slideTo(tabsId){
+     console.log('in slide to fun',tabsId);
+   }
+  
+
   onTabSelect(ev : any){
-     // this.events.unsubscribe('tab:selected');
-      console.log(`Selected tab: `, ev);
-      console.log('tabbb',ev.id);
-       //this.gettabdata(this.selectedIdiom,ev.id);
-    //    this.events.publish('tab:selected', ev.id,this.tabIddata);
      this.events.publish('tab:selected', ev.id);
+   //  alert('pub');
   }
 
   public tabIddata;
   gettabdata(idiom,tabid){
      this.tabIddata = [];
      this._homeserv.getTabDataviaTabId(idiom,tabid)
-                  .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata},
+                  .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata; },
                   (err) => {console.log(err)},
                   () => console.log('data',this.tabIddata ))
 }
@@ -127,8 +152,8 @@ idiomdict;
 
 
 
-  ngOnInit(): void {
-    this.lang =  "assets/icon/ic_"+ this.selectedIdiom +".png";
+  // ngOnInit(): void {
     
-  }
+    
+  // }
 }

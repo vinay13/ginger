@@ -29,13 +29,4 @@ export class Page1Page {
                 () => console.log('trendingGifs',this.trendingGIFs))
     }
 
-
-  // pushPage(localNavCtrl: boolean = false) {
-  //   if (localNavCtrl) {
-  //     this.navCtrl.push(PageToPushPage);
-  //   } else {
-  //     this.rootNavCtrl.push(PageToPushPage);
-  //   }
-  // }
-
 }

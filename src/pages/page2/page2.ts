@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,ViewChild } from '@angular/core';
 import { NavController, NavParams ,Events } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { SearchComponent } from '../search/search.component';
@@ -7,8 +7,8 @@ import { IdiomComponent } from '../idiom/idiom.component';
 import { LoginPage } from '../login/login.component';
 import { UploadComponent } from '../upload/upload.component';
 import {CustomService} from '../../services/custom.service';
-
-//declare var imagesLoaded : any;
+// import { SuperTabs } from 'ionic2-super-tabs';
+// declare var SuperTabs : any;
 
 @Component({
   selector: 'page-page2',
@@ -21,7 +21,11 @@ export class Page2Page implements OnInit{
    public selectedIdiom;
    newselectedIdiom;
    public tabIddata; 
+   indexx;
+   index = 0;
     
+    //  @ViewChild(SuperTabs) superTabs: SuperTabs;
+
     rootNavCtrl: NavController;
     constructor(public navCtrl: NavController, 
                 public navparams: NavParams,
@@ -32,17 +36,19 @@ export class Page2Page implements OnInit{
                 this.rootNavCtrl = this.navparams.get('rootNavCtrl');
                 this.newselectedIdiom = this.navparams.data;
                 this.selectedIdiom = this.newselectedIdiom.idiom;
-                this.tabIDD = this.newselectedIdiom.tabID;
-      
-                this.gettabdata(this.selectedIdiom,this.tabIDD);   
+                this.tabIDD = this.newselectedIdiom.tabid;
+                this.indexx = this.newselectedIdiom.index;
+             
                 this.events.subscribe('tab:selected',(id) => {
+                        
                              this.tabId = id;
-                     //        this.gifs = tabdatas;
+                             this.index += 1;
                              this.gettabdata(this.selectedIdiom,id);
                             this.events.unsubscribe('tab:selected');
-                    });        
+                  });
+              
                 }
-                
+      
    public gifs: Array<any> = []; 
 
 

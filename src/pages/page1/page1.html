@@ -1,33 +1,9 @@
-<ion-content padding>
-   <h1>
-     This is the first page
-   </h1>
-
-
-  <!--<ion-slides slidesPerView="4">
-    <ion-slide>
-      <span class="color blue"></span>
-    </ion-slide>
-    <ion-slide>
-      <span class="color red"></span>
-    </ion-slide>
-    <ion-slide>
-      <span class="color yellow"></span>
-    </ion-slide>
-    <ion-slide>
-      <span class="color blue"></span>
-    </ion-slide>
-  </ion-slides>-->
-
-
-      <!--(click)="navGifDetail(gif)"-->
-
-    <p> trending </p>   
-
-           <div class="pins">
-              <div class="pin" *ngFor="let gif of gifs" >
-                <img  class="gifpin" src="{{gif.url}}">
-              </div>
-        </div>
+<ion-content class="home-content">
+  
+    <masonry class="grid" [options]="{ transitionDuration: '0.8s' , gutter : 4 }" [useImagesLoaded]="true"  >
+       <masonry-brick class="brick" *ngFor="let item of gifs"  (click)="navGifDetail(item)" >
+         <img src={{item.url}}/>
+         </masonry-brick>
+     </masonry>
 
 </ion-content>
