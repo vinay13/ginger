@@ -2,6 +2,19 @@ page-page2 {
     .home-content{
         background-color:  #202E3F;
     }
+     masonry .grid{
+        column-count: 2;
+      //  margin: 0 auto;
+    }
+ 
+
+      .brick{
+      width: 47%;
+    //    background: green;
+    //    margin: 2px;
+    //   padding: 4px;
+           
+      }
 }
 
 

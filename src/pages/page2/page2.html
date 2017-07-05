@@ -1,10 +1,17 @@
 <ion-content  class="home-content">
 
-        <div class="pins">
+    <!--     <div class="pins">
               <div class="pin" *ngFor="let gif of gifs" (click)="navGifDetail(gif)" >
                 <img  class="gifpin" src="{{gif.url}}">
               </div>
         </div>
+ -->
+
+      <masonry class="grid" [options]="{ transitionDuration: '0.8s' , gutter : 4 }" [useImagesLoaded]="true"  >
+       <masonry-brick class="brick" *ngFor="let item of gifs"  (click)="navGifDetail(item)" >
+         <img src={{item.url}}/>
+         </masonry-brick>
+     </masonry>
 
   <ion-fab right bottom>
     <button ion-fab><ion-icon name="md-add"></ion-icon></button>

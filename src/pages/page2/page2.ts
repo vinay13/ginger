@@ -8,6 +8,8 @@ import { LoginPage } from '../login/login.component';
 import { UploadComponent } from '../upload/upload.component';
 import {CustomService} from '../../services/custom.service';
 
+//declare var imagesLoaded : any;
+
 @Component({
   selector: 'page-page2',
   templateUrl: 'page2.html'
@@ -35,7 +37,9 @@ export class Page2Page implements OnInit{
                 this.gettabdata(this.selectedIdiom,this.tabIDD);   
                 this.events.subscribe('tab:selected',(id) => {
                              this.tabId = id;
+                     //        this.gifs = tabdatas;
                              this.gettabdata(this.selectedIdiom,id);
+                            this.events.unsubscribe('tab:selected');
                     });        
                 }
                 

@@ -98,14 +98,17 @@ idiomdict;
   }
 
   onTabSelect(ev : any){
+     // this.events.unsubscribe('tab:selected');
       console.log(`Selected tab: `, ev);
       console.log('tabbb',ev.id);
-       this.events.publish('tab:selected', ev.id);
-      // this.abcetc(ev.id);
+       //this.gettabdata(this.selectedIdiom,ev.id);
+    //    this.events.publish('tab:selected', ev.id,this.tabIddata);
+     this.events.publish('tab:selected', ev.id);
   }
 
   public tabIddata;
   gettabdata(idiom,tabid){
+     this.tabIddata = [];
      this._homeserv.getTabDataviaTabId(idiom,tabid)
                   .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata},
                   (err) => {console.log(err)},
