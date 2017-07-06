@@ -130,15 +130,15 @@ export class GifDetailComponent {
             message: 'Added to favorites list',
             duration: 3000
         });
-    toast.present();
-}
+        toast.present();
+    }
 
     downloadToast(){
         let toast = this.toastCtrl.create({
             message: 'GIF Saved!',
             duration: 3000
         });
-    toast.present();
+        toast.present();
     }
 
    shareGif(){
@@ -202,17 +202,17 @@ export class GifDetailComponent {
   }
 
 
-  download() {
-  const fileTransfer: TransferObject = this.transfer.create();
-  this.cs.showLoader();
-    // const imageLocation = `${cordova.file.applicationDirectory}www/assets/img/${image}`;
-   fileTransfer.download( this.gifurl,this.file.applicationDirectory+'ginger'+'aa.gif').then((entry) => {
-   //fileTransfer.download(url, cordova.file.externalRootDirectory + {{appName}} + 'filename')
-    this.cs.hideLoader();
-    this.downloadToast(); 
-  }, (error) => {
-    alert('err');
-    this.cs.hideLoader();
-  });
+  download(){
+     const fileTransfer: TransferObject = this.transfer.create();
+     this.cs.showLoader();
+     // const imageLocation = `${cordova.file.applicationDirectory}www/assets/img/${image}`;
+     fileTransfer.download( this.gifurl,this.file.applicationDirectory+'ginger'+'aa.gif').then((entry) => {
+     //fileTransfer.download(url, cordova.file.externalRootDirectory + {{appName}} + 'filename')
+     this.cs.hideLoader();
+     this.downloadToast(); 
+    }, (error) => {
+      alert('err');
+      this.cs.hideLoader();
+    });
   }
 }

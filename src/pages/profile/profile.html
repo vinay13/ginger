@@ -17,7 +17,7 @@
         <button class="gin-button-1" ion-button round (click)="ProfileEdit()">Edit</button>
    </div>
    
-   <div class="pins">
+   <!--<div class="pins">
        <div class="pin" *ngFor="let a of Uploadedgifs" (click)="gifViewer(a)">
            <img src="{{a.url}}">
        </div>
@@ -27,6 +27,12 @@
                 <h1>No GIF's</h1>
             </ion-card>
         </div>
-    </div>
+    </div>-->
+
+        <masonry class="grid" [options]="{ transitionDuration: '0.4s' , gutter : 4 }" [useImagesLoaded]="true"  >
+          <masonry-brick class="brick" *ngFor="let gifs of Uploadedgifs"  (click)="gifViewer(gifs)" >
+           <img src={{gifs.url}}/>
+         </masonry-brick>
+       </masonry>
 
 </ion-content>

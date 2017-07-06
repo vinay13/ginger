@@ -11,12 +11,18 @@
        {{searchedGifs.totalCount}} GIFS found for <b> {{searchItem}}  </b>
     </div>
 
-     <div class="pins">
+     <!--<div class="pins">
          <div class="pin" *ngFor="let gifs of searchedGifs.contents" (click)="viewGif(gifs)">
             <img class="gifpin" src={{gifs.url}}>
           </div>
+    </div>-->
+       <masonry class="grid" [options]="{ transitionDuration: '0.8s' , gutter : 4 }" [useImagesLoaded]="true"  >
+          <masonry-brick class="brick" *ngFor="let gifs of searchedGifs.contents"  (click)="viewGif(gifs)" >
+           <img src={{gifs.url}}/>
+         </masonry-brick>
+       </masonry>
 
-</div>
+
 
  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
       <ion-infinite-scroll-content></ion-infinite-scroll-content>

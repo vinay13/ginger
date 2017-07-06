@@ -51,7 +51,7 @@ export class HomeService{
 	// }
 
      public getTrendingGifs(idiom,pageno){
-		return this.http.get(this.golaurl+idiom+"/gifs/" + pageno + "/12", this.options)
+		return this.http.get(this.golaurl+idiom+"/gifs/" + pageno + "/18", this.options)
 			   .map(this.extractData)
 			   .catch(this.handleError);
 	}

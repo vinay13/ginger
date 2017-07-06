@@ -59,6 +59,13 @@ export class ProfileComponent {
          if (res) {
             this.noUploads = true;
         }
+        if (res.trim()==''){   
+            alert("What follows is blank: " + res);
+            this.noUploads = true;
+        }
+        else{   
+            alert("What follows is not blank: " + res);    
+        }
     }
 
 }

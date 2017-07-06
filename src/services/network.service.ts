@@ -42,7 +42,7 @@ export class NetworkService {
       this.states[Connection.CELL_2G] = "Cell 2G connection";
       this.states[Connection.CELL_3G] = "Cell 3G connection";
       this.states[Connection.NONE]    = 'No network connection';
-      alert('Connection: ' + this.states[networkState]);
+     // alert('Connection: ' + this.states[networkState]);
   }
   
   }

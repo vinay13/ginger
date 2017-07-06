@@ -8,25 +8,40 @@ import { HomeService } from '../../services/home.service';
 })
 export class Page1Page {
 
- // rootNavCtrl: NavController;
-
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
+    rootNavCtrl: NavController;
+    public selectedIdiom;
+    public newselectedIdiom;
+    constructor(public navCtrl: NavController,
+              public navparams: NavParams,
               public _homeserv : HomeService){
-                this.getTrendingGIFs();
-            //  this.rootNavCtrl = navParams.get('rootNavCtrl');
+             //   this.getTrendingGIFs();
+                this.tabcat();
+                this.rootNavCtrl = this.navparams.get('rootNavCtrl');
+                this.newselectedIdiom = this.navparams.data;
+                this.selectedIdiom = this.newselectedIdiom.idiom;
              
-            }
+    }
             
 
     public trendingGIFs: any;
     public gifs: Array<any> = [];
-    public selectedIdiom = "Tamil"; 
-    getTrendingGIFs(){
-    this._homeserv.getTrendingGifs(this.selectedIdiom,1)
-    .subscribe( (result) => { this.trendingGIFs = result ; this.gifs = this.gifs.concat(this.trendingGIFs.contents);},
-                (err) => {  console.log(err); },
-                () => console.log('trendingGifs',this.trendingGIFs))
+  
+    public tabdata;
+    public tabcat(){
+         this._homeserv.getTabCategories(this.selectedIdiom)
+                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[0].id);  },
+                    (err) => { console.log(err)},
+                    () => { console.log('tabdata',this.tabdata[0].id)})
     }
+
+    public tabIddata;
+    gettabdata(idiom,tabid){
+       this.tabIddata = [];
+       this._homeserv.getTabDataviaTabId(idiom,tabid)
+                  .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata; },
+                  (err) => {console.log(err)},
+                  () => console.log('data',this.tabIddata ))
+    }
+     
 
 }

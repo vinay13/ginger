@@ -3,20 +3,21 @@ import { NavController,NavParams } from 'ionic-angular';
 import { HomeComponent } from '../home/home.component'; 
 import { AboutPage } from '../about/about.ts';
 import { Page2Page} from '../page2/page2.ts';
- @Component({
+ 
+@Component({
      selector : 'page-idiom',
      templateUrl : 'idiom.html'
- })
+})
 
- export class IdiomComponent{
-
-     public selectedHero : string = "white";
+export class IdiomComponent{
+ 
+    public selectedHero : string = "white";
      constructor( private navCtrl : NavController ,
                   private navparams : NavParams){
         //  this.selectedIdiom();
-     }
+    }
 
-     public idioms = [
+    public idioms = [
                         {"id":1 , "name": "Hindi"},
                         {"id":2 , "name": "English"},
                         {"id":3 , "name": "Tamil"},
@@ -29,17 +30,17 @@ import { Page2Page} from '../page2/page2.ts';
      public bgcolor : string ;
      public showbutton = true;
 
-     selectedIdiom(index){
+    selectedIdiom(index){
           this.selectedIndex = index;
           this.showbutton = false;
           console.log('index',index);    
-     }
+    }
 
-     navHomePage(){
+    navHomePage(){
          console.log('idiom',this.idioms[this.selectedIndex].name);
          this.navCtrl.push(AboutPage,{
              'idiom': this.idioms[this.selectedIndex].name 
          });
-     }
+    }
 
  }

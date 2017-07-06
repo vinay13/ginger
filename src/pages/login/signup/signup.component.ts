@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import {LoginService} from '../../../services/login.service';
 import {HomeComponent} from '../../home/home.component';
 import {AboutPage} from '../../about/about.ts';
@@ -17,9 +17,18 @@ export class SignupComponent{
     selectedIdiom;
     constructor(public navCtrl : NavController,
                 public navparams : NavParams,
-                public _loginserv : LoginService){
+                public _loginserv : LoginService,
+                public toastCtrl : ToastController){
       
       this.selectedIdiom = this.navparams.get('idiom');
+    }
+
+    emailverifyToast(){
+         let toast = this.toastCtrl.create({
+            message : 'Activation link is sent to your email',
+            duration : 5000
+        });
+        toast.present();
     }
 
     public UserSignup(){
@@ -30,7 +39,7 @@ export class SignupComponent{
            }
         console.log(this.signupF);
         this._loginserv.SignupUser(this.signupF)
-            .subscribe( (res) => { console.log('signup',res); this.storeToken(res) ; this.navHome();},
+            .subscribe( (res) => { console.log('signup',res); this.emailverifyToast();  this.storeToken(res) ; this.navHome();},
                         (err) => { console.log('err',err)})
     }
 
