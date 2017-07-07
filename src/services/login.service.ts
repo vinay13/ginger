@@ -61,6 +61,21 @@ export class LoginService{
                .catch(this.handleError);
     }
 
+    public fbAuthCallback(body){
+      let headers = new Headers({
+          'Content-Type': 'application/json',
+          'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w'
+        });
+
+        let options = new RequestOptions({
+         headers : this.headers
+        });
+
+      return this.http.post('https://goladev.mobigraph.co/ginger/fauth/oauth2callback?code='+body,options)
+          .map(this.extractData)
+          .catch(this.handleError)
+    }
+
     public checkEmailActivated(){
       
       let headers = new Headers({

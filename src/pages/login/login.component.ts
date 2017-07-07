@@ -79,7 +79,7 @@ export class LoginPage implements OnInit{
   public googleLogin(){
       this.googlePlus.login({
          'scopes': 'profile email https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile', 
-         'webClientId': '802025194036-nk9ebs1d9sc4em80ore73oavctb75esk.apps.googleusercontent.com',
+         'webClientId': '802921815833-d4kp1q4sc7q82215uipd5qu78goh3dac.apps.googleusercontent.com',
          'offline': true,
       })
          .then((res) => { this.googleResponse = JSON.stringify(res); this.gauthcallBack(res.serverAuthCode);  })
@@ -89,21 +89,25 @@ export class LoginPage implements OnInit{
   public fbresponse : any;
   public facebookLogin(){
     this.fb.login(['email'])
-      .then((res: FacebookLoginResponse) => { this.fbresponse = JSON.stringify(res), alert(JSON.stringify(res)); this.postacesstoken() , this.navCtrl.push(AboutPage)})
+      .then((res: FacebookLoginResponse) => { this.fbresponse = JSON.stringify(res); alert(JSON.stringify(res)); this.fbauthcallBack(this.fbresponse.authResponse['accessToken']);  this.postacesstoken() , this.navCtrl.push(AboutPage,{ 'idiom': this.selectedIdiom})})
       .catch(e => alert(e));
   }
 
-
   public postacesstoken(){
-     alert(this.fbresponse.authResponse);
+     //alert(this.fbresponse.authResponse);
+     alert(this.fbresponse.authResponse['accessToken']);
     // alert(this.googleResponse.access_token);
   }
-
-
 
   public gauthcallBack(serverauthcode){
     this._authServ.gAuthCallback(serverauthcode)
       .subscribe((res) => {this.verifySuccessfully(res);this.NavLogin(); }, 
+                 (err) => {alert(err)})      
+  }
+
+  public fbauthcallBack(serverauthcode){
+    this._authServ.fbAuthCallback(serverauthcode)
+      .subscribe((res) => {alert(res);this.verifySuccessfully(res);this.NavLogin(); }, 
                  (err) => {alert(err)})      
   }
 

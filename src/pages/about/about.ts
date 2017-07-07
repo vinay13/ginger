@@ -58,15 +58,7 @@ idiomdict;
                     (err) => { console.log(err)},
                     () => { console.log('tabdata',this.tabdata[0].id)})
 
-
-
                   //end here
-
-
-
-
-
-
                   console.log('aboutpageIdiom',this.selectedIdiom);
                  // this.events.publish('idiom:selected',  this.selectedIdiom);
               //   this.tabsCategories();
