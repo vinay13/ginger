@@ -29,10 +29,16 @@
         </div>
     </div>-->
 
-        <masonry class="grid" [options]="{ transitionDuration: '0.4s' , gutter : 4 }" [useImagesLoaded]="true"  >
+        <masonry *ngIf="!noUploads" class="grid" [options]="{ transitionDuration: '0.4s' , gutter : 4 }" [useImagesLoaded]="true"  >
           <masonry-brick class="brick" *ngFor="let gifs of Uploadedgifs"  (click)="gifViewer(gifs)" >
            <img src={{gifs.url}}/>
          </masonry-brick>
        </masonry>
+
+        <div *ngIf="noUploads">
+            <ion-card>
+                <h1>No GIF's uploaded</h1>
+            </ion-card>
+        </div>
 
 </ion-content>

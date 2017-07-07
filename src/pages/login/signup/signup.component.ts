@@ -44,7 +44,7 @@ export class SignupComponent{
     }
 
     public navHome(){
-         this.navCtrl.push(HomeComponent,{
+         this.navCtrl.push(AboutPage,{
              'idiom': this.selectedIdiom
          }
          );   

@@ -11,7 +11,9 @@ export class UploadComponent implements OnInit {
 
    
     weburl;
-    constructor(private navCtrl : NavController ){}
+    constructor(private navCtrl : NavController ){
+      //  this.selectedIdiom = this.navparmas.get();
+    }
 
     AddTags(weburl){
         console.log('upload click1');

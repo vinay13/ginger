@@ -8,6 +8,7 @@ import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { AboutPage } from '../about/about.ts';
 
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -88,14 +89,14 @@ export class LoginPage implements OnInit{
   public fbresponse : any;
   public facebookLogin(){
     this.fb.login(['email'])
-      .then((res: FacebookLoginResponse) => { this.fbresponse = JSON.stringify(res), this.postacesstoken() , this.navCtrl.push(AboutPage)})
+      .then((res: FacebookLoginResponse) => { this.fbresponse = JSON.stringify(res), alert(JSON.stringify(res)); this.postacesstoken() , this.navCtrl.push(AboutPage)})
       .catch(e => alert(e));
   }
 
 
   public postacesstoken(){
-  //   alert(this.fbresponse.authResponse);
-     alert(this.googleResponse.access_token);
+     alert(this.fbresponse.authResponse);
+    // alert(this.googleResponse.access_token);
   }
 
 

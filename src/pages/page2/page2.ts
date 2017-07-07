@@ -6,7 +6,10 @@ import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
 import { IdiomComponent } from '../idiom/idiom.component';
 import { LoginPage } from '../login/login.component';
 import { UploadComponent } from '../upload/upload.component';
-import {CustomService} from '../../services/custom.service';
+import { CustomService} from '../../services/custom.service';
+import { Camera } from '@ionic-native/camera';
+import { AddTagsComponent} from '../upload/add-tags/add-tags.component';
+import { FileChooser } from '@ionic-native/file-chooser';
 // import { SuperTabs } from 'ionic2-super-tabs';
 // declare var SuperTabs : any;
 
@@ -31,6 +34,8 @@ export class Page2Page implements OnInit{
                 public navparams: NavParams,
                 public _homeserv : HomeService,
                 public events : Events,
+                public cameraa : Camera,
+                public fileChooser : FileChooser,
                 public cs : CustomService) {
             
                 this.rootNavCtrl = this.navparams.get('rootNavCtrl');
@@ -90,9 +95,25 @@ export class Page2Page implements OnInit{
 
   UploadviaWeb(){
     this.cs.showLoader();
-    this.navCtrl.push(UploadComponent);
+    this.rootNavCtrl.push(UploadComponent);
     this.cs.hideLoader();
   }
+
+    public imageFile : any;  
+  public data_response; 
+  ImagePick(){
+    this.cs.showLoader();
+      this.fileChooser.open()
+        .then(uri => {console.log(uri); this.imageFile = uri ; this.navAddTag(uri); } )
+        .catch(e => console.log(e));
+    }
+
+    navAddTag(uri){
+    this.cs.hideLoader();
+       this.rootNavCtrl.push(AddTagsComponent,{
+        'gifpath' :  uri
+      });   
+    }
 
     ngOnInit(){
    

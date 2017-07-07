@@ -206,13 +206,13 @@ ionViewDidLoad(){
 //       this.ImageFile = imagedata ;
 //       this.cs.hideLoader();
 //        this.navCtrl.push(AddTagsComponent,{
-//         'gifpath' :  imagedata
+//         'gifpath' :  this.base64Image
 //       });    
 //     },(err)=>{
 //       console.log(err);
 //       this.cs.hideLoader();
 //     });
-//}
+// }
 
 
   public imageFile : any;  

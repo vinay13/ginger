@@ -65,14 +65,15 @@ export class LoginService{
       
       let headers = new Headers({
           'Content-Type': 'application/json',
-          'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w'
+          'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
+          'Authorization' : 'Bearer' + ' ' + localStorage.getItem('access_token')
       });
 
       let options = new RequestOptions({
            headers : headers
       });
   
-      return this.http.get(this.baseUrl + "email/verification",options)
+      return this.http.get(this.baseUrl + "/getUserAuthStatus",options)
                   .map(this.extractData)
                   .catch(this.handleError)
     }

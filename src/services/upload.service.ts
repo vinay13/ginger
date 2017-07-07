@@ -41,8 +41,17 @@ export class UploadGifService{
     }
 
     UploadGifsByUrl(body){
-   
-		return this.http.post('https://grey.mobigraph.co/ginger/uploadFromUrl',body, this.options)
+        
+        let headers = new Headers({
+            'Content-Type' : 'application/json',
+            'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
+            'Authorization' : 'Bearer'+' '+ localStorage.getItem('access_token')
+        });
+        let options = new RequestOptions({
+         headers : headers
+        });
+    
+		return this.http.post('https://goladev.mobigraph.co/ginger/uploadFromUrl',body, options)
 			   .map(this.extractData)
 			   .catch(this.handleError);
 	}

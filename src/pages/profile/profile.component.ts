@@ -50,21 +50,14 @@ export class ProfileComponent {
     GifUploadedviaUser(){
         this.cs.showLoader();
         this._proServ.getGifsUploadedByUrl()
-        .subscribe( (data) => { this.Uploadedgifs = data; this.cs.hideLoader(); },
+        .subscribe( (data) => { this.Uploadedgifs = data;this.cs.hideLoader(); this.checkUploadGifs(data);  },
                     (err) => { this.cs.hideLoader();})
     }
 
     noUploads = false;
     checkUploadGifs(res){
-         if (res) {
-            this.noUploads = true;
-        }
         if (res.trim()==''){   
-            alert("What follows is blank: " + res);
             this.noUploads = true;
-        }
-        else{   
-            alert("What follows is not blank: " + res);    
         }
     }
 
