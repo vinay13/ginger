@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
+import { CustomService } from '../../services/custom.service';
+import { UploadComponent } from '../upload/upload.component';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { AddTagsComponent } from '../upload/add-tags/add-tags.component';
 
 @Component({
   selector: 'page-page1',
@@ -15,13 +19,15 @@ export class Page1Page {
     public newselectedIdiom;
     constructor(public navCtrl: NavController,
                 public navparams: NavParams,
-                public _homeserv : HomeService){
+                public _homeserv : HomeService,
+                public cs : CustomService,
+                public fileChooser : FileChooser){
                              
-                this.rootNavCtrl = this.navparams.get('rootNavCtrl');
-                this.newselectedIdiom = this.navparams.data;
-                this.selectedIdiom = this.newselectedIdiom.idiom;
+                  this.rootNavCtrl = this.navparams.get('rootNavCtrl');
+                  this.newselectedIdiom = this.navparams.data;
+                  this.selectedIdiom = this.newselectedIdiom.idiom;
              
-                this.tabcat();
+                  this.tabcat();
     }
             
 
@@ -50,6 +56,28 @@ export class Page1Page {
         'url' : url,
         'idiom' : this.selectedIdiom
       });
+    }
+
+      UploadviaWeb(){
+    this.cs.showLoader();
+    this.rootNavCtrl.push(UploadComponent);
+    this.cs.hideLoader();
+  }
+
+    public imageFile : any;  
+  public data_response; 
+  ImagePick(){
+    this.cs.showLoader();
+      this.fileChooser.open()
+        .then(uri => {console.log(uri); this.imageFile = uri ; this.navAddTag(uri); } )
+        .catch(e => console.log(e));
+    }
+
+  navAddTag(uri){
+    this.cs.hideLoader();
+       this.rootNavCtrl.push(AddTagsComponent,{
+        'gifpath' :  uri
+      });   
     }
      
 

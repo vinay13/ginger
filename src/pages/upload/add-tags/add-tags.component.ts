@@ -30,13 +30,9 @@ export class AddTagsComponent {
                 public transfer: Transfer,
                 public cs: CustomService){
                 //    this.gifurl = this.navparams.get('gifpath');
-                  //  this.selectedIdiom = this.navparams.get('idiom');
+                //  this.selectedIdiom = this.navparams.get('idiom');
                     this.gifurl = this.navparams.get('weburl') || this.navparams.get('gifpath') ;
-                    // if(this.navparams.get('weburl') != ''){
-                    //     this.uploadBtn = this.UploadGif();
-                    // }else{
-                    //     this.uploadBtn = this.uploadGifviaGallery();
-                    // }
+                
                     this.addtagsForm = new FormGroup({
                          url : new FormControl(this.gifurl),
                          idiom : new FormControl(this.selectedIdiom),   
@@ -87,15 +83,14 @@ export class AddTagsComponent {
                  'Authorization' : 'Bearer'+' '+ localStorage.getItem('access_token')
             },
             params: {
-                "gif": filename,
+                "gif":  this.gifurl,
                 "idiom": "Tamil",
                 "tags": ["Movie","MovieStar"]
             }
         }; 
-       alert(filename);
-       alert(this.gifurl);
-      this.cs.showLoader();
-      
+
+         this.cs.showLoader();
+         alert(this.gifurl);
         fileTransfer.upload(this.gifurl,'https://goladev.mobigraph.co/ginger/uploadGif', options, true)
             .then((result: any) => {
               console.log('success');
@@ -104,7 +99,7 @@ export class AddTagsComponent {
               this.navCtrl.push(GifDetailComponent);
               alert('success');
           }).catch((error: any) => {
-               alert('error'+JSON.stringify(error));
+               alert(error);
                this.cs.hideLoader();
         }); 
      }
@@ -116,6 +111,15 @@ export class AddTagsComponent {
             duration: 3000
         });
     toast.present();
+  }
+
+  UploadGifsT(){
+        if(this.navparams.get('weburl')){
+                   this.UploadGif();
+                }
+        if(this.navparams.get('gifpath')){
+                    this.uploadGifviaGallery();
+                }
   }
 
 }
