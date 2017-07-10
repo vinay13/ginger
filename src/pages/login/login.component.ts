@@ -71,7 +71,9 @@ export class LoginPage implements OnInit{
   }
 
   public verifySuccessfully(res) {
+    alert(res);
     localStorage.setItem("access_token", res.token);
+
   }
 // clientId = "802025194036-nk9ebs1d9sc4em80ore73oavctb75esk.apps.googleusercontent.com"
 // clientSecret = "Ia_HMIjBvZGbrbQpxNzcmmXp"
@@ -89,13 +91,13 @@ export class LoginPage implements OnInit{
   public fbresponse : any;
   public facebookLogin(){
     this.fb.login(['email'])
-      .then((res: FacebookLoginResponse) => { this.fbresponse = JSON.stringify(res); alert(JSON.stringify(res)); this.fbauthcallBack(this.fbresponse.authResponse['accessToken']);  this.postacesstoken() , this.navCtrl.push(AboutPage,{ 'idiom': this.selectedIdiom})})
+      .then((res: FacebookLoginResponse) => { this.fbresponse = res; this.fbauthcallBack(this.fbresponse.authResponse.accessToken);})
       .catch(e => alert(e));
   }
 
   public postacesstoken(){
      //alert(this.fbresponse.authResponse);
-     alert(this.fbresponse.authResponse['accessToken']);
+  //   alert(this.fbresponse.authResponse['accessToken']);
     // alert(this.googleResponse.access_token);
   }
 
@@ -106,8 +108,9 @@ export class LoginPage implements OnInit{
   }
 
   public fbauthcallBack(serverauthcode){
+    alert(serverauthcode);
     this._authServ.fbAuthCallback(serverauthcode)
-      .subscribe((res) => {alert(res);this.verifySuccessfully(res);this.NavLogin(); }, 
+      .subscribe((res) => {this.verifySuccessfully(res);this.NavLogin(); }, 
                  (err) => {alert(err)})      
   }
 

@@ -29,7 +29,7 @@
         </div>
     </div>-->
 
-        <masonry *ngIf="!noUploads" class="grid" [options]="{ transitionDuration: '0.4s' , gutter : 4 }" [useImagesLoaded]="true"  >
+        <masonry class="grid" [options]="{ transitionDuration: '0.4s' , gutter : 4 }" [useImagesLoaded]="true"  >
           <masonry-brick class="brick" *ngFor="let gifs of Uploadedgifs"  (click)="gifViewer(gifs)" >
            <img src={{gifs.url}}/>
          </masonry-brick>

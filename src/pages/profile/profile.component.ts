@@ -51,12 +51,20 @@ export class ProfileComponent {
         this.cs.showLoader();
         this._proServ.getGifsUploadedByUrl()
         .subscribe( (data) => { this.Uploadedgifs = data;this.cs.hideLoader(); this.checkUploadGifs(data);  },
-                    (err) => { this.cs.hideLoader();})
+                    (err) => { this.cs.hideLoader();},
+                    () => { console.log('uploadgifs',this.Uploadedgifs)})
+    }
+
+    favoritesgifs = [];
+    GifsFavorites(){
+        this._proServ.GetFavoriteGifsviaUser()
+            .subscribe( (data) => { this.favoritesgifs = data ; },
+                        (err) => { console.log(err)})
     }
 
     noUploads = false;
     checkUploadGifs(res){
-        if (res.trim()==''){   
+        if (res == {}){   
             this.noUploads = true;
         }
     }

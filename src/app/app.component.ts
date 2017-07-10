@@ -10,7 +10,7 @@ import { NetworkService} from '../services/network.service';
 import { NoInternetComponent} from '../components/noInternet/noInternet.component';
 import { LoginService } from '../services/login.service';
 // import {NavController} from 'ionic-angular';
-
+//import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 @Component({
   templateUrl: 'app.html',
@@ -25,12 +25,19 @@ export class MyApp {
               splashScreen: SplashScreen,
               networkserv : NetworkService,
               public toastCtrl : ToastController,
-              public _loginserv : LoginService
+              public _loginserv : LoginService,
+          
              ){
                 platform.ready().then(() => {
-                statusBar.styleDefault(); 
+                statusBar.styleDefault();
                 splashScreen.hide();
-      });
+                // this.ga.startTrackerWithId('YOUR_TRACKER_ID')
+                // .then(() => {
+                //   console.log('Google analytics is ready now');
+                //   this.ga.trackView('test');
+                // })
+                // .catch(e => console.log('Error starting GoogleAnalytics', e));
+           });
     
     platform.resume.subscribe(() => {
        
