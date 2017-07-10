@@ -29,6 +29,7 @@ import { SuperTabsModule } from 'ionic2-super-tabs';
 import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { Keyboard } from '@ionic-native/keyboard';
+import { Clipboard } from '@ionic-native/clipboard';
 
 //custom component
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
@@ -122,6 +123,7 @@ import { FileChooser } from '@ionic-native/file-chooser';
     FileChooser,
     Transfer,
     SocialSharing,
+    Clipboard,
     Network,
     GooglePlus,
     Facebook,

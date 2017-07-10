@@ -78,7 +78,7 @@ export class Page2Page implements OnInit{
   doInfinite(infiniteScroll) {
 
     let nextpage=this.pageno++;
-    this._homeserv.getTrendingGifs(this.selectedIdiom,nextpage).subscribe(
+    this._homeserv.getTabDataviaTabId(this.selectedIdiom,this.tabId).subscribe(
             data => {
               infiniteScroll.complete();
                 this.trendingGIFs = data;

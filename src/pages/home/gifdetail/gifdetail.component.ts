@@ -10,6 +10,7 @@ import { HomeService } from '../../../services/home.service';
 import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
 import { File } from '@ionic-native/file';
 import { ProfileComponent } from '../../profile/profile.component';
+import { Clipboard } from '@ionic-native/clipboard';
 
 @Component({
     selector : 'page-gifdetail',
@@ -31,6 +32,7 @@ export class GifDetailComponent {
                 private cs : CustomService,
                 private transfer: Transfer, 
                 private file: File,
+                private clipboard: Clipboard,
                 public navparams : NavParams){
                     this.gifobject = this.navparams.get('url');
                      this.selectedIdiom = this.navparams.get('idiom');
@@ -115,9 +117,16 @@ export class GifDetailComponent {
        this.presentToast();
     }
 
-    copyUrl(gifurl){
-        console.log('Url Copied');
-        console.log('copyURl',gifurl);
+    copyUrl(){
+        this.clipboard.copy(this.gifurl).then(
+                 (resolve: string) => {
+                         alert(resolve);
+             },
+             (reject: string) => {
+              alert('Error: ' + reject);
+         }
+    );
+    
         let toast = this.toastCtrl.create({
             message : 'URL copied to clipboard',
             duration : 3000
@@ -199,6 +208,15 @@ export class GifDetailComponent {
                 this.cs.hideLoader();
             },
             ()=> { alert("U don't have Instagram app"); this.cs.hideLoader(); })
+  }
+
+  shareSheet(){
+      this.cs.showLoader();
+      this.socialSharing.share("message",'gola',this.gifurl,"http://gola.com")
+        .then( () =>{
+            this.cs.hideLoader();
+        },
+        () => { this.cs.hideLoader(); }) 
   }
 
 

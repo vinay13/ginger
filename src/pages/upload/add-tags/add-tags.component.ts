@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { GifDetailComponent } from '../../home/gifdetail/gifdetail.component';
 import { NavController,NavParams,LoadingController,ToastController } from 'ionic-angular';
 import { UploadGifService } from '../../../services/upload.service';
-import { Transfer,TransferObject } from  '@ionic-native/transfer';
+import { Transfer,FileUploadOptions,TransferObject } from  '@ionic-native/transfer';
 import { File } from '@ionic-native/file';
 import {CustomService} from '../../../services/custom.service';
 import * as _ from 'underscore';
@@ -71,29 +71,28 @@ export class AddTagsComponent {
      alert('uploadGifviaGallery is clicked');
     const fileTransfer: TransferObject = this.transfer.create();
     
-        let filename = _.uniqueId() + ".jpeg";
+        let filename = _.uniqueId() + ".gif";
       
-        let options = {
+        let options : FileUploadOptions  = {
             fileKey: 'file',
             fileName: filename,
-            mimeType: 'image/jpeg',
+            mimeType: 'image/gif',
             chunkedMode: false,
             headers: {
                  'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
                  'Authorization' : 'Bearer'+' '+ localStorage.getItem('access_token')
             },
             params: {
-                "gif":  this.gifurl,
+                "gif":  '324.gif',
                 "idiom": "Tamil",
-                "tags": ["Movie","MovieStar"]
+                "tags": ["sarcasm"]
             }
         }; 
 
          this.cs.showLoader();
-         alert(this.gifurl);
-        fileTransfer.upload(this.gifurl,'https://goladev.mobigraph.co/ginger/uploadGif', options, true)
+        //  alert(this.gifurl);
+        fileTransfer.upload(this.gifurl,'https://goladev.mobigraph.co/ginger/uploadGif', options, false)
             .then((result: any) => {
-              console.log('success');
               this.data_response = result ; 
               this.cs.hideLoader();
               this.navCtrl.push(GifDetailComponent);
