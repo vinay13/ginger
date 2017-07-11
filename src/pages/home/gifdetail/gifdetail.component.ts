@@ -12,6 +12,8 @@ import { File } from '@ionic-native/file';
 import { ProfileComponent } from '../../profile/profile.component';
 import { Clipboard } from '@ionic-native/clipboard';
 
+
+
 @Component({
     selector : 'page-gifdetail',
     templateUrl : 'gifdetail.html'
@@ -33,12 +35,14 @@ export class GifDetailComponent {
                 private transfer: Transfer, 
                 private file: File,
                 private clipboard: Clipboard,
-                public navparams : NavParams){
+                public navparams : NavParams,
+               ){
                     this.gifobject = this.navparams.get('url');
                      this.selectedIdiom = this.navparams.get('idiom');
                //     this.gifurl =  this.gifobject.url;
                     console.log('gifobject',this.gifobject);
                     this.RecommendedGifs();
+                    this.GetUsername();
                     this.tagslist = this.gifobject.tags;
                 }
 
@@ -72,6 +76,10 @@ export class GifDetailComponent {
 
 	} 
 
+    golauser;
+    public GetUsername(){
+     this.golauser =   localStorage.getItem('username') || 'gola';
+    }
     
     public totalcount;
     gifId;

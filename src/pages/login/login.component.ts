@@ -7,7 +7,7 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { AboutPage } from '../about/about.ts';
-
+import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'page-login',
@@ -25,7 +25,8 @@ export class LoginPage implements OnInit{
               public _authServ: LoginService,
               public googlePlus : GooglePlus,
               public toastCtrl : ToastController,
-              public fb : Facebook
+              public fb : Facebook,
+              public _proserv : ProfileService
              ) {
                 this.selectedIdiom = this.navparams.get('idiom');
              }
@@ -69,6 +70,7 @@ export class LoginPage implements OnInit{
           this.Loginresponse = res;
          // alert(loginform.emailId);
           this.verifySuccessfully(res);
+          this.getprofile();
           this.NavLogin();
       },
       (err) => {
@@ -78,9 +80,15 @@ export class LoginPage implements OnInit{
   }
 
   public verifySuccessfully(res) {
-    alert(res);
+   
     localStorage.setItem("access_token", res.token);
 
+  }
+
+  getprofile(){
+    this._proserv.GetUserProfile()
+        .subscribe( (data) => { localStorage.setItem('username',data.userName); },
+                     (err) => {console.log(err);})
   }
 // clientId = "802025194036-nk9ebs1d9sc4em80ore73oavctb75esk.apps.googleusercontent.com"
 // clientSecret = "Ia_HMIjBvZGbrbQpxNzcmmXp"

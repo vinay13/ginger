@@ -44,8 +44,8 @@ export class ProfileComponent {
     getProfileData(){
         this._proServ.GetUserProfile()
         .subscribe( (data) => { this.profiledata = data },
-                     (err) => { alert(err);},   
-                    () => {console.log(this.profiledata)})
+                     (err) => {console.log(err);},   
+                     () => {console.log(this.profiledata)})
     }
 
     Uploadedgifs = [];

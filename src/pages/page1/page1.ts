@@ -67,7 +67,6 @@ export class Page1Page {
     public imageFile : any;  
   public data_response; 
   ImagePick(){
-    this.cs.showLoader();
       this.fileChooser.open()
         .then(uri => {console.log(uri); this.imageFile = uri ; this.navAddTag(uri); } )
         .catch(e => console.log(e));

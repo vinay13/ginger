@@ -102,7 +102,7 @@ export class Page2Page implements OnInit{
     public imageFile : any;  
   public data_response; 
   ImagePick(){
-    this.cs.showLoader();
+ 
       this.fileChooser.open()
         .then(uri => {console.log(uri); this.imageFile = uri ; this.navAddTag(uri); } )
         .catch(e => console.log(e));
