@@ -42,14 +42,6 @@ export class HomeService{
         return this.options;
     }
 
-    // getTrendingGifs(idiom){
-    //     console.log('idiom3',idiom);
-        
-	// 	return this.http.get(this.url+idiom+'/gifs', this.options)
-	// 		   .map(this.extractData)
-	// 		   .catch(this.handleError);
-	// }
-
      public getTrendingGifs(idiom,pageno){
 		return this.http.get(this.golaurl+idiom+"/gifs/" + pageno + "/18", this.options)
 			   .map(this.extractData)
@@ -79,6 +71,17 @@ export class HomeService{
         return this.http.get(this.golaurl+idiom+'/topItems/'+tabid+'/0/4',this.options)
                 .map(this.extractData)
                 .catch(this.handleError)
+    }
+
+    public favoritesGifs(gifId){
+         let headers = new Headers({
+            'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
+            'Authorization': 'Bearer' + ' ' + localStorage.getItem('access_token')
+        });
+        let options = new RequestOptions({
+             headers : headers
+        });
+        return this.http.post(this.golaurl+'gifs/favourite/'+ gifId, {}, options)
     }
 
     private extractData(res: Response) {

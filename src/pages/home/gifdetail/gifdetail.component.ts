@@ -74,9 +74,10 @@ export class GifDetailComponent {
 
     
     public totalcount;
+    gifId;
     RecommendedGifs(){
-        let gifId = this.gifobject.gifId || this.gifobject.id;
-        this._homeserv.getRelatedGifs(this.selectedIdiom,gifId)
+         this.gifId = this.gifobject.gifId || this.gifobject.id;
+        this._homeserv.getRelatedGifs(this.selectedIdiom,this.gifId)
             .subscribe( (res) => {this.recomns = res.contents, this.totalcount = res.totalCount},
                         (err) => console.log(err),
                         () => console.log('related gifs',this.totalcount))
@@ -112,7 +113,12 @@ export class GifDetailComponent {
     }
 
     public favorite = false;
+    thefavorites;
     Addfavorites(){
+        alert(this.gifId);
+        this._homeserv.favoritesGifs(this.gifId)
+        .subscribe( (res) => { this.thefavorites = res },
+                    (err) => { console.log(err)})
        this.favorite = true;
        this.presentToast();
     }
@@ -125,8 +131,8 @@ export class GifDetailComponent {
              (reject: string) => {
               alert('Error: ' + reject);
          }
-    );
-    
+        )
+
         let toast = this.toastCtrl.create({
             message : 'URL copied to clipboard',
             duration : 3000

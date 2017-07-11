@@ -1,6 +1,6 @@
 <ion-content class="home-content">
   
-    <masonry class="grid" [options]="{ transitionDuration: '0.8s' , gutter : 4 }" [useImagesLoaded]="true"  >
+    <masonry class="grid" [options]="{ transitionDuration: '0.3s' , gutter : 4 }" [useImagesLoaded]="true"  >
        <masonry-brick class="brick" *ngFor="let item of gifs"  (click)="navGifDetail(item)" >
          <img src={{item.url}}/>
          </masonry-brick>

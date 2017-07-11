@@ -71,6 +71,7 @@ export class ProfileService{
 
         let headers = new Headers({
             'Content-Type' : 'application/json',
+             'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
             'Authorization': 'Bearer' + ' ' + localStorage.getItem('access_token')
         })
 
@@ -78,7 +79,7 @@ export class ProfileService{
             headers : headers            
         });
 
-        return this.http.get(this.url+'gifs/viewedgifs',options)
+        return this.http.get(this.url+'gifs/favourites',options)
                 .map(this.extractData)
                 .catch(this.handleError)
 
