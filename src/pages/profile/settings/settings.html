@@ -31,13 +31,13 @@
                 Privacy Policy
             </ion-item>
 
-            <ion-item class="list-item-style">
+            <ion-item class="list-item-style" (click)="TOSfunc()">
                 Terms of Service
             </ion-item>
     </div>   
 
             <div class="gin-center-txt">
-                <button class="gin-button-2" ion-button round> Logout </button>
+                <button class="gin-button-2" ion-button round (click)="logout()"> Logout </button>
             </div> 
 
 </ion-content>

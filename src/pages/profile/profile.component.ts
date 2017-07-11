@@ -21,7 +21,8 @@ export class ProfileComponent {
 
                     this.getProfileData();
                    this.GifUploadedviaUser();
-                   // this.GifsFavorites();
+                    this.GifsFavorites();
+
                 }
 
     ProfileEdit(){
@@ -59,9 +60,9 @@ export class ProfileComponent {
     favoritesgifs = [];
     GifsFavorites(){
         this._proServ.GetFavoriteGifsviaUser()
-            .subscribe((data) => { this.favoritesgifs = data; },
+            .subscribe((data) => { this.Uploadedgifs = data.favouriteGifs; },
                         (err) => { console.log(err)},
-                        () => { console.log('favgifs',this.favoritesgifs);})
+                        () => { console.log('favgifs',this.Uploadedgifs);})
     }
 
 // this.Uploadedgifs.push(this.favoritesgifs);

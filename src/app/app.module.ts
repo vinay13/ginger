@@ -34,6 +34,7 @@ import { Clipboard } from '@ionic-native/clipboard';
 //custom component
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { NoInternetComponent } from '../components/noInternet/noInternet.component';
+import { TOScomponent } from '../components/termsofservice/tos.ts';
 
 //import services 
 import {HomeService} from '../services/home.service';
@@ -76,7 +77,8 @@ import { FileChooser } from '@ionic-native/file-chooser';
     NoInternetComponent ,
     Page1Page,
     Page2Page,
-    Page3Page
+    Page3Page,
+    TOScomponent
   ],
   imports: [
     HttpModule,
@@ -104,7 +106,8 @@ import { FileChooser } from '@ionic-native/file-chooser';
     PopOverComponent,
     Page1Page,
     Page2Page,
-    Page3Page
+    Page3Page,
+    TOScomponent
   ],
   providers: [
     StatusBar,

@@ -2,18 +2,23 @@
   .text-to-change div {
     margin: 10px auto;
   }
+
+
 }
 
 .gin-popover-list {
   padding-top: 5%;
 }
 
-.gin-popover {
+.gin-popover ion-label 
+  {
+  color: #ed0e0e !important;
   text-align: center;
   font-weight: 600;
-  color: #35EC97; 
+
 }
 
 .pop-icon {
   margin-right: 10px;
 }
+

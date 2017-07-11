@@ -1,5 +1,5 @@
 import { Component ,OnInit } from '@angular/core';
-import { NavController,NavParams } from 'ionic-angular';
+import { NavController,NavParams,ToastController } from 'ionic-angular';
 import { HomeComponent } from '../home/home.component';
 import { LoginService } from '../../services/login.service';
 import { GooglePlus } from '@ionic-native/google-plus';
@@ -24,6 +24,7 @@ export class LoginPage implements OnInit{
               public navparams : NavParams,
               public _authServ: LoginService,
               public googlePlus : GooglePlus,
+              public toastCtrl : ToastController,
               public fb : Facebook
              ) {
                 this.selectedIdiom = this.navparams.get('idiom');
@@ -51,9 +52,17 @@ export class LoginPage implements OnInit{
     });
   }
 
+  toastLogin(){
+        let toast = this.toastCtrl.create({
+            message : 'username/password incorrect',
+            duration : 4000
+        });
+        toast.present();
+  }
+
   Loginresponse : any;
   UserLogin(){
-    console.log(this.loginform.value);
+
     this._authServ.verifyUser(this.loginform.value)
       .subscribe(
         (res) => {
@@ -63,10 +72,8 @@ export class LoginPage implements OnInit{
           this.NavLogin();
       },
       (err) => {
-       alert(this.loginform.value.emailId);
-       alert(this.loginform.value.password);
         console.log(err);
-        alert(err);
+        this.toastLogin();
       })
   }
 
