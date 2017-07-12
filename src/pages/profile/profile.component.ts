@@ -60,7 +60,7 @@ export class ProfileComponent {
     favoritesgifs = [];
     GifsFavorites(){
         this._proServ.GetFavoriteGifsviaUser()
-            .subscribe((data) => { this.Uploadedgifs = data.favouriteGifs; },
+            .subscribe((data) => { this.Uploadedgifs = data; },
                         (err) => { console.log(err)},
                         () => { console.log('favgifs',this.Uploadedgifs);})
     }

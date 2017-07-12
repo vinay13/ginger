@@ -118,14 +118,14 @@ export class LoginPage implements OnInit{
 
   public gauthcallBack(serverauthcode){
     this._authServ.gAuthCallback(serverauthcode)
-      .subscribe((res) => {this.verifySuccessfully(res);this.NavLogin(); }, 
+      .subscribe((res) => {this.verifySuccessfully(res);this.NavLogin(); this.getprofile(); }, 
                  (err) => {alert(err)})      
   }
 
   public fbauthcallBack(serverauthcode){
     alert(serverauthcode);
     this._authServ.fbAuthCallback(serverauthcode)
-      .subscribe((res) => {this.verifySuccessfully(res);this.NavLogin(); }, 
+      .subscribe((res) => {this.verifySuccessfully(res);this.NavLogin(); this.getprofile(); }, 
                  (err) => {alert(err)})      
   }
 

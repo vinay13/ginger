@@ -183,17 +183,17 @@ export class GifDetailComponent {
     }
 
    shareGif(){
-    this.cs.showLoader();
-    this.socialSharing.shareViaWhatsApp("",this.gifurl, "https://giphy.com")
-      .then(()=>{
-        alert('share clicked');
-        this.share();
-        this.cs.hideLoader();
-      },
-      ()=>{
-        alert("failed")
-      })
-  }
+     this.cs.showLoader();
+     this.socialSharing.shareViaWhatsApp("",this.gifurl, "https://giphy.com")
+       .then(()=>{
+         alert('share clicked');
+         this.share();
+         this.cs.hideLoader();
+       },
+       ()=>{
+         alert("failed")
+       })
+    }
 
   shareGifTwitter(){
       this.cs.showLoader();

@@ -6,6 +6,10 @@ import { CustomService } from '../../services/custom.service';
 import { UploadComponent } from '../upload/upload.component';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { AddTagsComponent } from '../upload/add-tags/add-tags.component';
+import {AppRate} from '@ionic-native/app-rate';
+import { Platform } from 'ionic-angular';
+
+
 
 @Component({
   selector: 'page-page1',
@@ -17,10 +21,13 @@ export class Page1Page {
     rootNavCtrl: NavController;
     public selectedIdiom;
     public newselectedIdiom;
+   
+
     constructor(public navCtrl: NavController,
                 public navparams: NavParams,
                 public _homeserv : HomeService,
                 public cs : CustomService,
+                public platform : Platform,
                 public fileChooser : FileChooser){
                              
                   this.rootNavCtrl = this.navparams.get('rootNavCtrl');
@@ -28,7 +35,12 @@ export class Page1Page {
                   this.selectedIdiom = this.newselectedIdiom.idiom;
              
                   this.tabcat();
+
+               
+
     }
+
+    
             
 
     public trendingGIFs: any;

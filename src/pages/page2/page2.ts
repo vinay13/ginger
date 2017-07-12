@@ -12,6 +12,8 @@ import { AddTagsComponent} from '../upload/add-tags/add-tags.component';
 import { FileChooser } from '@ionic-native/file-chooser';
 // import { SuperTabs } from 'ionic2-super-tabs';
 // declare var SuperTabs : any;
+import {AppRate} from '@ionic-native/app-rate';
+import { Platform } from 'ionic-angular';
 
 @Component({
   selector: 'page-page2',
@@ -28,13 +30,15 @@ export class Page2Page implements OnInit{
    index = 0;
     
     //  @ViewChild(SuperTabs) superTabs: SuperTabs;
-
+//  appRate: any = AppRate;
     rootNavCtrl: NavController;
     constructor(public navCtrl: NavController, 
                 public navparams: NavParams,
                 public _homeserv : HomeService,
                 public events : Events,
                 public cameraa : Camera,
+                public platform : Platform,
+                public appRate: AppRate,
                 public fileChooser : FileChooser,
                 public cs : CustomService) {
             
@@ -51,6 +55,17 @@ export class Page2Page implements OnInit{
                              this.gettabdata(this.selectedIdiom,id);
                             this.events.unsubscribe('tab:selected');
                   });
+
+                     this.platform.ready().then(
+                     () =>  this.appRate.preferences = {
+                       usesUntilPrompt: 3,
+                       storeAppURL: {
+                     android : 'market://details?id=com.mobigraph.xpresso'
+                   }
+                     }
+                )
+        
+               
               
                 }
       
@@ -94,6 +109,7 @@ export class Page2Page implements OnInit{
 } 
 
   UploadviaWeb(){
+    
     this.cs.showLoader();
     this.rootNavCtrl.push(UploadComponent);
     this.cs.hideLoader();
@@ -102,10 +118,10 @@ export class Page2Page implements OnInit{
     public imageFile : any;  
   public data_response; 
   ImagePick(){
- 
-      this.fileChooser.open()
-        .then(uri => {console.log(uri); this.imageFile = uri ; this.navAddTag(uri); } )
-        .catch(e => console.log(e));
+  this.appRate.promptForRating(true);
+      // this.fileChooser.open()
+      //   .then(uri => {console.log(uri); this.imageFile = uri ; this.navAddTag(uri); } )
+      //   .catch(e => console.log(e));
     }
 
     navAddTag(uri){
@@ -116,6 +132,7 @@ export class Page2Page implements OnInit{
     }
 
     ngOnInit(){
-   
+ //   this.appRate.promptForRating(true);
+ 
     }
 }

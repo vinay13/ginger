@@ -31,7 +31,8 @@ export class HomeService{
     setHeader() {
         this.headers = new Headers({
         'Content-Type' : 'application/json',
-        'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w'
+        'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
+        'GOLA_USER_TIME_ZONE': new Date().toTimeString()
         });
         this.options = new RequestOptions({
          headers : this.headers
@@ -104,15 +105,14 @@ export class HomeService{
 
     public shareArbit(gifId){
         let headers = new Headers({
-            'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
-            'Content-Type' : 'application/json',
+            'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w'
         });
              
         let options = new RequestOptions({
              headers : headers
         });
 
-        return this.http.get(this.golaurl+'share/gif/'+gifId,options)
+        return this.http.post(this.golaurl+'share/gif/'+gifId,{},options)
                 .map(this.extractData)
                 .catch(this.handleError)
     }
@@ -125,17 +125,17 @@ export class HomeService{
 		return body || { };
 	}
 
-	private handleError(error: Response | any) {
-    let errMsg: string;
-    if (error instanceof Response) {
-      errMsg = `${error.status} - ${error.ok || ''}`;
-      if (error.status === 0) {
-        errMsg = `${error.status} - "No Internet"`;
-      }
-    } else {
-      errMsg = error.message ? error.message : error.toString();
-    }
+	private handleError(error: Response | any){
+        let errMsg: string;
+        if (error instanceof Response) {
+        errMsg = `${error.status} - ${error.ok || ''}`;
+        if (error.status === 0) {
+            errMsg = `${error.status} - "No Internet"`;
+        }
+        } 
+        else {
+            errMsg = error.message ? error.message : error.toString();
+        }
     return Observable.throw(errMsg);
   }
-
 }

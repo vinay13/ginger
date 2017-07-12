@@ -26,6 +26,7 @@ export class ProfileService{
     GetUserProfile(){
         let headers = new Headers({
             'Content-Type' : 'application/json',
+            'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
             'Authorization' : 'Bearer' + ' ' + localStorage.getItem('access_token')
         })
 
@@ -41,6 +42,7 @@ export class ProfileService{
     GetUserProfileEdit(body){
              let headers = new Headers({
             'Content-Type' : 'application/json',
+            'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
             'Authorization' : 'Bearer' + ' ' + localStorage.getItem('access_token')
         })
 
@@ -55,6 +57,7 @@ export class ProfileService{
     getGifsUploadedByUrl(){
         let headers = new Headers({
             'Content-Type' : 'application/json',
+            'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
             'Authorization' : 'Bearer' + ' ' + localStorage.getItem('access_token')
         })
 
