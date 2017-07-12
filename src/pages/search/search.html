@@ -14,7 +14,7 @@
         <ion-item  class="top-searches-items" *ngFor="let top of topsearcheslist" (click)="TagsClick(top.text)">
            <ion-icon name="search" padding></ion-icon>
             {{ top.text }}
-            <img style="width:90px; float:right;"src={{top.url}} />
+            <img style="width:100px; float:right; padding-top: 4px;" src={{top.url}} />
         </ion-item>
     </ion-list>
     

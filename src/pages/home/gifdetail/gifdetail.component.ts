@@ -43,7 +43,9 @@ export class GifDetailComponent {
                     console.log('gifobject',this.gifobject);
                     this.RecommendedGifs();
                     this.GetUsername();
+                    this.sharesCountDetails();
                     this.tagslist = this.gifobject.tags;
+                    console.log('tagslist',this.tagslist);
                 }
 
     loadProgress: number = 0;
@@ -156,6 +158,22 @@ export class GifDetailComponent {
         toast.present();
     }
 
+    scount;
+    sharesCountDetails(){
+        this._homeserv.sharesdetails(this.gifId)
+            .subscribe( (data) => { this.scount = data; this.scount = this.scount.shareCount;},
+                        (err) => { console.log(err)},
+                        () => { console.log('shareCount',this.scount)} )
+    }
+
+    shared;
+    share(){
+        this._homeserv.shareArbit(this.gifId)
+            .subscribe( (data) => { this.shared = data; alert(data);},
+                        (err) => { alert(err)},
+                        () => { console.log('shared',this.shared)})
+    }
+
     downloadToast(){
         let toast = this.toastCtrl.create({
             message: 'GIF Saved!',
@@ -166,12 +184,14 @@ export class GifDetailComponent {
 
    shareGif(){
     this.cs.showLoader();
-    this.socialSharing.shareViaWhatsApp("Message via WhatsApp",this.gifurl, "https://giphy.com")
+    this.socialSharing.shareViaWhatsApp("",this.gifurl, "https://giphy.com")
       .then(()=>{
+        alert('share clicked');
+        this.share();
         this.cs.hideLoader();
       },
       ()=>{
-         alert("failed")
+        alert("failed")
       })
   }
 
