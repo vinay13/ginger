@@ -96,7 +96,7 @@ export class LoginPage implements OnInit{
   public googleLogin(){
       this.googlePlus.login({
          'scopes': 'profile email https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile', 
-         'webClientId': '802921815833-d4kp1q4sc7q82215uipd5qu78goh3dac.apps.googleusercontent.com',
+         'webClientId': '802921815833-vi6nrrotqau2c7c436j55c04r520lr8r.apps.googleusercontent.com',
          'offline': true,
       })
          .then((res) => { this.googleResponse = JSON.stringify(res); this.gauthcallBack(res.serverAuthCode);  })
@@ -123,7 +123,7 @@ export class LoginPage implements OnInit{
   }
 
   public fbauthcallBack(serverauthcode){
-    alert(serverauthcode);
+   
     this._authServ.fbAuthCallback(serverauthcode)
       .subscribe((res) => {this.verifySuccessfully(res);this.NavLogin(); this.getprofile(); }, 
                  (err) => {alert(err)})      

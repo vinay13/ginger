@@ -2,7 +2,7 @@
   
     <masonry class="grid" [options]="{ transitionDuration: '0.3s' , gutter : 4 }" [useImagesLoaded]="true"  >
        <masonry-brick class="brick" *ngFor="let item of gifs"  (click)="navGifDetail(item)" >
-         <img src={{item.url}}/>
+         <img src={{item.lowResUrl}}/>
          </masonry-brick>
      </masonry>
 

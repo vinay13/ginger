@@ -31,7 +31,12 @@ export class PopOverComponent {
         this.viewCtrl.dismiss();
     }
 
+    flag(){
+        alert('clicked flag');
+    }
+
     download(){
+        alert('clicked download');
         const fileTransfer: TransferObject = this.transfer.create();
         // this.cs.showLoader();
         // const imageLocation = `${cordova.file.applicationDirectory}www/assets/img/${image}`;

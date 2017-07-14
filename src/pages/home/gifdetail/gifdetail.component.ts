@@ -125,7 +125,7 @@ export class GifDetailComponent {
     public favorite = false;
     thefavorites;
     Addfavorites(){
-        alert(this.gifId);
+       
         this._homeserv.favoritesGifs(this.gifId)
         .subscribe( (res) => { this.thefavorites = res },
                     (err) => { console.log(err)})
@@ -139,7 +139,6 @@ export class GifDetailComponent {
                          alert(resolve);
              },
              (reject: string) => {
-              alert('Error: ' + reject);
          }
         )
 
@@ -169,7 +168,7 @@ export class GifDetailComponent {
     shared;
     share(){
         this._homeserv.shareArbit(this.gifId)
-            .subscribe( (data) => { this.shared = data; alert(data);},
+            .subscribe( (data) => { this.shared = data;},
                         (err) => { alert(err)},
                         () => { console.log('shared',this.shared)})
     }
@@ -186,7 +185,6 @@ export class GifDetailComponent {
      this.cs.showLoader();
      this.socialSharing.shareViaWhatsApp("",this.gifurl, "https://giphy.com")
        .then(()=>{
-         alert('share clicked');
          this.share();
          this.cs.hideLoader();
        },
@@ -202,7 +200,7 @@ export class GifDetailComponent {
             this.cs.hideLoader();
         },
         ()=>{
-         alert("failed")
+         alert("U don't have twitter app");
          this.cs.hideLoader();
       })
   }

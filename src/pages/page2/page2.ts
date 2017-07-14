@@ -56,17 +56,15 @@ export class Page2Page implements OnInit{
                             this.events.unsubscribe('tab:selected');
                   });
 
-                     this.platform.ready().then(
-                     () =>  this.appRate.preferences = {
-                       usesUntilPrompt: 3,
-                       storeAppURL: {
-                     android : 'market://details?id=com.mobigraph.xpresso'
-                   }
-                     }
-                )
+                //      this.platform.ready().then(
+                //      () =>  this.appRate.preferences = {
+                //        usesUntilPrompt: 3,
+                //        storeAppURL: {
+                //      android : 'market://details?id=com.mobigraph.xpresso'
+                //    }
+                //      }
+                // )
         
-               
-              
                 }
       
    public gifs: Array<any> = []; 
@@ -118,10 +116,10 @@ export class Page2Page implements OnInit{
     public imageFile : any;  
   public data_response; 
   ImagePick(){
-  this.appRate.promptForRating(true);
-      // this.fileChooser.open()
-      //   .then(uri => {console.log(uri); this.imageFile = uri ; this.navAddTag(uri); } )
-      //   .catch(e => console.log(e));
+ // this.appRate.promptForRating(true);
+      this.fileChooser.open()
+        .then(uri => {console.log(uri); this.imageFile = uri ; this.navAddTag(uri); } )
+        .catch(e => console.log(e));
     }
 
     navAddTag(uri){
