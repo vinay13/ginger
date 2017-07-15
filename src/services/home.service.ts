@@ -74,6 +74,21 @@ export class HomeService{
                 .catch(this.handleError)
     }
 
+    public getGifviaID(gifid){
+         let headers = new Headers({
+            'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
+            'Content-Type' : 'application/json',
+         });
+        
+        let options = new RequestOptions({
+             headers : headers
+        });
+
+        return this.http.get(this.golaurl+'gifs/metaData/'+ gifid,options)
+                .map(this.extractData)
+                .catch(this.handleError)
+    }
+
     public favoritesGifs(gifId){
          let headers = new Headers({
             'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
@@ -86,21 +101,21 @@ export class HomeService{
     }
 
 
-    public sharesdetails(gifId){
-        let headers = new Headers({
-            'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
-            'Content-Type' : 'application/json',
-            'GOLA_USER_TIME_ZONE': new Date().toTimeString()
-        });
+    // public sharesdetails(gifId){
+    //     let headers = new Headers({
+    //         'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
+    //         'Content-Type' : 'application/json',
+    //         'GOLA_USER_TIME_ZONE': new Date().toTimeString()
+    //     });
              
-        let options = new RequestOptions({
-             headers : headers
-        });
+    //     let options = new RequestOptions({
+    //          headers : headers
+    //     });
 
-        return this.http.get(this.golaurl+'gifs/'+ gifId,options)
-            .map(this.extractData)
-            .catch(this.handleError)
-    } 
+    //     return this.http.get(this.golaurl+'gifs/metadata/'+ gifId,options)
+    //         .map(this.extractData)
+    //         .catch(this.handleError)
+    // } 
 
 
     public shareArbit(gifId){

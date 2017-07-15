@@ -1,9 +1,9 @@
 <ion-content class="home-content">
   
     <masonry class="grid" [options]="{ transitionDuration: '0.3s' , gutter : 4 }" [useImagesLoaded]="true"  >
-       <masonry-brick class="brick" *ngFor="let item of gifs"  (click)="navGifDetail(item)" >
+       <masonry-brick class="brick" *ngFor="let item of gifs"  (click)="GifsViewviaId(item.gifId)" >
          <img src={{item.lowResUrl}}/>
-         </masonry-brick>
+        </masonry-brick>
      </masonry>
 
   <ion-fab right bottom>
@@ -14,8 +14,8 @@
     </ion-fab-list>
   </ion-fab>
 
-    <ion-infinite-scroll  direction="x" class="con-scroll-x" has-bouncing="true" (ionInfinite)="doInfinite($event)">
+    <!--<ion-infinite-scroll  direction="x" class="con-scroll-x" has-bouncing="true" (ionInfinite)="doInfinite($event)">
       <ion-infinite-scroll-content ></ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+    </ion-infinite-scroll>-->
 
 </ion-content>

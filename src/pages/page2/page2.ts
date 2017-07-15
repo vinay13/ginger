@@ -48,13 +48,18 @@ export class Page2Page implements OnInit{
                 this.tabIDD = this.newselectedIdiom.tabid;
                 this.indexx = this.newselectedIdiom.index;
              
-                this.events.subscribe('tab:selected',(id) => {
+             
+
+                   platform.ready().then(() => {
+                       this.events.subscribe('tab:selected',(id) => {
                         
                              this.tabId = id;
                              this.index += 1;
-                             this.gettabdata(this.selectedIdiom,id);
+                              this.gettabdata(this.selectedIdiom,id);
+                            
                             this.events.unsubscribe('tab:selected');
-                  });
+                    });
+                  })
 
                 //      this.platform.ready().then(
                 //      () =>  this.appRate.preferences = {
@@ -113,7 +118,7 @@ export class Page2Page implements OnInit{
     this.cs.hideLoader();
   }
 
-    public imageFile : any;  
+  public imageFile : any;  
   public data_response; 
   ImagePick(){
  // this.appRate.promptForRating(true);
@@ -129,8 +134,13 @@ export class Page2Page implements OnInit{
       });   
     }
 
+    public gifData;
+    GifsViewviaId(tabid){
+      this._homeserv.getGifviaID(tabid)
+          .subscribe((res) => { this.gifData = res; this.navGifDetail(res);})
+    }
+
     ngOnInit(){
  //   this.appRate.promptForRating(true);
- 
     }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
@@ -9,7 +9,7 @@ import { AddTagsComponent } from '../upload/add-tags/add-tags.component';
 import {AppRate} from '@ionic-native/app-rate';
 import { Platform } from 'ionic-angular';
 
-
+// let AngularMasonry;
 
 @Component({
   selector: 'page-page1',
@@ -21,8 +21,8 @@ export class Page1Page {
     rootNavCtrl: NavController;
     public selectedIdiom;
     public newselectedIdiom;
-   
-
+    //@ViewChild(AngularMasonry) private masonry: AngularMasonry;
+    //masonry._msnry.reloadItems()
     constructor(public navCtrl: NavController,
                 public navparams: NavParams,
                 public _homeserv : HomeService,
@@ -34,15 +34,16 @@ export class Page1Page {
                   this.newselectedIdiom = this.navparams.data;
                   this.selectedIdiom = this.newselectedIdiom.idiom;
              
-                  this.tabcat();
+                  platform.ready().then(() => {
+                      this.tabcat();
+                  })
+                
 
                
 
     }
 
     
-            
-
     public trendingGIFs: any;
     public gifs: Array<any> = [];
   
@@ -63,6 +64,12 @@ export class Page1Page {
                   () => console.log('data',this.tabIddata ))
     }
 
+    public gifData;
+    GifsViewviaId(tabid){
+      this._homeserv.getGifviaID(tabid)
+          .subscribe((res) => { this.gifData = res; this.navGifDetail(res);})
+    }
+
     navGifDetail(url){
       this.rootNavCtrl.push(GifDetailComponent,{
         'url' : url,
@@ -70,19 +77,19 @@ export class Page1Page {
       });
     }
 
-      UploadviaWeb(){
-    this.cs.showLoader();
-    this.rootNavCtrl.push(UploadComponent);
-    this.cs.hideLoader();
-  }
+    UploadviaWeb(){
+      this.cs.showLoader();
+      this.rootNavCtrl.push(UploadComponent);
+      this.cs.hideLoader();
+    }
 
-    public imageFile : any;  
+  public imageFile : any;  
   public data_response; 
   ImagePick(){
       this.fileChooser.open()
         .then(uri => {console.log(uri); this.imageFile = uri ; this.navAddTag(uri); } )
         .catch(e => console.log(e));
-    }
+  }
 
   navAddTag(uri){
     this.cs.hideLoader();
@@ -90,6 +97,26 @@ export class Page1Page {
         'gifpath' :  uri
       });   
     }
+
+//   public pageno = 1;
+//   public trendingGIFs;
+//   doInfinite(infiniteScroll) {
+
+//     let nextpage=this.pageno++;
+//     this._homeserv.getTabDataviaTabId(this.selectedIdiom,this.tabId).subscribe(
+//             data => {
+//               infiniteScroll.complete();
+//                 this.trendingGIFs = data;
+//                 console.log('scroll',this.trendingGIFs );
+//                    this.gifs =  this.gifs.concat(this.trendingGIFs.contents); 
+//             },
+//             err => {
+//                 console.log(err);
+//             },
+//             () => console.log('Next Page Loading completed')
+//         );
+//   infiniteScroll.complete();
+// } 
      
 
 }

@@ -13,7 +13,6 @@ import { ProfileComponent } from '../../profile/profile.component';
 import { Clipboard } from '@ionic-native/clipboard';
 
 
-
 @Component({
     selector : 'page-gifdetail',
     templateUrl : 'gifdetail.html'
@@ -26,6 +25,7 @@ export class GifDetailComponent {
     public recomns : any;
     public tagslist;
     public selectedIdiom;
+    public scount;
     constructor(public popoverCtrl : PopoverController,
                 public navCtrl : NavController,
                 public toastCtrl : ToastController,
@@ -36,14 +36,16 @@ export class GifDetailComponent {
                 private file: File,
                 private clipboard: Clipboard,
                 public navparams : NavParams,
+              
                ){
                     this.gifobject = this.navparams.get('url');
                      this.selectedIdiom = this.navparams.get('idiom');
-               //     this.gifurl =  this.gifobject.url;
+                     //this.gifurl =  this.gifobject.url;
                     console.log('gifobject',this.gifobject);
+                    this.scount = this.gifobject.shareCount ;
                     this.RecommendedGifs();
                     this.GetUsername();
-                    this.sharesCountDetails();
+                 //   this.webintent();
                     this.tagslist = this.gifobject.tags;
                     console.log('tagslist',this.tagslist);
                 }
@@ -149,6 +151,24 @@ export class GifDetailComponent {
         toast.present();
     }
 
+
+    // webintent(){
+    //     const options = {
+    //         action: this.webIntent.ACTION_VIEW,
+    //         url: this.gifId,
+    //         type: 'application/vnd.android.package-archive'
+    // };
+
+    // this.webIntent.startActivity(options).then(() => {
+    //   alert("Success. URL: " + this.gifId);
+    // },  () => {
+    //   alert("Failed to open URL via Android Intent. URL: " + this.gifId)});
+
+    // }
+
+
+
+
     presentToast(){
         let toast = this.toastCtrl.create({
             message: 'Added to favorites list',
@@ -157,13 +177,13 @@ export class GifDetailComponent {
         toast.present();
     }
 
-    scount;
-    sharesCountDetails(){
-        this._homeserv.sharesdetails(this.gifId)
-            .subscribe( (data) => { this.scount = data; this.scount = this.scount.shareCount;},
-                        (err) => { console.log(err)},
-                        () => { console.log('shareCount',this.scount)} )
-    }
+    // scount;
+    // sharesCountDetails(){
+    //     this._homeserv.sharesdetails(this.gifId)
+    //         .subscribe((data) => { this.scount = data; this.scount = this.scount.shareCount;},
+    //                     (err) => { console.log(err)},
+    //                     () => { console.log('shareCount',this.scount)} )
+    // }
 
     shared;
     share(){
@@ -183,7 +203,7 @@ export class GifDetailComponent {
 
    shareGif(){
      this.cs.showLoader();
-     this.socialSharing.shareViaWhatsApp("",this.gifurl, "https://giphy.com")
+     this.socialSharing.shareViaWhatsApp("",this.gifurl, "https://ginger.com")
        .then(()=>{
          this.share();
          this.cs.hideLoader();
@@ -195,7 +215,7 @@ export class GifDetailComponent {
 
   shareGifTwitter(){
       this.cs.showLoader();
-    this.socialSharing.shareViaTwitter("message",this.gifurl,"https://giphy.com")
+    this.socialSharing.shareViaTwitter("message",this.gifurl,"https://ginger.com")
         .then(()=>{
             this.cs.hideLoader();
         },
@@ -207,7 +227,7 @@ export class GifDetailComponent {
 
   shareGifFacebook(){
       this.cs.showLoader();
-      this.socialSharing.shareViaFacebook("message",this.gifurl,"https://giphy.com")
+      this.socialSharing.shareViaFacebook("message",this.gifurl,"https://ginger.com")
         .then(() => {
             this.cs.hideLoader();
         },
@@ -216,7 +236,7 @@ export class GifDetailComponent {
 
   sharegifviaHike(){
       this.cs.showLoader();
-      this.socialSharing.shareVia('hike',"message","fds",this.gifurl,"https://gola.com")
+      this.socialSharing.shareVia('hike',"message","fds",this.gifurl,"https://ginger.com")
       .then(() => {
           this.cs.hideLoader();
       },
@@ -225,11 +245,11 @@ export class GifDetailComponent {
 
     sharegifviaMessenger(){
       this.cs.showLoader();
-      this.socialSharing.shareVia('Messenger',"message","fds",this.gifurl,"https://gola.com")
+      this.socialSharing.shareVia('Messenger',"message","fds",this.gifurl,"https://ginger.com")
       .then(() => {
           this.cs.hideLoader();
       },
-      () => { alert('u dont have hike app'); this.cs.hideLoader();})
+      () => { alert('u dont have Messenger app'); this.cs.hideLoader();})
   }
 
 
@@ -244,7 +264,7 @@ export class GifDetailComponent {
 
   shareSheet(){
       this.cs.showLoader();
-      this.socialSharing.share("message",'gola',this.gifurl,"http://gola.com")
+      this.socialSharing.share("message",'gola',this.gifurl,"http://ginger.com")
         .then( () =>{
             this.cs.hideLoader();
         },
