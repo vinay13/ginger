@@ -30,7 +30,7 @@ import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { Keyboard } from '@ionic-native/keyboard';
 import { Clipboard } from '@ionic-native/clipboard';
-
+import { FileTransfer } from '@ionic-native/file-transfer';
 //custom component
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { NoInternetComponent } from '../components/noInternet/noInternet.component';
@@ -124,7 +124,7 @@ import { FileChooser } from '@ionic-native/file-chooser';
     Camera,
     File,
     FileChooser,
-    Transfer,
+    FileTransfer,
     SocialSharing,
     Clipboard,
     Network,

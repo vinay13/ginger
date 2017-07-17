@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar class="navbar">
         <ion-title>
-            Enter URL to Upload
+            UPLOAD
         </ion-title> 
     </ion-navbar>
 </ion-header>
@@ -9,21 +9,18 @@
 <ion-content class="content-background">
   <div class="gin-box-upload">
   
-
+        <!--<h2>UPLOAD</h2>-->
+        <h5>Upload your GIFs</h5>
     <ion-list class="upload-urlbar">
-        <ion-item>
-            <button ion-button>Upload by device</button>
-        </ion-item>
-
-        <h3> OR </h3>
+ 
+         <button ion-button block (click)="ImagePick()">SELECT GIF FROM DEVICE</button> 
+            <h5> OR </h5>
             <ion-item>
                 <ion-icon class="paste-icon" name="md-clipboard" item-right></ion-icon>
                 <!--<ion-label stacked>Upload Url</ion-label>-->
                 <ion-label floating>Enter Web Address(URL)</ion-label>
                 <ion-input type="text" [(ngModel)]="weburl"></ion-input>
             </ion-item>
-    
-
     </ion-list>
   </div>
     <div class="upload-comment">
@@ -31,9 +28,6 @@
     </div>
 
     <div class="upload-button" >
-         <button ion-button round class="gin-button-1 gin-center gin-button-lg" (click)="AddTags(weburl)">Upload</button>
+         <button ion-button round class="gin-button-1 gin-center gin-button-lg" (click)="AddTags(weburl)"><ion-icon class="arrow-icon" name="md-arrow-forward"></ion-icon></button>
     </div>
-
-   
-    
 </ion-content>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { GifDetailComponent } from '../../home/gifdetail/gifdetail.component';
 import { NavController,NavParams,LoadingController,ToastController } from 'ionic-angular';
 import { UploadGifService } from '../../../services/upload.service';
-import { Transfer,FileUploadOptions,TransferObject } from  '@ionic-native/transfer';
+import { FileTransfer,FileUploadOptions,FileTransferObject } from  '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import {CustomService} from '../../../services/custom.service';
 import * as _ from 'underscore';
@@ -27,7 +27,7 @@ export class AddTagsComponent {
                 public navparams: NavParams,
                 public _uploadserv: UploadGifService,
                 private file: File,
-                public transfer: Transfer,
+                private transfer: FileTransfer,
                 public cs: CustomService){
                 //    this.gifurl = this.navparams.get('gifpath');
                 //  this.selectedIdiom = this.navparams.get('idiom');
@@ -63,46 +63,42 @@ export class AddTagsComponent {
 
 
   //  _.uniqueId()
-
-
   public data_response;
  // public base64Image;
   uploadGifviaGallery(){
      alert('uploadGifviaGallery is clicked');
-    const fileTransfer: TransferObject = this.transfer.create();
-    
-        let filename = _.uniqueId() + ".gif";
-      
+    const fileTransfer: FileTransferObject = this.transfer.create();
+       // let filename = _.uniqueId() + ".gif";
+       let url = 'https://goladev.mobigraph.co/ginger/uploadGif';
+       let uploadUrl = encodeURI(url);
         let options : FileUploadOptions  = {
             fileKey: 'file',
-            fileName: filename,
-            mimeType: 'image/gif',
+            fileName: 'rewrewrew12.gif',
+            mimeType: 'multipart/form-data',
             chunkedMode: false,
             headers: {
                  'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
                  'Authorization' : 'Bearer'+' '+ localStorage.getItem('access_token')
             },
             params: {
-                "gif":  '32f4.gif',
+                "gif":  'rewrewrew12.gif',
                 "idiom": "Tamil",
-                "tags": ["sarcasm"]
+                "tags": ['sarcasm','celeb']
             }
         }; 
-
          this.cs.showLoader();
         //  alert(this.gifurl);
-        fileTransfer.upload(this.gifurl,'https://goladev.mobigraph.co/ginger/uploadGif', options, false)
+        fileTransfer.upload(this.gifurl,uploadUrl, options, false)
             .then((result: any) => {
               this.data_response = result ; 
+               alert('success');
               this.cs.hideLoader();
               this.navCtrl.push(GifDetailComponent);
-              alert('success');
           }).catch((error: any) => {
-               alert(error);
+              console.log('upload err',error);
                this.cs.hideLoader();
         }); 
      }
-
 
     presentToast(){
         let toast = this.toastCtrl.create({
