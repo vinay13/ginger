@@ -8,12 +8,12 @@
  -->
 
       <masonry class="grid" [options]="{ transitionDuration: '0.3s' , gutter : 4 }" [useImagesLoaded]="true"  >
-       <masonry-brick class="brick" *ngFor="let item of gifs"  (click)="GifsViewviaId(item)" >
+       <masonry-brick class="brick" *ngFor="let item of gifs"  (click)="GifsViewviaId(item.gifId)" >
          <img src={{item.lowResUrl}}/>
          </masonry-brick>
      </masonry>
 
-  <ion-fab right bottom>
+  <ion-fab  *ngIf="loggedIn" right bottom>
     <button ion-fab><ion-icon name="md-add"></ion-icon></button>
     <ion-fab-list side="left">
       <button ion-fab><ion-icon name="md-document" (click)="ImagePick()"></ion-icon></button>

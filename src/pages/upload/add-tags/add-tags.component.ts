@@ -83,7 +83,7 @@ export class AddTagsComponent {
                  'Authorization' : 'Bearer'+' '+ localStorage.getItem('access_token')
             },
             params: {
-                "gif":  '324.gif',
+                "gif":  '32f4.gif',
                 "idiom": "Tamil",
                 "tags": ["sarcasm"]
             }

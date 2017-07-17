@@ -21,6 +21,7 @@ export class Page1Page {
     rootNavCtrl: NavController;
     public selectedIdiom;
     public newselectedIdiom;
+    public loggedIn : boolean = false;
     //@ViewChild(AngularMasonry) private masonry: AngularMasonry;
     //masonry._msnry.reloadItems()
     constructor(public navCtrl: NavController,
@@ -37,10 +38,17 @@ export class Page1Page {
                   platform.ready().then(() => {
                       this.tabcat();
                   })
-                
+                   this.checkUserLogin();
+    }
 
-               
 
+    checkUserLogin(){
+     let token = localStorage.getItem('access_token');
+     console.log('token',token);
+     if(token != null){
+        this.loggedIn = true;
+     }
+   
     }
 
     

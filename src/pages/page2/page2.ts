@@ -32,6 +32,7 @@ export class Page2Page implements OnInit{
     //  @ViewChild(SuperTabs) superTabs: SuperTabs;
 //  appRate: any = AppRate;
     rootNavCtrl: NavController;
+    public loggedIn : boolean = false;
     constructor(public navCtrl: NavController, 
                 public navparams: NavParams,
                 public _homeserv : HomeService,
@@ -74,6 +75,13 @@ export class Page2Page implements OnInit{
       
    public gifs: Array<any> = []; 
 
+     checkUserLogin(){
+      let token = localStorage.getItem('access_token');
+     console.log('token',token);
+     if(token != null){
+        this.loggedIn = true;
+     }
+    }
 
   gettabdata(idiom,tabid){
      this._homeserv.getTabDataviaTabId(idiom,tabid)
@@ -142,5 +150,6 @@ export class Page2Page implements OnInit{
 
     ngOnInit(){
  //   this.appRate.promptForRating(true);
+      this.checkUserLogin();
     }
 }
