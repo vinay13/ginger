@@ -14,6 +14,7 @@ import { FileChooser } from '@ionic-native/file-chooser';
 // declare var SuperTabs : any;
 import {AppRate} from '@ionic-native/app-rate';
 import { Platform } from 'ionic-angular';
+import { SearchResultComponent } from '../search/searchResult/search-result.component';
 
 @Component({
   selector: 'page-page2',
@@ -95,6 +96,13 @@ export class Page2Page implements OnInit{
       'idiom' : this.selectedIdiom
     });
   }
+
+  EmotionClicked(tag){
+      this.rootNavCtrl.push(SearchResultComponent,{
+            'tag' : tag,
+            'idiom': this.selectedIdiom
+      });
+    }
 
   ionViewDidEnter(){
   }

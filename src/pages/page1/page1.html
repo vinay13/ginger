@@ -2,16 +2,12 @@
   
     <masonry class="grid" [options]="{ transitionDuration: '0.3s' , gutter : 4 }" [useImagesLoaded]="true"  >
        <masonry-brick class="brick" *ngFor="let item of gifs"  (click)="GifsViewviaId(item.gifId)" >
-         <img src={{item.lowResUrl}}/>
+         <img src={{item.url}}/>
         </masonry-brick>
      </masonry>
 
   <ion-fab *ngIf="loggedIn" right bottom>
-    <button ion-fab><ion-icon name="md-add"></ion-icon></button>
-    <ion-fab-list side="left">
-      <button ion-fab><ion-icon name="md-document" (click)="ImagePick()"></ion-icon></button>
-      <button ion-fab><ion-icon name="md-link" (click)="UploadviaWeb()"></ion-icon></button>
-    </ion-fab-list>
+    <button ion-fab (click)="UploadviaWeb()"><ion-icon name="md-add"></ion-icon></button>
   </ion-fab>
 
     <!--<ion-infinite-scroll  direction="x" class="con-scroll-x" has-bouncing="true" (ionInfinite)="doInfinite($event)">

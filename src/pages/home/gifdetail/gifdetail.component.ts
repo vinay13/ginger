@@ -7,7 +7,6 @@ import { NavController, ToastController , NavParams } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { CustomService } from '../../../services/custom.service';
 import { HomeService } from '../../../services/home.service';
-import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
 import { File } from '@ionic-native/file';
 import { ProfileComponent } from '../../profile/profile.component';
 import { Clipboard } from '@ionic-native/clipboard';
@@ -32,7 +31,6 @@ export class GifDetailComponent {
                 private socialSharing: SocialSharing,
                 private _homeserv: HomeService,
                 private cs : CustomService,
-                private transfer: Transfer, 
                 private file: File,
                 private clipboard: Clipboard,
                 public navparams : NavParams,
@@ -272,17 +270,17 @@ export class GifDetailComponent {
   }
 
 
-  download(){
-     const fileTransfer: TransferObject = this.transfer.create();
-     this.cs.showLoader();
-     // const imageLocation = `${cordova.file.applicationDirectory}www/assets/img/${image}`;
-     fileTransfer.download( this.gifurl,this.file.applicationDirectory+'ginger'+'aa.gif').then((entry) => {
-     //fileTransfer.download(url, cordova.file.externalRootDirectory + {{appName}} + 'filename')
-     this.cs.hideLoader();
-     this.downloadToast(); 
-    }, (error) => {
-      alert('err');
-      this.cs.hideLoader();
-    });
-  }
+//   download(){
+//      const fileTransfer: TransferObject = this.transfer.create();
+//      this.cs.showLoader();
+//      // const imageLocation = `${cordova.file.applicationDirectory}www/assets/img/${image}`;
+//      fileTransfer.download( this.gifurl,this.file.applicationDirectory+'ginger'+'aa.gif').then((entry) => {
+//      //fileTransfer.download(url, cordova.file.externalRootDirectory + {{appName}} + 'filename')
+//      this.cs.hideLoader();
+//      this.downloadToast(); 
+//     }, (error) => {
+//       alert('err');
+//       this.cs.hideLoader();
+//     });
+//   }
 }

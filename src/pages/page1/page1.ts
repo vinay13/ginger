@@ -100,11 +100,34 @@ export class Page1Page {
   }
 
   navAddTag(uri){
-    this.cs.hideLoader();
        this.rootNavCtrl.push(AddTagsComponent,{
         'gifpath' :  uri
       });   
     }
+
+    
+//   base64Image;
+//   ImageFile;
+//   public ImagePick(){
+//    this.cs.showLoader();
+//     this.cameraa.getPicture({
+//         destinationType: this.cameraa.DestinationType.DATA_URL,
+//         mediaType : this.cameraa.MediaType.ALLMEDIA,
+//         sourceType     : this.cameraa.PictureSourceType.SAVEDPHOTOALBUM
+//     }).then((imagedata)=>{
+//       this.base64Image = 'data:image/gif;base64' + imagedata;
+//       this.ImageFile = imagedata ;
+//       this.cs.hideLoader();
+//        this.navCtrl.push(AddTagsComponent,{
+//         'gifpath' :  this.base64Image
+//       });    
+//     },(err)=>{
+//       console.log(err);
+//       this.cs.hideLoader();
+//     });
+// }
+
+
 
 //   public pageno = 1;
 //   public trendingGIFs;
