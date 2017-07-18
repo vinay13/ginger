@@ -54,7 +54,7 @@ idiomdict;
                   //testing
 
                     this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs;this.onTabSelect(this.tabdata[0]);this.abcetc(this.tabdata[0].id);this.tabsLoaded = true;    },
+                    .subscribe( (res) => { this.tabdata = res.tabs; this.tabdata.splice(0,1);this.onTabSelect(this.tabdata[0]);this.abcetc(this.tabdata[0].id);this.tabsLoaded = true;    },
                     (err) => { console.log(err)},
                     () => { console.log('tabdata',this.tabdata[0].id)})
 
