@@ -10,8 +10,8 @@ import { HomeService } from '../../../services/home.service';
 import { File } from '@ionic-native/file';
 import { ProfileComponent } from '../../profile/profile.component';
 import { Clipboard } from '@ionic-native/clipboard';
-
-
+import { Page1Page } from '../../page1/page1.ts';
+import {AboutPage} from '../../about/about.ts';
 @Component({
     selector : 'page-gifdetail',
     templateUrl : 'gifdetail.html'
@@ -19,6 +19,7 @@ import { Clipboard } from '@ionic-native/clipboard';
 
 export class GifDetailComponent {
 
+  //  rootPage:any = AboutPage;
     public gifurl;
     public gifobject;
     public recomns : any;
@@ -46,6 +47,8 @@ export class GifDetailComponent {
                  //   this.webintent();
                     this.tagslist = this.gifobject.tags;
                     console.log('tagslist',this.tagslist);
+
+                   
                 }
 
     loadProgress: number = 0;
@@ -76,7 +79,17 @@ export class GifDetailComponent {
 
 		}, 70);
 
+
 	} 
+
+ 
+    poptoHome(){
+   // this.navCtrl.pop();
+        this.navCtrl.setRoot(AboutPage,{
+            'idiom': this.selectedIdiom
+        });
+    }
+  
 
     golauser;
     public GetUsername(){
@@ -121,6 +134,8 @@ export class GifDetailComponent {
             'idiom':this.selectedIdiom
         });   
     }
+
+    
 
     public favorite = false;
     thefavorites;

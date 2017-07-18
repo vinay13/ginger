@@ -98,17 +98,23 @@ export class Page2Page implements OnInit{
   }
 
   ng_class;
+  click_func= "GifsViewviaId" ;
   textonGIFs(){
+let click_func;
       console.log('text1',this.tabIddata[0]['text']);
       console.log('text2',this.tabIddata[0].text);
     if(this.tabIddata[0].text != '' && this.tabIddata[0]['text']){
     
         this.ng_class =  'wrapper';
+       click_func = "EmotionClicked(item.text)";
+       console.log('click_func',click_func);
     }
     else{
       this.ng_class = 'wrapper2';
+      click_func = "GifsViewviaId";
     }
   }
+
 
   EmotionClicked(tag){
       console.log('tag',tag);
@@ -117,7 +123,7 @@ export class Page2Page implements OnInit{
             'tag' : tag,
             'idiom': this.selectedIdiom
       });
-    }
+  }
 
   ionViewDidEnter(){
   }

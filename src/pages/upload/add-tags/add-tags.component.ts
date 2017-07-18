@@ -74,7 +74,7 @@ export class AddTagsComponent {
         let options : FileUploadOptions  = {
             fileKey: 'file',
             fileName: 'rewrewrew12.gif',
-            mimeType: 'multipart/form-data',
+            mimeType: 'image/gif',
             chunkedMode: false,
             headers: {
                  'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
@@ -87,7 +87,7 @@ export class AddTagsComponent {
             }
         }; 
          this.cs.showLoader();
-        //  alert(this.gifurl);
+         alert(this.gifurl);
         fileTransfer.upload(this.gifurl,uploadUrl, options, false)
             .then((result: any) => {
               this.data_response = result ; 
