@@ -98,7 +98,7 @@ export class Page2Page implements OnInit{
   }
 
   ng_class;
-  click_func= "GifsViewviaId" ;
+  click_func= "EmotionClicked" ;
   textonGIFs(){
 let click_func;
       console.log('text1',this.tabIddata[0]['text']);
@@ -106,12 +106,12 @@ let click_func;
     if(this.tabIddata[0].text != '' && this.tabIddata[0]['text']){
     
         this.ng_class =  'wrapper';
-       click_func = "EmotionClicked(item.text)";
-       console.log('click_func',click_func);
+      //  click_func = "EmotionClicked";
+      //  console.log('click_func',click_func);
     }
     else{
       this.ng_class = 'wrapper2';
-      click_func = "GifsViewviaId";
+      // click_func = "GifsViewviaId(item.gifId)";
     }
   }
 

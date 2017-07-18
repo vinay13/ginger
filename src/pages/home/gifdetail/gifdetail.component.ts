@@ -98,9 +98,10 @@ export class GifDetailComponent {
     
     public totalcount;
     gifId;
+    pageno = 0;
     RecommendedGifs(){
          this.gifId = this.gifobject.gifId || this.gifobject.id;
-        this._homeserv.getRelatedGifs(this.selectedIdiom,this.gifId)
+        this._homeserv.getRelatedGifs(this.selectedIdiom,this.gifId,this.pageno)
             .subscribe( (res) => {this.recomns = res.contents, this.totalcount = res.totalCount},
                         (err) => console.log(err),
                         () => console.log('related gifs',this.totalcount))
@@ -283,6 +284,29 @@ export class GifDetailComponent {
         },
         () => { this.cs.hideLoader(); }) 
   }
+
+
+    
+  public trendingGIFs;
+  doInfinite(infiniteScroll) {
+
+    let nextpage=this.pageno++;
+    this._homeserv.getRelatedGifs(this.selectedIdiom,this.gifId,this.pageno).subscribe(
+            data => {
+                let posts=  data.contents;
+                for(let post of posts){
+                    // console.log(post);
+                    this.recomns.push(post); 
+                }
+                  //  this.recomns = this.recomns.push(data.contents);
+            },
+            err => {
+                console.log(err);
+            },
+            () => console.log('Next Page Loading completed')
+        );
+  infiniteScroll.complete();
+}
 
 
 //   download(){

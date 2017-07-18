@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {NavController,ToastController, ViewController } from 'ionic-angular';
-import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
+import { FileTransfer,FileUploadOptions,FileTransferObject } from  '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { CustomService } from '../../../services/custom.service';
 
@@ -14,7 +14,7 @@ export class PopOverComponent {
     constructor(public navCtrl : NavController,
                 public toastCtrl : ToastController,
                 public viewCtrl: ViewController,
-                public transfer: Transfer,
+                public transfer: FileTransfer,
                 public file : File,
                 public cs : CustomService){}
 
@@ -37,7 +37,7 @@ export class PopOverComponent {
 
     download(){
         alert('clicked download');
-        const fileTransfer: TransferObject = this.transfer.create();
+        const fileTransfer: FileTransferObject = this.transfer.create();
         // this.cs.showLoader();
         // const imageLocation = `${cordova.file.applicationDirectory}www/assets/img/${image}`;
         fileTransfer.download( 'https://gola-gif-dev-store-cf.xpresso.me/R2luZ2Vy/595b4710650000870039250b.gif',this.file.applicationDirectory+'ginger'+'aa.gif').then((entry) => {

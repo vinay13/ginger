@@ -2,6 +2,7 @@
     font-size: 25px;
     float: right;
     color: white;
+    margin-top: 10px;
 }
 
 .options-icon {
@@ -44,8 +45,6 @@ page-gifdetail .toolbar-background-md {
     border-color: transparent;
 }
 
-
-
 .gif-info {
     background-color: #2b3b50;
     height: 35pt;
@@ -54,6 +53,7 @@ page-gifdetail .toolbar-background-md {
     align-items: center;
     .gin-label {
         margin-top: 10px;
+        text-align: center;
     }
     span {
         color: #D3E0F1;
