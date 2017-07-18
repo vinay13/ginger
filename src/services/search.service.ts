@@ -48,7 +48,7 @@ export class SearchService{
 	}
 
     GetGifsSearch(idiom,text){
-        return this.http.get(this.url + idiom + '/gifs/' + text+"/0/12",this.options)
+        return this.http.get(this.url + idiom + '/gifs/' + text,this.options)
                 .map(this.extractData)
                 .catch(this.handleError)
     }

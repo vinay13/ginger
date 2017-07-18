@@ -10,7 +10,7 @@
       <masonry class="grid" [options]="{ transitionDuration: '0.3s' , gutter : 4 }" [useImagesLoaded]="true"  >
        <masonry-brick class="brick" *ngFor="let item of gifs"  (click)="EmotionClicked(item.text)" >
          <img src={{item.lowResUrl}}/>
-         <div class="wrapper">
+         <div [className]="ng_class">
           <h2>{{item.text}}</h2>
          </div>
          </masonry-brick>

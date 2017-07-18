@@ -17,7 +17,7 @@
           </div>
     </div>-->
        <masonry class="grid" [options]="{ transitionDuration: '0.8s' , gutter : 4 }" [useImagesLoaded]="true"  >
-          <masonry-brick class="brick" *ngFor="let gifs of searchedGifs.contents"  (click)="viewGif(gifs)" >
+          <masonry-brick class="brick" *ngFor="let gifs of searchedGifs"  (click)="viewGif(gifs)" >
            <img src={{gifs.lowResUrl}}/>
          </masonry-brick>
        </masonry>

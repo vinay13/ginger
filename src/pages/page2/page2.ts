@@ -86,7 +86,7 @@ export class Page2Page implements OnInit{
 
   gettabdata(idiom,tabid){
      this._homeserv.getTabDataviaTabId(idiom,tabid)
-                  .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata},
+                  .subscribe((res) => {this.tabIddata = res ; this.textonGIFs(); this.gifs = this.tabIddata},
                   (err) => {console.log(err)})
   }
 
@@ -97,7 +97,22 @@ export class Page2Page implements OnInit{
     });
   }
 
+  ng_class;
+  textonGIFs(){
+      console.log('text1',this.tabIddata[0]['text']);
+      console.log('text2',this.tabIddata[0].text);
+    if(this.tabIddata[0].text != '' && this.tabIddata[0]['text']){
+    
+        this.ng_class =  'wrapper';
+    }
+    else{
+      this.ng_class = 'wrapper2';
+    }
+  }
+
   EmotionClicked(tag){
+      console.log('tag',tag);
+      console.log('idiom',this.selectedIdiom);
       this.rootNavCtrl.push(SearchResultComponent,{
             'tag' : tag,
             'idiom': this.selectedIdiom
