@@ -107,10 +107,12 @@ export class GifDetailComponent {
                         () => console.log('related gifs',this.totalcount))
     }
 
-    presentPopover(myEvent){
-        let popover = this.popoverCtrl.create(PopOverComponent);
+    presentPopover(myEvent,gifurl){
+        let popover = this.popoverCtrl.create(PopOverComponent,{gifURL : gifurl});
+        console.log('popOver',myEvent);
+        console.log('popgifurl',gifurl),
         popover.present({
-            ev: myEvent
+            ev: myEvent,
         });
     }
 

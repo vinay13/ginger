@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NavController,ToastController, ViewController } from 'ionic-angular';
+import {NavController,NavParams,ToastController, ViewController } from 'ionic-angular';
 import { FileTransfer,FileUploadOptions,FileTransferObject } from  '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { CustomService } from '../../../services/custom.service';
@@ -11,12 +11,17 @@ import { CustomService } from '../../../services/custom.service';
 
 export class PopOverComponent {
 
+    GIFurl;
     constructor(public navCtrl : NavController,
                 public toastCtrl : ToastController,
                 public viewCtrl: ViewController,
                 public transfer: FileTransfer,
                 public file : File,
-                public cs : CustomService){}
+                public cs : CustomService,
+                public navparams : NavParams){
+                  this.GIFurl  = this.navparams.get('gifURL');
+                  console.log("GIFurl",this.GIFurl);
+                }
 
      presentToast(){
         let toast = this.toastCtrl.create({
@@ -35,10 +40,12 @@ export class PopOverComponent {
         alert('clicked flag');
     }
 
+
+
     download(){
         alert('clicked download');
         const fileTransfer: FileTransferObject = this.transfer.create();
-        fileTransfer.download( 'https://gola-gif-dev-store-cf.xpresso.me/R2luZ2Vy/595b4710650000870039250b.gif',this.file.externalDataDirectory +'dsaa.gif').then((entry) => {
+        fileTransfer.download( this.GIFurl,this.file.externalDataDirectory + Math.floor(Math.random()*90000) + 10000 +'.gif').then((entry) => {
 
          console.log('download complete: ' + entry.toURL());
         alert('success..downloaded');
