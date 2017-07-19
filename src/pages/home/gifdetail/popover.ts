@@ -38,15 +38,14 @@ export class PopOverComponent {
     download(){
         alert('clicked download');
         const fileTransfer: FileTransferObject = this.transfer.create();
-        // this.cs.showLoader();
-        // const imageLocation = `${cordova.file.applicationDirectory}www/assets/img/${image}`;
-        fileTransfer.download( 'https://gola-gif-dev-store-cf.xpresso.me/R2luZ2Vy/595b4710650000870039250b.gif',this.file.applicationDirectory+'ginger'+'aa.gif').then((entry) => {
-        //fileTransfer.download(url, cordova.file.externalRootDirectory + {{appName}} + 'filename')
-        //this.cs.hideLoader();
-        //this.downloadToast(); 
-        },(error) => {
-         alert('err');
-        //  this.cs.hideLoader();
+        fileTransfer.download( 'https://gola-gif-dev-store-cf.xpresso.me/R2luZ2Vy/595b4710650000870039250b.gif',this.file.externalDataDirectory +'dsaa.gif').then((entry) => {
+
+         console.log('download complete: ' + entry.toURL());
+        alert('success..downloaded');
+    },(error) => {
+        console.log('error',error);
+         alert(error);
+       
     });
   }
    
