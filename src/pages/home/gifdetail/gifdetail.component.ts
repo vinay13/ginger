@@ -77,7 +77,7 @@ export class GifDetailComponent {
                 }
 			}
 
-		}, 70);
+		}, 50);
 
 
 	} 
@@ -205,7 +205,7 @@ export class GifDetailComponent {
     share(){
         this._homeserv.shareArbit(this.gifId)
             .subscribe( (data) => { this.shared = data;},
-                        (err) => { alert(err)},
+                        (err) => { console.log('share',err)},
                         () => { console.log('shared',this.shared)})
     }
 

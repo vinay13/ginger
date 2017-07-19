@@ -23,16 +23,15 @@ export class PopOverComponent {
                   console.log("GIFurl",this.GIFurl);
                 }
 
-     presentToast(){
+     DownloadToast(){
         let toast = this.toastCtrl.create({
-            message: 'You are now Logout',
+            message: 'GIF is saved in app Storage',
             duration: 3000
         });
         toast.present();
     }
 
-    logout(){
-        this.presentToast();
+    dismiss(){
         this.viewCtrl.dismiss();
     }
 
@@ -40,20 +39,16 @@ export class PopOverComponent {
         alert('clicked flag');
     }
 
-
-
     download(){
-        alert('clicked download');
         const fileTransfer: FileTransferObject = this.transfer.create();
+        this.dismiss();
         fileTransfer.download( this.GIFurl,this.file.externalDataDirectory + Math.floor(Math.random()*90000) + 10000 +'.gif').then((entry) => {
-
-         console.log('download complete: ' + entry.toURL());
-        alert('success..downloaded');
-    },(error) => {
-        console.log('error',error);
-         alert(error);
+        this.DownloadToast();
+        console.log('download complete: ' + entry.toURL());
        
-    });
-  }
+         },(error) => {
+        console.log('error',error);
+        });
+    }
    
 }

@@ -8,7 +8,7 @@ import { FileChooser } from '@ionic-native/file-chooser';
 import { AddTagsComponent } from '../upload/add-tags/add-tags.component';
 import {AppRate} from '@ionic-native/app-rate';
 import { Platform } from 'ionic-angular';
-
+ import { MasonryModule,AngularMasonry } from 'angular2-masonry';
 // let AngularMasonry;
 
 @Component({
@@ -17,13 +17,14 @@ import { Platform } from 'ionic-angular';
 })
 
 export class Page1Page {
-
+ 
     rootNavCtrl: NavController;
     public selectedIdiom;
     public newselectedIdiom;
     public loggedIn : boolean = false;
-    //@ViewChild(AngularMasonry) private masonry: AngularMasonry;
-    //masonry._msnry.reloadItems()
+   //@ViewChild(MasonryModule) private masonry: MasonryModule;
+   @ViewChild(AngularMasonry) private masonry: AngularMasonry;
+  
     constructor(public navCtrl: NavController,
                 public navparams: NavParams,
                 public _homeserv : HomeService,
@@ -39,6 +40,9 @@ export class Page1Page {
                       this.tabcat();
                   })
                    this.checkUserLogin();
+
+                
+                   
     }
 
 
@@ -103,6 +107,12 @@ export class Page1Page {
        this.rootNavCtrl.push(AddTagsComponent,{
         'gifpath' :  uri
       });   
+    }
+
+    ionViewWillEnter (){
+      setTimeout(() => { alert('ionViewWillEnter');
+                     this.masonry._msnry.reloadItems()
+              },3000)
     }
 
     
