@@ -289,26 +289,47 @@ export class GifDetailComponent {
 
 
     
-  public trendingGIFs;
-  doInfinite(infiniteScroll) {
+//   public trendingGIFs;
+//   doInfinite(infiniteScroll) {
 
-    let nextpage=this.pageno++;
-    this._homeserv.getRelatedGifs(this.selectedIdiom,this.gifId,this.pageno).subscribe(
-            data => {
-                let posts=  data.contents;
-                for(let post of posts){
-                    // console.log(post);
-                    this.recomns.push(post); 
-                }
-                  //  this.recomns = this.recomns.push(data.contents);
-            },
-            err => {
-                console.log(err);
-            },
-            () => console.log('Next Page Loading completed')
-        );
-  infiniteScroll.complete();
-}
+//     let nextpage=this.pageno++;
+//     this._homeserv.getRelatedGifs(this.selectedIdiom,this.gifId,this.pageno).subscribe(
+//             data => {
+//                 let posts=  data.contents;
+//                 for(let post of posts){
+//                     // console.log(post);
+//                     this.recomns.push(post); 
+//                 }
+//                   //  this.recomns = this.recomns.push(data.contents);
+//             },
+//             err => {
+//                 console.log(err);
+//             },
+//             () => console.log('Next Page Loading completed')
+//         );
+//   infiniteScroll.complete();
+// }
+
+currentPage = 0;
+ doInfinite(infiniteScroll) {
+
+   this.currentPage = this.currentPage + 1;
+    console.log('currentpage', this.currentPage);
+       this._homeserv.getRelatedGifs(this.selectedIdiom,this.gifId,this.currentPage).subscribe(data =>
+        {
+          infiniteScroll.complete();
+        //   this.hasMoreData = true;
+        //   this.trendingGIFs = data;
+          this.recomns =  this.recomns.concat(data.contents); 
+      }, 
+    err => {
+      infiniteScroll.complete();
+      this.currentPage -= 1;
+   //   this.onError(err);
+    },
+     () => console.log('Next Page Loading completed')
+     );
+  }
 
 
 //   download(){

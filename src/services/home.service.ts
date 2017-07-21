@@ -51,7 +51,7 @@ export class HomeService{
 
       //using mobigraph api
       public getRelatedGifs(idiom, id,pageno){
-          return this.http.get(this.golaurl+idiom+"/relatedGifs/"+id+"/"+pageno+"/20",this.options)
+          return this.http.get(this.golaurl+idiom+"/relatedGifs/"+id+"/"+pageno+"/8",this.options)
                     .map(this.extractData)
                     .catch(this.handleError)
       }
