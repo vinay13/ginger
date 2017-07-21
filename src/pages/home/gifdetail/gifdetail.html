@@ -34,13 +34,13 @@
                     
                 </ion-chip>
             </ion-col>
-            <ion-col col-3>
+            <ion-col col-2>
                <div class="gin-label">
                 <span>{{scount}}</span>
                 <label>shares</label>
                </div>
             </ion-col>
-            <ion-col col-6>
+            <ion-col col-7>
                 <div class="gin-label">
                   <ion-icon class="ic-share-alt" name="share-alt"></ion-icon>
                 <span>{{gifobject.source}}</span>
@@ -74,7 +74,7 @@
         </div>   
     </div>-->
 
-    <masonry class="grid" [options]="{ transitionDuration: '0.4s' , gutter : 4 }" [useImagesLoaded]="true"  >
+    <masonry class="grid" [options]="{ transitionDuration: '0.0001s' , gutter : 4 }" [useImagesLoaded]="true"  >
        <masonry-brick class="brick" *ngFor="let rgifs of recomns"  (click)="GIFviewer(rgifs)" >
          <img src={{rgifs.lowResUrl}}/>
          </masonry-brick>

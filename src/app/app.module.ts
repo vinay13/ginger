@@ -101,6 +101,7 @@ import { FileChooser } from '@ionic-native/file-chooser';
     UploadComponent,
     ProfileComponent,
     ProfileEditComponent,
+    NoInternetComponent,
     SettingsComponent,
     AddTagsComponent,
     PopOverComponent,

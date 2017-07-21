@@ -94,7 +94,7 @@ export class GifDetailComponent {
     golauser;
     public GetUsername(){
      this.golauser =   localStorage.getItem('username') || 'gola';
-    }
+    } 
     
     public totalcount;
     gifId;

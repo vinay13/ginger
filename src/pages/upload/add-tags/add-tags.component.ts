@@ -21,6 +21,7 @@ export class AddTagsComponent {
     public selectedIdiom = 'Tamil';
     addtagsForm : FormGroup; 
     formgif: any;
+    public gifyPath;
     constructor(public navCtrl: NavController,
                 public loadingCtrl: LoadingController ,
                 public toastCtrl: ToastController,
@@ -29,10 +30,10 @@ export class AddTagsComponent {
                 private file: File,
                 private transfer: FileTransfer,
                 public cs: CustomService){
-                //    this.gifurl = this.navparams.get('gifpath');
+                //  this.gifurl = this.navparams.get('gifpath');
                 //  this.selectedIdiom = this.navparams.get('idiom');
                     this.gifurl = this.navparams.get('weburl') || this.navparams.get('gifpath') ;
-                
+                    this.gifyPath = this.navparams.get('imagePath');
                     this.addtagsForm = new FormGroup({
                          url : new FormControl(this.gifurl),
                          idiom : new FormControl(this.selectedIdiom),   
@@ -73,7 +74,7 @@ export class AddTagsComponent {
        let uploadUrl = encodeURI(url);
         let options : FileUploadOptions  = {
             fileKey: 'file',
-            fileName: 'rewrewrew12.gif',
+            fileName: this.gifurl.substr(this.gifurl.lastIndexOf('/')+1),
             mimeType: 'image/gif',
             chunkedMode: false,
             headers: {
@@ -81,9 +82,9 @@ export class AddTagsComponent {
                  'Authorization' : 'Bearer'+' '+ localStorage.getItem('access_token')
             },
             params: {
-                "gif":  'rewrewrew12.gif',
+                "gif":  'rewdsarewrew12.gif',
                 "idiom": "Tamil",
-                "tags": ['sarcasm','celeb']
+                "tags": ['sarcasm']
             }
         }; 
          this.cs.showLoader();

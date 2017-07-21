@@ -11,7 +11,7 @@ import { NoInternetComponent} from '../components/noInternet/noInternet.componen
 import { LoginService } from '../services/login.service';
 // import {NavController} from 'ionic-angular';
 //import { GoogleAnalytics } from '@ionic-native/google-analytics';
-
+import { Network } from '@ionic-native/network';
 @Component({
   templateUrl: 'app.html',
 })
@@ -26,11 +26,25 @@ export class MyApp {
               networkserv : NetworkService,
               public toastCtrl : ToastController,
               public _loginserv : LoginService,
-          
+               public network : Network,
              ){
                 platform.ready().then(() => {
                 statusBar.styleDefault();
                 splashScreen.hide();
+
+                  // let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
+                  //      alert('disconnect');
+                  //      this.rootPage = NoInternetComponent;
+                      
+                  // });
+                 //   disconnectSubscription.unsubscribe();
+
+                  // let connectSubscription = this.network.onConnect().subscribe(() => {
+                  //     alert('connection establish');
+                  //      this.rootPage = IdiomComponent;
+                  // });
+                   //connectSubscription.unsubscribe();
+
                 // this.ga.startTrackerWithId('YOUR_TRACKER_ID')
                 // .then(() => {
                 //   console.log('Google analytics is ready now');

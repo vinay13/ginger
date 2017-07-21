@@ -70,3 +70,15 @@ page-profile .scroll-content {
         }
     }
 }
+
+page-profile{
+   masonry .grid{
+        column-count: 2;
+      //  margin: 0 auto;
+    }
+
+    .brick{
+      width: 47%;
+     //height:100px;
+      }
+}

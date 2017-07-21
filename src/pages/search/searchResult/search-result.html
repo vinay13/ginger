@@ -16,7 +16,7 @@
             <img class="gifpin" src={{gifs.url}}>
           </div>
     </div>-->
-       <masonry class="grid" [options]="{ transitionDuration: '0.8s' , gutter : 4 }" [useImagesLoaded]="true"  >
+       <masonry class="grid" [options]="{ transitionDuration: '0.0001s' , gutter : 4 }" [useImagesLoaded]="true"  >
           <masonry-brick class="brick" *ngFor="let gifs of searchedGifs"  (click)="viewGif(gifs)" >
            <img src={{gifs.lowResUrl}}/>
          </masonry-brick>

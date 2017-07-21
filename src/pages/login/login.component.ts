@@ -1,5 +1,5 @@
 import { Component ,OnInit } from '@angular/core';
-import { NavController,NavParams,ToastController } from 'ionic-angular';
+import {  IonicPage, NavController,NavParams,ToastController } from 'ionic-angular';
 import { HomeComponent } from '../home/home.component';
 import { LoginService } from '../../services/login.service';
 import { GooglePlus } from '@ionic-native/google-plus';
@@ -10,7 +10,7 @@ import { AboutPage } from '../about/about.ts';
 import { ProfileService } from '../../services/profile.service';
 
 @Component({
-  selector: 'page-login',
+  selector : 'page-login',
   templateUrl: 'login.html'
 })
 
@@ -80,9 +80,7 @@ export class LoginPage implements OnInit{
   }
 
   public verifySuccessfully(res) {
-   
     localStorage.setItem("access_token", res.token);
-
   }
 
   getprofile(){

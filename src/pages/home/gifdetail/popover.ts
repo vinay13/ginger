@@ -42,7 +42,7 @@ export class PopOverComponent {
     download(){
         const fileTransfer: FileTransferObject = this.transfer.create();
         this.dismiss();
-        fileTransfer.download( this.GIFurl,this.file.externalDataDirectory + Math.floor(Math.random()*90000) + 10000 +'.gif').then((entry) => {
+        fileTransfer.download( this.GIFurl,this.file.externalApplicationStorageDirectory  + Math.floor(Math.random()*90000) + 10000 +'.gif').then((entry) => {
         this.DownloadToast();
         console.log('download complete: ' + entry.toURL());
        

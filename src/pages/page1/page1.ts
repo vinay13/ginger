@@ -110,7 +110,7 @@ export class Page1Page {
     }
 
     ionViewWillEnter (){
-      setTimeout(() => { alert('ionViewWillEnter');
+      setTimeout(() => { 
                      this.masonry._msnry.reloadItems()
               },3000)
     }

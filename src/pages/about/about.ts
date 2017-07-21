@@ -7,8 +7,10 @@ import { HomeService } from '../../services/home.service';
 import { IdiomComponent } from '../idiom/idiom.component';
 import { SearchComponent } from '../search/search.component';
 import { LoginPage } from '../login/login.component';
-// import { SuperTabsController } from 'ionic2-super-tabs';
-// import { SuperTabsController } from '../../ionic2-super-tabs/src';
+import { ProfileComponent } from '../profile/profile.component';
+
+//import { SuperTabsController } from 'ionic2-super-tabs';
+//import { SuperTabsController } from '../../ionic2-super-tabs/src';
 
 // @IonicPage({
 //   segment: 'about/:type'
@@ -50,9 +52,8 @@ idiomdict;
                     
                   
                   this.selectedIdiom = this.navParams.get('idiom');
-                 
+      
                   //testing
-
                     this._homeserv.getTabCategories(this.selectedIdiom)
                     .subscribe( (res) => { this.tabdata = res.tabs; this.tabdata.splice(0,1);this.onTabSelect(this.tabdata[0]);this.abcetc(this.tabdata[0].id);this.tabsLoaded = true;    },
                     (err) => { console.log(err)},
@@ -100,10 +101,20 @@ idiomdict;
   }
  
 
-     checklogin(){
-    this.navCtrl.push(LoginPage,{
-      'idiom': this.selectedIdiom
+  checklogin(){
+    if(localStorage.getItem('access_token') === ''){
+     this.navCtrl.push(LoginPage,{
+        'idiom': this.selectedIdiom
+    });  
+  }
+  else{
+      this.navCtrl.push(ProfileComponent,{
+        'idiom': this.selectedIdiom
     });
+  }
+    
+  
+
   }
 
   ngAfterViewInit() {
@@ -132,7 +143,7 @@ idiomdict;
                   () => console.log('data',this.tabIddata ))
 }
 
-    searchButton(){
+  searchButton(){
       this.navCtrl.push(SearchComponent,{
         'idiom':this.selectedIdiom
       });

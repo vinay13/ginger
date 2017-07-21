@@ -9,6 +9,19 @@
     padding: 2%;
 }
 
+page-search-result{
+
+    masonry .grid{
+        column-count: 2;
+      //  margin: 0 auto;
+    }
+
+      .brick{
+      width: 47%;
+   //   height:100px;
+      }
+}
+
 .ios ,.md {
     page-search-result{
         .pins{
