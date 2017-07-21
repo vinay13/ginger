@@ -36,8 +36,13 @@ export class IdiomComponent{
           console.log('index',index);    
     }
 
+    storeIdiom(){
+        localStorage.setItem('idiom',this.idioms[this.selectedIndex].name);
+    }
+
     navHomePage(){
          console.log('idiom',this.idioms[this.selectedIndex].name);
+         this.storeIdiom();
          this.navCtrl.push(AboutPage,{
              'idiom': this.idioms[this.selectedIndex].name 
          });

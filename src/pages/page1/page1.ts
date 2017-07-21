@@ -62,7 +62,7 @@ export class Page1Page {
     public tabdata;
     public tabcat(){
          this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[0].id);  },
+                    .subscribe((res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[0].id);  },
                                 (err) => { console.log(err)},
                                 () => { console.log('tabdata',this.tabdata[0].id)})
     }

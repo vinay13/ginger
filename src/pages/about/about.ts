@@ -47,11 +47,9 @@ idiomdict;
   constructor(public navCtrl: NavController, 
               private navParams: NavParams,
               public _homeserv : HomeService,
-              public events: Events) {
-
-                    
-                  
-                  this.selectedIdiom = this.navParams.get('idiom');
+              public events: Events) {                
+                  this.selectedIdiom = this.navParams.get('idiom') || localStorage.getItem('idiom');
+                ;
       
                   //testing
                     this._homeserv.getTabCategories(this.selectedIdiom)
@@ -102,7 +100,7 @@ idiomdict;
  
 
   checklogin(){
-    if(localStorage.getItem('access_token') === ''){
+    if(localStorage.getItem("access_token") === null){
      this.navCtrl.push(LoginPage,{
         'idiom': this.selectedIdiom
     });  
@@ -131,7 +129,7 @@ idiomdict;
 
   onTabSelect(ev : any){
      this.events.publish('tab:selected', ev.id);
-   //  alert('pub');
+   console.log(ev);
   }
 
   public tabIddata;

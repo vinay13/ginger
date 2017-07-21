@@ -17,7 +17,7 @@ import { Network } from '@ionic-native/network';
 })
 
 export class MyApp {
-  rootPage:any = IdiomComponent;
+  rootPage:any;
   public emailverify;
    rootNavCtrl: NavController;
   constructor(platform: Platform, 
@@ -31,7 +31,13 @@ export class MyApp {
                 platform.ready().then(() => {
                 statusBar.styleDefault();
                 splashScreen.hide();
-
+                if(localStorage.getItem('idiom') === null){
+                   this.rootPage = IdiomComponent;
+                }
+                else{
+                  this.rootPage = AboutPage;
+                }
+               
                   // let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
                   //      alert('disconnect');
                   //      this.rootPage = NoInternetComponent;

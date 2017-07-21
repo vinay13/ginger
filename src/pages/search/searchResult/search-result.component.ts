@@ -3,6 +3,7 @@ import {NavParams,NavController} from 'ionic-angular';
 import {SearchService} from '../../../services/search.service';
 import {CustomService} from '../../../services/custom.service';
 import {GifDetailComponent} from '../../home/gifdetail/gifdetail.component';
+import {AboutPage} from '../../about/about.ts';
 
 @Component({
     selector : 'page-search-result',
@@ -12,7 +13,6 @@ import {GifDetailComponent} from '../../home/gifdetail/gifdetail.component';
 
 export class SearchResultComponent implements OnInit {
 
-
     public searchItem;
     public searchedGifs = [];
     selectedIdiom;
@@ -21,9 +21,15 @@ export class SearchResultComponent implements OnInit {
                 private _searchService : SearchService,
                 private cs : CustomService ,
                 private navCtrl : NavController){ 
-                this.selectedIdiom = this.navparams.get('idiom');
-                
+                this.selectedIdiom = this.navparams.get('idiom');        
     } 
+
+    CustomNavRoot(){
+        this.navCtrl.setRoot(AboutPage,{
+                'idiom': this.selectedIdiom
+        });
+    }
+     
 
     getSearchGifs(item,selectedIdiom){
         this.cs.showLoader();

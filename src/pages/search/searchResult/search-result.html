@@ -1,7 +1,11 @@
 <ion-header>
-  <ion-navbar class="navbar">
+  <ion-navbar class="navbar" hideBackButton >
+        <button class="customIcon" ion-button icon-only (click)="CustomNavRoot()">
+            <ion-icon  name="arrow-back"></ion-icon>
+        </button>
        <ion-searchbar  [(ngModel)]="searchItem" [showCancelButton]="true" 
-       (keyup.enter)="someFunction($event)"  (ionInput)="getItems($event)" ></ion-searchbar>
+       (keyup.enter)="someFunction($event)"  (ionInput)="getItems($event)" >
+       </ion-searchbar>
   </ion-navbar>
 </ion-header>
 
