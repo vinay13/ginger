@@ -3,6 +3,7 @@ import { AddTagsComponent } from './add-tags/add-tags.component';
 import { NavController } from 'ionic-angular';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { Camera,CameraOptions } from '@ionic-native/camera';
+import { ImagePicker } from '@ionic-native/image-picker';
 
 @Component({
     selector : 'page-upload',
@@ -14,7 +15,8 @@ export class UploadComponent implements OnInit {
     weburl;
     constructor(private navCtrl : NavController,
                 private fileChooser : FileChooser,
-                public cameraa : Camera ){
+                public cameraa : Camera,
+                private imagePicker: ImagePicker ){
       //  this.selectedIdiom = this.navparmas.get();
     }
 
@@ -24,12 +26,28 @@ export class UploadComponent implements OnInit {
             'weburl' : weburl 
         });
     }
-    public imageFile : any;  
-    public data_response; 
+    // public imageFile : any;  
+    // public data_response; 
+    // ImagePick(){
+    //   this.fileChooser.open()
+    //     .then(uri => {console.log(uri); this.imageFile = uri ; this.navAddTag(uri); } )
+    //     .catch(e => console.log(e));
+    // }
+
     ImagePick(){
-      this.fileChooser.open()
-        .then(uri => {console.log(uri); this.imageFile = uri ; this.navAddTag(uri); } )
-        .catch(e => console.log(e));
+      let options = {
+            maximumImagesCount: 1,
+            quality: 100,
+            outputType: 0
+        };
+
+
+        this.imagePicker.getPictures(options).then((results) => {
+            for (var i = 0; i < results.length; i++) {
+                console.log('Image URI: ' + results[i]);
+            }
+            this.navAddTag(results[0]);
+        }, (err) => { });
     }
 
     // base64Image;

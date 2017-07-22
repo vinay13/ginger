@@ -43,7 +43,7 @@
             <ion-col col-7>
                 <div class="gin-label">
                   <ion-icon class="ic-share-alt" name="share-alt"></ion-icon>
-                <span>{{gifobject.source}}</span>
+                    <span class="gif-source">{{gifobject.source | ellipsis : 5}}</span>
                 </div>
             </ion-col>
         </ion-row>
@@ -76,7 +76,7 @@
 
     <masonry class="grid" [options]="{ transitionDuration: '0.0001s' , gutter : 4 }" [useImagesLoaded]="true"  >
        <masonry-brick class="brick" *ngFor="let rgifs of recomns"  (click)="GIFviewer(rgifs)" >
-         <img src={{rgifs.lowResUrl}}/>
+         <img  src={{rgifs.lowResUrl}}/>
          </masonry-brick>
     </masonry>
 

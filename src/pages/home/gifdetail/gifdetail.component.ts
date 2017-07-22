@@ -256,16 +256,16 @@ export class GifDetailComponent {
       .then(() => {
           this.cs.hideLoader();
       },
-      () => { alert('u dont have hike app'); this.cs.hideLoader();})
+      (err) => { alert('u dont have hike app'); this.cs.hideLoader();})
   }
 
-    sharegifviaMessenger(){
+  sharegifviaMessenger(){
       this.cs.showLoader();
-      this.socialSharing.shareVia('Messenger',"message","fds",this.gifurl,"https://ginger.com")
+      this.socialSharing.shareVia('com.facebook.orca',this.gifurl,"https://ginger.com")
       .then(() => {
           this.cs.hideLoader();
       },
-      () => { alert('u dont have Messenger app'); this.cs.hideLoader();})
+      (err) => {  alert(err);alert('YOU dont have Messenger app'); this.cs.hideLoader();})
   }
 
 

@@ -75,7 +75,7 @@ export class AddTagsComponent {
         let options : FileUploadOptions  = {
             fileKey: 'file',
             fileName: this.gifurl.substr(this.gifurl.lastIndexOf('/')+1),
-            mimeType: 'image/gif',
+            mimeType: 'image/jpeg',
             chunkedMode: false,
             headers: {
                  'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',

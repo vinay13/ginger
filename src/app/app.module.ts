@@ -31,6 +31,7 @@ import { File } from '@ionic-native/file';
 import { Keyboard } from '@ionic-native/keyboard';
 import { Clipboard } from '@ionic-native/clipboard';
 import { FileTransfer } from '@ionic-native/file-transfer';
+import { ImagePicker } from '@ionic-native/image-picker';
 //custom component
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { NoInternetComponent } from '../components/noInternet/noInternet.component';
@@ -46,6 +47,10 @@ import {CustomService} from '../services/custom.service';
 import {LoginService} from '../services/login.service';
 import {NetworkService} from '../services/network.service';
 import {AppRateService} from '../services/apprate.service';
+
+
+//pipe
+import { EllipsisPipe } from '../components/ellipses.pipe';
 
 //other imports
 import { StatusBar } from '@ionic-native/status-bar';
@@ -78,7 +83,8 @@ import { FileChooser } from '@ionic-native/file-chooser';
     Page1Page,
     Page2Page,
     Page3Page,
-    TOScomponent
+    TOScomponent,
+    EllipsisPipe
   ],
   imports: [
     HttpModule,
@@ -133,6 +139,7 @@ import { FileChooser } from '@ionic-native/file-chooser';
     Facebook,
     Keyboard,
     AppRate,
+    ImagePicker,
     AppRateService
   ]
 })

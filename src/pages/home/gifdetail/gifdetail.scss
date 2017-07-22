@@ -19,6 +19,11 @@
     margin-bottom: -2px;
 }
 
+.gif-source {
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
 .customIcon{
    background: none;
    box-shadow: none;
