@@ -76,9 +76,10 @@
         </div>   
     </div>-->
 
-    <masonry class="grid" [options]="{ transitionDuration: '0.0001s' , gutter : 4 }" [useImagesLoaded]="true"  >
+    <masonry class="grid" [options]="{ transitionDuration: '0.0001s' , gutter : 4 }" >
        <masonry-brick class="brick" *ngFor="let rgifs of recomns"  (click)="GIFviewer(rgifs)" >
-         <img  src={{rgifs.lowResUrl}}/>
+         <!--<img style="width:200px; height:120px;" src={{rgifs.lowResUrl}}/>-->
+         <img width={{rgifs.lowResWidth*2}} height={{rgifs.lowResHeight}} src={{rgifs.lowResUrl}}/>
          </masonry-brick>
     </masonry>
 

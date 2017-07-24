@@ -38,7 +38,7 @@ export class GifDetailComponent {
               
                ){
                     this.gifobject = this.navparams.get('url');
-                     this.selectedIdiom = this.navparams.get('idiom');
+                     this.selectedIdiom = this.navparams.get('idiom') || localStorage.getItem('idiom');
                      //this.gifurl =  this.gifobject.url;
                     console.log('gifobject',this.gifobject);
                     this.scount = this.gifobject.shareCount ;
@@ -82,6 +82,10 @@ export class GifDetailComponent {
 
 	} 
 
+
+setBackground(){
+    document.body.style.backgroundImage = 'url(https://thumbs.dreamstime.com/t/illustrate-blank-green-board-wooden-frame-38880868.jpg)';
+}
  
     poptoHome(){
    // this.navCtrl.pop();

@@ -18,7 +18,7 @@ export class AddTagsComponent {
 
     public gifurl : any;
     public uploadBtn;
-    public selectedIdiom = 'Tamil';
+    public selectedIdiom = localStorage.getItem('idiom');
     addtagsForm : FormGroup; 
     formgif: any;
     public gifyPath;
@@ -67,10 +67,10 @@ export class AddTagsComponent {
   public data_response;
   public access_token;
   uploadGifviaGallery(){
-     alert('uploadGifviaGallery is clicked');
+    
      console.log('uplod gifurl',this.gifurl);
     const fileTransfer: FileTransferObject = this.transfer.create();
-       let filename = _.uniqueId() + ".gif";
+       let filename = _.uniqueId('file_') + ".gif";
        console.log('filename',filename);
        let url = 'https://goladev.mobigraph.co/ginger/uploadGif';
        let uploadUrl = encodeURI(url);
@@ -88,18 +88,20 @@ export class AddTagsComponent {
             },
             params: {
                 "gif":  filename,
-                "idiom": "Tamil",
+                "idiom": this.selectedIdiom,
                 "tags": ['sarcasm']
             }
         }; 
          this.cs.showLoader();
-         alert(this.gifurl);
+         
         fileTransfer.upload(this.gifurl,url, options, false)
             .then((result: any) => {
               this.data_response = result ; 
                alert('success');
               this.cs.hideLoader();
-              this.navCtrl.push(GifDetailComponent);
+              this.navCtrl.push(GifDetailComponent,{
+                  'url' : this.data_response.response
+              });
           }).catch((error: any) => {
               console.log('upload err',error);
                this.cs.hideLoader();
