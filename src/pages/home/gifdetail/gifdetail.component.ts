@@ -26,6 +26,7 @@ export class GifDetailComponent {
     public tagslist;
     public selectedIdiom;
     public scount;
+ 
     constructor(public popoverCtrl : PopoverController,
                 public navCtrl : NavController,
                 public toastCtrl : ToastController,
@@ -49,6 +50,9 @@ export class GifDetailComponent {
                     this.tagslist = this.gifobject.tags;
                     console.log('tagslist',this.tagslist);
 
+
+                    //    let el = document.getElementsByClassName('scroll-content')[0] as HTMLElement;
+                    //     this.recomns.viewHeight = el.offsetHeight;
                    
                 }
 
@@ -98,7 +102,9 @@ setBackground(){
 
     golauser;
     public GetUsername(){
-     this.golauser =   localStorage.getItem('username') || 'gola';
+     let guser =  this.gifobject.publishedBy;
+    this.golauser  = guser.split('@',1)
+         
     } 
     
     public totalcount;

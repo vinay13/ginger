@@ -97,6 +97,7 @@ export class AddTagsComponent {
         fileTransfer.upload(this.gifurl,url, options, false)
             .then((result: any) => {
               this.data_response = result ; 
+              console.log('uploadsresults',result);
                alert('success');
               this.cs.hideLoader();
               this.navCtrl.push(GifDetailComponent,{
