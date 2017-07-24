@@ -41,6 +41,7 @@ export class GifDetailComponent {
                      this.selectedIdiom = this.navparams.get('idiom') || localStorage.getItem('idiom');
                      //this.gifurl =  this.gifobject.url;
                     console.log('gifobject',this.gifobject);
+                    console.log('gifobject id', this.gifobject.id)
                     this.scount = this.gifobject.shareCount ;
                     this.RecommendedGifs();
                     this.GetUsername();
