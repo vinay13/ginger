@@ -193,6 +193,12 @@ export class GifDetailComponent {
         toast.present();
     }
 
+    public giffSrc;
+    sourceClick(){
+        let link = 'http://'+this.gifobject.source;
+        this.giffSrc = link;
+    }
+
     // scount;
     // sharesCountDetails(){
     //     this._homeserv.sharesdetails(this.gifId)

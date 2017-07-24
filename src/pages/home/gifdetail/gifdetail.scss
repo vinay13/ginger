@@ -45,6 +45,12 @@ page-gifdetail .scroll-content {
     margin-top:0px !important;   
 }
 
+page-gifdetail{
+ a{
+    text-decoration: none;
+  } 
+}
+
 page-gifdetail .toolbar-background-md {
     background: linear-gradient(to bottom, rgba(0,0,0,0.60) 0%,rgba(0,0,0,0) 100%);
     border-color: transparent;

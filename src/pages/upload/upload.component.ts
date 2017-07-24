@@ -50,6 +50,29 @@ export class UploadComponent implements OnInit {
         }, (err) => { });
     }
 
+//     public basePath;
+//     public userImage;
+//     saveImage;
+//     public openCamera() {
+//     this.cameraa.getPicture({
+//       destinationType: this.cameraa.DestinationType.DATA_URL,
+//       targetWidth : 1000,
+//       targetHeight : 1000,
+//       encodingType: this.cameraa.EncodingType.JPEG,
+//       mediaType: this.cameraa.MediaType.PICTURE,
+//       correctOrientation: true,
+//       allowEdit: true,
+//       quality: 30
+//     }).then((imagedata) => {
+//       this.basePath = 'data:image/jpeg;base64,';
+//       this.userImage = imagedata;
+//       this.saveImage = this.basePath+this.userImage;
+//       this.navAddTag(this.saveImage);
+//     },(err) => {
+//     });
+//   }
+
+
     // base64Image;
     // ImageFile;
     // ImagePick(){

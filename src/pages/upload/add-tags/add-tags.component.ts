@@ -65,31 +65,36 @@ export class AddTagsComponent {
 
   //  _.uniqueId()
   public data_response;
- // public base64Image;
+  public access_token;
   uploadGifviaGallery(){
      alert('uploadGifviaGallery is clicked');
+     console.log('uplod gifurl',this.gifurl);
     const fileTransfer: FileTransferObject = this.transfer.create();
-       // let filename = _.uniqueId() + ".gif";
+       let filename = _.uniqueId() + ".gif";
+       console.log('filename',filename);
        let url = 'https://goladev.mobigraph.co/ginger/uploadGif';
        let uploadUrl = encodeURI(url);
-        let options : FileUploadOptions  = {
-            fileKey: 'file',
-            fileName: this.gifurl.substr(this.gifurl.lastIndexOf('/')+1),
-            mimeType: 'image/jpeg',
+       this.access_token = 'Bearer ' + localStorage.getItem('access_token');
+       let access_key =  'AzG7Co20vVl7cBC4Cgi1rmp7w';
+       let options = {
+            fileKey: 'gif',
+            fileName: filename,
+            mimeType: 'image/gif',
             chunkedMode: false,
             headers: {
-                 'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
-                 'Authorization' : 'Bearer'+' '+ localStorage.getItem('access_token')
+                 'content-type' : undefined,
+                 'X-Gola-Access-Key': access_key,
+                 'Authorization' : this.access_token
             },
             params: {
-                "gif":  'rewdsarewrew12.gif',
+                "gif":  filename,
                 "idiom": "Tamil",
                 "tags": ['sarcasm']
             }
         }; 
          this.cs.showLoader();
          alert(this.gifurl);
-        fileTransfer.upload(this.gifurl,uploadUrl, options, false)
+        fileTransfer.upload(this.gifurl,url, options, false)
             .then((result: any) => {
               this.data_response = result ; 
                alert('success');

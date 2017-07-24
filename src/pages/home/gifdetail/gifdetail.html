@@ -43,7 +43,9 @@
             <ion-col col-7>
                 <div class="gin-label">
                   <ion-icon class="ic-share-alt" name="share-alt"></ion-icon>
-                    <span class="gif-source">{{gifobject.source | ellipsis : 5}}</span>
+                  <a [href]="giffSrc">
+                    <span class="gif-source" (click)="sourceClick()"> {{gifobject.source | ellipsis : 5}}</span>
+                  </a>
                 </div>
             </ion-col>
         </ion-row>
