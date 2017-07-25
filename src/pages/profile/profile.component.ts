@@ -21,7 +21,7 @@ export class ProfileComponent {
 
                     this.getProfileData();
                    this.GifUploadedviaUser();
-                 //  this.GifsFavorites();
+                  this.GifsFavorites();
              //   alert('new code');
 
                 }
@@ -50,10 +50,11 @@ export class ProfileComponent {
     }
 
     Uploadedgifs = [];
+     Uploadedgifs2 = [];
     GifUploadedviaUser(){
         this.cs.showLoader();
         this._proServ.getGifsUploadedByUrl()
-        .subscribe( (data) => { this.Uploadedgifs = data;  this.cs.hideLoader(); this.checkUploadGifs(data);  },
+        .subscribe( (data) => { this.Uploadedgifs2 = data;  this.cs.hideLoader(); this.checkUploadGifs(data);  },
                     (err) => { this.cs.hideLoader();},
                     () => { console.log('uploadgifs',this.Uploadedgifs)})
     }
@@ -63,7 +64,7 @@ export class ProfileComponent {
                 for(let post of posts){
                      console.log(post);
                     this.Uploadedgifs.push(post); 
-    }
+            }
     }    
   
 
@@ -79,7 +80,7 @@ export class ProfileComponent {
     favoritesgifs = [];
     GifsFavorites(){
         this._proServ.GetFavoriteGifsviaUser()
-            .subscribe((data) => { this.favoritesgifs = data.favouriteGifs; this.pushfavvv(this.favoritesgifs ); },
+            .subscribe((data) => { this.favoritesgifs = data.favouriteGifs; this.pushfavvv(this.favoritesgifs); },
                         (err) => { console.log(err)},
                         () => { console.log('favgifs',this.favoritesgifs); console.log('after push', this.Uploadedgifs);})
     }

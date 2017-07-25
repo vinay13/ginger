@@ -25,8 +25,8 @@
     <div class="gif-info">
         <ion-grid>
         <ion-row>
-            <ion-col col-3>
-                <ion-chip (click)="userProfile()">
+            <ion-col col-4>
+                <ion-chip>
                     <ion-avatar>
                         <img src="assets/icon/avatar.png">
                     </ion-avatar>
@@ -34,13 +34,13 @@
                     
                 </ion-chip>
             </ion-col>
-            <ion-col col-2>
+            <ion-col col-4>
                <div class="gin-label">
                 <span>{{scount}}</span>
                 <label>shares</label>
                </div>
             </ion-col>
-            <ion-col col-7>
+            <ion-col col-4>
                 <div class="gin-label">
                   <ion-icon class="ic-share-alt" name="share-alt"></ion-icon>
                   <a [href]="giffSrc">

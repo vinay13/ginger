@@ -77,11 +77,14 @@ export class Page2Page implements OnInit{
    public gifs: Array<any> = []; 
 
      checkUserLogin(){
-      let token = localStorage.getItem('access_token');
+     let token = localStorage.getItem('access_token');
      console.log('token',token);
      if(token != null){
-        this.loggedIn = true;
+        this.UploadviaWeb();
+     }else{
+       this.rootNavCtrl.push(LoginPage);
      }
+   
     }
 
   gettabdata(idiom,tabid){
@@ -179,6 +182,6 @@ let click_func;
 
     ngOnInit(){
  //   this.appRate.promptForRating(true);
-      this.checkUserLogin();
+      
     }
 }

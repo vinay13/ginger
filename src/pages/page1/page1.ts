@@ -4,6 +4,7 @@ import { HomeService } from '../../services/home.service';
 import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
 import { CustomService } from '../../services/custom.service';
 import { UploadComponent } from '../upload/upload.component';
+import { LoginPage} from '../login/login.component';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { AddTagsComponent } from '../upload/add-tags/add-tags.component';
 import {AppRate} from '@ionic-native/app-rate';
@@ -39,7 +40,7 @@ export class Page1Page {
                   platform.ready().then(() => {
                       this.tabcat();
                   })
-                   this.checkUserLogin();
+                   
 
                 
                    
@@ -50,9 +51,15 @@ export class Page1Page {
      let token = localStorage.getItem('access_token');
      console.log('token',token);
      if(token != null){
-        this.loggedIn = true;
+        this.UploadviaWeb();
+     }else{
+       this.rootNavCtrl.push(LoginPage);
      }
    
+    }
+
+    doStuff(){
+      //alert('layout completed');
     }
 
     

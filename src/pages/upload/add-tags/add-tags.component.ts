@@ -6,7 +6,7 @@ import { FileTransfer,FileUploadOptions,FileTransferObject } from  '@ionic-nativ
 import { File } from '@ionic-native/file';
 import {CustomService} from '../../../services/custom.service';
 import * as _ from 'underscore';
-import {FormGroup,FormControl,Validators} from '@angular/forms';
+import {FormGroup,FormControl,Validators,FormBuilder,FormArray} from '@angular/forms';
 
 @Component({
     selector : 'page-add-tags',
@@ -20,6 +20,7 @@ export class AddTagsComponent {
     public uploadBtn;
     public selectedIdiom = localStorage.getItem('idiom');
     addtagsForm : FormGroup; 
+    addtagsForm2; 
     formgif: any;
     public gifyPath;
     constructor(public navCtrl: NavController,
@@ -29,7 +30,8 @@ export class AddTagsComponent {
                 public _uploadserv: UploadGifService,
                 private file: File,
                 private transfer: FileTransfer,
-                public cs: CustomService){
+                public cs: CustomService,
+                public fb : FormBuilder){
                 //  this.gifurl = this.navparams.get('gifpath');
                 //  this.selectedIdiom = this.navparams.get('idiom');
                     this.gifurl = this.navparams.get('weburl') || this.navparams.get('gifpath') ;
@@ -42,15 +44,20 @@ export class AddTagsComponent {
         }
 
     ngOnInit(){
-        //  categories : new FormControl(["Movie"],[Validators.required]),
-        // this.formgif =  {
-        //     "url": this.gifurl,
-        //     "idiom": "Hindi",
-        //     "categories": ["Movie"],
-        //     "tags": ["Movie","MovieStar"]
-        // } 
+        //  this.addtagsForm2 = this.fb.group({
+        //                  url : [this.gifurl],
+        //                  idiom : [this.selectedIdiom],   
+        //                  tags : this.fb.array([
+        //                          this.addTags(),
+        //                         ]) 
+        //             })
     }              
-              
+
+    // addTags() {
+    //     // add address to the list
+    //     const control = <FormArray>this.addtagsForm2.controls['addresses'];
+    //     control.push(this.addtagsForm2.value.tags);
+    // }      
 
     response;
     UploadGif(){
@@ -86,10 +93,10 @@ export class AddTagsComponent {
                  'X-Gola-Access-Key': access_key,
                  'Authorization' : this.access_token
             },
-            params: {
+            params:{
                 "gif":  filename,
                 "idiom": this.selectedIdiom,
-                "tags": ['sarcasm']
+                "tags": ['sarcasm','funny']
             }
         }; 
          this.cs.showLoader();
@@ -101,7 +108,7 @@ export class AddTagsComponent {
                alert('success');
               this.cs.hideLoader();
               this.navCtrl.push(GifDetailComponent,{
-                  'url' : this.data_response.response
+                  'url' : JSON.parse(this.data_response.response)
               });
           }).catch((error: any) => {
               console.log('upload err',error);
