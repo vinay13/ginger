@@ -16,9 +16,9 @@ export class SettingsComponent {
     }
 
     logout(){
-        // localStorage.removeItem('access_token');
-        // localStorage.removeItem('username');
-        localStorage.clear();
+         localStorage.removeItem('access_token');
+         localStorage.removeItem('username');
+       // localStorage.clear();
         this.navCtrl.push(AboutPage);
     }
 
