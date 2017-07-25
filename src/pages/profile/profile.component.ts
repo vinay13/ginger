@@ -21,7 +21,7 @@ export class ProfileComponent {
 
                     this.getProfileData();
                    this.GifUploadedviaUser();
-                  this.GifsFavorites();
+                  
              //   alert('new code');
 
                 }
@@ -54,7 +54,7 @@ export class ProfileComponent {
     GifUploadedviaUser(){
         this.cs.showLoader();
         this._proServ.getGifsUploadedByUrl()
-        .subscribe( (data) => { this.Uploadedgifs2 = data;  this.cs.hideLoader(); this.checkUploadGifs(data);  },
+        .subscribe( (data) => { this.Uploadedgifs2 = data; this.GifsFavorites();  this.cs.hideLoader(); this.checkUploadGifs(data);  },
                     (err) => { this.cs.hideLoader();},
                     () => { console.log('uploadgifs',this.Uploadedgifs)})
     }

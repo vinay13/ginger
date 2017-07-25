@@ -40,10 +40,7 @@ export class Page1Page {
                   platform.ready().then(() => {
                       this.tabcat();
                   })
-                   
-
-                
-                   
+                        
     }
 
 

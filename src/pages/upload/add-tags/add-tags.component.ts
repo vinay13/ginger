@@ -105,7 +105,7 @@ export class AddTagsComponent {
             .then((result: any) => {
               this.data_response = result ; 
               console.log('uploadsresults',result);
-               alert('success');
+               this.presentToast();
               this.cs.hideLoader();
               this.navCtrl.push(GifDetailComponent,{
                   'url' : JSON.parse(this.data_response.response)
