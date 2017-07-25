@@ -66,15 +66,15 @@ export class GifDetailComponent {
 				this.loadProgress++;
                 
                 if(this.loadProgress == 1){
-                    this.gifurl = this.gifobject.url;
+                    this.gifurl = this.gifobject.lowResUrl;
                 }
 
-                // if(this.loadProgress == 30)
-                // {
+                if(this.loadProgress == 40)
+                 {
                 //     console.log(this.gifurl);
-                //     this.gifurl = this.gifobject.url;
+                     this.gifurl = this.gifobject.url;
                 //     console.log(this.gifurl);
-                // }
+                 }
 
                 if(this.loadProgress == 99)
                 {
@@ -242,7 +242,7 @@ setBackground(){
          this.cs.hideLoader();
        },
        ()=>{
-         alert("failed")
+          this.cs.hideLoader();
        })
     }
 
@@ -278,7 +278,7 @@ setBackground(){
 
   sharegifviaMessenger(){
       this.cs.showLoader();
-      this.socialSharing.shareVia('com.facebook.orca',this.gifurl,"https://ginger.com")
+      this.socialSharing.shareVia('com.facebook.orca','themessage','gdgf',this.gifurl,'http://gola.com')
       .then(() => {
           this.cs.hideLoader();
       },
@@ -303,8 +303,6 @@ setBackground(){
         },
         () => { this.cs.hideLoader(); }) 
   }
-
-
     
 //   public trendingGIFs;
 //   doInfinite(infiniteScroll) {

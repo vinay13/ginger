@@ -16,7 +16,7 @@ export class SearchResultComponent implements OnInit {
     public searchItem;
     public searchedGifs = [];
     selectedIdiom;
-    public currentPage = 1;
+    totalCount;
     constructor(private navparams : NavParams,
                 private _searchService : SearchService,
                 private cs : CustomService ,
@@ -34,8 +34,8 @@ export class SearchResultComponent implements OnInit {
     getSearchGifs(item,selectedIdiom){
         this.cs.showLoader();
         console.log('selectedIdiom',this.selectedIdiom);
-        this._searchService.GetGifsSearch(selectedIdiom,item)
-        .subscribe( (res) => { this.searchedGifs = res; this.cs.hideLoader();  },
+        this._searchService.GetGifsSearch(selectedIdiom,item,this.currentPage)
+        .subscribe( (res) => { this.searchedGifs = res.contents; this.totalCount = res.totalCount ; this.cs.hideLoader();  },
                     (err) => { console.log(err); this.cs.hideLoader();},
                     () => console.log('search gifs',this.searchedGifs))
     }
@@ -69,27 +69,25 @@ export class SearchResultComponent implements OnInit {
     } 
 
 
-//     public doInfinite(infiniteScroll) {
-//     this.currentPage += 1;
-//     setTimeout(() => {
-//       this.loadMoreData(infiniteScroll);
-//     }, 500);
-//   }
+currentPage = 0;    
+ doInfinite(infiniteScroll) {
 
-//   public loadMoreData(infiniteScroll) {
-//     this._searchService.GetGifsSearch(this.selectedIdiom,1).subscribe((response) => {
-//       if (response.status === 204) {
-//         this.currentPage -= 1;
-//         infiniteScroll.complete();
-//         return;
-//       }
-//       infiniteScroll.complete();
-//       this.allData = this.allData.concat(response);
-//     }, (err) => {
-//       infiniteScroll.complete();
-//       this.currentPage -= 1;
-//     //  this.onError(err);
-//     });
-//   }
+   this.currentPage = this.currentPage + 1;
+    console.log('currentpage', this.currentPage);
+       this._searchService.GetGifsSearch(this.selectedIdiom,this.searchItem,this.currentPage).subscribe(data =>
+        {
+          infiniteScroll.complete();
+        //   this.hasMoreData = true;
+        //   this.trendingGIFs = data;
+          this.searchedGifs =  this.searchedGifs.concat(data.contents); 
+      }, 
+    err => {
+      infiniteScroll.complete();
+      this.currentPage -= 1;
+   //   this.onError(err);
+    },
+     () => console.log('Next Page Loading completed')
+     );
+  }
 
 } 

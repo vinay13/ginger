@@ -12,7 +12,7 @@
 
 <ion-content class="background-theme">
     <div class="search-result-header">
-       {{searchedGifs.totalCount}} GIFS found for <b> {{searchItem}}  </b>
+       {{totalCount}} GIFS found for <b> {{searchItem}}  </b>
     </div>
 
      <!--<div class="pins">
@@ -22,7 +22,7 @@
     </div>-->
        <masonry class="grid" [options]="{ transitionDuration: '0.0001s' , gutter : 4 }" [useImagesLoaded]="true"  >
           <masonry-brick class="brick" *ngFor="let gifs of searchedGifs"  (click)="viewGif(gifs)" >
-           <img width="100%" height="100%" src={{gifs.lowResUrl}}/>
+           <img src={{gifs.lowResUrl}}/>
          </masonry-brick>
        </masonry>
 

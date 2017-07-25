@@ -72,7 +72,7 @@ export class SearchComponent{
 
     public searchedGifs = [];
     getSearchGifs(item){
-        this._searchservice.GetGifsSearch(this.selectedIdiom,item)
+        this._searchservice.GetGifsSearch(this.selectedIdiom,item,0)
         .subscribe( (res) => { this.searchedGifs = res },
                     () => console.log('related gifs',this.searchedGifs))
     }

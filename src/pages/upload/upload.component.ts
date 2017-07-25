@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { Camera,CameraOptions } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
+import { FilePath } from '@ionic-native/file-path';
 
 @Component({
     selector : 'page-upload',
@@ -16,7 +17,8 @@ export class UploadComponent implements OnInit {
     constructor(private navCtrl : NavController,
                 private fileChooser : FileChooser,
                 public cameraa : Camera,
-                private imagePicker: ImagePicker ){
+                private imagePicker: ImagePicker,
+                private filePath : FilePath ){
       //  this.selectedIdiom = this.navparmas.get();
     }
 
@@ -30,8 +32,14 @@ export class UploadComponent implements OnInit {
     public data_response; 
     ImagePick(){
       this.fileChooser.open()
-        .then(uri => {console.log(uri); this.imageFile = uri ; this.navAddTag(uri); } )
+        .then(uri => {console.log(uri); this.imageFile = uri ; this.filePathfunc(uri);  } )
         .catch(e => console.log(e));
+    }
+
+    filePathfunc(path){
+        this.filePath.resolveNativePath(path)
+            .then(filePath => {console.log(filePath); this.navAddTag(filePath); })
+            .catch(err => console.log(err));
     }
 
     // ImagePick(){

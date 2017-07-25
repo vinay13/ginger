@@ -60,6 +60,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { Facebook } from '@ionic-native/facebook';
 import { AppRate } from '@ionic-native/app-rate';
 import { FileChooser } from '@ionic-native/file-chooser';
+import { FilePath } from '@ionic-native/file-path';
 
 @NgModule({
   declarations: [
@@ -131,6 +132,7 @@ import { FileChooser } from '@ionic-native/file-chooser';
     Camera,
     File,
     FileChooser,
+    FilePath,
     FileTransfer,
     SocialSharing,
     Clipboard,
