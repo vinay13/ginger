@@ -39,7 +39,7 @@ export class AddTagsComponent {
                     this.addtagsForm = new FormGroup({
                          url : new FormControl(this.gifurl),
                          idiom : new FormControl(this.selectedIdiom),   
-                         tags : new FormControl(["Movie","MovieStar"],[Validators.required])   
+                         tags : new FormControl('',[Validators.required])   
                     })
         }
 
@@ -96,7 +96,7 @@ export class AddTagsComponent {
             params:{
                 "gif":  filename,
                 "idiom": this.selectedIdiom,
-                "tags": ['sarcasm','funny']
+                "tags": this.addtagsForm.value.tags
             }
         }; 
          this.cs.showLoader();
