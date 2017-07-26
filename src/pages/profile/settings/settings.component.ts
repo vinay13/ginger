@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController} from 'ionic-angular';
 import { TOScomponent} from '../../../components/termsofservice/tos.ts';
 import {AboutPage} from '../../about/about';
+
 @Component({
     selector : 'page-settings',
     templateUrl : 'settings.html'

@@ -74,7 +74,7 @@ export class Page1Page {
     public tabIddata;
     gettabdata(idiom,tabid){
        this.tabIddata = [];
-       this._homeserv.getTabDataviaTabId(idiom,tabid)
+       this._homeserv.getTabDataviaTabId(idiom,tabid,0)
                   .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata; },
                   (err) => {console.log(err)},
                   () => console.log('data',this.tabIddata ))
@@ -143,25 +143,26 @@ export class Page1Page {
 
 
 
-//   public pageno = 1;
-//   public trendingGIFs;
-//   doInfinite(infiniteScroll) {
+currentPage = 0;
+ doInfinite(infiniteScroll) {
 
-//     let nextpage=this.pageno++;
-//     this._homeserv.getTabDataviaTabId(this.selectedIdiom,this.tabId).subscribe(
-//             data => {
-//               infiniteScroll.complete();
-//                 this.trendingGIFs = data;
-//                 console.log('scroll',this.trendingGIFs );
-//                    this.gifs =  this.gifs.concat(this.trendingGIFs.contents); 
-//             },
-//             err => {
-//                 console.log(err);
-//             },
-//             () => console.log('Next Page Loading completed')
-//         );
-//   infiniteScroll.complete();
-// } 
+   this.currentPage = this.currentPage + 1;
+    console.log('currentpage', this.currentPage);
+       this._homeserv.getTabDataviaTabId(this.selectedIdiom,this.tabdata[0].id,this.currentPage).subscribe(data =>
+        {
+          infiniteScroll.complete();
+        //   this.hasMoreData = true;
+        //   this.trendingGIFs = data;
+          this.tabIddata =  this.tabIddata.concat(data); 
+      }, 
+    err => {
+      infiniteScroll.complete();
+      this.currentPage -= 1;
+   //   this.onError(err);
+    },
+     () => console.log('Next Page Loading completed')
+     );
+  } 
      
 
 }

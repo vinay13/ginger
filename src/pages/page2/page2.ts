@@ -88,7 +88,7 @@ export class Page2Page implements OnInit{
     }
 
   gettabdata(idiom,tabid){
-     this._homeserv.getTabDataviaTabId(idiom,tabid)
+     this._homeserv.getTabDataviaTabId(idiom,tabid,0)
                   .subscribe((res) => {this.tabIddata = res ; this.textonGIFs(); this.gifs = this.tabIddata},
                   (err) => {console.log(err)})
   }
@@ -136,12 +136,12 @@ let click_func;
   doInfinite(infiniteScroll) {
 
     let nextpage=this.pageno++;
-    this._homeserv.getTabDataviaTabId(this.selectedIdiom,this.tabId).subscribe(
+    this._homeserv.getTabDataviaTabId(this.selectedIdiom,this.tabId,nextpage).subscribe(
             data => {
               infiniteScroll.complete();
                 this.trendingGIFs = data;
                 console.log('scroll',this.trendingGIFs );
-                   this.gifs =  this.gifs.concat(this.trendingGIFs.contents); 
+                this.gifs =  this.gifs.concat(this.trendingGIFs.contents); 
             },
             err => {
                 console.log(err);

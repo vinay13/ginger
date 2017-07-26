@@ -159,7 +159,7 @@ ionViewDidLoad(){
  // public i = 0;
   tabdataViaTabID(tabID){
       console.log('tabiid2',tabID);
-              this._homeserv.getTabDataviaTabId(this.selectedIdiom, tabID)
+              this._homeserv.getTabDataviaTabId(this.selectedIdiom, tabID,0)
       .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata},
                   (err) => {console.log(err)},
                   () => console.log('data',this.tabIddata ))        

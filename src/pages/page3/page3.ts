@@ -28,7 +28,7 @@ export class Page3Page {
     public gifs;
     gettabdata(idiom,tabid){
        this.tabIddata = [];
-       this._homeserv.getTabDataviaTabId(idiom,tabid)
+       this._homeserv.getTabDataviaTabId(idiom,tabid,0)
                   .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata; },
                   (err) => {console.log(err)},
                   () => console.log('data',this.tabIddata ))
