@@ -7,8 +7,7 @@ import { HomeService } from '../../services/home.service';
 import { LoginPage } from '../login/login.component';
 import { UploadComponent } from '../upload/upload.component';
 import { ProfileComponent } from '../profile/profile.component';
-import { CustomService } from '../../services/custom.service';
-import { Camera } from '@ionic-native/camera';
+import { CustomService } from '../../services/custom.service';3
 import { AddTagsComponent } from '../upload/add-tags/add-tags.component';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { File } from '@ionic-native/file';
@@ -36,7 +35,6 @@ export class HomeComponent implements OnInit{
               public actionSheetCtrl : ActionSheetController,
               public _homeserv : HomeService,
               public cs : CustomService,
-              public cameraa : Camera,
               public file : File,
               public fileChooser : FileChooser,
               public _proServ : ProfileService) {

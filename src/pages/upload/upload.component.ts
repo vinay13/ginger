@@ -2,8 +2,6 @@ import { Component,OnInit } from '@angular/core';
 import { AddTagsComponent } from './add-tags/add-tags.component'; 
 import { NavController } from 'ionic-angular';
 import { FileChooser } from '@ionic-native/file-chooser';
-import { Camera,CameraOptions } from '@ionic-native/camera';
-import { ImagePicker } from '@ionic-native/image-picker';
 import { FilePath } from '@ionic-native/file-path';
 
 @Component({
@@ -16,8 +14,6 @@ export class UploadComponent implements OnInit {
     weburl;
     constructor(private navCtrl : NavController,
                 private fileChooser : FileChooser,
-                public cameraa : Camera,
-                private imagePicker: ImagePicker,
                 private filePath : FilePath ){
       //  this.selectedIdiom = this.navparmas.get();
     }

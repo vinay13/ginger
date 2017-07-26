@@ -7,7 +7,6 @@ import { IdiomComponent } from '../idiom/idiom.component';
 import { LoginPage } from '../login/login.component';
 import { UploadComponent } from '../upload/upload.component';
 import { CustomService} from '../../services/custom.service';
-import { Camera } from '@ionic-native/camera';
 import { AddTagsComponent} from '../upload/add-tags/add-tags.component';
 import { FileChooser } from '@ionic-native/file-chooser';
 // import { SuperTabs } from 'ionic2-super-tabs';
@@ -38,7 +37,6 @@ export class Page2Page implements OnInit{
                 public navparams: NavParams,
                 public _homeserv : HomeService,
                 public events : Events,
-                public cameraa : Camera,
                 public platform : Platform,
                 public appRate: AppRate,
                 public fileChooser : FileChooser,

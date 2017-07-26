@@ -26,12 +26,11 @@ import { MasonryModule } from 'angular2-masonry';
 
 //third party imports 
 import { SuperTabsModule } from 'ionic2-super-tabs';
-import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { Keyboard } from '@ionic-native/keyboard';
 import { Clipboard } from '@ionic-native/clipboard';
 import { FileTransfer } from '@ionic-native/file-transfer';
-import { ImagePicker } from '@ionic-native/image-picker';
+
 //custom component
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { NoInternetComponent } from '../components/noInternet/noInternet.component';
@@ -129,7 +128,6 @@ import { FilePath } from '@ionic-native/file-path';
     Configuration,
     CustomService,
     NetworkService,
-    Camera,
     File,
     FileChooser,
     FilePath,
@@ -141,7 +139,6 @@ import { FilePath } from '@ionic-native/file-path';
     Facebook,
     Keyboard,
     AppRate,
-    ImagePicker,
     AppRateService
   ]
 })
