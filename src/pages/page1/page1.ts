@@ -153,7 +153,7 @@ currentPage = 0;
           infiniteScroll.complete();
         //   this.hasMoreData = true;
         //   this.trendingGIFs = data;
-          this.tabIddata =  this.tabIddata.concat(data); 
+          this.gifs =  this.gifs.concat(data); 
       }, 
     err => {
       infiniteScroll.complete();

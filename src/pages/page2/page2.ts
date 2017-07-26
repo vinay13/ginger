@@ -129,25 +129,27 @@ let click_func;
   ionViewDidEnter(){
   }
 
-  public pageno = 1;
-  public trendingGIFs;
-  doInfinite(infiniteScroll) {
+  
+currentPage = 0;
+ doInfinite(infiniteScroll) {
 
-    let nextpage=this.pageno++;
-    this._homeserv.getTabDataviaTabId(this.selectedIdiom,this.tabId,nextpage).subscribe(
-            data => {
-              infiniteScroll.complete();
-                this.trendingGIFs = data;
-                console.log('scroll',this.trendingGIFs );
-                this.gifs =  this.gifs.concat(this.trendingGIFs.contents); 
-            },
-            err => {
-                console.log(err);
-            },
-            () => console.log('Next Page Loading completed')
-        );
-  infiniteScroll.complete();
-} 
+   this.currentPage = this.currentPage + 1;
+    console.log('currentpage', this.currentPage);
+       this._homeserv.getTabDataviaTabId(this.selectedIdiom,this.tabId,this.currentPage).subscribe(data =>
+        {
+          infiniteScroll.complete();
+        //   this.hasMoreData = true;
+        //   this.trendingGIFs = data;
+          this.gifs =  this.gifs.concat(data); 
+      }, 
+    err => {
+      infiniteScroll.complete();
+      this.currentPage -= 1;
+   //   this.onError(err);
+    },
+     () => console.log('Next Page Loading completed')
+     );
+  } 
 
   UploadviaWeb(){
     

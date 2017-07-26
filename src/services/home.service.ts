@@ -69,7 +69,7 @@ export class HomeService{
     }
 
     public getTabDataviaTabId(idiom,tabid,pageno){
-        return this.http.get(this.golaurl+idiom+'/topItems/'+tabid+'/'+pageno+'/20',this.options)
+        return this.http.get(this.golaurl+idiom+'/topItems/'+tabid+'/'+pageno+'/14',this.options)
                 .map(this.extractData)
                 .catch(this.handleError)
     }
