@@ -9,8 +9,6 @@ import { UploadComponent } from '../upload/upload.component';
 import { CustomService} from '../../services/custom.service';
 import { AddTagsComponent} from '../upload/add-tags/add-tags.component';
 import { FileChooser } from '@ionic-native/file-chooser';
-// import { SuperTabs } from 'ionic2-super-tabs';
-// declare var SuperTabs : any;
 import {AppRate} from '@ionic-native/app-rate';
 import { Platform } from 'ionic-angular';
 import { SearchResultComponent } from '../search/searchResult/search-result.component';
@@ -50,16 +48,18 @@ export class Page2Page implements OnInit{
              
              
 
-                   platform.ready().then(() => {
-                       this.events.subscribe('tab:selected',(id) => {
+                  //  platform.ready().then(() => {
+                  //      this.events.subscribe('tab:selected',(id) => {
                         
-                             this.tabId = id;
-                             this.index += 1;
-                              this.gettabdata(this.selectedIdiom,id);
+                  //            this.tabId = id;
+                  //            this.index += 1;
+                  //             this.gettabdata(this.selectedIdiom,id);
                             
-                            this.events.unsubscribe('tab:selected');
-                    });
-                  })
+                  //           this.events.unsubscribe('tab:selected');
+                  //   });
+                  // })
+
+                  this.gettabdata(this.selectedIdiom,localStorage.getItem('tabId'));
 
                 //      this.platform.ready().then(
                 //      () =>  this.appRate.preferences = {
@@ -135,6 +135,7 @@ currentPage = 0;
 
    this.currentPage = this.currentPage + 1;
     console.log('currentpage', this.currentPage);
+    console.log('tabId',this.tabId);
        this._homeserv.getTabDataviaTabId(this.selectedIdiom,this.tabId,this.currentPage).subscribe(data =>
         {
           infiniteScroll.complete();

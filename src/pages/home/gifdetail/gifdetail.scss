@@ -146,11 +146,19 @@ page-gifdetail .toolbar-background-md {
     color: white;
 }
 
-.brick{
-      width: 47%;   
-      object-fit: contain;        
-}
 
+
+page-gifdetail{
+    masonry .grid{
+      column-count: 2;
+      display: inline-block;
+      width:100%;
+    }
+    .brick{
+        width: 47%;
+        object-fit: contain;
+    }
+}
 
 
 .ios ,.md {

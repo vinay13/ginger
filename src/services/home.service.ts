@@ -51,7 +51,7 @@ export class HomeService{
 
       //using mobigraph api
       public getRelatedGifs(idiom, id,pageno){
-          return this.http.get(this.golaurl+idiom+"/relatedGifs/"+id+"/"+pageno+"/14",this.options)
+          return this.http.get(this.golaurl+idiom+"/relatedGifs/"+id+"/"+pageno+"/25",this.options)
                     .map(this.extractData)
                     .catch(this.handleError)
       }
@@ -69,7 +69,7 @@ export class HomeService{
     }
 
     public getTabDataviaTabId(idiom,tabid,pageno){
-        return this.http.get(this.golaurl+idiom+'/topItems/'+tabid+'/'+pageno+'/14',this.options)
+        return this.http.get(this.golaurl+idiom+'/topItems/'+tabid+'/'+pageno+'/25',this.options)
                 .map(this.extractData)
                 .catch(this.handleError)
     }

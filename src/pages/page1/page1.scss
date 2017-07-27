@@ -5,6 +5,8 @@ page-page1 {
      masonry .grid{
         column-count: 2;
       //  margin: 0 auto;
+      display: inline-block;
+      width:100%;
     }
  
 
@@ -12,7 +14,16 @@ page-page1 {
       width: 47%;
       object-fit: contain;
       }
+
+    //       .section {
+    //  display: inline-block;
+    //  margin:  0.25rem;
+    //  padding:  1rem;
+    //  width:  100%; 
+    //  background:  #efefef;
+    // }
 }
+
 
 
 .ios ,.md {

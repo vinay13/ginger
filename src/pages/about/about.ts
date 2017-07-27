@@ -44,16 +44,28 @@ idiomdict;
 //  onTabSelect(index: number) {
 //     this.tabSelect.emit(index);
 //   }
+  tabIndex;
   constructor(public navCtrl: NavController, 
               private navParams: NavParams,
               public _homeserv : HomeService,
-              public events: Events) {                
+              public events: Events) { 
+                               
                   this.selectedIdiom = this.navParams.get('idiom') || localStorage.getItem('idiom');
                 ;
-      
+                  console.log(localStorage.getItem('tabIndex'));
+              
+              if( localStorage.getItem('tabIndex') != null ){
+                this.tabIndex = localStorage.getItem('tabIndex');
+              }
+              else{
+                  this.tabIndex = "0";
+                  alert(this.tabIndex);
+              }
+                 
+
                   //testing
                     this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs; this.tabdata.splice(0,1);this.onTabSelect(this.tabdata[0]);this.abcetc(this.tabdata[0].id);this.tabsLoaded = true;    },
+                    .subscribe( (res) => { this.tabdata = res.tabs; this.tabdata.splice(0,1);this.abcetc(this.tabdata[0].id);this.tabsLoaded = true;    },
                     (err) => { console.log(err)},
                     () => { console.log('tabdata',this.tabdata[0].id)})
 
@@ -91,6 +103,7 @@ idiomdict;
                       'tabid' : tbid
                    }
      this.idiom3 = this.idiomdict;
+     
    //this.gettabdata(this.selectedIdiom,tbid);           
   }
 
@@ -129,7 +142,10 @@ idiomdict;
 
   onTabSelect(ev : any){
      this.events.publish('tab:selected', ev.id);
-   console.log(ev);
+ 
+     localStorage.setItem('tabIndex',ev.index);
+     localStorage.setItem('tabId',ev.id);
+     console.log(ev);
   }
 
   public tabIddata;

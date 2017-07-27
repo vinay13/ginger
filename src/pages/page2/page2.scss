@@ -4,6 +4,8 @@ page-page2 {
     }
      masonry .grid{
         column-count: 2;
+        display: inline-block;
+        width:100%;
       //  margin: 0 auto;
     }
  

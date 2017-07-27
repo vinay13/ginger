@@ -12,6 +12,7 @@ import { ProfileComponent } from '../../profile/profile.component';
 import { Clipboard } from '@ionic-native/clipboard';
 import { Page1Page } from '../../page1/page1.ts';
 import {AboutPage} from '../../about/about.ts';
+
 @Component({
     selector : 'page-gifdetail',
     templateUrl : 'gifdetail.html'
