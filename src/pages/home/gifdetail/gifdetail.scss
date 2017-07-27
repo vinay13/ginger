@@ -146,14 +146,18 @@ page-gifdetail .toolbar-background-md {
     color: white;
 }
 
-
+.brick{
+      width: 47%;   
+      object-fit: contain;        
+}
 
 page-gifdetail{
-    div .grid{
+    masonry .grid{
       column-count: 2;
       display: inline-block;
-      overflow: visible;
+      overflow:visible;
       width:100%;
+      min-width: 940px !important;
     }
     .brick{
         width: 47%;
@@ -176,7 +180,7 @@ page-gifdetail{
         .gifpin{
             border-radius: 5px;
             width: 100%;
-            object-fit: contain;
+            height: auto;
             background: #8463F2;
         }
     }

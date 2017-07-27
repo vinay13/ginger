@@ -19,18 +19,18 @@ export class Page3Page {
     public tabdata;
     public tabcat(){
          this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[2].id);  },
+                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,1498280399797);  },
                                 (err) => { console.log(err)},
-                                () => { console.log('tabdata',this.tabdata[0].id)})
+                                () => { console.log('tabdata',this.tabdata[2].id)})
     }
 
     public tabIddata;
     public gifs;
     gettabdata(idiom,tabid){
        this.tabIddata = [];
-       this._homeserv.getTabDataviaTabId(idiom,tabid,0)
+       this._homeserv.getTabDataviaTabId(idiom,1498280399797,0)
                   .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata; },
                   (err) => {console.log(err)},
-                  () => console.log('data',this.tabIddata ))
+                  () => console.log('page3data',this.tabIddata ))
     }
 }

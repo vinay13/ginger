@@ -1,5 +1,5 @@
 import { Component,ViewChild } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams , ModalController } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
 import { CustomService } from '../../services/custom.service';
@@ -9,8 +9,8 @@ import { FileChooser } from '@ionic-native/file-chooser';
 import { AddTagsComponent } from '../upload/add-tags/add-tags.component';
 import {AppRate} from '@ionic-native/app-rate';
 import { Platform } from 'ionic-angular';
- import { MasonryModule,AngularMasonry } from 'angular2-masonry';
-// let AngularMasonry;
+import { MasonryModule,AngularMasonry } from 'angular2-masonry';
+
 
 @Component({
   selector: 'page-page1',
@@ -31,7 +31,8 @@ export class Page1Page {
                 public _homeserv : HomeService,
                 public cs : CustomService,
                 public platform : Platform,
-                public fileChooser : FileChooser){
+                public fileChooser : FileChooser,
+                public modalCtrl : ModalController){
                              
                   this.rootNavCtrl = this.navparams.get('rootNavCtrl');
                   this.newselectedIdiom = this.navparams.data;
@@ -87,6 +88,7 @@ export class Page1Page {
     }
 
     navGifDetail(url){
+    
       this.rootNavCtrl.push(GifDetailComponent,{
         'url' : url,
         'idiom' : this.selectedIdiom

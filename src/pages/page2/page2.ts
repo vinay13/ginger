@@ -26,11 +26,14 @@ export class Page2Page implements OnInit{
    public tabIddata; 
    indexx;
    index = 0;
+   dataTab;
+   dataTab2;
     
     //  @ViewChild(SuperTabs) superTabs: SuperTabs;
 //  appRate: any = AppRate;
     rootNavCtrl: NavController;
     public loggedIn : boolean = false;
+    flag = false;
     constructor(public navCtrl: NavController, 
                 public navparams: NavParams,
                 public _homeserv : HomeService,
@@ -48,18 +51,22 @@ export class Page2Page implements OnInit{
              
              
 
-                  //  platform.ready().then(() => {
-                  //      this.events.subscribe('tab:selected',(id) => {
+                console.log('dataTab',this.flag); 
+                console.log( 'dataTab2',this.events);
+               this.events.subscribe('tab:selected',(id) => {
                         
-                  //            this.tabId = id;
-                  //            this.index += 1;
-                  //             this.gettabdata(this.selectedIdiom,id);
-                            
-                  //           this.events.unsubscribe('tab:selected');
-                  //   });
-                  // })
+                             this.tabId = id;
+                             this.index += 1;
+                            // this.arbitpushbackdata();
+                            this.gettabdata(this.selectedIdiom,id);             
+                            this.events.unsubscribe('tab:selected');
+                }) 
+              //     console.log( 'dataTab3',this.events);
 
-                  this.gettabdata(this.selectedIdiom,localStorage.getItem('tabId'));
+                
+
+                 
+                 
 
                 //      this.platform.ready().then(
                 //      () =>  this.appRate.preferences = {
@@ -72,7 +79,7 @@ export class Page2Page implements OnInit{
         
                 }
       
-   public gifs: Array<any> = []; 
+   public gifs =  []; 
 
      checkUserLogin(){
      let token = localStorage.getItem('access_token');
@@ -84,6 +91,12 @@ export class Page2Page implements OnInit{
      }
    
     }
+
+    arbitpushbackdata(){
+     this.gettabdata(this.selectedIdiom,localStorage.getItem('tabId'));
+    }
+    
+
 
   gettabdata(idiom,tabid){
      this._homeserv.getTabDataviaTabId(idiom,tabid,0)
@@ -183,6 +196,6 @@ currentPage = 0;
 
     ngOnInit(){
  //   this.appRate.promptForRating(true);
-      
+      this.arbitpushbackdata();
     }
 }

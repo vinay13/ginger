@@ -142,7 +142,6 @@ idiomdict;
 
   onTabSelect(ev : any){
      this.events.publish('tab:selected', ev.id);
- 
      localStorage.setItem('tabIndex',ev.index);
      localStorage.setItem('tabId',ev.id);
      console.log(ev);

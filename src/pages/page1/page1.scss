@@ -2,12 +2,26 @@ page-page1 {
     .home-content{
         background-color:  #202E3F;
     }
+
+   .item {
+       column-count: 2;
+ display: inline-block;
+ padding:  .25rem;
+ width: 100%; 
+}
+
+.well {
+ position:relative;
+ display: block;
+}
+
      masonry .grid{
         column-count: 2;
       //  margin: 0 auto;
       display: inline-block;
       width:100%;
       overflow: visible;
+    min-width: 940px !important;
     }
  
 
