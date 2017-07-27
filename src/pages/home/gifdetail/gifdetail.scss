@@ -149,9 +149,10 @@ page-gifdetail .toolbar-background-md {
 
 
 page-gifdetail{
-    masonry .grid{
+    div .grid{
       column-count: 2;
       display: inline-block;
+      overflow: visible;
       width:100%;
     }
     .brick{
@@ -175,7 +176,7 @@ page-gifdetail{
         .gifpin{
             border-radius: 5px;
             width: 100%;
-            height: auto;
+            object-fit: contain;
             background: #8463F2;
         }
     }

@@ -62,9 +62,14 @@
     </div>
 
     <div class="gif-tags">
-        <ion-badge  *ngFor="let tag of tagslist" class="tag-badge" item-right (click)="TagClicked(tag)">{{tag}}</ion-badge>
+        <span *ngIf="hidetags">
+            <ion-badge *ngFor="let tag of tagslist | slice :0:3" class="tag-badge" item-right (click)="TagClicked(tag)">{{tag | ellipsis : 10}}</ion-badge>
+        </span>
+        <span *ngIf="showtags">
+            <ion-badge   *ngFor="let tag of tagslist" class="tag-badge" item-right (click)="TagClicked(tag)">{{tag | ellipsis : 23}}</ion-badge>
+        </span>
 
-        <ion-badge class="tag-badge" item-right>
+        <ion-badge class="tag-badge" item-right (click)="expandTags()">
             <ion-icon class="ic-more-tag" name="md-code-working"></ion-icon>
         </ion-badge>
     </div>
@@ -78,10 +83,10 @@
 
     <masonry class="grid" [options]="{ transitionDuration: '0.0001s' , gutter : 4 }" [useImagesLoaded]="true" >
        <masonry-brick class="brick" *ngFor="let rgifs of recomns"  (click)="GIFviewer(rgifs)" >
-         <!--<img style="width:200px; height:120px;" src={{rgifs.lowResUrl}}/>-->
          <img  width="100%" height="100%" src={{rgifs.lowResUrl}}/>
-         </masonry-brick>
+       </masonry-brick>
     </masonry>
+
 
 
 <!--<ion-infinite-scroll  direction="x" class="con-scroll-x" has-bouncing="true" (ionInfinite)="doInfinite($event)">

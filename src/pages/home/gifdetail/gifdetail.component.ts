@@ -99,6 +99,14 @@ setBackground(){
             'idiom': this.selectedIdiom
         });
     }
+
+    hidetags = true;
+    showtags = false;
+    expandTags(){ 
+        this.hidetags = !this.hidetags; 
+        this.showtags = !this.showtags;
+      
+    }
   
 
     golauser;

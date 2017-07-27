@@ -1,5 +1,20 @@
 page-search{
-    
+    masonry .grid{
+        column-count: 2;
+      //  margin: 0 auto;
+      display: inline-block;
+      width:100%;
+      overflow: visible;
+    }
+ 
+
+      .brick{
+      width: 47%;
+      object-fit: contain;
+      }
+
+
+
     .search-items{
 
         background-color: #2b3b50;

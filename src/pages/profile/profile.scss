@@ -75,7 +75,8 @@ page-profile{
    masonry .grid{
         column-count: 2;
         display: inline-block;
-      //  margin: 0 auto;
+        overflow: visible;
+    
     }
 
     .brick{
