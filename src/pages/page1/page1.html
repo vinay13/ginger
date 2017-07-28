@@ -1,19 +1,21 @@
 <ion-content class="home-content">
 
-    <!--<masonry class="grid"  [options]="{ transitionDuration: '0.0001s' , gutter :3 }" [useImagesLoaded]="true" (layoutComplete)="doStuff($event)">
-       <masonry-brick class="brick" *ngFor="let item of gifs"  (click)="GifsViewviaId(item.gifId)" >
-         <img width="100%" height="100%" src={{item.lowResUrl}}/>
+    <masonry class="grid"  [options]="{ transitionDuration: '0.2s' , gutter :3 }" [useImagesLoaded]="true">
+       <masonry-brick   class="brick" *ngFor="let item of gifs"  (click)="GifsViewviaId(item.gifId)" >
+         <!--<img *ngIf="!loaded" src="https://avatars3.githubusercontent.com/u/497125?v=4&s=88" width={{item.width}} height={{item.height}}/>-->
+         <img width="100%" height="100%" [src]="item.lowResUrl || item.url ||  item.thumbNailUrl" />
         </masonry-brick>
-     </masonry>-->
+    </masonry>
 
-     <div class="item">
-         <div class="well" *ngFor="let item of gifs">
-          <img width="100%" height="100%" src={{item.lowResUrl}}/>
-         </div>
-     </div>
-  <ion-fab right bottom>
-    <button ion-fab (click)="checkUserLogin()"><ion-icon name="md-add"></ion-icon></button>
-  </ion-fab>
+   <!--<div class="grid" >
+      <div class="grid-item" *ngFor="let item of gifs" >
+        <img [src]="item.lowResUrl || item.url ||  item.thumbNailUrl"/>
+      </div>
+  </div>-->
+
+    <ion-fab right bottom>
+      <button ion-fab (click)="checkUserLogin()"><ion-icon name="md-add"></ion-icon></button>
+    </ion-fab>
 
     <ion-infinite-scroll  direction="x" class="con-scroll-x" has-bouncing="true" (ionInfinite)="doInfinite($event)">
       <ion-infinite-scroll-content ></ion-infinite-scroll-content>

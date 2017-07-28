@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IonicPage, NavController,NavParams , Events } from 'ionic-angular';
+import { IonicPage, NavController,NavParams , Events , ModalController } from 'ionic-angular';
 import { Page1Page } from "../page1/page1";
 import { Page2Page } from "../page2/page2";
 import { Page3Page } from "../page3/page3";
@@ -48,7 +48,8 @@ idiomdict;
   constructor(public navCtrl: NavController, 
               private navParams: NavParams,
               public _homeserv : HomeService,
-              public events: Events) { 
+              public events: Events,
+              public modalCtrl : ModalController) { 
                                
                   this.selectedIdiom = this.navParams.get('idiom') || localStorage.getItem('idiom');
                 ;
@@ -157,10 +158,16 @@ idiomdict;
 }
 
   searchButton(){
+      //   let modal = this.modalCtrl.create(SearchComponent);
+      // modal.present();
       this.navCtrl.push(SearchComponent,{
         'idiom':this.selectedIdiom
       });
   }
+
+    dismiss(){
+      this.dismiss();
+    }
 
   navIdiom(){
      this.navCtrl.push(IdiomComponent);

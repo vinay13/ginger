@@ -1,4 +1,4 @@
-import { Component,ViewChild } from '@angular/core';
+import { Component,ViewChild,Input } from '@angular/core';
 import { NavController, NavParams , ModalController } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
@@ -10,7 +10,18 @@ import { AddTagsComponent } from '../upload/add-tags/add-tags.component';
 import {AppRate} from '@ionic-native/app-rate';
 import { Platform } from 'ionic-angular';
 import { MasonryModule,AngularMasonry } from 'angular2-masonry';
+// import Masonry from 'masonry-layout'
 
+//lazy loading Images
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/of';
+import { Observable } from 'rxjs/Observable';
+import { getScrollListener } from './scroll-listener';
 
 @Component({
   selector: 'page-page1',
@@ -18,14 +29,16 @@ import { MasonryModule,AngularMasonry } from 'angular2-masonry';
 })
 
 export class Page1Page {
- 
+// try{this._element.nativeElement.removeChild(element)}catch(err){};
     rootNavCtrl: NavController;
     public selectedIdiom;
     public newselectedIdiom;
     public loggedIn : boolean = false;
+//    loaded = false;
    //@ViewChild(MasonryModule) private masonry: MasonryModule;
    @ViewChild(AngularMasonry) private masonry: AngularMasonry;
-  
+  @Input() src;
+   public _msnry: any;
     constructor(public navCtrl: NavController,
                 public navparams: NavParams,
                 public _homeserv : HomeService,
@@ -40,9 +53,32 @@ export class Page1Page {
              
                   platform.ready().then(() => {
                       this.tabcat();
-                  })
-                        
+                 })
+
+                  //this.masonry._msnry.reloadItems();      
     }
+
+   imagePath ="https://avatars3.githubusercontent.com/u/497125?v=4&s=88";
+   loadImage(imagePath: string): Observable<HTMLImageElement> {
+    return Observable
+        .create(observer => {
+            const img = new Image();
+            img.src = imagePath;
+            img.onload = () => {
+                observer.next(imagePath);
+                observer.complete();
+            };
+            img.onerror = err => {
+                observer.error(null);
+            };
+        });
+}
+
+   loadImage2(){
+      const img = new Image();
+     img.src= "https://avatars3.githubusercontent.com/u/497125?v=4&s=88";
+   }
+
 
 
     checkUserLogin(){
@@ -56,8 +92,11 @@ export class Page1Page {
    
     }
 
+    showPlaceholder = false;
     doStuff(){
-      //alert('layout completed');
+      // alert('layout completed');
+      console.log('loaded');
+    //  this.showPlaceholder = !this.showPlaceholder;
     }
 
     
@@ -76,10 +115,17 @@ export class Page1Page {
     gettabdata(idiom,tabid){
        this.tabIddata = [];
        this._homeserv.getTabDataviaTabId(idiom,tabid,0)
-                  .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata; },
+                  .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata;this.putinGrid();},
                   (err) => {console.log(err)},
                   () => console.log('data',this.tabIddata ))
     }
+    putinGrid(){
+     // for(let i=0;i<this.gifs.length;i++){
+     //   console.log(this.gifs[i].lowResUrl);
+     //   this.src = this.gifs;
+      }
+      
+    
 
     public gifData;
     GifsViewviaId(tabid){
@@ -88,12 +134,13 @@ export class Page1Page {
     }
 
     navGifDetail(url){
-    
       this.rootNavCtrl.push(GifDetailComponent,{
         'url' : url,
         'idiom' : this.selectedIdiom
       });
     }
+
+  
 
     UploadviaWeb(){
       this.cs.showLoader();

@@ -4,15 +4,20 @@ page-page1 {
     }
 
    .item {
-       column-count: 2;
+column-count: 2;
  display: inline-block;
- padding:  .25rem;
- width: 100%; 
+ //padding:  .25rem;
+ width: 99%; 
+   margin-left: 0px; margin-right: 0px;
+  margin-top: 2%;
 }
 
 .well {
  position:relative;
  display: block;
+ margin : -0px -6px -0px -6px;
+ padding: 0px;
+ background-image:url('https://avatars3.githubusercontent.com/u/497125?v=4&s=88');
 }
 
      masonry .grid{
@@ -21,22 +26,21 @@ page-page1 {
       display: inline-block;
       width:100%;
       overflow: visible;
-    min-width: 940px !important;
+      min-width: 900px !important;
+    
     }
  
 
       .brick{
       width: 47%;
       object-fit: contain;
+   //   background-image:url('https://avatars3.githubusercontent.com/u/497125?v=4&s=88');
+     
       }
 
-    //       .section {
-    //  display: inline-block;
-    //  margin:  0.25rem;
-    //  padding:  1rem;
-    //  width:  100%; 
-    //  background:  #efefef;
-    // }
+     .grid{ max-width:1200px}
+      .grid-item { width: 30%; float:left; display: block; padding: 7px;  }
+      .masonryImage img { padding:10px; }
 }
 
 

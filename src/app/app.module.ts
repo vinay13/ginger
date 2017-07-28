@@ -23,7 +23,7 @@ import { Page1Page } from "../pages/page1/page1";
 import { Page2Page } from "../pages/page2/page2";
 import { Page3Page } from "../pages/page3/page3";
 import { MasonryModule } from 'angular2-masonry';
-
+// import Masonry from 'masonry-layout'
 //third party imports 
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import { File } from '@ionic-native/file';
@@ -91,7 +91,8 @@ import { FilePath } from '@ionic-native/file-path';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     SuperTabsModule.forRoot(),
-    MasonryModule
+    MasonryModule,
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [

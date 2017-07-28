@@ -74,7 +74,8 @@
         </ion-badge>
     </div>
 
-    <div class="related-gifs"><b>{{totalcount}}</b> RELATED GIFS</div>
+    <div class="related-gifs">RELATED GIFS</div>
+    <!--<div class="related-gifs"><b>{{totalcount}}</b> RELATED GIFS</div>-->
     <!--<div class="pins">
         <div class="pin" *ngFor="let rgifs of recomns">
              <img class="gifpin" src={{rgifs.url}} (click)="GIFviewer(rgifs)">
@@ -83,7 +84,7 @@
 
     <masonry class="grid" [options]="{ transitionDuration: '0.0001s' , gutter : 4 }" [useImagesLoaded]="true" >
        <masonry-brick class="brick" *ngFor="let rgifs of recomns"  (click)="GIFviewer(rgifs)" >
-         <img  width="100%" height="100%" src={{rgifs.lowResUrl}}/>
+         <img  width="100%" height="100%" [src]="rgifs.lowResUrl || rgifs.url ||  rgifs.thumbNailUrl"/>
        </masonry-brick>
     </masonry>
 
