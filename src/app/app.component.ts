@@ -47,7 +47,6 @@ export class MyApp {
               // 'detail' : GifDetailPage
 	            this.deeplinks.routeWithNavController(this.navChild, {
 	              '/home': AboutPage,
-               
 	             }).subscribe((match) => {
 	            console.log('Successfully routed', match);
 	               }, (nomatch) => {

@@ -49,8 +49,6 @@ export class Page2Page implements OnInit{
                 this.tabIDD = this.newselectedIdiom.tabid;
                 this.indexx = this.newselectedIdiom.index;
              
-             
-
                 console.log('dataTab',this.flag); 
                 console.log( 'dataTab2',this.events);
                this.events.subscribe('tab:selected',(id) => {
@@ -62,11 +60,6 @@ export class Page2Page implements OnInit{
                             this.events.unsubscribe('tab:selected');
                 }) 
               //     console.log( 'dataTab3',this.events);
-
-                
-
-                 
-                 
 
                 //      this.platform.ready().then(
                 //      () =>  this.appRate.preferences = {
@@ -99,9 +92,10 @@ export class Page2Page implements OnInit{
 
 
   gettabdata(idiom,tabid){
+   // this.cs.showLoader();
      this._homeserv.getTabDataviaTabId(idiom,tabid,0)
-                  .subscribe((res) => {this.tabIddata = res ; this.textonGIFs(); this.gifs = this.tabIddata},
-                  (err) => {console.log(err)})
+                  .subscribe((res) => {this.tabIddata = res ; this.textonGIFs(); this.gifs = this.tabIddata;},
+                  (err) => {console.log(err);})
   }
 
   navGifDetail(url){

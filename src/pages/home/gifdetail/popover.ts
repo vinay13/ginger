@@ -3,6 +3,7 @@ import {NavController,NavParams,ToastController, ViewController } from 'ionic-an
 import { FileTransfer,FileUploadOptions,FileTransferObject } from  '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { CustomService } from '../../../services/custom.service';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
     selector: 'page-popover',
@@ -18,6 +19,7 @@ export class PopOverComponent {
                 public transfer: FileTransfer,
                 public file : File,
                 public cs : CustomService,
+                private socialSharing: SocialSharing,
                 public navparams : NavParams){
                   this.GIFurl  = this.navparams.get('gifURL');
                   console.log("GIFurl",this.GIFurl);
@@ -38,6 +40,16 @@ export class PopOverComponent {
     flag(){
         alert('clicked flag');
     }
+
+    shareApp(){
+      this.cs.showLoader();
+      this.socialSharing.share("Explore best of GIF and share through social network",'gola',"","https://play.google.com/store/apps/details?id=com.mobigraph.xpresso")
+        .then( () =>{
+            this.cs.hideLoader();
+        },
+        () => { this.cs.hideLoader(); }) 
+    }
+    
 
     download(){
         const fileTransfer: FileTransferObject = this.transfer.create();

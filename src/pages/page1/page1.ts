@@ -1,5 +1,5 @@
 import { Component,ViewChild,Input } from '@angular/core';
-import { NavController, NavParams , ModalController } from 'ionic-angular';
+import { NavController, NavParams , ModalController  } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
 import { CustomService } from '../../services/custom.service';
@@ -127,9 +127,10 @@ export class Page1Page {
     public tabIddata;
     gettabdata(idiom,tabid){
        this.tabIddata = [];
+     //  this.cs.showLoader();
        this._homeserv.getTabDataviaTabId(idiom,tabid,0)
-                  .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata;this.putinGrid();},
-                  (err) => {console.log(err)},
+                  .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata; this.putinGrid();},
+                  (err) => {console.log(err);},
                   () => console.log('data',this.tabIddata ))
     }
     putinGrid(){
@@ -173,13 +174,16 @@ export class Page1Page {
       });   
     }
 
+     public newlayout() {
+        setTimeout(() => {
+            this.masonry._msnry.layout();
+        },1000);
+
+        // console.log('AngularMasonry:', 'Layout');
+    }
+
     ionViewWillEnter (){
-       
-      setTimeout(() => {
-                  // alert('reloaddd');
-                     this.masonry._msnry.reloadItems();
-                     this.masonry._msnry.layout();
-              },3000)
+      this.newlayout();
     }
 
     
