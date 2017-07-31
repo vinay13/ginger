@@ -243,9 +243,10 @@ setBackground(){
         toast.present();
     }
 
+   golalinkk = "golagifs://home";
    shareGif(){
      this.cs.showLoader();
-     this.socialSharing.shareViaWhatsApp("",this.gifurl, "https://ginger.com")
+     this.socialSharing.shareViaWhatsApp("",this.gifurl, this.golalinkk)
        .then(()=>{
          this.share();
          this.cs.hideLoader();
@@ -253,11 +254,13 @@ setBackground(){
        ()=>{
           this.cs.hideLoader();
        })
+
+      // this.socialSharing.share()
     }
 
   shareGifTwitter(){
       this.cs.showLoader();
-    this.socialSharing.shareViaTwitter("message",this.gifurl,"https://ginger.com")
+    this.socialSharing.shareViaTwitter("",this.gifurl,"golagifs://home")
         .then(()=>{
             this.cs.hideLoader();
         },
@@ -269,7 +272,7 @@ setBackground(){
 
   shareGifFacebook(){
       this.cs.showLoader();
-      this.socialSharing.shareViaFacebook("message",this.gifurl,"https://ginger.com")
+      this.socialSharing.shareViaFacebook("",this.gifurl,"https://ginger.com")
         .then(() => {
             this.cs.hideLoader();
         },
@@ -278,7 +281,7 @@ setBackground(){
 
   sharegifviaHike(){
       this.cs.showLoader();
-      this.socialSharing.shareVia('hike',"message","fds",this.gifurl,"https://ginger.com")
+      this.socialSharing.shareVia('hike',"","fds",this.gifurl,this.golalinkk)
       .then(() => {
           this.cs.hideLoader();
       },
@@ -306,7 +309,7 @@ setBackground(){
 
   shareSheet(){
       this.cs.showLoader();
-      this.socialSharing.share("message",'gola',this.gifurl,"http://ginger.com")
+      this.socialSharing.share("",'gola',this.gifurl,"golagifs://home")
         .then( () =>{
             this.cs.hideLoader();
         },

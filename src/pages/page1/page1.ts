@@ -36,7 +36,7 @@ export class Page1Page {
     public loggedIn : boolean = false;
 //    loaded = false;
    //@ViewChild(MasonryModule) private masonry: MasonryModule;
-   @ViewChild(AngularMasonry) private masonry: AngularMasonry;
+   @ViewChild(AngularMasonry) public masonry: AngularMasonry;
   @Input() src;
    public _msnry: any;
     constructor(public navCtrl: NavController,
@@ -55,8 +55,21 @@ export class Page1Page {
                       this.tabcat();
                  })
 
-                  //this.masonry._msnry.reloadItems();      
+                  
     }
+
+    // ionViewWillEnter(){
+    // setTimeout(()=>{
+    //                alert('reloaddd');
+    //               this.masonry._msnry.reloadItems();
+    //               this.masonry.layout();
+                  
+    //            //    masonry._msnry.reloadItems();
+    //             }, 2500);
+    //               //this.masonry._msnry.reloadItems();    
+
+    // }
+
 
    imagePath ="https://avatars3.githubusercontent.com/u/497125?v=4&s=88";
    loadImage(imagePath: string): Observable<HTMLImageElement> {
@@ -140,8 +153,6 @@ export class Page1Page {
       });
     }
 
-  
-
     UploadviaWeb(){
       this.cs.showLoader();
       this.rootNavCtrl.push(UploadComponent);
@@ -163,8 +174,11 @@ export class Page1Page {
     }
 
     ionViewWillEnter (){
-      setTimeout(() => { 
-                     this.masonry._msnry.reloadItems()
+       
+      setTimeout(() => {
+                  // alert('reloaddd');
+                     this.masonry._msnry.reloadItems();
+                     this.masonry._msnry.layout();
               },3000)
     }
 

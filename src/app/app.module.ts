@@ -30,6 +30,7 @@ import { File } from '@ionic-native/file';
 import { Keyboard } from '@ionic-native/keyboard';
 import { Clipboard } from '@ionic-native/clipboard';
 import { FileTransfer } from '@ionic-native/file-transfer';
+import { Deeplinks } from '@ionic-native/deeplinks';
 
 //custom component
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
@@ -140,7 +141,8 @@ import { FilePath } from '@ionic-native/file-path';
     Facebook,
     Keyboard,
     AppRate,
-    AppRateService
+    AppRateService,
+    Deeplinks
   ]
 })
 

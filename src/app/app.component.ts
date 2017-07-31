@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Platform,NavController,NavParams,ToastController } from 'ionic-angular';
+import { Component,ViewChild } from '@angular/core';
+import { Platform,Nav,NavController,NavParams,ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AboutPage } from '../pages/about/about';
@@ -9,9 +9,11 @@ import { IdiomComponent } from '../pages/idiom/idiom.component';
 import { NetworkService} from '../services/network.service';
 import { NoInternetComponent} from '../components/noInternet/noInternet.component';
 import { LoginService } from '../services/login.service';
+import { Deeplinks } from '@ionic-native/deeplinks';
 // import {NavController} from 'ionic-angular';
 //import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { Network } from '@ionic-native/network';
+
 @Component({
   templateUrl: 'app.html',
 })
@@ -20,6 +22,7 @@ export class MyApp {
   rootPage:any;
   public emailverify;
    rootNavCtrl: NavController;
+   @ViewChild(Nav) navChild:Nav;
   constructor(platform: Platform, 
               statusBar: StatusBar, 
               splashScreen: SplashScreen,
@@ -27,6 +30,7 @@ export class MyApp {
               public toastCtrl : ToastController,
               public _loginserv : LoginService,
                public network : Network,
+               private deeplinks : Deeplinks
              ){
                 platform.ready().then(() => {
                 statusBar.styleDefault();
@@ -38,6 +42,19 @@ export class MyApp {
                 else{
                   this.rootPage = AboutPage;
                 }
+
+              //Deeplinks if from Ionic Native 
+              // 'detail' : GifDetailPage
+	            this.deeplinks.routeWithNavController(this.navChild, {
+	              '/home': AboutPage,
+               
+	             }).subscribe((match) => {
+	            console.log('Successfully routed', match);
+	               }, (nomatch) => {
+	            console.log('Unmatched Route', nomatch);
+	            });
+	    
+
                
                   // let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
                   //      alert('disconnect');

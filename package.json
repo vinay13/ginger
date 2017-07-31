@@ -22,6 +22,7 @@
     "@ionic-native/app-rate": "^3.12.1",
     "@ionic-native/clipboard": "^3.14.0",
     "@ionic-native/core": "^3.4.4",
+    "@ionic-native/deeplinks": "^4.1.0",
     "@ionic-native/facebook": "^3.11.0",
     "@ionic-native/file": "^3.8.1",
     "@ionic-native/file-chooser": "^4.1.0",
