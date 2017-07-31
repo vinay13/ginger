@@ -6,17 +6,12 @@ declare var someGlobal;
 @Component({
   selector: 'no-internet',
   template: `
-    <ion-header>
-      <ion-navbar></ion-navbar>
-    </ion-header>
-    <ion-content class="csGrayBackground">
-        <ion-list class="no-comment">
+  
+    <ion-content class="home-content">
+        <ion-list class="no-internet">
         <ion-icon name="cloud"></ion-icon>
             <br>NO INTERNET CONNECTION
         </ion-list>
-        <button ion-button color="light" icon-left class="csCenter">
-            <ion-icon name="refresh"></ion-icon>Tap to retry
-        </button>
     </ion-content>
   `
 })

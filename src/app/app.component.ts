@@ -41,6 +41,7 @@ export class MyApp {
                 }
                 else{
                   this.rootPage = AboutPage;
+                  //this.rootPage = NoInternetComponent;
                 }
 
               //Deeplinks if from Ionic Native 
@@ -55,17 +56,17 @@ export class MyApp {
 	    
 
                
-                  // let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
-                  //      alert('disconnect');
-                  //      this.rootPage = NoInternetComponent;
-                      
-                  // });
+                  let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
+                       alert('disconnect1');
+                        this.navChild.push(NoInternetComponent);
+                  });
                  //   disconnectSubscription.unsubscribe();
 
-                  // let connectSubscription = this.network.onConnect().subscribe(() => {
-                  //     alert('connection establish');
-                  //      this.rootPage = IdiomComponent;
-                  // });
+                  let connectSubscription = this.network.onConnect().subscribe(() => {
+                      alert('connection establish');
+                       this.navChild.pop();
+                       this.navChild.pop();
+                  });
                    //connectSubscription.unsubscribe();
 
                 // this.ga.startTrackerWithId('YOUR_TRACKER_ID')
