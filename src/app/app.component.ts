@@ -23,7 +23,7 @@ export class MyApp {
   public emailverify;
    rootNavCtrl: NavController;
    @ViewChild(Nav) navChild:Nav;
-  constructor(platform: Platform, 
+   constructor(platform: Platform, 
               statusBar: StatusBar, 
               splashScreen: SplashScreen,
               networkserv : NetworkService,
@@ -54,28 +54,35 @@ export class MyApp {
 	            console.log('Unmatched Route', nomatch);
 	            });
 	    
+   });
 
+
+   
+        let internetConnected = true;
+        let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
+            
+                if(!internetConnected) return;
+                          internetConnected= false;
+                            console.log('Offline');
+                this.navChild.push(NoInternetComponent);
+        });
+                
+
+        let connectSubscription = this.network.onConnect().subscribe(() => {
+                
+                if(internetConnected) return;
+                  internetConnected= true;
+                this.navChild.pop();
                
-                  let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
-                       alert('disconnect1');
-                        this.navChild.push(NoInternetComponent);
-                  });
-                 //   disconnectSubscription.unsubscribe();
-
-                  let connectSubscription = this.network.onConnect().subscribe(() => {
-                      alert('connection establish');
-                       this.navChild.pop();
-                       this.navChild.pop();
-                  });
-                   //connectSubscription.unsubscribe();
-
+        });
+                //connectSubscription.unsubscribe();
                 // this.ga.startTrackerWithId('YOUR_TRACKER_ID')
                 // .then(() => {
                 //   console.log('Google analytics is ready now');
                 //   this.ga.trackView('test');
                 // })
                 // .catch(e => console.log('Error starting GoogleAnalytics', e));
-           });
+        
     
     platform.resume.subscribe(() => {
        
@@ -83,8 +90,8 @@ export class MyApp {
           .subscribe((data) => { this.emailverify = data, this.navSignup(data); },
                       (err) => { console.log(err)},
                       ()    => {console.log('verify email',this.emailverify);})
-    })
-  }
+        })
+    }
 
 
   navSignup(res){
