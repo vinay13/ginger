@@ -3,6 +3,7 @@ import { IonicPage, NavController,NavParams , Events , ModalController } from 'i
 import { Page1Page } from "../page1/page1";
 import { Page2Page } from "../page2/page2";
 import { Page3Page } from "../page3/page3";
+import { Page4Page } from "../page4/page4";
 import { HomeService } from '../../services/home.service';
 import { IdiomComponent } from '../idiom/idiom.component';
 import { SearchComponent } from '../search/search.component';
@@ -26,7 +27,7 @@ export class AboutPage implements OnInit {
   public page1: any = Page1Page;
   public page2: any = Page2Page;
   public page3: any = Page3Page;
- // public page4: any = this.Page4Page;
+  public page4: any = Page4Page;
 
   showIcons: boolean = false;
   showTitles: boolean = true;
@@ -66,9 +67,9 @@ idiomdict;
 
                   //testing
                     this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs; this.tabdata.splice(0,1);this.abcetc(this.tabdata[0].id);this.tabsLoaded = true;    },
+                    .subscribe( (res) => { this.tabdata = res.tabs; this.tabdata.splice(0,2);this.abcetc(this.tabdata[0].id);this.tabsLoaded = true;    },
                     (err) => { console.log(err)},
-                    () => { console.log('tabdata',this.tabdata[0].id)})
+                    () => {})
 
                   //end here
                   console.log('aboutpageIdiom',this.selectedIdiom);

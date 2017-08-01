@@ -22,6 +22,7 @@ import { Transfer } from '@ionic-native/transfer';
 import { Page1Page } from "../pages/page1/page1";
 import { Page2Page } from "../pages/page2/page2";
 import { Page3Page } from "../pages/page3/page3";
+import { Page4Page } from "../pages/page4/page4";
 import { MasonryModule } from 'angular2-masonry';
 // import Masonry from 'masonry-layout'
 //third party imports 
@@ -84,6 +85,7 @@ import { FilePath } from '@ionic-native/file-path';
     Page1Page,
     Page2Page,
     Page3Page,
+    Page4Page,
     TOScomponent,
     EllipsisPipe
   ],
@@ -116,6 +118,7 @@ import { FilePath } from '@ionic-native/file-path';
     Page1Page,
     Page2Page,
     Page3Page,
+    Page4Page,
     TOScomponent
   ],
   providers: [

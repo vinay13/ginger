@@ -4,30 +4,27 @@ import { HomeService } from '../../services/home.service';
 import { SearchResultComponent } from '../search/searchResult/search-result.component';
 
 @Component({
-  selector: 'page-page3',
-  templateUrl: 'page3.html'
+  selector: 'page-page4',
+  templateUrl: 'page4.html'
 })
 
-export class Page3Page {
+export class Page4Page {
    rootNavCtrl: NavController;
-    public selectedIdiom;
-    public newselectedIdiom;
- // selectedIdiom:any;
-  constructor(public navCtrl: NavController,
-               public navParams: NavParams,
-               public _homeserv : HomeService) { 
-                   this.rootNavCtrl = this.navParams.get('rootNavCtrl');
-                  this.newselectedIdiom = this.navParams.data;
-                  this.selectedIdiom = this.newselectedIdiom.idiom;
-                 this.tabcat();
-               }
+   selectedIdiom = localStorage.getItem('idiom');
+   constructor(public navparams : NavParams,
+                public _homeserv : HomeService){
+                    this.rootNavCtrl = this.navparams.get('rootNavCtrl');
+                //  this.newselectedIdiom = this.navparams.data;
+                //  this.selectedIdiom = this.newselectedIdiom.idiom;
+                    this.tabcat();
+            }
 
     public tabdata;
     public tabcat(){
          this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[1].id);  },
+                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[2].id);  },
                                 (err) => { console.log(err)},
-                                () => { console.log('tabdata',this.tabdata[2].id)})
+                                () => { })
     }
 
     public tabIddata;
@@ -38,7 +35,8 @@ export class Page3Page {
                   .subscribe((res) => {this.tabIddata = res ;this.textonGIFs(); this.gifs = this.tabIddata; },
                   (err) => {console.log(err)},
                   () => console.log('page3data',this.tabIddata ))
-    }
+        }
+
 
   ng_class;
   click_func= "EmotionClicked" ;
@@ -65,4 +63,4 @@ let click_func;
             'idiom': this.selectedIdiom
       });
   }
-}
+    }

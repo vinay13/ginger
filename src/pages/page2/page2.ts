@@ -74,23 +74,21 @@ export class Page2Page implements OnInit{
       
    public gifs =  []; 
 
-     checkUserLogin(){
-     let token = localStorage.getItem('access_token');
-     console.log('token',token);
-     if(token != null){
+  checkUserLogin(){
+    let token = localStorage.getItem('access_token');
+    console.log('token',token);
+    if(token != null){
         this.UploadviaWeb();
-     }else{
+    }else{
        this.rootNavCtrl.push(LoginPage);
-     }
+    }
    
-    }
+  }
 
-    arbitpushbackdata(){
+  arbitpushbackdata(){
      this.gettabdata(this.selectedIdiom,localStorage.getItem('tabId'));
-    }
+  }
     
-
-
   gettabdata(idiom,tabid){
    // this.cs.showLoader();
      this._homeserv.getTabDataviaTabId(idiom,tabid,0)

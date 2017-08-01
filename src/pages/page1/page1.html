@@ -1,6 +1,6 @@
 <ion-content class="home-content">
 
-    <masonry class="grid"  [options]="{ transitionDuration: '0.2s' , gutter :3 }" [useImagesLoaded]="true">
+    <masonry class="grid"  [options]="{ transitionDuration: '0.3s' , gutter :3 }" [useImagesLoaded]="true">
        <masonry-brick   class="brick" *ngFor="let item of gifs"  (click)="GifsViewviaId(item.gifId)" >
          <!--<img *ngIf="!loaded" src="https://avatars3.githubusercontent.com/u/497125?v=4&s=88" width={{item.width}} height={{item.height}}/>-->
          <img width="100%" height="100%" [src]="item.lowResUrl || item.url ||  item.thumbNailUrl" />
