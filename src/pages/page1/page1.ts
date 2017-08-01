@@ -34,11 +34,9 @@ export class Page1Page {
     public selectedIdiom;
     public newselectedIdiom;
     public loggedIn : boolean = false;
-//    loaded = false;
-   //@ViewChild(MasonryModule) private masonry: MasonryModule;
-   @ViewChild(AngularMasonry) public masonry: AngularMasonry;
-  @Input() src;
-   public _msnry: any;
+    @ViewChild(AngularMasonry) public masonry: AngularMasonry;
+    @Input() src;
+    public _msnry: any;
     constructor(public navCtrl: NavController,
                 public navparams: NavParams,
                 public _homeserv : HomeService,
@@ -53,9 +51,7 @@ export class Page1Page {
              
                   platform.ready().then(() => {
                       this.tabcat();
-                 })
-
-                  
+                 })        
     }
 
     // ionViewWillEnter(){
@@ -69,7 +65,6 @@ export class Page1Page {
     //               //this.masonry._msnry.reloadItems();    
 
     // }
-
 
    imagePath ="https://avatars3.githubusercontent.com/u/497125?v=4&s=88";
    loadImage(imagePath: string): Observable<HTMLImageElement> {
@@ -87,22 +82,19 @@ export class Page1Page {
         });
 }
 
-   loadImage2(){
-      const img = new Image();
-     img.src= "https://avatars3.githubusercontent.com/u/497125?v=4&s=88";
-   }
-
-
+    loadImage2(){
+        const img = new Image();
+      img.src= "https://avatars3.githubusercontent.com/u/497125?v=4&s=88";
+    }
 
     checkUserLogin(){
-     let token = localStorage.getItem('access_token');
-     console.log('token',token);
-     if(token != null){
-        this.UploadviaWeb();
-     }else{
-       this.rootNavCtrl.push(LoginPage);
-     }
-   
+      let token = localStorage.getItem('access_token');
+      console.log('token',token);
+      if(token != null){
+          this.UploadviaWeb();
+      }else{
+        this.rootNavCtrl.push(LoginPage);
+      }
     }
 
     showPlaceholder = false;
@@ -231,5 +223,4 @@ currentPage = 0;
      );
   } 
      
-
 }

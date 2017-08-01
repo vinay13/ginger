@@ -1,8 +1,9 @@
 import { Component,Input,ViewChild } from '@angular/core';
-import { NavController,NavParams} from 'ionic-angular';
+import { Platform,Nav,NavController,NavParams} from 'ionic-angular';
 import { SearchResultComponent } from './searchResult/search-result.component';
 import { SearchService } from '../../services/search.service'; 
 import { Keyboard } from '@ionic-native/keyboard';
+import { AboutPage } from '../about/about';
 
 @Component({
     selector : 'page-search',
@@ -15,9 +16,11 @@ export class SearchComponent{
     items : string[];
     selectedIdiom;
     @ViewChild('search') myInput ;
+    @ViewChild(Nav) navChild:Nav;
     public TopSearchlist ;
 
-    constructor(private navCtrl : NavController,
+    constructor(private platform : Platform,
+                private navCtrl : NavController,
                 private navParmas : NavParams,
                 private _searchservice : SearchService,
                 private keyboard : Keyboard){
@@ -27,13 +30,25 @@ export class SearchComponent{
                 console.log('idiom3',this.selectedIdiom);
                 this.TopSearchlist = true;
                 this.topsearches();
+
+                 this.platform.ready().then(() => {
+                         this.platform.registerBackButtonAction(() => {
+                         this.navChild.push(AboutPage); 
+                });
+        });
+    }
+
+    CustomNavRoot(){
+        this.navCtrl.setRoot(AboutPage,{
+                'idiom': this.selectedIdiom
+        });
     }
 
     ionViewDidLoad(){
         setTimeout(() => {
             this.myInput.setFocus();
             this.keyboard.show();
-        }, 1000);
+        }, 100);
     }
 
     getItems(ev : any){

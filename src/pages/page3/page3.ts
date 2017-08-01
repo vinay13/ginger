@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { SearchResultComponent } from '../search/searchResult/search-result.component';
+import { LoginPage} from '../login/login.component';
+import { UploadComponent } from '../upload/upload.component';
+import { CustomService } from '../../services/custom.service';
 
 @Component({
   selector: 'page-page3',
@@ -15,7 +18,9 @@ export class Page3Page {
  // selectedIdiom:any;
   constructor(public navCtrl: NavController,
                public navParams: NavParams,
-               public _homeserv : HomeService) { 
+               public _homeserv : HomeService,
+               public cs : CustomService)
+              { 
                    this.rootNavCtrl = this.navParams.get('rootNavCtrl');
                   this.newselectedIdiom = this.navParams.data;
                   this.selectedIdiom = this.newselectedIdiom.idiom;
@@ -64,5 +69,21 @@ let click_func;
             'tag' : tag,
             'idiom': this.selectedIdiom
       });
+  }
+
+   UploadviaWeb(){
+      this.cs.showLoader();
+      this.rootNavCtrl.push(UploadComponent);
+      this.cs.hideLoader();
+    }
+
+  checkUserLogin(){
+       let token = localStorage.getItem('access_token');
+      console.log('token',token);
+      if(token != null){
+          this.UploadviaWeb();
+      }else{
+        this.rootNavCtrl.push(LoginPage);
+      }
   }
 }

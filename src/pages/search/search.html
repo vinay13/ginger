@@ -1,15 +1,18 @@
 <ion-header>
-  <ion-navbar class="navbar">
-       <ion-searchbar #search
+  <ion-navbar class="navbar" hideBackButton>
+        <span class="customIcon" ion-button icon-only (click)="CustomNavRoot()">
+            <ion-icon  name="arrow-back"></ion-icon>
+        </span>
+     <ion-searchbar #search
        (ionInput)="getItems($event)"
-       (keyup.enter)="someFunction($event)" 
-        ></ion-searchbar>
+       (keyup.enter)="someFunction($event)" >
+    </ion-searchbar>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content class="background-theme">
-
+  
     <ion-list *ngIf="TopSearchlist">
         <ion-item  class="top-searches-items" *ngFor="let top of topsearcheslist | slice:0:5  let i=index" (click)="TagsClick(top.text)">
             

@@ -47,6 +47,22 @@ page-search{
 .searchbar-input {
     padding: 0px !important;
     font-size: 1.5em !important;
-    font-weight: 600 !important;
-    caret-color: #35EC97;
+    caret-color: #18efef;
 }
+
+
+
+.searchbar-md .searchbar-input {
+    padding: 6px 55px;
+    height: auto;
+    border-radius: 2px;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 4rem;
+    color: #4c0dea;
+    background-color: rgb(255, 255, 255);
+    background-position: 8px center;
+    -webkit-box-shadow: transparent;
+    box-shadow: transparent;    
+}
+

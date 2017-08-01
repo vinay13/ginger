@@ -243,7 +243,7 @@ setBackground(){
         toast.present();
     }
 
-   golalinkk = "golagifs://home";
+   golalinkk = "http://gola.desi";
    shareGif(){
      this.cs.showLoader();
      this.socialSharing.shareViaWhatsApp("",this.gifurl, this.golalinkk)
@@ -259,20 +259,20 @@ setBackground(){
     }
 
   shareGifTwitter(){
-      this.cs.showLoader();
-    this.socialSharing.shareViaTwitter("",this.gifurl,"golagifs://home")
+    this.cs.showLoader();
+    this.socialSharing.shareViaTwitter("",this.gifurl, this.golalinkk)
         .then(()=>{
-            this.cs.hideLoader();
+          this.cs.hideLoader();
         },
         ()=>{
-         alert("U don't have twitter app");
-         this.cs.hideLoader();
-      })
-  }
+          alert("U don't have twitter app");
+          this.cs.hideLoader();
+        })
+    }
 
   shareGifFacebook(){
       this.cs.showLoader();
-      this.socialSharing.shareViaFacebook("",this.gifurl,"https://ginger.com")
+      this.socialSharing.shareViaFacebook("",this.gifurl, this.golalinkk)
         .then(() => {
             this.cs.hideLoader();
         },
@@ -290,7 +290,7 @@ setBackground(){
 
   sharegifviaMessenger(){
       this.cs.showLoader();
-      this.socialSharing.shareVia('com.facebook.orca','themessage','gdgf',this.gifurl,'http://gola.com')
+      this.socialSharing.shareVia('com.facebook.orca','themessage','gdgf',this.gifurl,this.golalinkk)
       .then(() => {
           this.cs.hideLoader();
       },
@@ -304,12 +304,12 @@ setBackground(){
             .then(() => {
                 this.cs.hideLoader();
             },
-            ()=> { alert("U don't have Instagram app"); this.cs.hideLoader(); })
+           ()=> { alert("U don't have Instagram app"); this.cs.hideLoader(); })
   }
 
   shareSheet(){
       this.cs.showLoader();
-      this.socialSharing.share("",'gola',this.gifurl,"golagifs://home")
+      this.socialSharing.share("",'gola',this.gifurl, this.golalinkk)
         .then( () =>{
             this.cs.hideLoader();
         },
