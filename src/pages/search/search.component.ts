@@ -48,7 +48,7 @@ export class SearchComponent{
         setTimeout(() => {
             this.myInput.setFocus();
             this.keyboard.show();
-        }, 100);
+        }, 1000);
     }
 
     getItems(ev : any){
