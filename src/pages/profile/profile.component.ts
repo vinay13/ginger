@@ -13,8 +13,9 @@ import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
 
 export class ProfileComponent{
 
-    public profiledata = {};
+    public profiledata = {"fullName":""};
     EmailId;
+    fullName;
     xyz = "contain";
     constructor(private navCtrl : NavController,
                 private navparams : NavParams,
@@ -22,8 +23,10 @@ export class ProfileComponent{
                 private cs : CustomService){
 
                 this.EmailId = this.navparams.get('email');
+            
                        console.log()             
-                    if(this.EmailId != null ){
+                    if(this.EmailId != null ){    
+                        this.fullName  = this.EmailId.split('@',1)
                         this.getProfileDataByEmail();
                     }
                     else{
@@ -50,7 +53,7 @@ export class ProfileComponent{
 
     getProfileData(){
         this._proServ.GetUserProfile()
-        .subscribe( (data) => { this.profiledata = data },
+        .subscribe( (data) => { this.profiledata = data ; this.fullName = this.profiledata.fullName },
                      (err) => {console.log(err);},   
                      () => {console.log('profiledata',this.profiledata)})
     }

@@ -93,8 +93,7 @@ export class ProfileService{
         console.log('email',email); 
         let headers = new Headers({
             'Content-Type': 'application/json',
-             'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
-            'Authorization': 'Bearer' + ' ' + localStorage.getItem('access_token')
+             'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w'
         })
 
         let options = new RequestOptions({
