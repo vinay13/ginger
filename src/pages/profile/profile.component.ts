@@ -16,6 +16,7 @@ export class ProfileComponent{
     public profiledata = {"fullName":""};
     EmailId;
     fullName;
+    editBtn = true;
     xyz = "contain";
     constructor(private navCtrl : NavController,
                 private navparams : NavParams,
@@ -25,7 +26,8 @@ export class ProfileComponent{
                 this.EmailId = this.navparams.get('email');
             
                        console.log()             
-                    if(this.EmailId != null ){    
+                    if(this.EmailId != null ){  
+                        this.editBtn = false;  
                         this.fullName  = this.EmailId.split('@',1)
                         this.getProfileDataByEmail();
                     }
@@ -70,7 +72,7 @@ export class ProfileComponent{
     GifUploadedviaUser(){
         this.cs.showLoader();
         this._proServ.getGifsUploadedByUrl()
-        .subscribe( (data) => { this.Uploadedgifs = data; this.GifsFavorites();  this.cs.hideLoader(); this.checkUploadGifs(data);  },
+            .subscribe( (data) => { this.Uploadedgifs = data; this.GifsFavorites();  this.cs.hideLoader(); this.checkUploadGifs(data);  },
                     (err) => { this.cs.hideLoader();},
                     () => { console.log('uploadgifs',this.Uploadedgifs)})
     }

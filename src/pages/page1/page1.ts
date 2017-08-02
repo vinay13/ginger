@@ -119,12 +119,13 @@ export class Page1Page {
     public tabIddata;
     gettabdata(idiom,tabid){
        this.tabIddata = [];
-     //  this.cs.showLoader();
+       //this.cs.showLoader();
        this._homeserv.getTabDataviaTabId(idiom,tabid,0)
                   .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata; this.putinGrid();},
                   (err) => {console.log(err);},
                   () => console.log('data',this.tabIddata ))
     }
+
     putinGrid(){
      // for(let i=0;i<this.gifs.length;i++){
      //   console.log(this.gifs[i].lowResUrl);
@@ -135,9 +136,12 @@ export class Page1Page {
 
     public gifData;
     GifsViewviaId(tabid){
+      this.cs.showLoader();
       this._homeserv.getGifviaID(tabid)
-          .subscribe((res) => { this.gifData = res; this.navGifDetail(res);})
-    }
+          .subscribe((res) => { this.gifData = res; this.cs.hideLoader(); this.navGifDetail(res);},
+                        (err) => { this.cs.hideLoader();} )
+ 
+   }
 
     navGifDetail(url){
       this.rootNavCtrl.push(GifDetailComponent,{

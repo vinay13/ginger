@@ -18,7 +18,7 @@ export class CustomService {
 
   public showLoader() {
     this.loading = this.l.create({
-      content: 'Please wait...'
+      content: ''
     });
     this.loading.present();
   }

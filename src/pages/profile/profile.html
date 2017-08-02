@@ -3,7 +3,6 @@
        <span class="username-navbar">
             {{fullName}}
         </span>
-
         <ion-icon class="settings-icon" name="settings" item-right (click)="SettingsNav()"></ion-icon>
     </ion-navbar>
 </ion-header>
@@ -14,7 +13,7 @@
             <img src="assets/icon/avatar.png">
         </div>
         <p>{{profiledata.webLink}}</p>
-        <button class="gin-button-1" ion-button round (click)="ProfileEdit()">Edit</button>
+        <button *ngIf="editBtn" class="gin-button-1" ion-button round (click)="ProfileEdit()">Edit</button>
    </div>
    
         <masonry class="grid" [options]="{ transitionDuration: '0.0008s' , gutter : 4  }" [useImagesLoaded]="true">
