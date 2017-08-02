@@ -110,9 +110,10 @@ setBackground(){
   
 
     golauser;
+    guser;
     public GetUsername(){
-     let guser =  this.gifobject.publishedBy;
-    this.golauser  = guser.split('@',1)
+      this.guser =  this.gifobject.publishedBy;
+    this.golauser  = this.guser.split('@',1)
          
     } 
     
@@ -148,7 +149,9 @@ setBackground(){
     }
 
     userProfile(){
-        this.navCtrl.push(ProfileComponent);
+        this.navCtrl.push(ProfileComponent,{
+            'email' : this.guser
+        });
     }
 
     GIFviewer(url){

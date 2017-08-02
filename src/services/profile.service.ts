@@ -73,9 +73,9 @@ export class ProfileService{
     GetFavoriteGifsviaUser(){
 
         let headers = new Headers({
-            'Content-Type' : 'application/json',
+             'Content-Type' : 'application/json',
              'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
-            'Authorization': 'Bearer' + ' ' + localStorage.getItem('access_token')
+             'Authorization': 'Bearer' + ' ' + localStorage.getItem('access_token')
         })
 
         let options = new RequestOptions({
@@ -86,6 +86,24 @@ export class ProfileService{
                 .map(this.extractData)
                 .catch(this.handleError)
 
+    }
+
+    public getUploaderInfo(emailId){
+        let email=btoa(emailId);
+        console.log('email',email); 
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+             'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
+            'Authorization': 'Bearer' + ' ' + localStorage.getItem('access_token')
+        })
+
+        let options = new RequestOptions({
+            headers : headers 
+        });
+
+        return this.http.get(this.url+'gifs/'+email+'/0/10',options)
+                .map(this.extractData)
+                .catch(this.handleError)
     }
 
     private extractData(res: Response) {

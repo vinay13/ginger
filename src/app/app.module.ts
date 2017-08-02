@@ -37,6 +37,7 @@ import { Deeplinks } from '@ionic-native/deeplinks';
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { NoInternetComponent } from '../components/noInternet/noInternet.component';
 import { TOScomponent } from '../components/termsofservice/tos.ts';
+import { ErrorPage } from '../components/errorpage';
 
 //import services 
 import {HomeService} from '../services/home.service';
@@ -87,7 +88,8 @@ import { FilePath } from '@ionic-native/file-path';
     Page3Page,
     Page4Page,
     TOScomponent,
-    EllipsisPipe
+    EllipsisPipe,
+    ErrorPage
   ],
   imports: [
     HttpModule,
@@ -119,7 +121,8 @@ import { FilePath } from '@ionic-native/file-path';
     Page2Page,
     Page3Page,
     Page4Page,
-    TOScomponent
+    TOScomponent,
+    ErrorPage
   ],
   providers: [
     StatusBar,

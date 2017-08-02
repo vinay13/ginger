@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,NavParams } from 'ionic-angular';
 import { ProfileEditComponent } from './edit/profile-edit.component'; 
 import { SettingsComponent } from './settings/settings.component';
-import { ProfileService} from '../../services/profile.service';
+import { ProfileService } from '../../services/profile.service';
 import { CustomService } from '../../services/custom.service';
 import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
 
@@ -11,19 +11,25 @@ import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
     templateUrl : 'profile.html'
 })
 
-export class ProfileComponent {
+export class ProfileComponent{
 
     public profiledata = {};
+    EmailId;
     xyz = "contain";
     constructor(private navCtrl : NavController,
+                private navparams : NavParams,
                 private _proServ : ProfileService,
                 private cs : CustomService){
 
-                    this.getProfileData();
-                   this.GifUploadedviaUser();
-                  
-             //   alert('new code');
-
+                this.EmailId = this.navparams.get('email');
+                       console.log()             
+                    if(this.EmailId != null ){
+                        this.getProfileDataByEmail();
+                    }
+                    else{
+                        this.getProfileData();
+                        this.GifUploadedviaUser();
+                    }
                 }
 
     ProfileEdit(){
@@ -49,12 +55,19 @@ export class ProfileComponent {
                      () => {console.log('profiledata',this.profiledata)})
     }
 
+    getProfileDataByEmail(){
+        this._proServ.getUploaderInfo(this.EmailId)
+            .subscribe( (data) => { this.Uploadedgifs = data.contents},
+                (err) => { console.log(err);},
+                ()    => { console.log('profiledataa',this.profiledata)})
+    }
+
     Uploadedgifs = [];
-     Uploadedgifs2 = [];
+    Uploadedgifs2 = [];
     GifUploadedviaUser(){
         this.cs.showLoader();
         this._proServ.getGifsUploadedByUrl()
-        .subscribe( (data) => { this.Uploadedgifs2 = data; this.GifsFavorites();  this.cs.hideLoader(); this.checkUploadGifs(data);  },
+        .subscribe( (data) => { this.Uploadedgifs = data; this.GifsFavorites();  this.cs.hideLoader(); this.checkUploadGifs(data);  },
                     (err) => { this.cs.hideLoader();},
                     () => { console.log('uploadgifs',this.Uploadedgifs)})
     }
@@ -67,7 +80,6 @@ export class ProfileComponent {
             }
     }    
   
-
     // nullcheck(data){
     //     if( data = null )
     //     { this.Uploadedgifs = []

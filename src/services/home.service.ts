@@ -6,7 +6,6 @@ import 'rxjs/add/observable/throw';
 import { Http, XHRBackend, RequestOptions, Request, RequestOptionsArgs, Response, Headers } from '@angular/http';
 import { Configuration } from './app.constant';
 
-
 @Injectable()
 export class HomeService{
 
