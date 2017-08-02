@@ -62,7 +62,7 @@ export class ProfileComponent{
 
     getProfileDataByEmail(){
         this.cs.showLoader();
-        this._proServ.getUploaderInfo(this.EmailId)
+        this._proServ.getUploaderInfo(this.EmailId,0)
             .subscribe( (data) => { this.Uploadedgifs = data.contents; this.cs.hideLoader();},
                 (err) => { console.log(err); this.cs.hideLoader();},
                 ()    => { console.log('profiledataa',this.profiledata)})

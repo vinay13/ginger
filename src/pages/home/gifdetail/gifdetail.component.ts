@@ -115,11 +115,11 @@ setBackground(){
     gifId;
     pageno = 0;
     RecommendedGifs(){
-        this.cs.showLoader();
+     //   this.cs.showLoader();
          this.gifId = this.gifobject.gifId || this.gifobject.id;
         this._homeserv.getRelatedGifs(this.selectedIdiom,this.gifId,this.pageno)
-            .subscribe( (res) => {this.recomns = res.contents, this.cs.hideLoader(); this.totalcount = res.totalCount},
-                        (err) => {console.log(err), this.cs.hideLoader();},
+            .subscribe( (res) => {this.recomns = res.contents, this.totalcount = res.totalCount},
+                        (err) => {console.log(err)},
                         () => console.log('related gifs',this.totalcount))
     }
 

@@ -17,6 +17,8 @@ import { ProfileComponent } from '../profile/profile.component';
 //   segment: 'about/:type'
 // }) 
 
+
+
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html'
@@ -46,6 +48,8 @@ idiomdict;
 //     this.tabSelect.emit(index);
 //   }
   tabIndex;
+
+  colors =  ["secondary","danger","primary","favcolor1","favcolor2"];
   constructor(public navCtrl: NavController, 
               private navParams: NavParams,
               public _homeserv : HomeService,
@@ -141,11 +145,17 @@ idiomdict;
      console.log('in slide to fun',tabsId);
    }
   
-
+  toolbarColor = "primary";
+  count = 0 ;
   onTabSelect(ev : any){
      this.events.publish('tab:selected', ev.id);
      localStorage.setItem('tabIndex',ev.index);
      localStorage.setItem('tabId',ev.id);
+     
+        this.toolbarColor = this.colors[Math.floor(Math.random() * this.colors.length)];  
+       // this.count += 1; 
+     
+     
      console.log(ev);
   }
 
