@@ -1,8 +1,9 @@
 <ion-header no-border>
     <ion-navbar>
-       <span class="username-navbar">
-            {{fullName}}
-        </span>
+        <!--<ion-searchbar  [(ngModel)]="searchItem" [showCancelButton]="true" 
+       (keyup.enter)="someFunction($event)"  (ionInput)="getItems($event)" >
+       </ion-searchbar>-->
+       
         <ion-icon class="settings-icon" name="settings" item-right (click)="SettingsNav()"></ion-icon>
     </ion-navbar>
 </ion-header>
@@ -12,6 +13,9 @@
         <div class="profile-image">
             <img src="assets/icon/avatar.png">
         </div>
+         <span class="username-navbar">
+            {{fullName}}
+        </span>
         <p>{{profiledata.webLink}}</p>
         <button *ngIf="editBtn" class="gin-button-1" ion-button round (click)="ProfileEdit()">Edit</button>
    </div>
@@ -28,5 +32,10 @@
                 <h1>No GIF's uploaded</h1>
             </ion-card>
         </div>
+
+<ion-infinite-scroll  direction="x" class="con-scroll-x" has-bouncing="true" (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content ></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>
 
 </ion-content>

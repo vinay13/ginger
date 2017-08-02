@@ -71,21 +71,17 @@ export class GifDetailComponent {
                 }
 
                 if(this.loadProgress == 40)
-                 {
-                //     console.log(this.gifurl);
+                {
                      this.gifurl = this.gifobject.url;
-                //     console.log(this.gifurl);
-                 }
-
+                }
+                 
                 if(this.loadProgress == 99)
                 {
                     this.hidebar = true;
                 }
 			}
 
-		}, 50);
-
-
+		},50);
 	} 
 
 
@@ -94,7 +90,6 @@ setBackground(){
 }
  
     poptoHome(){
-   // this.navCtrl.pop();
         this.navCtrl.setRoot(AboutPage,{
             'idiom': this.selectedIdiom
         });
@@ -105,7 +100,6 @@ setBackground(){
     expandTags(){ 
         this.hidetags = !this.hidetags; 
         this.showtags = !this.showtags;
-      
     }
   
 
@@ -113,7 +107,7 @@ setBackground(){
     guser;
     public GetUsername(){
       this.guser =  this.gifobject.publishedBy;
-    this.golauser  = this.guser.split('@',1)
+      this.golauser  = this.guser.split('@',1)
          
     } 
     
@@ -121,10 +115,11 @@ setBackground(){
     gifId;
     pageno = 0;
     RecommendedGifs(){
+        this.cs.showLoader();
          this.gifId = this.gifobject.gifId || this.gifobject.id;
         this._homeserv.getRelatedGifs(this.selectedIdiom,this.gifId,this.pageno)
-            .subscribe( (res) => {this.recomns = res.contents, this.totalcount = res.totalCount},
-                        (err) => console.log(err),
+            .subscribe( (res) => {this.recomns = res.contents, this.cs.hideLoader(); this.totalcount = res.totalCount},
+                        (err) => {console.log(err), this.cs.hideLoader();},
                         () => console.log('related gifs',this.totalcount))
     }
 
@@ -161,12 +156,9 @@ setBackground(){
         });   
     }
 
-    
-
     public favorite = false;
     thefavorites;
     Addfavorites(){
-       
         this._homeserv.favoritesGifs(this.gifId)
         .subscribe( (res) => { this.thefavorites = res },
                     (err) => { console.log(err)})
@@ -204,8 +196,6 @@ setBackground(){
     //   alert("Failed to open URL via Android Intent. URL: " + this.gifId)});
 
     // }
-
-
 
 
     presentToast(){
@@ -304,7 +294,7 @@ setBackground(){
   shareGifInstagram(){
       this.cs.showLoader();
       this.socialSharing.shareViaInstagram("message", this.gifurl)
-            .then(() => {
+            .then(() =>{
                 this.cs.hideLoader();
             },
            ()=> { alert("U don't have Instagram app"); this.cs.hideLoader(); })
@@ -362,7 +352,7 @@ currentPage = 0;
   }
 
 
-//   download(){
+//download(){
 //      const fileTransfer: TransferObject = this.transfer.create();
 //      this.cs.showLoader();
 //      // const imageLocation = `${cordova.file.applicationDirectory}www/assets/img/${image}`;

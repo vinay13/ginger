@@ -88,7 +88,7 @@ export class ProfileService{
 
     }
 
-    public getUploaderInfo(emailId){
+    public getUploaderInfo(emailId,pageno){
         let email=btoa(emailId);
         console.log('email',email); 
         let headers = new Headers({
@@ -100,7 +100,7 @@ export class ProfileService{
             headers : headers 
         });
 
-        return this.http.get(this.url+'gifs/'+email+'/0/10',options)
+        return this.http.get(this.url+'gifs/'+email+'/'+pageno+'/10',options)
                 .map(this.extractData)
                 .catch(this.handleError)
     }

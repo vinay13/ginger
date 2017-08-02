@@ -61,9 +61,10 @@ export class ProfileComponent{
     }
 
     getProfileDataByEmail(){
+        this.cs.showLoader();
         this._proServ.getUploaderInfo(this.EmailId)
-            .subscribe( (data) => { this.Uploadedgifs = data.contents},
-                (err) => { console.log(err);},
+            .subscribe( (data) => { this.Uploadedgifs = data.contents; this.cs.hideLoader();},
+                (err) => { console.log(err); this.cs.hideLoader();},
                 ()    => { console.log('profiledataa',this.profiledata)})
     }
 
@@ -110,5 +111,27 @@ export class ProfileComponent{
             this.noUploads = true;
         }
     }
+
+
+    currentPage = 0;
+ doInfinite(infiniteScroll) {
+
+   this.currentPage = this.currentPage + 1;
+    console.log('currentpage', this.currentPage);
+       this._proServ.getUploaderInfo(this.EmailId,this.currentPage).subscribe(data =>
+        {
+          infiniteScroll.complete();
+        //   this.hasMoreData = true;
+        //   this.trendingGIFs = data;
+          this.Uploadedgifs =  this.Uploadedgifs.concat(data.contents); 
+      }, 
+    err => {
+      infiniteScroll.complete();
+      this.currentPage -= 1;
+   //   this.onError(err);
+    },
+     () => console.log('Next Page Loading completed')
+     );
+  }
 
 }

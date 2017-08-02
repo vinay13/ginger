@@ -23,14 +23,10 @@
 
 // Remove ion-content margin-top
 page-profile .scroll-content {
-    margin-top:0px !important;   
+   // margin-top:0px !important;   
 }
 
-.toolbar-background-md {
-    background: transparent;
-    border-color: transparent;
-    //  background-image: linear-gradient(to top right, #8162F6, #FA7875 100%);
-}
+
 
 .card-style{
     color : white;
@@ -88,7 +84,13 @@ page-profile{
     .username-navbar{
       color: white;
       font-size: 24px;
-      margin-left: 16px;
-      padding-left: 16px;
+    //   margin-left: 16px;
+    //   padding-left: 16px;
     }
+
+    .toolbar-background-md {
+    // background: transparent;
+    // border-color: transparent;
+     background-image: linear-gradient(to top right, #8162F6, #FA7875 100%);
+}
 }
