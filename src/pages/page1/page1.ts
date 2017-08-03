@@ -37,6 +37,8 @@ export class Page1Page {
     @ViewChild(AngularMasonry) public masonry: AngularMasonry;
     @Input() src;
     public _msnry: any;
+    lessdata;
+    LessData;
     constructor(public navCtrl: NavController,
                 public navparams: NavParams,
                 public _homeserv : HomeService,
@@ -51,7 +53,15 @@ export class Page1Page {
              
                   platform.ready().then(() => {
                       this.tabcat();
-                 })        
+                 })   
+
+                  this.lessdata = localStorage.getItem('lessdata');
+                  if(this.lessdata === "false"){
+                    this.LessData = true
+                  } 
+                  else{
+                    this.LessData = false;
+                  }               //  alert(this.lessdata);     
     }
 
     // ionViewWillEnter(){
@@ -107,7 +117,7 @@ export class Page1Page {
     
     public trendingGIFs: any;
     public gifs: Array<any> = [];
-  
+    
     public tabdata;
     public tabcat(){
          this._homeserv.getTabCategories(this.selectedIdiom)
@@ -116,12 +126,16 @@ export class Page1Page {
                                 () => { console.log('tabdata',this.tabdata[0].id)})
     }
 
+
+   
+   // giffUrl = "item.lowResUrl || item.url ||  item.thumbNailUrl";
+   abcc = "item.thumbNailUrl";
     public tabIddata;
     gettabdata(idiom,tabid){
        this.tabIddata = [];
        //this.cs.showLoader();
        this._homeserv.getTabDataviaTabId(idiom,tabid,0)
-                  .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata; this.putinGrid();},
+                  .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata;  this.putinGrid();},
                   (err) => {console.log(err);},
                   () => console.log('data',this.tabIddata ))
     }

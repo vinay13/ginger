@@ -35,6 +35,7 @@ export class MyApp {
                 platform.ready().then(() => {
                 statusBar.styleDefault();
                 splashScreen.hide();
+                localStorage.setItem('lessdata','false');
                 localStorage.setItem('tabIndex','0');
                 if(localStorage.getItem('idiom') === null){
                    this.rootPage = IdiomComponent;

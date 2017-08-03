@@ -4,7 +4,8 @@
             <ion-icon  name="arrow-back"></ion-icon>
         </button>
         <ion-icon class="search-icon" name="md-contact" (click)="checklogin()"></ion-icon>
- <ion-searchbar #search
+ 
+    <ion-searchbar #search
        (ionInput)="getItems($event)"
        (keyup.enter)="someFunction($event)" >
     </ion-searchbar>
