@@ -4,6 +4,8 @@ import { SearchResultComponent } from './searchResult/search-result.component';
 import { SearchService } from '../../services/search.service'; 
 import { Keyboard } from '@ionic-native/keyboard';
 import { AboutPage } from '../about/about';
+import { LoginPage } from '../login/login.component';
+import { ProfileComponent } from '../profile/profile.component';
 
 @Component({
     selector : 'page-search',
@@ -49,6 +51,19 @@ export class SearchComponent{
             this.myInput.setFocus();
             this.keyboard.show();
         }, 1000);
+    }
+
+    checklogin(){
+        if(localStorage.getItem("access_token") === null){
+            this.navCtrl.push(LoginPage,{
+            'idiom': this.selectedIdiom
+            });  
+        }
+        else{
+        this.navCtrl.push(ProfileComponent,{
+            'idiom': this.selectedIdiom
+        });
+     }
     }
 
     getItems(ev : any){

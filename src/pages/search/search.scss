@@ -7,19 +7,16 @@ page-search{
       overflow: visible;
     }
  
-
-      .brick{
+    .brick{
       width: 47%;
       object-fit: contain;
-      }
-
-
+    }
 
     .search-items{
 
         background-color: #2b3b50;
         color : white;
-   }
+    }
 
     .top-searches-items{
         background-color: #2b3b50;
@@ -30,27 +27,26 @@ page-search{
         background-color : #2b3b50;
     }
 }
+
 .search-items{
     background-color: #2b3b50;
     color : white;
 }
+
 .background-theme{
     background-color: #2b3b50;
 }
 
-.searchbar-search-icon {
-    display:none;
-    width:0;
-    height:0;
+// .searchbar-search-icon {
+//     display:none;
+//     width:0;
+//     height:0;
+// }
+
+ .searchbar-input {    
+     font-size: 1.5em !important;
+     caret-color: #18efef;
 }
-
-.searchbar-input {
-    padding: 0px !important;
-    font-size: 1.5em !important;
-    caret-color: #18efef;
-}
-
-
 
 .searchbar-md .searchbar-input {
     padding: 6px 55px;

@@ -1,28 +1,29 @@
 <ion-header>
   <ion-navbar class="navbar" hideBackButton>
-        <span class="customIcon" ion-button icon-only (click)="CustomNavRoot()">
+        <button class="customIcon" ion-button icon-only (click)="CustomNavRoot()">
             <ion-icon  name="arrow-back"></ion-icon>
-        </span>
-     <ion-searchbar #search
+        </button>
+        <ion-icon class="search-icon" name="md-contact" (click)="checklogin()"></ion-icon>
+ <ion-searchbar #search
        (ionInput)="getItems($event)"
        (keyup.enter)="someFunction($event)" >
     </ion-searchbar>
+
   </ion-navbar>
+  
 </ion-header>
 
 
 <ion-content class="background-theme">
-  
+      
     <ion-list *ngIf="TopSearchlist">
         <ion-item  class="top-searches-items" *ngFor="let top of topsearcheslist | slice:0:5  let i=index" (click)="TagsClick(top.text)">
             
-           <ion-icon name="search" padding></ion-icon>
-            {{ top.text }}
+        <ion-icon name="search" padding></ion-icon>
+               {{ top.text }}
             <img style="width:100px; float:right; padding-top: 4px;" src={{top.url}} />
         </ion-item>
-   
     </ion-list>
-    
     
     <ion-list >
         <ion-item class="search-items" *ngFor="let item of suggestedText" (click)="TagsClick(item)">
