@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,Events } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { SearchResultComponent } from '../search/searchResult/search-result.component';
 import { LoginPage} from '../login/login.component';
@@ -15,23 +15,43 @@ export class Page3Page {
    rootNavCtrl: NavController;
     public selectedIdiom;
     public newselectedIdiom;
+    lessdata;
+    LessData;
  // selectedIdiom:any;
   constructor(public navCtrl: NavController,
                public navParams: NavParams,
                public _homeserv : HomeService,
-               public cs : CustomService)
+               public cs : CustomService,
+               public events : Events)
               { 
                    this.rootNavCtrl = this.navParams.get('rootNavCtrl');
                   this.newselectedIdiom = this.navParams.data;
                   this.selectedIdiom = this.newselectedIdiom.idiom;
                  this.tabcat();
+
+                events.subscribe('lessdata:created', (user) => {
+                    console.log('Welcome', user);
+                    this.lessdata = user;
+                    this.LessData = this.lessdata;
+                });
+              
+                this.lessdata = localStorage.getItem('lessdata');
+                  if(this.lessdata === "false"){
+                    this.LessData = false
+                  } 
+                  else{
+                    this.LessData = true;
+                }    
+
+
                }
 
     public tabdata;
     public tabcat(){
+      //this.cs.showLoader();
          this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[1].id);  },
-                                (err) => { console.log(err)},
+                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[1].id); },
+                                (err) => { console.log(err);},
                                 () => { console.log('tabdata',this.tabdata[2].id)})
     }
 
@@ -39,9 +59,10 @@ export class Page3Page {
     public gifs;
     gettabdata(idiom,tabid){
        this.tabIddata = [];
+      
        this._homeserv.getTabDataviaTabId(idiom,tabid,0)
-                  .subscribe((res) => {this.tabIddata = res ;this.textonGIFs(); this.gifs = this.tabIddata; },
-                  (err) => {console.log(err)},
+                  .subscribe((res) => {this.tabIddata = res ;this.textonGIFs();  this.gifs = this.tabIddata; },
+                  (err) => {console.log(err);},
                   () => console.log('page3data',this.tabIddata ))
     }
 

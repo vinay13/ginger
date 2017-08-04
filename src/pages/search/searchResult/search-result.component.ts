@@ -1,9 +1,14 @@
 import {Component,OnInit,Input,ViewChild} from '@angular/core';
-import {NavParams,NavController,Events} from 'ionic-angular';
+import {IonicPage,NavParams,NavController,Events} from 'ionic-angular';
 import {SearchService} from '../../../services/search.service';
 import {CustomService} from '../../../services/custom.service';
 import {GifDetailComponent} from '../../home/gifdetail/gifdetail.component';
 import {AboutPage} from '../../about/about.ts';
+
+// @IonicPage({
+//     name: 'something-else',
+//     segment: 'some-other-path'
+// })
 
 @Component({
     selector : 'page-search-result',
@@ -46,6 +51,8 @@ export class SearchResultComponent implements OnInit {
         this.navCtrl.setRoot(AboutPage,{
                 'idiom': this.selectedIdiom
         });
+
+       // this.navCtrl.push('something-else');
     }
      
 

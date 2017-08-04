@@ -52,26 +52,24 @@ export class Page1Page {
                   this.rootNavCtrl = this.navparams.get('rootNavCtrl');
                   this.newselectedIdiom = this.navparams.data;
                   this.selectedIdiom = this.newselectedIdiom.idiom;
-                  
+                   
+                platform.ready().then(() => {
+                      this.tabcat();
+                 })
            
                 events.subscribe('lessdata:created', (user) => {
                     console.log('Welcome', user);
                     this.lessdata = user;
                     this.LessData = this.lessdata;
-                  
                 });
               
-                platform.ready().then(() => {
-                      this.tabcat();
-                 })   
-
-                  this.lessdata = localStorage.getItem('lessdata');
+                this.lessdata = localStorage.getItem('lessdata');
                   if(this.lessdata === "false"){
                     this.LessData = false
                   } 
                   else{
                     this.LessData = true;
-                  }           
+                }              
     }
 
     // ionViewWillEnter(){
@@ -130,9 +128,10 @@ export class Page1Page {
     
     public tabdata;
     public tabcat(){
+      this.cs.showLoader();
          this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe((res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[0].id);  },
-                                (err) => { console.log(err)},
+                    .subscribe((res) => { this.tabdata = res.tabs; this.cs.hideLoader();this.gettabdata(this.selectedIdiom,this.tabdata[0].id);  },
+                                (err) => { console.log(err); this.cs.hideLoader();},
                                 () => { console.log('tabdata',this.tabdata[0].id)})
     }
 
