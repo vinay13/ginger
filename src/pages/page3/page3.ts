@@ -41,14 +41,12 @@ export class Page3Page {
                   } 
                   else{
                     this.LessData = true;
-                }    
-
-
+                }   
                }
 
     public tabdata;
     public tabcat(){
-      //this.cs.showLoader();
+     
          this._homeserv.getTabCategories(this.selectedIdiom)
                     .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[1].id); },
                                 (err) => { console.log(err);},

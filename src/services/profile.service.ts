@@ -54,7 +54,7 @@ export class ProfileService{
                 .catch(this.handleError)
     }
 
-    getGifsUploadedByUrl(){
+    getGifsUploadedByUrl(pageno){
         let headers = new Headers({
             'Content-Type' : 'application/json',
             'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
@@ -65,7 +65,7 @@ export class ProfileService{
             headers : headers
         });
 
-        return this.http.get(this.url+'gifs/mygifs',options)
+        return this.http.get(this.url+'gifs/mygifs/'+pageno+'/10',options)
             .map(this.extractData)
             .catch(this.handleError)
     }

@@ -88,7 +88,7 @@ export class GifDetailComponent {
                     this.gifurl = this.gifobject.lowResUrl;
                 }
 
-                if(this.loadProgress == 40)
+                if(this.loadProgress == 33)
                 {
                      this.gifurl = this.gifobject.url;
                 }

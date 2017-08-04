@@ -23,7 +23,7 @@
         <masonry class="grid" [options]="{ transitionDuration: '0.1s' , gutter : 4  }" [useImagesLoaded]="true">
           <masonry-brick class="brick" *ngFor="let gifs of Uploadedgifs"  (click)="gifViewer(gifs)" >
             <img *ngIf="!LessData" width="100%" height="100%"
-              class="img-responsive" [src]="gifs.lowResUrl"/>
+              class="img-responsive" [src]="gifs.lowResUrl || gifs.url"/>
               <img *ngIf="LessData" width="100%" height="100%"
               class="img-responsive" [src]="gifs.thumbNailUrl"/>
          </masonry-brick>

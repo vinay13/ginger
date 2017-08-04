@@ -34,6 +34,13 @@ export class ProfileComponent{
                   
                 });
 
+                this.lessdata = localStorage.getItem('lessdata');
+                  if(this.lessdata === "false"){
+                    this.LessData = false
+                  } 
+                  else{
+                    this.LessData = true;
+                }  
 
 
                        console.log()             
@@ -83,8 +90,8 @@ export class ProfileComponent{
     Uploadedgifs2 = [];
     GifUploadedviaUser(){
         this.cs.showLoader();
-        this._proServ.getGifsUploadedByUrl()
-            .subscribe( (data) => { this.Uploadedgifs = data; this.GifsFavorites();  this.cs.hideLoader(); this.checkUploadGifs(data);  },
+        this._proServ.getGifsUploadedByUrl(0)
+            .subscribe( (data) => { this.Uploadedgifs = data.contents; this.cs.hideLoader(); this.checkUploadGifs(data);  },
                     (err) => { this.cs.hideLoader();},
                     () => { console.log('uploadgifs',this.Uploadedgifs)})
     }
@@ -124,12 +131,14 @@ export class ProfileComponent{
     }
 
 
+//  this._proServ.getUploaderInfo(this.EmailId,this.currentPage)
+
     currentPage = 0;
  doInfinite(infiniteScroll) {
 
    this.currentPage = this.currentPage + 1;
     console.log('currentpage', this.currentPage);
-       this._proServ.getUploaderInfo(this.EmailId,this.currentPage).subscribe(data =>
+       this._proServ.getGifsUploadedByUrl(this.currentPage).subscribe(data =>
         {
           infiniteScroll.complete();
         //   this.hasMoreData = true;
