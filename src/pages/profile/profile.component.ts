@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController,NavParams } from 'ionic-angular';
+import { NavController,NavParams,Events } from 'ionic-angular';
 import { ProfileEditComponent } from './edit/profile-edit.component'; 
 import { SettingsComponent } from './settings/settings.component';
 import { ProfileService } from '../../services/profile.service';
@@ -18,13 +18,24 @@ export class ProfileComponent{
     fullName;
     editBtn = true;
     xyz = "contain";
+    lessdata;
+    LessData;
     constructor(private navCtrl : NavController,
                 private navparams : NavParams,
                 private _proServ : ProfileService,
-                private cs : CustomService){
+                private cs : CustomService,
+                public events: Events){
 
                 this.EmailId = this.navparams.get('email');
-            
+                events.subscribe('lessdata:created', (user) => {
+                    console.log('Welcome', user);
+                    this.lessdata = user;
+                    this.LessData = this.lessdata;
+                  
+                });
+
+
+
                        console.log()             
                     if(this.EmailId != null ){  
                         this.editBtn = false;  

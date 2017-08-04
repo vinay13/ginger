@@ -1,5 +1,5 @@
 import {Component,OnInit,Input,ViewChild} from '@angular/core';
-import {NavParams,NavController} from 'ionic-angular';
+import {NavParams,NavController,Events} from 'ionic-angular';
 import {SearchService} from '../../../services/search.service';
 import {CustomService} from '../../../services/custom.service';
 import {GifDetailComponent} from '../../home/gifdetail/gifdetail.component';
@@ -17,11 +17,29 @@ export class SearchResultComponent implements OnInit {
     public searchedGifs = [];
     selectedIdiom;
     totalCount;
+    lessdata;
+    LessData;
+
     constructor(private navparams : NavParams,
                 private _searchService : SearchService,
                 private cs : CustomService ,
-                private navCtrl : NavController){ 
+                private navCtrl : NavController,
+                public events : Events){ 
                 this.selectedIdiom = this.navparams.get('idiom');        
+
+                events.subscribe('lessdata:created', (user) => {
+                    console.log('Welcome', user);
+                    this.lessdata = user;
+                    this.LessData = this.lessdata;
+                });
+
+                this.lessdata = localStorage.getItem('lessdata');
+                if(this.lessdata === "false"){
+                    this.LessData = false
+                } 
+                else{
+                    this.LessData = true;
+                }  
     } 
 
     CustomNavRoot(){

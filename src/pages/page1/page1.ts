@@ -1,5 +1,5 @@
 import { Component,ViewChild,Input } from '@angular/core';
-import { NavController, NavParams , ModalController  } from 'ionic-angular';
+import { NavController, NavParams , ModalController , Events  } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
 import { CustomService } from '../../services/custom.service';
@@ -38,30 +38,40 @@ export class Page1Page {
     @Input() src;
     public _msnry: any;
     lessdata;
-    LessData;
+    LessData = false;
+    isSelected;
     constructor(public navCtrl: NavController,
                 public navparams: NavParams,
                 public _homeserv : HomeService,
                 public cs : CustomService,
                 public platform : Platform,
                 public fileChooser : FileChooser,
-                public modalCtrl : ModalController){
+                public modalCtrl : ModalController,
+                public events : Events){
                              
                   this.rootNavCtrl = this.navparams.get('rootNavCtrl');
                   this.newselectedIdiom = this.navparams.data;
                   this.selectedIdiom = this.newselectedIdiom.idiom;
-             
-                  platform.ready().then(() => {
+                  
+           
+                events.subscribe('lessdata:created', (user) => {
+                    console.log('Welcome', user);
+                    this.lessdata = user;
+                    this.LessData = this.lessdata;
+                  
+                });
+              
+                platform.ready().then(() => {
                       this.tabcat();
                  })   
 
                   this.lessdata = localStorage.getItem('lessdata');
                   if(this.lessdata === "false"){
-                    this.LessData = true
+                    this.LessData = false
                   } 
                   else{
-                    this.LessData = false;
-                  }               //  alert(this.lessdata);     
+                    this.LessData = true;
+                  }           
     }
 
     // ionViewWillEnter(){

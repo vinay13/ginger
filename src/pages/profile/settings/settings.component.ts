@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { NavController} from 'ionic-angular';
+import { Component, Input, Output,EventEmitter, OnChanges} from '@angular/core';
+import { NavController,Events} from 'ionic-angular';
 import { TOScomponent} from '../../../components/termsofservice/tos.ts';
 import {AboutPage} from '../../about/about';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import {CustomService} from '../../../services/custom.service';
+
 @Component({
     selector : 'page-settings',
     templateUrl : 'settings.html'
@@ -14,7 +15,8 @@ export class SettingsComponent {
     ranval = false;
     constructor(public navCtrl : NavController,
                 public cs : CustomService,
-                private socialSharing: SocialSharing){}
+                private socialSharing: SocialSharing,
+                public events: Events){}
 
     TOSfunc(){
         this.navCtrl.push(TOScomponent);
@@ -26,9 +28,19 @@ export class SettingsComponent {
         localStorage.setItem('lessdata','true');
     }
 
+    device:number = 1;
+    isSelected = false;
+    ToggleChange(e:Event) {
+        
+        this.isSelected =  !this.isSelected;
+        // alert(this.isSelected);
+        localStorage.setItem('lessdata',this.isSelected.toString())
+        this.events.publish('lessdata:created', this.isSelected);
+    }
+
     shareApp(){
       this.cs.showLoader();
-      this.socialSharing.share("Explore best of GIF and share through social network",'gola',"","https://play.google.com/store/apps/details?id=com.mobigraph.xpresso")
+      this.socialSharing.share("Must try",'gola',"","https://play.google.com/store/apps/details?id=com.mobigraph.xpresso")
         .then( () =>{
             this.cs.hideLoader();
         },
@@ -41,7 +53,6 @@ export class SettingsComponent {
        // localStorage.clear();
         this.navCtrl.push(AboutPage);
     }
-
 }
 
 

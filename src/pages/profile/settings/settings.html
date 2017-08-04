@@ -14,7 +14,7 @@
 
             <ion-item class="list-item-style" >
                 <ion-label> Use less Data</ion-label> 
-                <ion-toggle [(ngModel)]="ranval" (change)="lessData()"></ion-toggle>
+                <ion-toggle [checked]="isSelected"   (ionChange)="ToggleChange($event)"></ion-toggle>
             </ion-item>
 
             <ion-item class="list-item-style">

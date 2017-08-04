@@ -3,7 +3,7 @@ import { PopoverController } from 'ionic-angular';
 import { PopOverComponent } from './popover';
 import { SearchComponent } from '../../search/search.component';
 import { SearchResultComponent } from '../../search/searchResult/search-result.component';
-import { NavController, ToastController , NavParams } from 'ionic-angular';
+import { NavController, ToastController , NavParams ,Events} from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { CustomService } from '../../../services/custom.service';
 import { HomeService } from '../../../services/home.service';
@@ -27,6 +27,8 @@ export class GifDetailComponent {
     public tagslist;
     public selectedIdiom;
     public scount;
+    lessdata;
+    LessData;
  
     constructor(public popoverCtrl : PopoverController,
                 public navCtrl : NavController,
@@ -37,7 +39,7 @@ export class GifDetailComponent {
                 private file: File,
                 private clipboard: Clipboard,
                 public navparams : NavParams,
-              
+                public events : Events
                ){
                     this.gifobject = this.navparams.get('url');
                      this.selectedIdiom = this.navparams.get('idiom') || localStorage.getItem('idiom');
@@ -54,6 +56,22 @@ export class GifDetailComponent {
 
                     //    let el = document.getElementsByClassName('scroll-content')[0] as HTMLElement;
                     //     this.recomns.viewHeight = el.offsetHeight;
+
+
+                events.subscribe('lessdata:created', (user) => {
+                    console.log('Welcome', user);
+                    this.lessdata = user;
+                    this.LessData = this.lessdata;
+                  
+                });
+              
+                  this.lessdata = localStorage.getItem('lessdata');
+                  if(this.lessdata === "false"){
+                    this.LessData = false
+                  } 
+                  else{
+                    this.LessData = true;
+                  }      
                    
                 }
 

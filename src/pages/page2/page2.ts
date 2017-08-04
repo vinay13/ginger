@@ -34,6 +34,8 @@ export class Page2Page implements OnInit{
     rootNavCtrl: NavController;
     public loggedIn : boolean = false;
     flag = false;
+    LessData;
+    lessdata;
     constructor(public navCtrl: NavController, 
                 public navparams: NavParams,
                 public _homeserv : HomeService,
@@ -41,7 +43,8 @@ export class Page2Page implements OnInit{
                 public platform : Platform,
                 public appRate: AppRate,
                 public fileChooser : FileChooser,
-                public cs : CustomService) {
+                public cs : CustomService,
+            ) {
             
                 this.rootNavCtrl = this.navparams.get('rootNavCtrl');
                 this.newselectedIdiom = this.navparams.data;
@@ -49,6 +52,23 @@ export class Page2Page implements OnInit{
                 this.tabIDD = this.newselectedIdiom.tabid;
                 this.indexx = this.newselectedIdiom.index;
              
+                
+                events.subscribe('lessdata:created', (user) => {
+                    console.log('Welcome', user);
+                    this.lessdata = user;
+                    this.LessData = this.lessdata;
+                  
+                });
+
+               this.lessdata = localStorage.getItem('lessdata');
+                if(this.lessdata === "false"){
+                    this.LessData = false
+                } 
+                else{
+                    this.LessData = true;
+                }  
+
+
                 console.log('dataTab',this.flag); 
                 console.log( 'dataTab2',this.events);
                this.events.subscribe('tab:selected',(id) => {
