@@ -1,4 +1,4 @@
-<ion-header no-border>
+<ion-header no-border #head>
     <ion-navbar>
         <!--<ion-searchbar  [(ngModel)]="searchItem" [showCancelButton]="true" 
        (keyup.enter)="someFunction($event)"  (ionInput)="getItems($event)" >
@@ -8,7 +8,7 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content class="content-bg">
+<ion-content class="content-bg" hide-header [header]="head">
    <div class="card-style">
         <div class="profile-image">
             <img src="assets/icon/avatar.png">

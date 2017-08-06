@@ -54,6 +54,8 @@ import {AppRateService} from '../services/apprate.service';
 //pipe
 import { EllipsisPipe } from '../components/ellipses.pipe';
 
+//Directive
+import {HideHeaderDirective} from '../components/hideheader';
 //other imports
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -89,7 +91,8 @@ import { FilePath } from '@ionic-native/file-path';
     Page4Page,
     TOScomponent,
     EllipsisPipe,
-    ErrorPage
+    ErrorPage,
+    HideHeaderDirective
   ],
   imports: [
     HttpModule,
