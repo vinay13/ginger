@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild ,Renderer2} from '@angular/core';
 import { NavController,NavParams,Events } from 'ionic-angular';
 import { ProfileEditComponent } from './edit/profile-edit.component'; 
 import { SettingsComponent } from './settings/settings.component';
@@ -13,6 +13,7 @@ import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
 
 export class ProfileComponent{
 
+    // @ViewChild('header') header;
     public profiledata = {"fullName":""};
     EmailId;
     fullName;
@@ -24,7 +25,8 @@ export class ProfileComponent{
                 private navparams : NavParams,
                 private _proServ : ProfileService,
                 private cs : CustomService,
-                public events: Events){
+                public events: Events,
+                public renderer : Renderer2){
 
                 this.EmailId = this.navparams.get('email');
                 events.subscribe('lessdata:created', (user) => {
@@ -119,6 +121,12 @@ export class ProfileComponent{
             .subscribe((data) => { this.favoritesgifs = data.favouriteGifs; this.pushfavvv(this.favoritesgifs); },
                         (err) => { console.log(err)},
                         () => { console.log('favgifs',this.favoritesgifs); console.log('after push', this.Uploadedgifs);})
+    }
+
+
+
+    ngAfterViewInit(){
+       // this.renderer.setStyle(this.header,'display','none');
     }
 
 // this.Uploadedgifs.push(this.favoritesgifs);

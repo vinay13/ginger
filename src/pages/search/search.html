@@ -6,8 +6,11 @@
         <ion-icon class="search-icon" name="md-contact" (click)="checklogin()"></ion-icon>
  
     <ion-searchbar #search
+    (showCancelButton)="true"
        (ionInput)="getItems($event)"
-       (keyup.enter)="someFunction($event)" >
+       (keyup.enter)="someFunction($event)" 
+         (ionCancel)="onCancel($event)" >
+
     </ion-searchbar>
 
   </ion-navbar>
@@ -18,7 +21,7 @@
 <ion-content class="background-theme" hide-header [header]="head">
       
     <ion-list *ngIf="TopSearchlist">
-        <ion-item  class="top-searches-items" *ngFor="let top of topsearcheslist | slice:0:5  let i=index" (click)="TagsClick(top.text)">
+        <ion-item  class="top-searches-items" *ngFor="let top of topsearcheslist | slice:0:6  let i=index" (click)="TagsClick(top.text)">
             
         <ion-icon name="search" padding></ion-icon>
                {{ top.text }}

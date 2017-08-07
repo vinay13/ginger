@@ -74,17 +74,23 @@ export class Page2Page implements OnInit{
                 console.log( 'dataTab2',this.events);
                this.events.subscribe('tab:selected',(id) => {
                         
-                             this.tabId = id;
-                             this.index += 1;
-                            // this.arbitpushbackdata();
+                            this.tabId = id;
+                            this.index += 1;
+                            //this.arbitpushbackdata();
                             this.gettabdata(this.selectedIdiom,id);             
                             this.events.unsubscribe('tab:selected');
                 })
 
 
                 setTimeout(() => {
-                   this.gifurl = 'item.url'
+                   this.gifurl = 'url'
                 },1000);
+
+
+              // const img = new Image();
+              // img.src = imagePath;
+
+
                 //  this.gifurl = 'url';
 
               //     console.log( 'dataTab3',this.events);

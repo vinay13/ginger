@@ -81,6 +81,11 @@ export class SearchComponent{
         }
      }
 
+     onCancel(ev: any){
+        ev.target.value = '';
+
+     }
+
 
     public suggestedText = [];
     getSuggestedItems(val){

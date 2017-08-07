@@ -27,7 +27,7 @@ export class SearchResultComponent implements OnInit {
 
     constructor(private navparams : NavParams,
                 private _searchService : SearchService,
-                private cs : CustomService ,
+                private cs : CustomService,
                 private navCtrl : NavController,
                 public events : Events){ 
                 this.selectedIdiom = this.navparams.get('idiom');        

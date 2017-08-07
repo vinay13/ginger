@@ -31,7 +31,7 @@ export class HideFabDirective {
     onContentScroll(event){
         console.log(event); 
              if(event.scrollTop > 56){
-          // this.renderer.setElementStyle(this.content,'display','none');
+        //   this.renderer.setElementStyle(this.fab.nativeElement,'display','none');
           this.renderer.setElementStyle(this.scrollContent,'display','none');
         }
     }
