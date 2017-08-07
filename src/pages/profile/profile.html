@@ -1,4 +1,4 @@
-<ion-header no-border #head>
+<ion-header no-border >
     <ion-navbar>
         <!--<ion-searchbar  [(ngModel)]="searchItem" [showCancelButton]="true" 
        (keyup.enter)="someFunction($event)"  (ionInput)="getItems($event)" >
@@ -8,7 +8,7 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content class="content-bg" hide-header [header]="head">
+<ion-content class="content-bg" hide-fab [fab]="head">
    <div class="card-style">
         <div class="profile-image">
             <img src="assets/icon/avatar.png">
@@ -34,6 +34,10 @@
                 <h1>No GIF's uploaded</h1>
             </ion-card>
         </div>
+
+         <ion-fab right bottom #head>
+      <button ion-fab><ion-icon name="md-add"></ion-icon></button>
+    </ion-fab>
 
 <ion-infinite-scroll  direction="x" class="con-scroll-x" has-bouncing="true" (ionInfinite)="doInfinite($event)">
       <ion-infinite-scroll-content ></ion-infinite-scroll-content>

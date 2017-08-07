@@ -56,6 +56,8 @@ import { EllipsisPipe } from '../components/ellipses.pipe';
 
 //Directive
 import {HideHeaderDirective} from '../components/hideheader';
+import {HideFabDirective} from '../components/hidefab';
+
 //other imports
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -92,7 +94,8 @@ import { FilePath } from '@ionic-native/file-path';
     TOScomponent,
     EllipsisPipe,
     ErrorPage,
-    HideHeaderDirective
+    HideHeaderDirective,
+    HideFabDirective
   ],
   imports: [
     HttpModule,

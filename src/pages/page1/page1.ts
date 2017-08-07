@@ -136,9 +136,8 @@ export class Page1Page {
     }
 
 
-   
    // giffUrl = "item.lowResUrl || item.url ||  item.thumbNailUrl";
-   abcc = "item.thumbNailUrl";
+    abcc = "item.thumbNailUrl";
     public tabIddata;
     gettabdata(idiom,tabid){
        this.tabIddata = [];

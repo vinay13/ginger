@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header #head>
   <ion-navbar class="navbar" hideBackButton>
         <button class="customIcon" ion-button icon-only (click)="CustomNavRoot()">
             <ion-icon  name="arrow-back"></ion-icon>
@@ -15,7 +15,7 @@
 </ion-header>
 
 
-<ion-content class="background-theme">
+<ion-content class="background-theme" hide-header [header]="head">
       
     <ion-list *ngIf="TopSearchlist">
         <ion-item  class="top-searches-items" *ngFor="let top of topsearcheslist | slice:0:5  let i=index" (click)="TagsClick(top.text)">
