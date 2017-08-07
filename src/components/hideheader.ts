@@ -1,5 +1,5 @@
 import { Directive, Component,Input,ElementRef,Renderer } from '@angular/core';
-
+import {NavController} from 'ionic-angular';
 @Directive({
     selector: '[hide-header]',
     host : { 
@@ -13,7 +13,8 @@ export class HideHeaderDirective {
     headerHeight;
     scrollContent;
     constructor(public element : ElementRef,
-                public renderer: Renderer)
+                public renderer: Renderer,
+                public navCtrl : NavController)
     {
         console.log('Hello directive');
     }  

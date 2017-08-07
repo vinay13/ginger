@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header #head>
   <ion-navbar class="navbar" hideBackButton >
         <button class="customIcon" ion-button icon-only (click)="CustomNavRoot()">
             <ion-icon  name="arrow-back"></ion-icon>
@@ -10,7 +10,7 @@
 </ion-header>
 
 
-<ion-content class="background-theme">
+<ion-content class="background-theme" hide-header [header]="head">
     <div class="search-result-header">
        {{totalCount}} GIFS found for  <b>"{{searchItem}}" </b>
     </div>

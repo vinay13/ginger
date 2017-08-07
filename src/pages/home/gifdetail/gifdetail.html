@@ -1,4 +1,4 @@
-<ion-header no-border>
+<ion-header no-border #head>
     <ion-navbar hideBackButton >
         <button class="customIcon" ion-button icon-only (click)="poptoHome()">
             <ion-icon  name="arrow-back"></ion-icon>
@@ -15,7 +15,7 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content class="gifdetail-content">
+<ion-content class="gifdetail-content" hide-header [header]="head">
     <div class="gifviewer">
         <img class="Gifdetail" src={{gifurl}}>
     </div>

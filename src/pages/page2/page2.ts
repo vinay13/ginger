@@ -36,6 +36,7 @@ export class Page2Page implements OnInit{
     flag = false;
     LessData;
     lessdata;
+    gifurl;
     constructor(public navCtrl: NavController, 
                 public navparams: NavParams,
                 public _homeserv : HomeService,
@@ -78,7 +79,14 @@ export class Page2Page implements OnInit{
                             // this.arbitpushbackdata();
                             this.gettabdata(this.selectedIdiom,id);             
                             this.events.unsubscribe('tab:selected');
-                }) 
+                })
+
+
+                setTimeout(() => {
+                   this.gifurl = 'item.url'
+                },1000);
+                //  this.gifurl = 'url';
+
               //     console.log( 'dataTab3',this.events);
 
                 //      this.platform.ready().then(
@@ -90,7 +98,7 @@ export class Page2Page implements OnInit{
                 //      }
                 // )
         
-                }
+       }
       
    public gifs =  []; 
 
