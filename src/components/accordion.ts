@@ -9,11 +9,13 @@ import { Component,Input,OnInit,ViewChild,Renderer} from '@angular/core';
 export class AccordionComponent implements OnInit{
 
     @ViewChild('cc') cardContent : any;
+    // @Input('inputHeader') inputHeader :any;
     accordionExpanded = false;
     constructor(public renderer : Renderer){}
 
     ngOnInit():void{
         console.log('card-content',this.cardContent);
+        // console.log('inputHeader',this.inputHeader);
         this.renderer.setElementStyle(this.cardContent.nativeElement,'webkitTransition','max-height 500ms,padding 500ms');
     }
 

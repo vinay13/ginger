@@ -88,9 +88,17 @@ page-profile{
     //   padding-left: 16px;
     }
 
+    // .toolbar-background-md {
+    
+    //  background-image: linear-gradient(to top right, #8162F6, #FA7875 100%);
+    // }
+
     .toolbar-background-md {
-    // background: transparent;
-    // border-color: transparent;
-     background-image: linear-gradient(to top right, #8162F6, #FA7875 100%);
-}
+        background: linear-gradient(to bottom, rgba(0,0,0,0.60) 0%,rgba(0,0,0,0) 100%);
+        border-color: transparent;
+    }
+
+     .scroll-content {
+        margin-top:0px !important;   
+    }
 }
