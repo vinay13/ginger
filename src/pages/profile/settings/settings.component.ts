@@ -13,10 +13,15 @@ import {CustomService} from '../../../services/custom.service';
 export class SettingsComponent {
 
     ranval = false;
+    isSelected = false;
     constructor(public navCtrl : NavController,
                 public cs : CustomService,
                 private socialSharing: SocialSharing,
-                public events: Events){}
+                public events: Events){
+                    if(localStorage.getItem('lessdata') == 'true'){
+                        this.isSelected = true;
+                    }
+                }
 
     TOSfunc(){
         this.navCtrl.push(TOScomponent);
@@ -29,7 +34,6 @@ export class SettingsComponent {
     }
 
     device:number = 1;
-    isSelected = false;
     ToggleChange(e:Event) {
         
         this.isSelected =  !this.isSelected;

@@ -1,4 +1,4 @@
-import {Component,OnInit,Input,ViewChild} from '@angular/core';
+import {Component,OnInit,Input,ViewChild,Renderer} from '@angular/core';
 import {IonicPage,NavParams,NavController,Events} from 'ionic-angular';
 import {SearchService} from '../../../services/search.service';
 import {CustomService} from '../../../services/custom.service';
@@ -29,7 +29,8 @@ export class SearchResultComponent implements OnInit {
                 private _searchService : SearchService,
                 private cs : CustomService,
                 private navCtrl : NavController,
-                public events : Events){ 
+                public events : Events,
+                public renderer : Renderer){ 
                 this.selectedIdiom = this.navparams.get('idiom');        
 
                 events.subscribe('lessdata:created', (user) => {

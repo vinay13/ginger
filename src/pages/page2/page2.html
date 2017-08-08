@@ -1,15 +1,13 @@
 <ion-content  class="home-content">
-
      <!--<div class="pins">
               <div class="pin" *ngFor="let gif of gifs" (click)="this[click_func](gif.text)" >
                 <img  class="gifpin"  height="100px" width="245px"  src={{gif.url}}>
               </div>
      </div>-->
  
-
     <masonry class="grid" [options]="{ transitionDuration: '0.0001s' , gutter : 4 }" [useImagesLoaded]="true"  >
-       <masonry-brick class="brick" *ngFor="let item of gifs"  (click)="this[click_func](item.text)" >
-         <img *ngIf="!LessData" height="100px" width="245px" [attr.src]=item.gifurl/>
+       <masonry-brick class="brick" *ngFor="let item of gifs"   >
+         <img *ngIf="!LessData" height="100px" width="245px" src=item.url/>
          <img *ngIf="LessData" height="100px" width="245px" src={{item.thumbNailUrl}}/>
          <div [className]="ng_class">
           <h2>{{item.text}}</h2>

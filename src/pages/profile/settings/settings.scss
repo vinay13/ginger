@@ -15,3 +15,14 @@ ion-label{
 page-settings .item-inner {
   border-bottom: 1px solid #364860 !important;
 }
+
+page-settings{
+   .card-md{
+    background : transparent !important;
+  }
+
+  .card-content{
+    padding: 0px 16px;
+    max-height: 0px;
+  }
+}

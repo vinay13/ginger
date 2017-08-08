@@ -1,14 +1,10 @@
-<ion-header no-border >
-    <ion-navbar>
-        <!--<ion-searchbar  [(ngModel)]="searchItem" [showCancelButton]="true" 
-       (keyup.enter)="someFunction($event)"  (ionInput)="getItems($event)" >
-       </ion-searchbar>-->
-       
-        <ion-icon class="settings-icon" name="settings" item-right (click)="SettingsNav()"></ion-icon>
+<ion-header no-border #head>
+    <ion-navbar>       
+      <ion-icon class="settings-icon" name="settings" item-right (click)="SettingsNav()"></ion-icon>
     </ion-navbar>
 </ion-header>
 
-<ion-content class="content-bg" hide-fab [fab]="head">
+<ion-content class="content-bg" hide-header  [header]="head" >
    <div class="card-style">
         <div class="profile-image">
             <img src="assets/icon/avatar.png">
@@ -35,11 +31,12 @@
             </ion-card>
         </div>
 
-         <ion-fab right bottom #head>
+        
+    <!--<ion-fab  right bottom #fabBtn>
       <button ion-fab><ion-icon name="md-add"></ion-icon></button>
-    </ion-fab>
+    </ion-fab>-->
 
 <ion-infinite-scroll  direction="x" class="con-scroll-x" has-bouncing="true" (ionInfinite)="doInfinite($event)">
       <ion-infinite-scroll-content ></ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+</ion-infinite-scroll>
 </ion-content>

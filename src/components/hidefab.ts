@@ -22,8 +22,8 @@ export class HideFabDirective {
 
     ngOnInit(){
         // this.header.parentElement.clientHeight;
-      this.headerHeight = this.fab.clientHeight;
-     // this.renderer.setElementStyle(this.fab,'webkitTransition','top 500ms');
+     // this.headerHeight = this.fab.clientHeight;
+      //  this.renderer.setElementStyle(this.fab,'display','none');
        this.scrollContent = this.element.nativeElement.getElementsByClassName('scroll-content')[0];
          this.renderer.setElementStyle(this.scrollContent,'webkitTransition','display : none');
     }
@@ -31,8 +31,8 @@ export class HideFabDirective {
     onContentScroll(event){
         console.log(event); 
              if(event.scrollTop > 56){
-        //   this.renderer.setElementStyle(this.fab.nativeElement,'display','none');
-          this.renderer.setElementStyle(this.scrollContent,'display','none');
+         //  this.renderer.setElementStyle(this.fab,'display','none');
+         // this.renderer.setElementStyle(this.scrollContent,'display','none');
         }
     }
 }

@@ -21,6 +21,7 @@
 </ion-header>
 
 <ion-content no-bounce class="home-content" >
+  <!--<accordion></accordion>-->
    <super-tabs *ngIf="tabsLoaded" no-shadow id="mainTabs"  [selectedTabIndex]="tabIndex"  [config]="{ sideMenu: 'left' }" scrollTabs [toolbarColor]="toolbarColor" [indicatorColor]="toolbarColor" badgeColor="yellow" (tabSelect)="onTabSelect($event)" >
       <super-tab [root]="page1" [rootParams]="idiom3" [title]="showTitles? 'Trending' : ''" [icon]="showIcons? 'trending-up' : ''" id={{tabdata[0].id}} ></super-tab>
       <super-tab [root]="page3" [rootParams]="idiom3" [title]="showTitles? 'Emotions' : ''" [icon]="showIcons? 'trending-up' : ''" id={{tabdata[1].id}}></super-tab>

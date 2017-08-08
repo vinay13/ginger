@@ -57,6 +57,7 @@ import { EllipsisPipe } from '../components/ellipses.pipe';
 //Directive
 import {HideHeaderDirective} from '../components/hideheader';
 import {HideFabDirective} from '../components/hidefab';
+import {AccordionComponent} from '../components/accordion';
 
 //other imports
 import { StatusBar } from '@ionic-native/status-bar';
@@ -95,7 +96,8 @@ import { FilePath } from '@ionic-native/file-path';
     EllipsisPipe,
     ErrorPage,
     HideHeaderDirective,
-    HideFabDirective
+    HideFabDirective,
+    AccordionComponent
   ],
   imports: [
     HttpModule,
