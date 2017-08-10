@@ -57,7 +57,7 @@ import { EllipsisPipe } from '../components/ellipses.pipe';
 //Directive
 import {HideHeaderDirective} from '../components/hideheader';
 import {HideFabDirective} from '../components/hidefab';
-import {AccordionComponent} from '../components/accordion';
+import {AccordionComponent} from '../components/accordion/accordion';
 
 //other imports
 import { StatusBar } from '@ionic-native/status-bar';

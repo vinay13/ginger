@@ -48,9 +48,9 @@ export class Page3Page {
     public tabcat(){
      
          this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[1].id); },
+                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,1498280399797); },
                                 (err) => { console.log(err);},
-                                () => { console.log('tabdata',this.tabdata[2].id)})
+                                () => { console.log('tabdata',this.tabdata[1].id)})
     }
 
     public tabIddata;
@@ -67,21 +67,18 @@ export class Page3Page {
   ng_class;
   click_func= "EmotionClicked" ;
   textonGIFs(){
-let click_func;
-      console.log('text1',this.tabIddata[0]['text']);
-      console.log('text2',this.tabIddata[0].text);
-    if(this.tabIddata[0].text != '' && this.tabIddata[0]['text']){
-    
-        this.ng_class =  'wrapper';
-     
-    }
-    else{
-      this.ng_class = 'wrapper2';
-
-    }
+  let click_func;
+    //   console.log('text1',this.tabIddata[0]['text']);
+    //   console.log('text2',this.tabIddata[0].text);
+    // if(this.tabIddata[0].text != '' && this.tabIddata[0]['text']){
+    //     this.ng_class =  'wrapper';
+    // }
+    // else{
+    //   this.ng_class = 'wrapper2';
+    // }
   }
 
-    EmotionClicked(tag){
+  EmotionClicked(tag){
       console.log('tag',tag);
       console.log('idiom',this.selectedIdiom);
       this.rootNavCtrl.push(SearchResultComponent,{
@@ -90,11 +87,11 @@ let click_func;
       });
   }
 
-   UploadviaWeb(){
+  UploadviaWeb(){
       this.cs.showLoader();
       this.rootNavCtrl.push(UploadComponent);
       this.cs.hideLoader();
-    }
+  }
 
   checkUserLogin(){
        let token = localStorage.getItem('access_token');
@@ -105,4 +102,5 @@ let click_func;
         this.rootNavCtrl.push(LoginPage);
       }
   }
+
 }

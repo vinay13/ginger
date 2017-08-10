@@ -124,6 +124,7 @@ idiomdict;
         'idiom': this.selectedIdiom
     });  
   }
+
   else{
       this.navCtrl.push(ProfileComponent,{
         'idiom': this.selectedIdiom

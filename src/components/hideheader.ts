@@ -1,5 +1,6 @@
 import { Directive, Component,Input,ElementRef,Renderer } from '@angular/core';
 import {NavController} from 'ionic-angular';
+
 @Directive({
     selector: '[hide-header]',
     host : { 
