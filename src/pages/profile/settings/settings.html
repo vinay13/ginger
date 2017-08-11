@@ -25,14 +25,9 @@
                 <ion-toggle checked="false" ></ion-toggle>
             </ion-item>
 
-           <accordion-page></accordion-page>
-           <!--<accordion-page></accordion-page>-->
+           <accordion-page [inputHeader]="'About'" [inputContent]="'About content here...'"></accordion-page>
+           <accordion-page [inputHeader]="'Privacy Policy'" [inputContent]="'privacy policy content here...'"></accordion-page>
            
-        
-            <ion-item class="list-item-style">
-                Privacy Policy
-            </ion-item>
-
             <ion-item class="list-item-style" (click)="TOSfunc()">
                 Terms of Service
             </ion-item>

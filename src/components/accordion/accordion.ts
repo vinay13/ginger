@@ -9,7 +9,8 @@ import { Component,Input,OnInit,ViewChild,Renderer} from '@angular/core';
 export class AccordionComponent implements OnInit{
 
     @ViewChild('cc') cardContent : any;
-    // @Input('inputHeader') inputHeader :any;
+    @Input('inputHeader') inputHeader :any;
+    @Input('inputContent') inputContent :any;
     accordionExpanded = false;
     constructor(public renderer : Renderer){}
 

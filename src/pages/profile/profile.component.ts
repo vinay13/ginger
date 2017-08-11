@@ -21,6 +21,7 @@ export class ProfileComponent{
     xyz = "contain";
     lessdata;
     LessData;
+    abcheight;
     constructor(private navCtrl : NavController,
                 private navparams : NavParams,
                 private _proServ : ProfileService,

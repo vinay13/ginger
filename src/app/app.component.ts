@@ -13,6 +13,7 @@ import { Deeplinks } from '@ionic-native/deeplinks';
 // import {NavController} from 'ionic-angular';
 //import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { Network } from '@ionic-native/network';
+// import { Push, PushObject, PushOptions } from '@ionic-native/push';
 
 @Component({
   templateUrl: 'app.html',
@@ -30,7 +31,7 @@ export class MyApp {
               public toastCtrl : ToastController,
               public _loginserv : LoginService,
                public network : Network,
-               private deeplinks : Deeplinks
+               private deeplinks : Deeplinks,
              ){
                 platform.ready().then(() => {
                 statusBar.styleDefault();
@@ -53,7 +54,15 @@ export class MyApp {
 	            console.log('Successfully routed', match);
 	               }, (nomatch) => {
 	            console.log('Unmatched Route', nomatch);
-	            });
+            });
+            
+
+    // this.push.register().then((t: PushToken) => {
+    //     return this.push.saveToken(t);
+    //  }).then((t: PushToken) => {
+    //  console.log('Token saved:', t.token);
+    // });
+    // }
 	    
    });
 

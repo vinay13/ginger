@@ -68,6 +68,27 @@ import { Facebook } from '@ionic-native/facebook';
 import { AppRate } from '@ionic-native/app-rate';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { FilePath } from '@ionic-native/file-path';
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
+
+
+// const cloudSettings: CloudSettings = {
+//   'core': {
+//     'app_id': '700193',
+//   },
+//   'push': {
+//     'sender_id': '802025194036',
+//     'pluginConfig': {
+//       'ios': {
+//         'badge': true,
+//         'sound': true
+//       },
+//       'android': {
+//         'iconColor': '#343434'
+//       }
+//     }
+//   }
+// };
 
 @NgModule({
   declarations: [
@@ -104,6 +125,7 @@ import { FilePath } from '@ionic-native/file-path';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     SuperTabsModule.forRoot(),
+    CloudModule.forRoot(CloudSettings),
     MasonryModule,
     
   ],
@@ -156,7 +178,8 @@ import { FilePath } from '@ionic-native/file-path';
     Keyboard,
     AppRate,
     AppRateService,
-    Deeplinks
+    Deeplinks,
+    Push
   ]
 })
 

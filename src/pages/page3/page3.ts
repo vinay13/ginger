@@ -68,14 +68,14 @@ export class Page3Page {
   click_func= "EmotionClicked" ;
   textonGIFs(){
   let click_func;
-    //   console.log('text1',this.tabIddata[0]['text']);
-    //   console.log('text2',this.tabIddata[0].text);
-    // if(this.tabIddata[0].text != '' && this.tabIddata[0]['text']){
-    //     this.ng_class =  'wrapper';
-    // }
-    // else{
-    //   this.ng_class = 'wrapper2';
-    // }
+      console.log('text1',this.tabIddata[0]['text']);
+      console.log('text2',this.tabIddata[0].text);
+    if(this.tabIddata[0].text != '' && this.tabIddata[0]['text']){
+        this.ng_class =  'wrapper';
+    }
+    else{
+      this.ng_class = 'wrapper2';
+    }
   }
 
   EmotionClicked(tag){
