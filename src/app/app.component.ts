@@ -13,7 +13,9 @@ import { Deeplinks } from '@ionic-native/deeplinks';
 // import {NavController} from 'ionic-angular';
 //import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { Network } from '@ionic-native/network';
-// import { Push, PushObject, PushOptions } from '@ionic-native/push';
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 @Component({
   templateUrl: 'app.html',
@@ -32,6 +34,7 @@ export class MyApp {
               public _loginserv : LoginService,
                public network : Network,
                private deeplinks : Deeplinks,
+               public push : Push
              ){
                 platform.ready().then(() => {
                 statusBar.styleDefault();
@@ -64,6 +67,17 @@ export class MyApp {
     // });
     // }
 	    
+      this.push.hasPermission()
+          .then((res: any) => {
+
+            if(res.isEnabled) {
+              alert('We have permission to send push notifications');
+              } else{
+              alert('We do not have permission to send push notifications');
+              }
+            });
+      this.registerDevice();
+
    });
 
 
@@ -104,6 +118,18 @@ export class MyApp {
     }
 
 
+
+    registerDevice(){
+        const options: PushOptions = {
+        android: {
+             senderID: '802025194036'
+            }
+    } 
+    const pushObject: PushObject = this.push.init(options);
+    pushObject.on('registration').subscribe((registration: any) =>{ alert( registration.registrationId); console.log('registration',registration)});
+    pushObject.on('notification').subscribe((notification: any) => console.log('Received a notification', notification));
+}
+  
   navSignup(res){
     if(res.inactive == 'true' ){
         this.rootNavCtrl.push(SignupComponent);

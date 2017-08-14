@@ -36,8 +36,9 @@ import { Deeplinks } from '@ionic-native/deeplinks';
 //custom component
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { NoInternetComponent } from '../components/noInternet/noInternet.component';
-import { TOScomponent } from '../components/termsofservice/tos.ts';
+import { TOScomponent } from '../components/termsofservice/tos';
 import { ErrorPage } from '../components/errorpage';
+// import { PushNotification } from '../components/pushnotification';
 
 //import services 
 import {HomeService} from '../services/home.service';
@@ -49,7 +50,6 @@ import {CustomService} from '../services/custom.service';
 import {LoginService} from '../services/login.service';
 import {NetworkService} from '../services/network.service';
 import {AppRateService} from '../services/apprate.service';
-
 
 //pipe
 import { EllipsisPipe } from '../components/ellipses.pipe';
@@ -71,24 +71,23 @@ import { FilePath } from '@ionic-native/file-path';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 
-
-// const cloudSettings: CloudSettings = {
-//   'core': {
-//     'app_id': '700193',
-//   },
-//   'push': {
-//     'sender_id': '802025194036',
-//     'pluginConfig': {
-//       'ios': {
-//         'badge': true,
-//         'sound': true
-//       },
-//       'android': {
-//         'iconColor': '#343434'
-//       }
-//     }
-//   }
-// };
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': '700193',
+  },
+  'push': {
+    'sender_id': '802025194036',
+    'pluginConfig': {
+      'ios': {
+        'badge': true,
+        'sound': true
+      },
+      'android': {
+        'iconColor': '#343434'
+      }
+    }
+  }
+};
 
 @NgModule({
   declarations: [
@@ -125,7 +124,7 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     SuperTabsModule.forRoot(),
-    CloudModule.forRoot(CloudSettings),
+    CloudModule.forRoot(cloudSettings),
     MasonryModule,
     
   ],
