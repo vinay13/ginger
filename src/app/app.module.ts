@@ -50,6 +50,7 @@ import {CustomService} from '../services/custom.service';
 import {LoginService} from '../services/login.service';
 import {NetworkService} from '../services/network.service';
 import {AppRateService} from '../services/apprate.service';
+import {NotificationService} from '../services/notification.service';
 
 //pipe
 import { EllipsisPipe } from '../components/ellipses.pipe';
@@ -76,7 +77,7 @@ const cloudSettings: CloudSettings = {
     'app_id': '700193',
   },
   'push': {
-    'sender_id': '802025194036',
+    'sender_id': '835303737306',
     'pluginConfig': {
       'ios': {
         'badge': true,
@@ -165,6 +166,7 @@ const cloudSettings: CloudSettings = {
     Configuration,
     CustomService,
     NetworkService,
+    NotificationService,
     File,
     FileChooser,
     FilePath,

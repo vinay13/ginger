@@ -127,6 +127,6 @@
         <variable name="DEEPLINK_5_HOST" value=" " />
     </plugin>
     <plugin name="phonegap-plugin-push" spec="~1.10.5">
-        <variable name="SENDER_ID" value="802025194036" />
+        <variable name="SENDER_ID" value="835303737306" />
     </plugin>
 </widget>

@@ -16,6 +16,7 @@ import { Network } from '@ionic-native/network';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import {NotificationService} from '../services/notification.service';
 
 @Component({
   templateUrl: 'app.html',
@@ -34,11 +35,13 @@ export class MyApp {
               public _loginserv : LoginService,
                public network : Network,
                private deeplinks : Deeplinks,
-               public push : Push
+               public push : Push,
+               public _notiServ : NotificationService
              ){
                 platform.ready().then(() => {
                 statusBar.styleDefault();
                 splashScreen.hide();
+                this.checkLogin();
                 localStorage.setItem('lessdata','false');
                 localStorage.setItem('tabIndex','0');
                 if(localStorage.getItem('idiom') === null){
@@ -117,12 +120,10 @@ export class MyApp {
         })
     }
 
-
-
     registerDevice(){
         const options: PushOptions = {
         android: {
-             senderID: '802025194036'
+             senderID: '835303737306'
             }
     } 
     const pushObject: PushObject = this.push.init(options);
@@ -134,6 +135,16 @@ export class MyApp {
     if(res.inactive == 'true' ){
         this.rootNavCtrl.push(SignupComponent);
         alert('Email is not verified..');
+    }
+  }
+
+  checkLogin(){
+    if(localStorage.getItem('access_token') != null)
+    {
+      console.log('user is loggedIn');
+    }
+    else{
+      console.log('user is not loggedIn');
     }
   }
 }
