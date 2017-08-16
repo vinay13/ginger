@@ -33,6 +33,10 @@ export class SettingsComponent {
         localStorage.setItem('lessdata','true');
     }
 
+    poptoHome(){
+        this.navCtrl.setRoot(AboutPage);
+    }
+
     device:number = 1;
     ToggleChange(e:Event) {
         

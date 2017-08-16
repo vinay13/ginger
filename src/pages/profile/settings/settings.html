@@ -1,8 +1,9 @@
 <ion-header>
-    <ion-navbar class="navbar">
-        <ion-title>
-            Settings
-        </ion-title>
+    <ion-navbar class="navbar" hideBackButton>
+         <button class="customIcon" ion-button icon-only (click)="poptoHome()">
+            <ion-icon  name="arrow-back"></ion-icon>
+        </button>
+        <span class="settings-title"> Settings </span>
     </ion-navbar>
 </ion-header>
 
