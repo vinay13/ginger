@@ -71,6 +71,9 @@ import { FileChooser } from '@ionic-native/file-chooser';
 import { FilePath } from '@ionic-native/file-path';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
+import { OneSignal } from '@ionic-native/onesignal';
+
+
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -180,6 +183,7 @@ const cloudSettings: CloudSettings = {
     AppRate,
     AppRateService,
     Deeplinks,
+    OneSignal,
     Push
   ]
 })

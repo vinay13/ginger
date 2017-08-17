@@ -17,6 +17,8 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {NotificationService} from '../services/notification.service';
+import { OneSignal } from '@ionic-native/onesignal';
+
 
 @Component({
   templateUrl: 'app.html',
@@ -36,12 +38,39 @@ export class MyApp {
                public network : Network,
                private deeplinks : Deeplinks,
                public push : Push,
+               public oneSignal : OneSignal,
                public _notiServ : NotificationService
              ){
                 platform.ready().then(() => {
                 statusBar.styleDefault();
                 splashScreen.hide();
                 this.checkLogin();
+
+
+                //notification oneSignal test
+
+                this.oneSignal.startInit('945f0c61-d94c-429a-b1a2-016724b4cc06', '802921815833');
+
+this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+
+this.oneSignal.handleNotificationReceived().subscribe(() => {
+ // do something when notification is received
+ alert('notification alert');
+});
+                      
+var notificationOpenedCallback = function(jsonData) {
+console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+};
+
+window['plugins'].OneSignal
+.startInit('945f0c61-d94c-429a-b1a2-016724b4cc06', '802921815833')
+.handleNotificationOpened(notificationOpenedCallback)
+.endInit();
+
+                //notification test end here
+
+
+
                 localStorage.setItem('lessdata','false');
                 localStorage.setItem('tabIndex','0');
                 if(localStorage.getItem('idiom') === null){
@@ -62,7 +91,6 @@ export class MyApp {
 	            console.log('Unmatched Route', nomatch);
             });
             
-
     // this.push.register().then((t: PushToken) => {
     //     return this.push.saveToken(t);
     //  }).then((t: PushToken) => {
@@ -79,7 +107,7 @@ export class MyApp {
               alert('We do not have permission to send push notifications');
               }
             });
-      this.registerDevice();
+      // this.registerDevice();
 
    });
 
@@ -120,17 +148,31 @@ export class MyApp {
         })
     }
 
-    registerDevice(){
-        const options: PushOptions = {
-        android: {
-             senderID: '835303737306'
-            }
-    } 
-    const pushObject: PushObject = this.push.init(options);
-    pushObject.on('registration').subscribe((registration: any) =>{ alert( registration.registrationId); console.log('registration',registration)});
-    pushObject.on('notification').subscribe((notification: any) => console.log('Received a notification', notification));
-}
+//     registerDevice(){
+//         const options: PushOptions = {
+//         android: {
+//              senderID: '835303737306'
+//             }
+//     } 
+//     const pushObject: PushObject = this.push.init(options);
+//     pushObject.on('registration').subscribe((registration: any) =>{ alert( registration.registrationId); console.log('registration',registration); this.notyServ(registration.registrationId)});
+//     pushObject.on('notification').subscribe((notification: any) => console.log('Received a notification', notification));
+// }
   
+
+  notyServ(deviceId){
+    let body = {
+                 "deviceId":"1",
+                 "os":"android",
+                 "osVersion":"5.1",
+                 "deviceToken": deviceId
+      }
+    this._notiServ.notificationDeviceId(body)
+            .subscribe( (data) => { console.log('notyData',data)},
+                      (err) => { console.log(err)}
+      )
+  }
+
   navSignup(res){
     if(res.inactive == 'true' ){
         this.rootNavCtrl.push(SignupComponent);

@@ -12,7 +12,7 @@ export class NotificationService{
     constructor(private http : Http){}
     golaurl = 'https://goladev.mobigraph.co/ginger/';  
 
-    public notificationDeviceId(){
+    public notificationDeviceId(body){
         let headers = new Headers({
             'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',
             'Content-Type' : 'application/json',
@@ -22,14 +22,7 @@ export class NotificationService{
              headers : headers
         });
 
-        let body = {
-                 "deviceId":"1",
-                 "os":"android",
-                 "osVersion":"5.1",
-                 "deviceToken":"Asdfasdf"
-        }
-
-        return this.http.post(this.golaurl+'user/device',options)
+        return this.http.post(this.golaurl+'user/device',body,options)
                   .map(this.extractData)
                   .catch(this.handleError)
     }
