@@ -47,28 +47,7 @@ export class MyApp {
                 this.checkLogin();
 
 
-                //notification oneSignal test
-
-                this.oneSignal.startInit('945f0c61-d94c-429a-b1a2-016724b4cc06', '802921815833');
-
-this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
-
-this.oneSignal.handleNotificationReceived().subscribe(() => {
- // do something when notification is received
- alert('notification alert');
-});
-                      
-var notificationOpenedCallback = function(jsonData) {
-console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-};
-
-window['plugins'].OneSignal
-.startInit('945f0c61-d94c-429a-b1a2-016724b4cc06', '802921815833')
-.handleNotificationOpened(notificationOpenedCallback)
-.endInit();
-
-                //notification test end here
-
+               
 
 
                 localStorage.setItem('lessdata','false');
@@ -171,6 +150,32 @@ window['plugins'].OneSignal
             .subscribe( (data) => { console.log('notyData',data)},
                       (err) => { console.log(err)}
       )
+  }
+
+
+  workingOneSignalNoti(){
+     //notification oneSignal test
+
+                this.oneSignal.startInit('945f0c61-d94c-429a-b1a2-016724b4cc06', '802921815833');
+
+this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+
+this.oneSignal.handleNotificationReceived().subscribe(() => {
+ // do something when notification is received
+ alert('notification alert');
+});
+                      
+var notificationOpenedCallback = function(jsonData) {
+console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+};
+
+window['plugins'].OneSignal
+.startInit('945f0c61-d94c-429a-b1a2-016724b4cc06', '802921815833')
+.handleNotificationOpened(notificationOpenedCallback)
+.endInit();
+
+    //notification test end here
+
   }
 
   navSignup(res){
