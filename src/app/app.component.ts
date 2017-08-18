@@ -87,6 +87,7 @@ export class MyApp {
               }
             });
       // this.registerDevice();
+      this.workingOneSignalNoti();
 
    });
 
