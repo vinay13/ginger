@@ -32,6 +32,7 @@ import { Keyboard } from '@ionic-native/keyboard';
 import { Clipboard } from '@ionic-native/clipboard';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { Deeplinks } from '@ionic-native/deeplinks';
+import { Device } from '@ionic-native/device';
 
 //custom component
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
@@ -184,7 +185,8 @@ const cloudSettings: CloudSettings = {
     AppRateService,
     Deeplinks,
     OneSignal,
-    Push
+    Push,
+    Device
   ]
 })
 

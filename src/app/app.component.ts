@@ -18,6 +18,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {NotificationService} from '../services/notification.service';
 import { OneSignal } from '@ionic-native/onesignal';
+import { Device } from '@ionic-native/device';
 
 
 @Component({
@@ -39,17 +40,14 @@ export class MyApp {
                private deeplinks : Deeplinks,
                public push : Push,
                public oneSignal : OneSignal,
-               public _notiServ : NotificationService
+               public _notiServ : NotificationService,
+               public device : Device
              ){
                 platform.ready().then(() => {
                 statusBar.styleDefault();
                 splashScreen.hide();
                 this.checkLogin();
-
-
-               
-
-
+                this.notyServ('122');
                 localStorage.setItem('lessdata','false');
                 localStorage.setItem('tabIndex','0');
                 if(localStorage.getItem('idiom') === null){
@@ -81,9 +79,9 @@ export class MyApp {
           .then((res: any) => {
 
             if(res.isEnabled) {
-              alert('We have permission to send push notifications');
+              console.log('We have permission to send push notifications');
               } else{
-              alert('We do not have permission to send push notifications');
+              console.log('We do not have permission to send push notifications');
               }
             });
       // this.registerDevice();
@@ -91,8 +89,6 @@ export class MyApp {
 
    });
 
-
-   
         let internetConnected = true;
         let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
             
@@ -139,41 +135,39 @@ export class MyApp {
 //     pushObject.on('notification').subscribe((notification: any) => console.log('Received a notification', notification));
 // }
   
-
   notyServ(deviceId){
-    let body = {
-                 "deviceId":"1",
-                 "os":"android",
-                 "osVersion":"5.1",
-                 "deviceToken": deviceId
-      }
-    this._notiServ.notificationDeviceId(body)
-            .subscribe( (data) => { console.log('notyData',data)},
-                      (err) => { console.log(err)}
-      )
-  }
 
+    let body = {
+                 "deviceId":this.device.version,
+                 "os": this.device.platform,
+                 "osVersion":this.device.uuid,
+                 "deviceToken": deviceId
+    }
+
+    // this._notiServ.notificationDeviceId(body)
+    //         .subscribe( (data) => { console.log('notyData',data)},
+    //                   (err) => { console.log(err)}
+    //   )
+  }
 
   workingOneSignalNoti(){
      //notification oneSignal test
-
-                this.oneSignal.startInit('945f0c61-d94c-429a-b1a2-016724b4cc06', '802921815833');
-
-this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
-
-this.oneSignal.handleNotificationReceived().subscribe(() => {
- // do something when notification is received
- alert('notification alert');
-});
+     // this.oneSignal.registerForPushNotifications
+      this.oneSignal.startInit('945f0c61-d94c-429a-b1a2-016724b4cc06', '802921815833');
+      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+      this.oneSignal.handleNotificationReceived().subscribe(() => {
+      // do something when notification is received
+      //alert('notification alert');
+  });
                       
-var notificationOpenedCallback = function(jsonData) {
-console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-};
+  var notificationOpenedCallback = function(jsonData) {
+  console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+  };
 
-window['plugins'].OneSignal
-.startInit('945f0c61-d94c-429a-b1a2-016724b4cc06', '802921815833')
-.handleNotificationOpened(notificationOpenedCallback)
-.endInit();
+  window['plugins'].OneSignal
+  .startInit('945f0c61-d94c-429a-b1a2-016724b4cc06', '802921815833')
+  .handleNotificationOpened(notificationOpenedCallback)
+  .endInit();
 
     //notification test end here
 
