@@ -19,11 +19,10 @@ export class IdiomComponent{
 
     public idioms = [
                         {"id":1 , "name": "Hindi"},
-                        
                         {"id":2 , "name": "Tamil"},
                         {"id":3 , "name": "Telugu"},
-                        
-                        {"id":4 , "name": "Malayalam"}
+                        {"id":4 , "name": "Kannada"},
+                        {"id":5 , "name": "Malayalam"}
                     ];
 
      public selectedIndex: number = -1;
