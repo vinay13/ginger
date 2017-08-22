@@ -60,6 +60,7 @@ import { EllipsisPipe } from '../components/ellipses.pipe';
 import {HideHeaderDirective} from '../components/hideheader';
 import {HideFabDirective} from '../components/hidefab';
 import {AccordionComponent} from '../components/accordion/accordion';
+import {PreLoaderDirective} from '../components/preloader';
 
 //other imports
 import { StatusBar } from '@ionic-native/status-bar';
@@ -122,7 +123,8 @@ const cloudSettings: CloudSettings = {
     ErrorPage,
     HideHeaderDirective,
     HideFabDirective,
-    AccordionComponent
+    AccordionComponent,
+    PreLoaderDirective
   ],
   imports: [
     HttpModule,

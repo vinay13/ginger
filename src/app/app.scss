@@ -135,3 +135,34 @@ $transparent : transparent;
     padding: 60px;
     padding-top: 200px;
 }
+
+/* Place holder demo */
+.placeholder-box {
+  border-radius: 5px;
+  margin-bottom: 12px; }
+
+.placeholder-1 {
+  background: linear-gradient(45deg, #FF8BB3 0%, #FDF18E 100%);
+  height: 200px; }
+
+.placeholder-2 {
+  background: linear-gradient(45deg, #DFC3FD 0%, #8EC5FD 100%);
+  height: 300px; }
+
+.placeholder-3 {
+  background: linear-gradient(45deg, #84F9B1 0%, #8FD3F5 100%);
+  height: 250px;
+  border-radius: 5px;
+  margin-bottom: 12px; }
+
+.placeholder-4 {
+  background: linear-gradient(45deg, #FFBBC7 0%, #FF6ABC 100%);
+  height: 250px; }
+
+.placeholder-5 {
+  background: linear-gradient(45deg, #9B80F7 0%, #D9CEFF 100%);
+  height: 160px; }
+
+.placeholder-6 {
+  background: linear-gradient(45deg, #F0FF8E 0%, #FEFFDA 100%);
+  height: 190px; }
