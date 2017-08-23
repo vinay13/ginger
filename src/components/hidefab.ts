@@ -31,10 +31,17 @@ export class HideFabDirective {
 
     onContentScroll(event){
         console.log(event); 
-             if(event.scrollTop > 16){
+             if(event.scrollTop > 56){
            //  this.renderer.setElementStyle(this.fab,'display','none');
              this.renderer.setElementStyle(this.element.nativeElement.firstChild,'visibility','hidden');
-            //alert('fab display none')
-        }
+           
+             }
+            // if(event.deltaY < -56 ){
+            //  this.renderer.setElementStyle(this.element.nativeElement.firstChild,'visibility','visible');
+            // }
+
+            if(!event.scrollTop ){
+             this.renderer.setElementStyle(this.element.nativeElement.firstChild,'visibility','visible');
+            }
     }
 }
