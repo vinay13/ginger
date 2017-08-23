@@ -20,12 +20,21 @@
             <img class="gifpin" src={{gifs.url}}>
           </div>
     </div>-->
-       <masonry class="grid" [options]="{ transitionDuration: '0.0001s' , gutter : 4 }" [useImagesLoaded]="true"  >
+       <!--<masonry class="grid" [options]="{ transitionDuration: '0.0001s' , gutter : 4 }" [useImagesLoaded]="true"  >
           <masonry-brick class="brick" *ngFor="let gifs of searchedGifs"  (click)="viewGif(gifs)" >
-           <img *ngIf="!LessData" [src]="gifs.lowResUrl" width={{gifs.lowResWidth}} height={{gifs.lowResHeight}}/>
+           <img *ngIf="!LessData" [img-preloader]="gifs.lowResUrl" width={{gifs.lowResWidth}} img-height={{gifs.lowResHeight}}/>
            <img *ngIf="LessData" [src]="gifs.thumbNailUrl" width={{gifs.lowResWidth}} height={{gifs.lowResHeight}}/>
          </masonry-brick> 
-       </masonry>
+       </masonry>-->
+
+
+        <div class="grid" >
+          <div *ngFor="let gifs of searchedGifs"  (click)="viewGif(gifs)">
+             <img *ngIf="!LessData" [img-preloader]="gifs.lowResUrl" width={{gifs.lowResWidth}} height="gifs.lowResHeight"/>
+             <!--<ion-img *ngIf="LessData" [src]="gifs.thumbNailUrl" width={{gifs.lowResWidth}} img-height={{gifs.lowResHeight}}></ion-img>-->
+          </div>
+       </div>
+       
 
  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
       <ion-infinite-scroll-content></ion-infinite-scroll-content>

@@ -16,10 +16,16 @@ page-search-result{
         display: inline-block;
       //  margin: 0 auto;
     }
+   div .grid{
+        column-count: 2;
+        display: inline-block;
+      //  margin: 0 auto;
+    }
 
     .brick{
       width: 47%;
       object-fit: contain;
+      margin : -1px -3px -9px -9px;
       }
       img{
        width: 100%;

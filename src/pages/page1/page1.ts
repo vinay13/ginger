@@ -1,4 +1,4 @@
-import { Component,ViewChild,Input } from '@angular/core';
+import { Component,ViewChild,Input,ElementRef,Renderer } from '@angular/core';
 import { NavController, NavParams , ModalController , Events  } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
@@ -25,7 +25,10 @@ import { getScrollListener } from './scroll-listener';
 
 @Component({
   selector: 'page-page1',
-  templateUrl: 'page1.html'
+  templateUrl: 'page1.html',
+     host : { 
+        '(ionScroll)' : 'onContentScroll($event)'
+    }
 })
 
 export class Page1Page {
@@ -40,6 +43,7 @@ export class Page1Page {
     lessdata;
     LessData = false;
     isSelected;
+   //  @Input('fab') fabContent: any;
     constructor(public navCtrl: NavController,
                 public navparams: NavParams,
                 public _homeserv : HomeService,
@@ -47,7 +51,8 @@ export class Page1Page {
                 public platform : Platform,
                 public fileChooser : FileChooser,
                 public modalCtrl : ModalController,
-                public events : Events){
+                public events : Events,
+                public renderer : Renderer){
                              
                   this.rootNavCtrl = this.navparams.get('rootNavCtrl');
                   this.newselectedIdiom = this.navparams.data;
@@ -248,5 +253,21 @@ currentPage = 0;
      () => console.log('Next Page Loading completed')
      );
   } 
+
+
+
+
+
+
+  // onContentScroll(event){
+  //       console.log(event); 
+  //            if(event.scrollTop > 56){
+  //          //  this.renderer.setElementStyle(this.fab,'display','none');
+  //            this.renderer.setElementStyle(this.fabContent.nativeElement,'display','none');
+  //       }
+  //   }
+
+
+
      
 }
