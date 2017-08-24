@@ -17,7 +17,7 @@ export class PreLoaderDirective  implements OnInit{
   defaultImageHeight:any;
   abc:any;
   // Set an input so the directive can set a default image.
-  @Input() defaultImage : string = 'assets/preloader.gif';
+  @Input() defaultImage : string = 'assets/newloader.png';
   @Input() defaultHeight : string = '100';
 
   ngOnInit() {

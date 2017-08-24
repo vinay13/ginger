@@ -48,7 +48,7 @@ export class SearchService{
 	}
 
     GetGifsSearch(idiom,text,pageno){
-        return this.http.get(this.url + idiom + '/gifs/' + text+"/"+pageno+"/13",this.options)
+        return this.http.get(this.url + idiom + '/gifs/' + text+"/"+pageno+"/25",this.options)
                 .map(this.extractData)
                 .catch(this.handleError)
     }
