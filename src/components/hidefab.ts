@@ -11,9 +11,11 @@ import {NavController} from 'ionic-angular';
 export class HideFabDirective {
 
     //  @ViewChild('fab') fabContent: any;
+
     @Input('fab') fab: any;
     headerHeight;
     scrollContent;
+    recScroll : any;
     constructor(public element : ElementRef,
                 public renderer: Renderer,
                 public navCtrl : NavController)
@@ -32,16 +34,17 @@ export class HideFabDirective {
     onContentScroll(event){
         console.log(event); 
              if(event.scrollTop > 56){
-           //  this.renderer.setElementStyle(this.fab,'display','none');
+             //  this.renderer.setElementStyle(this.fab,'display','none');
              this.renderer.setElementStyle(this.element.nativeElement.firstChild,'visibility','hidden');
-           
+                this.recScroll = event.scrollTop;
              }
-            // if(event.deltaY < -56 ){
-            //  this.renderer.setElementStyle(this.element.nativeElement.firstChild,'visibility','visible');
-            // }
 
-            if(!event.scrollTop ){
+            if(event.directionY === 'up' || event.deltaY < -56 ){
              this.renderer.setElementStyle(this.element.nativeElement.firstChild,'visibility','visible');
             }
+
+            // if(!event.scrollTop){
+            //  this.renderer.setElementStyle(this.element.nativeElement.firstChild,'visibility','visible');
+            // }
     }
 }

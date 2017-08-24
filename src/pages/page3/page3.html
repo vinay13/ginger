@@ -1,4 +1,4 @@
-<ion-content class="home-content" >
+<ion-content class="home-content" hide-fab [fab]="head">
       <masonry class="grid"  [options]="{ transitionDuration: '0.0001s' , gutter :3 }" [useImagesLoaded]="true">
        <masonry-brick class="brick" *ngFor="let item of gifs"   (click)="this[click_func](item.text)" >
          <img *ngIf="!LessData" height="100px" width="245px" img-preloader={{item.lowResUrl}}/>
@@ -9,7 +9,7 @@
         </masonry-brick>
      </masonry>
 
-    <ion-fab right bottom>
+    <ion-fab right bottom #fab>
       <button ion-fab (click)="checkUserLogin()"><ion-icon name="md-add"></ion-icon></button>
     </ion-fab>
 

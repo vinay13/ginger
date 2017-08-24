@@ -30,7 +30,7 @@
 
         <div class="grid" >
           <div *ngFor="let gifs of searchedGifs"  (click)="viewGif(gifs)">
-             <img *ngIf="!LessData" [img-preloader]="gifs.lowResUrl" width={{gifs.lowResWidth}} height="gifs.lowResHeight"/>
+             <img *ngIf="!LessData" [img-preloader]="gifs.lowResWebpUrl || gifs.lowResUrl" width={{gifs.lowResWidth}} height="gifs.lowResHeight"/>
              <!--<ion-img *ngIf="LessData" [src]="gifs.thumbNailUrl" width={{gifs.lowResWidth}} img-height={{gifs.lowResHeight}}></ion-img>-->
           </div>
        </div>
