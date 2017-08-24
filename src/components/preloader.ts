@@ -31,14 +31,13 @@ export class PreLoaderDirective  implements OnInit{
 
 
     console.log('Inside preloader');
-    this.downloadingImage = new Image();  // create image object
+    this.downloadingImage = new Image();  
     //this.downloadingImage.height = "110px";
     this.downloadingImage.onload = () => { //Once image is completed, console.log confirmation and switch our host attribute
       console.log('image downloaded');
       this.finalImage = this.targetSource;  //do the switch 
     }
-    // alert(this.targetHeight);
-  //  this.downloadingImage.height = this.targetHeight;
+   
     this.downloadingImage.src = this.targetSource;
     
   }

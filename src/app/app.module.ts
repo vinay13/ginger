@@ -61,6 +61,7 @@ import {HideHeaderDirective} from '../components/hideheader';
 import {HideFabDirective} from '../components/hidefab';
 import {AccordionComponent} from '../components/accordion/accordion';
 import {PreLoaderDirective} from '../components/preloader';
+import {PlaceholderDirective} from '../components/placeholder';
 
 //other imports
 import { StatusBar } from '@ionic-native/status-bar';
@@ -124,7 +125,8 @@ const cloudSettings: CloudSettings = {
     HideHeaderDirective,
     HideFabDirective,
     AccordionComponent,
-    PreLoaderDirective
+    PreLoaderDirective,
+    PlaceholderDirective
   ],
   imports: [
     HttpModule,
