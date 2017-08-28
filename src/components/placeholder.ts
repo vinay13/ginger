@@ -3,7 +3,10 @@ import {NavController} from 'ionic-angular';
 
 @Directive({
     selector: '[img-placeholder]',
-   
+     host : { 
+         '[attr.src]': 'finalImage',
+        
+    }
   
 })
 

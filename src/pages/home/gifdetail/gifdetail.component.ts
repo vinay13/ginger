@@ -3,7 +3,7 @@ import { PopoverController } from 'ionic-angular';
 import { PopOverComponent } from './popover';
 import { SearchComponent } from '../../search/search.component';
 import { SearchResultComponent } from '../../search/searchResult/search-result.component';
-import { NavController, ToastController , NavParams ,Events} from 'ionic-angular';
+import { Nav,NavController, ToastController , NavParams ,Events} from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { CustomService } from '../../../services/custom.service';
 import { HomeService } from '../../../services/home.service';
@@ -39,7 +39,8 @@ export class GifDetailComponent {
                 private file: File,
                 private clipboard: Clipboard,
                 public navparams : NavParams,
-                public events : Events
+                public events : Events,
+                public nav : Nav
                ){
                     this.gifobject = this.navparams.get('url');
                      this.selectedIdiom = this.navparams.get('idiom') || localStorage.getItem('idiom');
@@ -108,9 +109,11 @@ setBackground(){
 }
  
     poptoHome(){
-        this.navCtrl.setRoot(AboutPage,{
-            'idiom': this.selectedIdiom
-        });
+        // this.navCtrl.setRoot(AboutPage,{
+        //     'idiom': this.selectedIdiom
+        // });
+
+        this.nav.popToRoot();
     }
 
     hidetags = true;

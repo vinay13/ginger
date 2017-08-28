@@ -12,6 +12,7 @@ import { FileChooser } from '@ionic-native/file-chooser';
 import {AppRate} from '@ionic-native/app-rate';
 import { Platform } from 'ionic-angular';
 import { SearchResultComponent } from '../search/searchResult/search-result.component';
+import { MasonryModule,AngularMasonry } from 'angular2-masonry';
 
 @Component({
   selector: 'page-page2',
@@ -37,6 +38,7 @@ export class Page2Page implements OnInit{
     LessData;
     lessdata;
     gifurl;
+     @ViewChild(AngularMasonry) public masonry: AngularMasonry;
     constructor(public navCtrl: NavController, 
                 public navparams: NavParams,
                 public _homeserv : HomeService,
@@ -165,8 +167,17 @@ let click_func;
       });
   }
 
-  ionViewDidEnter(){
-  }
+       public newlayout() {
+        setTimeout(() => {
+            this.masonry._msnry.layout();
+        },1000);
+
+        // console.log('AngularMasonry:', 'Layout');
+    }
+
+    ionViewWillEnter (){
+      this.newlayout();
+    }
 
   
 currentPage = 0;

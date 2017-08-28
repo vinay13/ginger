@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { NavController, NavParams,Events } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { SearchResultComponent } from '../search/searchResult/search-result.component';
 import { LoginPage} from '../login/login.component';
 import { UploadComponent } from '../upload/upload.component';
 import { CustomService } from '../../services/custom.service';
+import { MasonryModule,AngularMasonry } from 'angular2-masonry';
 
 @Component({
   selector: 'page-page3',
@@ -18,6 +19,7 @@ export class Page3Page {
     lessdata;
     LessData;
  // selectedIdiom:any;
+   @ViewChild(AngularMasonry) public masonry: AngularMasonry;
   constructor(public navCtrl: NavController,
                public navParams: NavParams,
                public _homeserv : HomeService,
@@ -102,5 +104,18 @@ export class Page3Page {
         this.rootNavCtrl.push(LoginPage);
       }
   }
+
+    public newlayout() {
+      setTimeout(() => {
+            this.masonry._msnry.layout();
+      },1000);
+
+      // console.log('AngularMasonry:', 'Layout');
+    }
+
+    ionViewWillEnter (){
+      this.newlayout();
+    }
+
 
 }

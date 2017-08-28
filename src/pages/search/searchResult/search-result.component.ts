@@ -48,13 +48,11 @@ export class SearchResultComponent implements OnInit {
                 }  
     } 
 
-    CustomNavRoot(){
-        this.navCtrl.setRoot(AboutPage,{
-                'idiom': this.selectedIdiom
-        });
-
-       // this.navCtrl.push('something-else');
-    }
+    // CustomNavRoot(){
+    //     this.navCtrl.setRoot(AboutPage,{
+    //             'idiom': this.selectedIdiom
+    //     });
+    // }
      
 
     getSearchGifs(item,selectedIdiom){
