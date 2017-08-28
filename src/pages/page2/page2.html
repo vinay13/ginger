@@ -7,8 +7,8 @@
  
     <masonry class="grid" [options]="{ transitionDuration: '0.0001s' , gutter : 4 }" [useImagesLoaded]="true"  >
        <masonry-brick class="brick" *ngFor="let item of gifs"  (click)="this[click_func](item.text)" >
-         <img *ngIf="!LessData" height="100px" width="245px" img-preloader={{item.url}}/>
-         <img *ngIf="LessData" height="100px" width="245px" img-preloader={{item.thumbNailUrl}}/>
+         <img *ngIf="!LessData" height="100px" width="245px" img-placeholder={{item.url}}/>
+         <img *ngIf="LessData" height="100px" width="245px" img-placeholder={{item.thumbNailUrl}}/>
          <div [className]="ng_class">
           <h2>{{item.text}}</h2>
          </div>

@@ -1,8 +1,8 @@
 <ion-content class="home-content" hide-fab [fab]="head">
       <masonry class="grid"  [options]="{ transitionDuration: '0.0001s' , gutter :3 }" [useImagesLoaded]="true">
        <masonry-brick class="brick" *ngFor="let item of gifs"   (click)="this[click_func](item.text)" >
-         <img *ngIf="!LessData" height="100px" width="245px" img-preloader={{item.lowResUrl}}/>
-          <img *ngIf="LessData" height="100px" width="245px" img-preloader={{item.thumbNailUrl}}/>
+         <img *ngIf="!LessData" height="100px" width="245px" img-placeholder={{item.lowResUrl}}/>
+          <img *ngIf="LessData" height="100px" width="245px" img-placeholder={{item.thumbNailUrl}}/>
          <div [className]="ng_class">
           <h2>{{item.text}}</h2>
          </div>
