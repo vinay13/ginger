@@ -70,8 +70,8 @@ export class SearchResultComponent implements OnInit {
     ngOnInit(){
          this.searchItem = this.navparams.get('sitem') || this.navparams.get('tag');
          this.getSearchGifs(this.searchItem,this.selectedIdiom);
-      //  this.searchedGifs = this.navparams.get('relatedgifs');
-      //  console.log('seeergifs',this.searchedGifs);
+         //  this.searchedGifs = this.navparams.get('relatedgifs');
+         //  console.log('seeergifs',this.searchedGifs);
     }
 
     someFunction(event: KeyboardEvent) { 

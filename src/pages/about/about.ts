@@ -154,10 +154,8 @@ idiomdict;
      localStorage.setItem('tabId',ev.id);
      
         this.toolbarColor = this.colors[Math.floor(Math.random() * this.colors.length)];  
-       // this.count += 1; 
-     
-     
-     console.log(ev);
+        // this.count += 1; 
+        console.log(ev);
   }
 
   public tabIddata;
