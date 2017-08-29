@@ -1,5 +1,5 @@
 import {Component,OnInit,Input,ViewChild,Renderer} from '@angular/core';
-import {IonicPage,NavParams,NavController,Events} from 'ionic-angular';
+import {IonicPage,NavParams,NavController,Events,Nav} from 'ionic-angular';
 import {SearchService} from '../../../services/search.service';
 import {CustomService} from '../../../services/custom.service';
 import {GifDetailComponent} from '../../home/gifdetail/gifdetail.component';
@@ -30,7 +30,8 @@ export class SearchResultComponent implements OnInit {
                 private cs : CustomService,
                 private navCtrl : NavController,
                 public events : Events,
-                public renderer : Renderer){ 
+                public renderer : Renderer,
+                public nav : Nav){ 
                 this.selectedIdiom = this.navparams.get('idiom');        
 
                 events.subscribe('lessdata:created', (user) => {
@@ -48,11 +49,13 @@ export class SearchResultComponent implements OnInit {
                 }  
     } 
 
-    // CustomNavRoot(){
-    //     this.navCtrl.setRoot(AboutPage,{
-    //             'idiom': this.selectedIdiom
-    //     });
-    // }
+    CustomNavRoot(){
+        // this.navCtrl.setRoot(AboutPage,{
+        //         'idiom': this.selectedIdiom
+        // });
+        this.nav.popToRoot();
+        this.events.publish('reloadLayout');
+    }
      
 
     getSearchGifs(item,selectedIdiom){

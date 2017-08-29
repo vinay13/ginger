@@ -114,6 +114,7 @@ setBackground(){
         // });
 
         this.nav.popToRoot();
+        this.events.publish('reloadLayout');
     }
 
     hidetags = true;

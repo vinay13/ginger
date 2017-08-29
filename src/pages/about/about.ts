@@ -48,7 +48,7 @@ idiomdict;
 //     this.tabSelect.emit(index);
 //   }
   tabIndex;
-
+ rootPage:any;
   colors =  ["secondary","danger","primary","favcolor1","favcolor2"];
   constructor(public navCtrl: NavController, 
               private navParams: NavParams,
@@ -56,8 +56,8 @@ idiomdict;
               public events: Events,
               public modalCtrl : ModalController) { 
                                
-                  this.selectedIdiom = this.navParams.get('idiom') || localStorage.getItem('idiom');
-                ;
+                  this.selectedIdiom = localStorage.getItem('idiom');  
+                  this.rootPage = AboutPage;
                   console.log(localStorage.getItem('tabIndex'));
               
               if( localStorage.getItem('tabIndex') != null ){

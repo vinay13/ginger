@@ -58,6 +58,12 @@ export class Page1Page {
                   this.newselectedIdiom = this.navparams.data;
                   this.selectedIdiom = this.newselectedIdiom.idiom;
                    
+                   this.events.subscribe('reloadLayout',() => {
+                      //  alert('newLayout called');
+                        this.newlayout();
+                  });
+
+
                 platform.ready().then(() => {
                       this.tabcat();
                  })

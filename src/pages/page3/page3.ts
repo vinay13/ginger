@@ -31,6 +31,11 @@ export class Page3Page {
                   this.selectedIdiom = this.newselectedIdiom.idiom;
                  this.tabcat();
 
+                  this.events.subscribe('reloadLayout',() => {
+                      //  alert('newLayout called');
+                        this.newlayout();
+                  });
+
                 events.subscribe('lessdata:created', (user) => {
                     console.log('Welcome', user);
                     this.lessdata = user;

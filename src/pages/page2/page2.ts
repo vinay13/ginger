@@ -55,7 +55,11 @@ export class Page2Page implements OnInit{
                 this.tabIDD = this.newselectedIdiom.tabid;
                 this.indexx = this.newselectedIdiom.index;
              
-                
+                  this.events.subscribe('reloadLayout',() => {
+                      //  alert('newLayout called');
+                        this.newlayout();
+                  });
+
                 events.subscribe('lessdata:created', (user) => {
                     console.log('Welcome', user);
                     this.lessdata = user;
