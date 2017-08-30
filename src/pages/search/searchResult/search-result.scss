@@ -12,7 +12,7 @@
 page-search-result{
 
     masonry .grid{
-        column-count: 2;
+        // column-count: 2;
         display: inline-block;
       //  margin: 0 auto;
     }
@@ -23,7 +23,7 @@ page-search-result{
     // }
 
     .brick{
-      width: 47%;
+     // width:47%;
       object-fit: contain;
     }
 

@@ -25,7 +25,7 @@
 
 <ion-content class="home-content" hide-fab [fab]="head">
 
-    <masonry class="grid"  [options]="{ transitionDuration: '0.1s' , gutter :3 }" [useImagesLoaded]="true">
+    <masonry class="grid"  [options]="{ transitionDuration: '0.1s' , gutter :4 , percentPosition: true }" [useImagesLoaded]="true">
        <masonry-brick   class="brick" *ngFor="let item of gifs"  (click)="GifsViewviaId(item.gifId)" >
           <!--<div class="placeholder-1 placeholder-box" >
           </div>-->

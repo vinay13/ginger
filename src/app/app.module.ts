@@ -23,6 +23,9 @@ import { Page1Page } from "../pages/page1/page1";
 import { Page2Page } from "../pages/page2/page2";
 import { Page3Page } from "../pages/page3/page3";
 import { Page4Page } from "../pages/page4/page4";
+import { Page5Page } from "../pages/page5/page5";
+import { Page6Page } from "../pages/page6/page6";
+import { Page7Page } from "../pages/page7/page7";
 import { MasonryModule } from 'angular2-masonry';
 // import Masonry from 'masonry-layout'
 //third party imports 
@@ -119,6 +122,9 @@ const cloudSettings: CloudSettings = {
     Page2Page,
     Page3Page,
     Page4Page,
+    Page5Page,
+    Page6Page,
+    Page7Page,
     TOScomponent,
     EllipsisPipe,
     ErrorPage,
@@ -159,6 +165,9 @@ const cloudSettings: CloudSettings = {
     Page2Page,
     Page3Page,
     Page4Page,
+    Page5Page,
+    Page6Page,
+    Page7Page,
     TOScomponent,
     ErrorPage
   ],

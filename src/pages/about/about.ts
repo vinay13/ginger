@@ -1,15 +1,18 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter , ViewChild } from '@angular/core';
 import { IonicPage, NavController,NavParams , Events , ModalController } from 'ionic-angular';
 import { Page1Page } from "../page1/page1";
 import { Page2Page } from "../page2/page2";
 import { Page3Page } from "../page3/page3";
 import { Page4Page } from "../page4/page4";
+import { Page5Page } from "../page5/page5";
+import { Page6Page } from "../page6/page6";
+import { Page7Page } from "../page7/page7";
 import { HomeService } from '../../services/home.service';
 import { IdiomComponent } from '../idiom/idiom.component';
 import { SearchComponent } from '../search/search.component';
 import { LoginPage } from '../login/login.component';
 import { ProfileComponent } from '../profile/profile.component';
-
+import { SuperTabsModule, SuperTabsConfig, SuperTabs } from 'ionic2-super-tabs';
 //import { SuperTabsController } from 'ionic2-super-tabs';
 //import { SuperTabsController } from '../../ionic2-super-tabs/src';
 
@@ -30,6 +33,10 @@ export class AboutPage implements OnInit {
   public page2: any = Page2Page;
   public page3: any = Page3Page;
   public page4: any = Page4Page;
+  public page5: any = Page5Page;
+  public page6: any = Page6Page;
+  public page7: any = Page7Page;
+  @ViewChild(SuperTabs) superTabs: SuperTabs;
 
   showIcons: boolean = false;
   showTitles: boolean = true;
@@ -37,6 +44,7 @@ export class AboutPage implements OnInit {
   title;
   public lang;
   public tabdata;
+  public tabdata2;
   public trendingGIFs: any;
   public gifs: Array<any> = [];
   public selectedIdiom;
@@ -68,10 +76,10 @@ idiomdict;
                   alert(this.tabIndex);
               }
                  
-
+                  //this.tabdata.splice(0,2);
                   //testing
                     this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs; this.tabdata.splice(0,2);this.abcetc(this.tabdata[0].id);this.tabsLoaded = true;    },
+                    .subscribe( (res) => { this.tabdata = res.tabs; this.tabdata2 = res.tabs; this.abcetc(this.tabdata[0].id);this.tabsLoaded = true;    },
                     (err) => { console.log(err)},
                     () => {})
 
@@ -184,6 +192,15 @@ idiomdict;
   }
 
 
+
+// ionViewDidLoad(){
+   
+// }
+
+
+hideToolbar() {
+  this.superTabs.showToolbar(false);
+}
 
   // ngOnInit(): void {
     

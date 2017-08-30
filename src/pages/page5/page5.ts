@@ -1,15 +1,15 @@
-import { Component,ViewChild} from '@angular/core';
+import { Component , ViewChild} from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { SearchResultComponent } from '../search/searchResult/search-result.component';
 import { MasonryModule,AngularMasonry } from 'angular2-masonry';
 
 @Component({
-  selector: 'page-page4',
-  templateUrl: 'page4.html'
+  selector: 'page-page5',
+  templateUrl: 'page5.html'
 })
 
-export class Page4Page {
+export class Page5Page {
    rootNavCtrl: NavController;
    selectedIdiom = localStorage.getItem('idiom');
     @ViewChild(AngularMasonry) public masonry: AngularMasonry;
@@ -24,7 +24,7 @@ export class Page4Page {
     public tabdata;
     public tabcat(){
          this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[2].id);  },
+                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[3].id);  },
                                 (err) => { console.log(err)},
                                 () => { })
     }
@@ -36,7 +36,7 @@ export class Page4Page {
        this._homeserv.getTabDataviaTabId(idiom,tabid,0)
                   .subscribe((res) => {this.tabIddata = res ;this.textonGIFs(); this.gifs = this.tabIddata; },
                   (err) => {console.log(err)},
-                  () => console.log('page3data',this.tabIddata ))
+                  () => console.log('page5data',this.tabIddata ))
         }
 
 
@@ -65,7 +65,6 @@ let click_func;
             'idiom': this.selectedIdiom
       });
   }
-
 
      public newlayout() {
       setTimeout(() => {

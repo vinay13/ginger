@@ -21,7 +21,7 @@ column-count: 2;
 }
 
      masonry .grid{
-        column-count: 2;
+    //    column-count: 2;
       //  margin: 0 auto;
       display: inline-block;
       width:100%;
@@ -32,15 +32,15 @@ column-count: 2;
  
 
       .brick{
-      width: 47%;
+    //  width: 47%;
       object-fit: contain;
    //   background-image:url('https://avatars3.githubusercontent.com/u/497125?v=4&s=88');
      
       }
 
-     .grid{ max-width:1200px}
-      .grid-item { width: 30%; float:left; display: block; padding: 7px;  }
-      .masonryImage img { padding:10px; }
+    //  .grid{ max-width:1200px}
+    //   .grid-item { width: 30%; float:left; display: block; padding: 7px;  }
+    //   .masonryImage img { padding:10px; }
 }
 
 

@@ -152,9 +152,9 @@ export class Page1Page {
     public tabIddata;
     gettabdata(idiom,tabid){
        this.tabIddata = [];
-       //this.cs.showLoader();
+       this.cs.showLoader();
        this._homeserv.getTabDataviaTabId(idiom,tabid,0)
-                  .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata;  this.putinGrid();},
+                  .subscribe((res) => {this.tabIddata = res ; this.cs.hideLoader(); this.gifs = this.tabIddata;  this.putinGrid();},
                   (err) => {console.log(err);},
                   () => console.log('data',this.tabIddata ))
     }

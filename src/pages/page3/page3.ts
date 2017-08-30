@@ -55,7 +55,7 @@ export class Page3Page {
     public tabcat(){
      
          this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,1503387657597); },
+                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[1].id); },
                                 (err) => { console.log(err);},
                                 () => { console.log('tabdata',this.tabdata[1].id)})
     }
@@ -64,11 +64,11 @@ export class Page3Page {
     public gifs;
     gettabdata(idiom,tabid){
        this.tabIddata = [];
-      
+      //  this.cs.showLoader();
        this._homeserv.getTabDataviaTabId(idiom,tabid,0)
-                  .subscribe((res) => {this.tabIddata = res ;this.textonGIFs();  this.gifs = this.tabIddata; },
-                  (err) => {console.log(err);},
-                  () => console.log('page3data',this.tabIddata ))
+                  .subscribe((res) => {this.tabIddata = res;this.textonGIFs();  this.gifs = this.tabIddata; },
+                  (err) => {console.log(err); this.cs.hideLoader();},
+                  () => {console.log('page3data',this.tabIddata);})
     }
 
   ng_class;

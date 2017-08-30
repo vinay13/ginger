@@ -18,7 +18,8 @@ export class CustomService {
 
   public showLoader() {
     this.loading = this.l.create({
-      content: ''
+      content: '',
+      dismissOnPageChange: true
     });
     this.loading.present();
   }

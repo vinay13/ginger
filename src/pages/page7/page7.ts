@@ -1,18 +1,19 @@
-import { Component,ViewChild} from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { SearchResultComponent } from '../search/searchResult/search-result.component';
 import { MasonryModule,AngularMasonry } from 'angular2-masonry';
 
+
 @Component({
-  selector: 'page-page4',
-  templateUrl: 'page4.html'
+  selector: 'page-page7',
+  templateUrl: 'page7.html'
 })
 
-export class Page4Page {
+export class Page7Page {
    rootNavCtrl: NavController;
    selectedIdiom = localStorage.getItem('idiom');
-    @ViewChild(AngularMasonry) public masonry: AngularMasonry;
+   @ViewChild(AngularMasonry) public masonry: AngularMasonry;
    constructor(public navparams : NavParams,
                 public _homeserv : HomeService){
                     this.rootNavCtrl = this.navparams.get('rootNavCtrl');
@@ -24,7 +25,7 @@ export class Page4Page {
     public tabdata;
     public tabcat(){
          this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[2].id);  },
+                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[5].id);  },
                                 (err) => { console.log(err)},
                                 () => { })
     }
@@ -36,14 +37,14 @@ export class Page4Page {
        this._homeserv.getTabDataviaTabId(idiom,tabid,0)
                   .subscribe((res) => {this.tabIddata = res ;this.textonGIFs(); this.gifs = this.tabIddata; },
                   (err) => {console.log(err)},
-                  () => console.log('page3data',this.tabIddata ))
-        }
+                  () => console.log('page5data',this.tabIddata ))
+    }
 
 
   ng_class;
   click_func= "EmotionClicked" ;
   textonGIFs(){
-let click_func;
+  let click_func;
       console.log('text1',this.tabIddata[0]['text']);
       console.log('text2',this.tabIddata[0].text);
     if(this.tabIddata[0].text != '' && this.tabIddata[0]['text']){
@@ -66,7 +67,6 @@ let click_func;
       });
   }
 
-
      public newlayout() {
       setTimeout(() => {
             this.masonry._msnry.layout();
@@ -77,5 +77,5 @@ let click_func;
 
     ionViewWillEnter (){
       this.newlayout();
-    }
+      }
     }
