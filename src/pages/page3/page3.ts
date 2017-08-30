@@ -123,4 +123,27 @@ export class Page3Page {
     }
 
 
+        currentPage = 0;
+ doInfinite(infiniteScroll) {
+
+   this.currentPage = this.currentPage + 1;
+    console.log('currentpage', this.currentPage);
+    // console.log('tabId',this.tabId);
+       this._homeserv.getTabDataviaTabId(this.selectedIdiom,this.tabdata[1].id,this.currentPage).subscribe(data =>
+        {
+          infiniteScroll.complete();
+        //   this.hasMoreData = true;
+        //   this.trendingGIFs = data;
+          this.gifs =  this.gifs.concat(data); 
+      }, 
+    err => {
+      infiniteScroll.complete();
+      this.currentPage -= 1;
+   //   this.onError(err);
+    },
+     () => console.log('Next Page Loading completed')
+     );
+  } 
+
+
 }

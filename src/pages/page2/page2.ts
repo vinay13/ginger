@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component,ViewChild} from '@angular/core';
+import { NavController,Events, NavParams } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { SearchResultComponent } from '../search/searchResult/search-result.component';
+import { LoginPage } from '../login/login.component';
+import { UploadComponent } from '../upload/upload.component';
+import { CustomService} from '../../services/custom.service';
+import { MasonryModule,AngularMasonry } from 'angular2-masonry';
 
 @Component({
   selector: 'page-page2',
@@ -11,9 +15,20 @@ import { SearchResultComponent } from '../search/searchResult/search-result.comp
 export class Page2Page {
    rootNavCtrl: NavController;
    selectedIdiom = localStorage.getItem('idiom');
+  @ViewChild(AngularMasonry) public masonry: AngularMasonry;
    constructor(public navparams : NavParams,
-                public _homeserv : HomeService){
+                public _homeserv : HomeService,
+                public cs : CustomService,
+                public events : Events){
                     this.rootNavCtrl = this.navparams.get('rootNavCtrl');
+
+
+                       this.events.subscribe('reloadLayout',() => {
+                      //  alert('newLayout called');
+                        this.newlayout();
+                  });
+
+
                 //  this.newselectedIdiom = this.navparams.data;
                 //  this.selectedIdiom = this.newselectedIdiom.idiom;
                     this.tabcat();
@@ -63,6 +78,58 @@ let click_func;
             'idiom': this.selectedIdiom
       });
   }
+    UploadviaWeb(){
+      this.cs.showLoader();
+      this.rootNavCtrl.push(UploadComponent);
+      this.cs.hideLoader();
+   }
+
+    checkUserLogin(){
+       let token = localStorage.getItem('access_token');
+      console.log('token',token);
+      if(token != null){
+          this.UploadviaWeb();
+      }else{
+        this.rootNavCtrl.push(LoginPage);
+      }
+  }
+
+    public newlayout() {
+      setTimeout(() => {
+            this.masonry._msnry.layout();
+      },1000);
+
+      // console.log('AngularMasonry:', 'Layout');
+    }
+
+    ionViewWillEnter (){
+      this.newlayout();
+    }
+
+
+
+    currentPage = 0;
+ doInfinite(infiniteScroll) {
+
+   this.currentPage = this.currentPage + 1;
+    console.log('currentpage', this.currentPage);
+    // console.log('tabId',this.tabId);
+       this._homeserv.getTabDataviaTabId(this.selectedIdiom,this.tabdata[6].id,this.currentPage).subscribe(data =>
+        {
+          infiniteScroll.complete();
+        //   this.hasMoreData = true;
+        //   this.trendingGIFs = data;
+          this.gifs =  this.gifs.concat(data); 
+      }, 
+    err => {
+      infiniteScroll.complete();
+      this.currentPage -= 1;
+   //   this.onError(err);
+    },
+     () => console.log('Next Page Loading completed')
+     );
+  } 
+
     }
 
 

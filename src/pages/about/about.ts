@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter , ViewChild } from '@angular/core';
-import { IonicPage, NavController,NavParams , Events , ModalController } from 'ionic-angular';
+import { IonicPage, NavController,NavParams ,Nav,Events , ModalController } from 'ionic-angular';
 import { Page1Page } from "../page1/page1";
 import { Page2Page } from "../page2/page2";
 import { Page3Page } from "../page3/page3";
@@ -62,10 +62,11 @@ idiomdict;
               private navParams: NavParams,
               public _homeserv : HomeService,
               public events: Events,
-              public modalCtrl : ModalController) { 
+              public modalCtrl : ModalController,
+              public nav : Nav) { 
                                
                   this.selectedIdiom = localStorage.getItem('idiom');  
-                  this.rootPage = AboutPage;
+                 
                   console.log(localStorage.getItem('tabIndex'));
               
               if( localStorage.getItem('tabIndex') != null ){
