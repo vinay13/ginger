@@ -56,14 +56,11 @@ export class Page7Page {
   let click_func;
       console.log('text1',this.tabIddata[0]['text']);
       console.log('text2',this.tabIddata[0].text);
-    if(this.tabIddata[0].text != '' && this.tabIddata[0]['text']){
-    
+    if(this.tabIddata[0].tag != '' && this.tabIddata[0]['tag']){
         this.ng_class =  'wrapper';
-     
     }
     else{
       this.ng_class = 'wrapper2';
-
     }
   }
 

@@ -24,7 +24,7 @@ export class SearchResultComponent implements OnInit {
     totalCount;
     lessdata;
     LessData;
-
+    baseUrl = "https://gola-gif-dev-store-cf.xpresso.me/R2luZ2Vy/";
     constructor(private navparams : NavParams,
                 private _searchService : SearchService,
                 private cs : CustomService,
@@ -51,13 +51,12 @@ export class SearchResultComponent implements OnInit {
 
     CustomNavRoot(){
         // this.navCtrl.setRoot(AboutPage,{
-        //         'idiom': this.selectedIdiom
+        // 'idiom': this.selectedIdiom
         // });
         this.nav.popToRoot();
         this.events.publish('reloadLayout');
     }
      
-
     getSearchGifs(item,selectedIdiom){
         this.cs.showLoader();
         console.log('selectedIdiom',this.selectedIdiom);
