@@ -32,7 +32,23 @@ page-search-result{
       height: 100%;
       
       }
+
+    .toolbar .searchbar-md {
+   // padding: 1px 1px 1px 50px !important;
+        width:87%;
+        left:13%;
+    }
+
+    .customIcon{
+        position: absolute;
+    }
+
+    .search-result-bar{
+       // margin-left: 30px;
+    }
 }
+
+
 
 .ios ,.md {
     page-search-result{
