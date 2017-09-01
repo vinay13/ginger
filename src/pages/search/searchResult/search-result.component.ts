@@ -33,7 +33,7 @@ export class SearchResultComponent implements OnInit {
                 public renderer : Renderer,
                 public nav : Nav){ 
                 this.selectedIdiom = this.navparams.get('idiom');        
-
+                // this.navCtrl.remove(1,1);
                 events.subscribe('lessdata:created', (user) => {
                     console.log('Welcome', user);
                     this.lessdata = user;
@@ -53,8 +53,11 @@ export class SearchResultComponent implements OnInit {
         // this.navCtrl.setRoot(AboutPage,{
         // 'idiom': this.selectedIdiom
         // });
-        this.nav.popToRoot();
-        this.events.publish('reloadLayout');
+        //this.nav.popToRoot();
+       
+       // This will remove the 'ResultPage' from stack.
+       this.navCtrl.pop(); 
+       this.events.publish('reloadLayout');
     }
      
     getSearchGifs(item,selectedIdiom){

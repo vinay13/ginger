@@ -2,8 +2,13 @@
   "name": "ginger",
   "app_id": "700193",
   "type": "ionic-angular",
-  "proxies": [{
-          "path": "*/api",
-          "proxyUrl": "https://violet.mobigraph.co/ginger"
-    }]
+  "proxies": [
+    {
+      "path": "*/api",
+      "proxyUrl": "https://violet.mobigraph.co/ginger"
+    }
+  ],
+  "integrations": {
+    "cordova": {}
+  }
 }

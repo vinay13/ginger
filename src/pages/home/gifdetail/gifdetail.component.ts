@@ -49,7 +49,7 @@ export class GifDetailComponent {
                     console.log('gifobject id', this.gifobject.id)
                     this.scount = this.gifobject.shareCount ;
                     this.RecommendedGifs();
-                   // this.GetUsername();
+                   this.GetUsername();
                  //   this.webintent();
                     this.tagslist = this.gifobject.tags;
                     console.log('tagslist',this.tagslist);
