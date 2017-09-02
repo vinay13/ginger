@@ -8,12 +8,21 @@ page-page3 {
         display: inline-block;
         width:100%;
     }
-
-    .brick{
-      width: 47%;           
+      div .grid{
+        column-count: 2;
+        display: inline-block;
+        width:100%;
+    }
+    
+    img{
+        width:100%;
     }
 
-.wrapper{
+    .brick{
+      width: 100%;           
+    }
+
+ .wrapper{
     position:absolute; 
 	top:0px; 
 	left:0px;

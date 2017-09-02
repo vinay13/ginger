@@ -34,11 +34,11 @@ export class SearchComponent{
                 this.TopSearchlist = true;
                 this.topsearches();
 
-                 this.platform.ready().then(() => {
-                         this.platform.registerBackButtonAction(() => {
-                         this.navChild.push(AboutPage); 
-                });
-        });
+        //          this.platform.ready().then(() => {
+        //                  this.platform.registerBackButtonAction(() => {
+        //                  this.navChild.push(AboutPage); 
+        //         });
+        // });
     }
 
     CustomNavRoot(){

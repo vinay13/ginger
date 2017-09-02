@@ -13,6 +13,7 @@ import { SearchComponent } from '../search/search.component';
 import { LoginPage } from '../login/login.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { SuperTabsModule, SuperTabsConfig, SuperTabs } from 'ionic2-super-tabs';
+import { SearchResultComponent } from '../search/searchResult/search-result.component';
 //import { SuperTabsController } from 'ionic2-super-tabs';
 //import { SuperTabsController } from '../../ionic2-super-tabs/src';
 
@@ -20,15 +21,13 @@ import { SuperTabsModule, SuperTabsConfig, SuperTabs } from 'ionic2-super-tabs';
 //   segment: 'about/:type'
 // }) 
 
-
-
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html'
 })
 
 export class AboutPage implements OnInit {
-
+   rootNavCtrl: NavController;
   public page1: any = Page1Page;
   public page2: any = Page2Page;
   public page3: any = Page3Page;
@@ -106,8 +105,6 @@ idiomdict;
 
   ngOnInit(){
     this.lang =  "assets/icon/ic_"+ this.selectedIdiom +".png";
-  
-
   }
 
   abcetc(tbid){
@@ -142,7 +139,35 @@ idiomdict;
     
   
 
-  }
+}
+
+
+    someFunction(event: KeyboardEvent) { 
+        let val = (<HTMLInputElement>event.target).value;
+       // this.getSearchGifs(val);
+
+        this.navCtrl.push(SearchResultComponent,{
+             'sitem' : val ,
+             'idiom' : this.selectedIdiom
+      })
+    }
+
+
+    //    getItems(ev : any){
+        
+    //     let val = ev.target.value;
+    //  //   this.getSuggestedItems(val);
+    //       this.TopSearchlist = false;
+    //         if(val.trim() == ''){
+    //             this.TopSearchlist = true;
+    //         }
+    //      if (val && val.trim() != '') {
+    //          this.suggestedText = this.suggestedText.filter((item) => {
+    //         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+    //       })
+    //     }
+    //  }
+
 
   ngAfterViewInit() {
       
@@ -179,7 +204,7 @@ idiomdict;
   searchButton(){
       //   let modal = this.modalCtrl.create(SearchComponent);
       // modal.present();
-      this.navCtrl.push(SearchComponent,{
+      this.rootNavCtrl.push(SearchComponent,{
         'idiom':this.selectedIdiom
       });
   }

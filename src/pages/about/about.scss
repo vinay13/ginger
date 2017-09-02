@@ -7,6 +7,33 @@ page-about{
          background: transparent;
          border-color: transparent;
       }
+
+      $searchbar-md-padding-top : 10px;
+      $searchbar-md-input-search-icon-color	: #5b5b5b;
+
+      .toolbar .searchbar-md {
+            padding: 3px;
+            width: 70%;
+      }
+
+      .search-input-bar{
+          background:  white;
+          width:50%;
+          border-radius: 20px;
+          padding: 4px;
+          height: 40px;
+          font-size: 20px;
+          line-height: 14px;
+          top: 20%;
+          font-weight: 400;
+      }
+
+    .search-bar-div {
+           height: 47px;
+           margin: 1px;
+           padding: 1px; 
+    }
+   
 }
 
  .search-icon{  

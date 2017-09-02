@@ -1,4 +1,4 @@
-page-page4 {
+page-page6{
      .home-content{
         background-color:  #202E3F;
     }
@@ -8,30 +8,30 @@ page-page4 {
         display: inline-block;
         width:100%;
     }
-     .grid{
+      div .grid{
         column-count: 2;
         display: inline-block;
         width:100%;
-       // margin : -0px -6px -0px -6px;
+    }
+    
+    img{
+        width:100%;
     }
 
     .brick{
       width: 100%;           
     }
 
-   
-}
-
-
-.wrapper{
+ .wrapper{
     position:absolute; 
 	top:0px; 
 	left:0px;
 	width:100%;
-    height:95%;
+    height:97%;
 	background-color:#924588;
 	color:white;
     text-align: center;
+    vertical-align: middle;
 	opacity:0.6; /* transparency */
 	filter:alpha(opacity=60); /* IE transparency */
 }
@@ -47,4 +47,5 @@ page-page4 {
 .gif-text{
     vertical-align: middle;
     text-align: center;
+}
 }

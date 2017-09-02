@@ -64,7 +64,7 @@ export class Page3Page {
     public gifs;
     gettabdata(idiom,tabid){
        this.tabIddata = [];
-      //  this.cs.showLoader();
+        // this.cs.showLoader();
        this._homeserv.getTabDataviaTabId(idiom,tabid,0)
                   .subscribe((res) => {this.tabIddata = res;this.textonGIFs();  this.gifs = this.tabIddata; },
                   (err) => {console.log(err); this.cs.hideLoader();},
@@ -112,7 +112,7 @@ export class Page3Page {
 
     public newlayout() {
       setTimeout(() => {
-            this.masonry._msnry.layout();
+       //     this.masonry._msnry.layout();
       },1000);
 
       // console.log('AngularMasonry:', 'Layout');
