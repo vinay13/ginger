@@ -22,7 +22,7 @@
             <img class="gifpin" src={{gifs.url}}>
           </div>
     </div>-->
-       <masonry class="grid" [options]="{ transitionDuration: '7s' , gutter :4, percentPosition: true }" [useImagesLoaded]="true"  >
+       <masonry class="grid" [options]="{ transitionDuration: '0.7s' , gutter :4, percentPosition: true }" [useImagesLoaded]="true"  >
           <masonry-brick class="brick" *ngFor="let gifs of searchedGifs"  (click)="viewGif(gifs)" >
            <img *ngIf="!LessData"  width={{gifs.width}} [height]="gifs.height" img-placeholder [img-preloader]="gifs.lowResWebpFN" />
            <img *ngIf="LessData" [img-preloader]="gifs.thumbNailFN" width={{gifs.lowResWidth}} height={{gifs.thumbNailFN}}/>

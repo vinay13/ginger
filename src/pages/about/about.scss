@@ -14,24 +14,37 @@ page-about{
         padding: 6px;
         width: 80%;
         position: absolute;
+        font-size: 1.2rem;
       }
 
       .custom-search-btn{
           float: right;
-          top: 5px;
+          top: 2px;
           background: #35ec97;
-          margin-right: 10px;
+          margin-right: 13px;
           
       }
 
-      .searchbar-md .searchbar-input{
-        line-height: 2.6rem;
-        border-radius: 23px;
+      .button-md{
+          font-size:2rem;
+          border-radius:0px;
       }
 
-      .search-bar-input{
-        font-size: 1em !important;
+      .searchbar-md .searchbar-input{
+        line-height: 2.4rem;
+        border-radius: 0px;
+        font-weight: 300;
+        font-size: 0.6rem;
       }
+
+      .searchbar-md .searchbar-search-icon {
+    left: 16px;
+    top: 8px;
+      }
+
+    //   .search-bar-input{
+    //     font-size: 1em !important;
+    //   }
 
     //   .search-input-bar{
     //       background:  white;
