@@ -18,9 +18,10 @@ export class Page3Page {
     public newselectedIdiom;
     lessdata;
     LessData;
- // selectedIdiom:any;
+    // selectedIdiom:any;
+    isSelected;
    @ViewChild(AngularMasonry) public masonry: AngularMasonry;
-  constructor(public navCtrl: NavController,
+   constructor(public navCtrl: NavController,
                public navParams: NavParams,
                public _homeserv : HomeService,
                public cs : CustomService,
@@ -123,7 +124,7 @@ export class Page3Page {
     }
 
 
-        currentPage = 0;
+ currentPage = 0;
  doInfinite(infiniteScroll) {
 
    this.currentPage = this.currentPage + 1;

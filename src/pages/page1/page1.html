@@ -18,8 +18,6 @@
 </div>  
   </ion-navbar>
 </ion-header>-->
-
-
 <!--<ion-header #head>
 </ion-header>-->
 
@@ -30,8 +28,8 @@
           <!--<div class="placeholder-1 placeholder-box" >
           </div>-->
          <!--<img *ngIf="!loaded" src="https://avatars3.githubusercontent.com/u/497125?v=4&s=88" width={{item.width}} height={{item.height}}/>-->
-         <img   *ngIf="!LessData"  width="100%" height="100%" [img-preloader]="item.lowResWebpFN"/>
-         <img  *ngIf="LessData" width="100%" height="100%" [src]="item.thumbNailUrl"/>
+         <img  *ngIf="!LessData" width="100%" height="100%" [img-preloader]="item.lowResWebpFN"/>
+         <img  *ngIf="LessData" width="100%" height="100%" [img-preloader]="item.thumbNailFN"/>
         </masonry-brick>
     </masonry>
 

@@ -1,8 +1,8 @@
 <ion-header #head>
-  <ion-navbar class="navbar" hideBackButton >
-        <button class="customIcon" ion-button icon-only (click)="CustomNavRoot()">
+  <ion-navbar class="navbar" >
+        <!--<button class="customIcon" ion-button icon-only (click)="CustomNavRoot()">
             <ion-icon  name="arrow-back"></ion-icon>
-        </button>
+        </button>-->
         <span class="search-result-bar">
        <ion-searchbar   [(ngModel)]="searchItem" [showCancelButton]="true" 
        (keyup.enter)="someFunction($event)"  (ionInput)="getItems($event)" >
@@ -25,7 +25,7 @@
        <masonry class="grid" [options]="{ transitionDuration: '0.2s' , gutter :4, percentPosition: true }" [useImagesLoaded]="true"  >
           <masonry-brick class="brick" *ngFor="let gifs of searchedGifs"  (click)="viewGif(gifs)" >
            <img *ngIf="!LessData"  width={{gifs.width}} [height]="gifs.height" img-placeholder [img-preloader]="gifs.lowResWebpFN" />
-           <img *ngIf="LessData" [src]="gifs.thumbNailUrl" width={{gifs.lowResWidth}} height={{gifs.lowResHeight}}/>
+           <img *ngIf="LessData" [src]="gifs.thumbNailUrl" width={{gifs.lowResWidth}} height={{gifs.thumbNailFN}}/>
          </masonry-brick> 
        </masonry>
 

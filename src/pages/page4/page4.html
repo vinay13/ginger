@@ -20,10 +20,11 @@
      </div>-->
 
 
-     <ion-grid>
+     <ion-grid class="grid">
         <ion-row >
           <ion-col col-12 *ngFor="let item of gifs" (click)="this[click_func](item.tag)" >
               <img *ngIf="!LessData" height="100px" width="275px" img-placeholder={{item.lowResWebpFN}}/>
+              <img *ngIf="LessData" height="100px" width="245px" img-placeholder={{item.thumbNailFN}}/>
               <div [className]="ng_class">
                   <h2 class="gif-text">{{item.tag}}</h2>
               </div>

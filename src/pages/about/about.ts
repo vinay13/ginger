@@ -47,8 +47,9 @@ export class AboutPage implements OnInit {
   public trendingGIFs: any;
   public gifs: Array<any> = [];
   public selectedIdiom;
-   idiom3;
-idiomdict;
+  idiom3;
+  idiomdict;
+  isSelected = false;
 // @Output()
 // tabSelect: EventEmitter<any> = new EventEmitter<any>();
 //  onTabSelect(index: number) {
@@ -122,6 +123,15 @@ idiomdict;
   arbittt(ftdataa){
   
   }
+
+    device:number = 1;
+    ToggleChange(e:Event) {
+        
+        this.isSelected =  !this.isSelected;
+        // alert(this.isSelected);
+        localStorage.setItem('lessdata',this.isSelected.toString())
+        this.events.publish('lessdata:created', this.isSelected);
+    }
  
 
   checklogin(){

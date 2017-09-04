@@ -13,20 +13,27 @@
   <span class="idiom-name"  (click)="navIdiom()">{{ selectedIdiom }}</span>
 </div>
 
+      <!--<ion-item class="list-item-style" >-->
+                <!--<ion-label> Use less Data</ion-label> -->
+                
+      <!--</ion-item>-->
   <ion-icon class="search-icon" name="md-contact" (click)="checklogin()"></ion-icon>
-  <ion-icon class="search-icon" name="search" (click)="searchButton()"></ion-icon>
+  <!--<ion-icon  class="search-icon" name="search" (click)="searchButton()"></ion-icon>-->
+  <!--<ion-toggle class="search-icon" [checked]="isSelected" (ionChange)="ToggleChange($event)"></ion-toggle>-->
+    <ion-icon *ngIf="!isSelected" class="search-icon"  (click)="ToggleChange($event)" name="pause"></ion-icon>
+    <ion-icon *ngIf="isSelected" class="search-icon"  (click)="ToggleChange($event)" name="play"></ion-icon>
 
 </div>  
 
 <div class="search-bar-div">
-     <!--<ion-searchbar #search
+     <ion-searchbar class="search-input-bar" #search
     (showCancelButton)="true"
        (keyup.enter)="someFunction($event)" 
          (ionCancel)="onCancel($event)">
-    </ion-searchbar>-->
+    </ion-searchbar>
 
-    <ion-input class="search-input-bar"></ion-input>
-
+    <!--<ion-input class="search-input-bar" (keyup.enter)="someFunction($event)"  ></ion-input>-->
+    <!--<button ion-button color="danger">search</button>-->
 </div>
   </ion-navbar>
 </ion-header>
