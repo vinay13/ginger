@@ -64,7 +64,8 @@ export class AboutPage implements OnInit {
               public events: Events,
               public modalCtrl : ModalController,
               public nav : Nav) { 
-                               
+
+                              // this.hideToolbar();  
                   this.selectedIdiom = localStorage.getItem('idiom');  
                  
                   console.log(localStorage.getItem('tabIndex'));
@@ -162,6 +163,14 @@ export class AboutPage implements OnInit {
       })
     }
 
+    searchBttn(val){
+
+       this.navCtrl.push(SearchResultComponent,{
+             'sitem' : val ,
+             'idiom' : this.selectedIdiom
+      })
+    }
+
 
     //    getItems(ev : any){
         
@@ -194,8 +203,8 @@ export class AboutPage implements OnInit {
   count = 0 ;
   onTabSelect(ev : any){
      this.events.publish('tab:selected', ev.id);
-     localStorage.setItem('tabIndex',ev.index);
-     localStorage.setItem('tabId',ev.id);
+    // localStorage.setItem('tabIndex',ev.index);
+    // localStorage.setItem('tabId',ev.id);
      
         this.toolbarColor = this.colors[Math.floor(Math.random() * this.colors.length)];  
         // this.count += 1; 

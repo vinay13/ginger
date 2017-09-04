@@ -205,7 +205,7 @@ export class Page1Page {
 
      public newlayout() {
         setTimeout(() => {
-            this.masonry._msnry.layout();
+            // this.masonry._msnry.layout();
         },1000);
 
         // console.log('AngularMasonry:', 'Layout');

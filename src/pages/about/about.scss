@@ -8,12 +8,29 @@ page-about{
          border-color: transparent;
       }
 
-      $searchbar-md-padding-top : 10px;
-      $searchbar-md-input-search-icon-color	: #5b5b5b;
+ 
 
       .toolbar .searchbar-md {
-            padding: 3px;
-            width: 70%;
+        padding: 6px;
+        width: 80%;
+        position: absolute;
+      }
+
+      .custom-search-btn{
+          float: right;
+          top: 5px;
+          background: #35ec97;
+          margin-right: 10px;
+          
+      }
+
+      .searchbar-md .searchbar-input{
+        line-height: 2.6rem;
+        border-radius: 23px;
+      }
+
+      .search-bar-input{
+        font-size: 1em !important;
       }
 
     //   .search-input-bar{

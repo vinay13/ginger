@@ -29,9 +29,15 @@ column-count: 2;
     //   min-width: 900px !important;
     
     }
+
+    div .grid{
+        column-count: 2;
+        display: inline-block;
+        width:100%;
+    }
  
 
-      .brick{
+     .brick{
       width: 47%;
       object-fit: contain;
    //   background-image:url('https://avatars3.githubusercontent.com/u/497125?v=4&s=88');

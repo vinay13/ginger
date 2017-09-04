@@ -28,19 +28,22 @@
 <div class="search-bar-div">
      <ion-searchbar class="search-input-bar" #search
     (showCancelButton)="true"
+    [(ngModel)]="myInput"
        (keyup.enter)="someFunction($event)" 
          (ionCancel)="onCancel($event)">
     </ion-searchbar>
 
     <!--<ion-input class="search-input-bar" (keyup.enter)="someFunction($event)"  ></ion-input>-->
-    <!--<button ion-button color="danger">search</button>-->
+    <button class="custom-search-btn" ion-button  color="danger" (click)="searchBttn(myInput)">
+      <ion-icon name="search"></ion-icon>
+     </button>
 </div>
   </ion-navbar>
 </ion-header>
 
 <ion-content no-bounce class="home-content" >
   <!--<accordion></accordion>-->
-   <super-tabs *ngIf="tabsLoaded" no-shadow id="mainTabs"  [selectedTabIndex]="tabIndex"  [config]="{ sideMenu: 'left' }" scrollTabs toolbarColor="light" [indicatorColor]="toolbarColor" badgeColor="yellow" (tabSelect)="onTabSelect($event)" >
+   <super-tabs *ngIf="tabsLoaded" no-shadow id="mainTabs"  [selectedTabIndex]="0"  [config]="{ sideMenu: 'left' }" scrollTabs toolbarColor="light" [indicatorColor]="toolbarColor" badgeColor="yellow" (tabSelect)="onTabSelect($event)" >
       <super-tab [root]="page1" [rootParams]="idiom3" [title]="tabdata2[0].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[0].id}} ></super-tab>
       <super-tab [root]="page3" [rootParams]="idiom3" [title]="tabdata2[1].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[1].id}}></super-tab>
       <super-tab [root]="page4" [rootParams]="idiom3" [title]="tabdata2[2].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[2].id}}></super-tab>
