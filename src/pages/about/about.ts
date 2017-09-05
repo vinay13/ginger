@@ -147,9 +147,6 @@ export class AboutPage implements OnInit {
         'idiom': this.selectedIdiom
     });
   }
-    
-  
-
 }
 
 
@@ -161,14 +158,20 @@ export class AboutPage implements OnInit {
              'sitem' : val ,
              'idiom' : this.selectedIdiom
       })
+
+      
     }
 
+    @Input() myInput : any;
     searchBttn(val){
 
        this.navCtrl.push(SearchResultComponent,{
              'sitem' : val ,
              'idiom' : this.selectedIdiom
       })
+
+       this.myInput = '';
+      
     }
 
 

@@ -91,7 +91,7 @@ export class GifDetailComponent {
 
                 if(this.loadProgress == 33)
                 {
-                     this.gifurl = this.baseUrl+this.gifobject.lowResWebpFN;
+                     this.gifurl = this.baseUrl+this.gifobject.originalFN;
                 }
                  
                 if(this.loadProgress == 99)
@@ -128,8 +128,8 @@ setBackground(){
     golauser;
     guser;
     public GetUsername(){
-      this.guser =  this.gifobject.publishedBy;
-      this.golauser  = this.guser.split('@',1)
+      this.golauser =  this.gifobject.publishedBy;
+  //    this.golauser  = this.guser.split('@',1)
          
     } 
     
