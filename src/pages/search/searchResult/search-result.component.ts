@@ -19,7 +19,7 @@ import {AboutPage} from '../../about/about.ts';
 
 export class SearchResultComponent implements OnInit {
 
-    public searchItem;
+    // public searchItem;
     public searchedGifs = [];
     selectedIdiom;
     totalCount;
@@ -90,6 +90,18 @@ export class SearchResultComponent implements OnInit {
                         (err) => { this.cs.hideLoader();} )
  
    }
+
+    @Input() searchItem : any;
+    searchBttn(val){
+         this.getSearchGifs(val,this.selectedIdiom);
+    //    this.navCtrl.push(SearchResultComponent,{
+    //          'sitem' : val ,
+    //          'idiom' : this.selectedIdiom
+    //   })
+
+      // this.searchItem = '';
+      
+    }
 
     // public searchItem;
     ngOnInit(){

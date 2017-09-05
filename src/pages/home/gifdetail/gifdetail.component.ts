@@ -85,10 +85,7 @@ export class GifDetailComponent {
 			if(this.loadProgress < 100){
 				this.loadProgress++;
                 
-                //  if(this.loadValue == true)
-                // {
-                //     this.hidebar = true;
-                // }
+               
 
                 if(this.loadProgress == 1){
                     this.gifurl = this.baseUrl+this.gifobject.thumbNailFN;
@@ -98,21 +95,29 @@ export class GifDetailComponent {
                 {
                      this.gifurl = this.baseUrl+this.gifobject.originalFN;
                 }
+
+                if(this.loadProgress == 99){
+                   this.hidebar = true;
+                }
                  
-               
+                 if(this.loadValue == true)
+                {
+                    this.loadProgress = 99;
+                     
+                }
 			}
 
-		},this.setCount);
+		},100);
 	} 
 
       displaycount = 0;
-      loadValue :any; 
+      loadValue = false; 
       setCount = 100;
      displayImage(){
        this.displaycount += 1;
        if(this.displaycount == 2){
             
-           alert('gifs dwnld');
+        //    alert('gifs dwnld');
            this.loadValue = true;
            this.setCount = 0;
        }
