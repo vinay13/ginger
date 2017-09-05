@@ -205,7 +205,7 @@ export class AboutPage implements OnInit {
   toolbarColor = "primary";
   count = 0 ;
   onTabSelect(ev : any){
-     this.events.publish('tab:selected', ev.id);
+    //  this.events.publish('tab:selected', ev.id);
     // localStorage.setItem('tabIndex',ev.index);
     // localStorage.setItem('tabId',ev.id);
      

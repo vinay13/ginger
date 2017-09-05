@@ -3,6 +3,8 @@ page-page3 {
         background-color:  #202E3F;
     }
 
+    
+
     masonry .grid{
         column-count: 2;
         display: inline-block;
@@ -16,6 +18,11 @@ page-page3 {
     
     img{
         width:100%;
+    }
+
+    .col{
+        padding : 0px !important;
+        // margin:1px 1px -2px 0px;
     }
 
     .brick{

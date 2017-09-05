@@ -1,6 +1,7 @@
 import {Component,OnInit,Input,ViewChild,Renderer} from '@angular/core';
 import {Platform,IonicPage,NavParams,NavController,Events,Nav} from 'ionic-angular';
 import {SearchService} from '../../../services/search.service';
+import {HomeService} from '../../../services/home.service';
 import {CustomService} from '../../../services/custom.service';
 import {GifDetailComponent} from '../../home/gifdetail/gifdetail.component';
 import {AboutPage} from '../../about/about.ts';
@@ -27,6 +28,7 @@ export class SearchResultComponent implements OnInit {
     baseUrl = "https://gola-gif-dev-store-cf.xpresso.me/R2luZ2Vy/";
     constructor(private navparams : NavParams,
                 private _searchService : SearchService,
+                private _homeserv : HomeService,
                 private cs : CustomService,
                 private navCtrl : NavController,
                 public events : Events,
@@ -79,6 +81,15 @@ export class SearchResultComponent implements OnInit {
                     (err) => { console.log(err); this.cs.hideLoader();},
                     () => console.log('search gifs',this.searchedGifs))
     }
+
+    public gifData;
+    GifsViewviaId(tabid){
+      this.cs.showLoader();
+      this._homeserv.getGifviaID(tabid)
+          .subscribe((res) => { this.gifData = res; this.cs.hideLoader(); this.viewGif(res);},
+                        (err) => { this.cs.hideLoader();} )
+ 
+   }
 
     // public searchItem;
     ngOnInit(){

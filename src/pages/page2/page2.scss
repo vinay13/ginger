@@ -9,7 +9,26 @@ page-page2 {
       //  margin: 0 auto;
     }
  
+ div .grid{
+        column-count: 2;
+        display: inline-block;
+        width:100%;
+    }
 
+     .grid{
+        column-count: 2;
+        display: inline-block;
+        width:100%;
+       // margin : -0px -6px -0px -6px;
+    }
+    img{
+        width:100%;
+    }
+
+      .col{
+        padding : 0px !important;
+        // margin:1px 1px -2px 0px;
+    }
       .brick{
       width: 47%;           
       }

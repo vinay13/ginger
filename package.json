@@ -42,6 +42,9 @@
         "@ionic/cloud-angular": "^0.12.0",
         "@ionic/storage": "2.0.1",
         "angular2-masonry": "^0.4.0",
+        "com.danielsogl.cordova.clipboard": "~1.0.2",
+        "com.megster.cordova.FileChooser": "http://github.com/don/cordova-filechooser.git",
+        "com.synconset.imagepicker": "https://github.com/Telerik-Verified-Plugins/ImagePicker.git",
         "cordova-android": "^6.2.3",
         "cordova-plugin-apprate": "^1.3.0",
         "cordova-plugin-camera": "~2.1.1",
@@ -65,7 +68,7 @@
         "ionic-angular": "^3.4.2",
         "ionic-plugin-deeplinks": "~1.0.15",
         "ionic-plugin-keyboard": "~2.2.1",
-        "ionic2-super-tabs": "^4.0.1",
+        "ionic2-super-tabs": "^4.1.0",
         "ionicons": "3.0.0",
         "jquery-bridget": "2.0.1",
         "masonry-layout": "^4.2.0",
@@ -74,10 +77,7 @@
         "rxjs": "5.1.1",
         "sw-toolbox": "3.4.0",
         "underscore": "^1.8.3",
-        "zone.js": "^0.8.5",
-        "com.danielsogl.cordova.clipboard": "~1.0.2",
-        "com.megster.cordova.FileChooser": "http://github.com/don/cordova-filechooser.git",
-        "com.synconset.imagepicker": "https://github.com/Telerik-Verified-Plugins/ImagePicker.git"
+        "zone.js": "^0.8.5"
     },
     "devDependencies": {
         "@ionic/app-scripts": "^2.1.0",
