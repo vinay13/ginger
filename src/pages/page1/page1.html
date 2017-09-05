@@ -24,7 +24,7 @@
 <ion-content class="home-content" hide-fab [fab]="head">
 
     <masonry class="grid"  [options]="{ transitionDuration: '0.2s' , gutter :4 ,percentPosition: true }" [useImagesLoaded]="true">
-       <masonry-brick   class="brick" *ngFor="let item of gifs"  (click)="GifsViewviaId(item.id)" >
+       <masonry-brick   class="brick" *ngFor="let item of gifs"  (click)="GifsViewviaId(item.gifId)" >
           <!--<div class="placeholder-1 placeholder-box" >
           </div>-->
          <!--<img *ngIf="!loaded" src="https://avatars3.githubusercontent.com/u/497125?v=4&s=88" width={{item.width}} height={{item.height}}/>-->

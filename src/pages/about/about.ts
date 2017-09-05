@@ -247,6 +247,11 @@ hideToolbar() {
   this.superTabs.showToolbar(false);
 }
 
+ hide = false; 
+ onHide(val: boolean) {
+    this.hide=val;
+  }
+
   // ngOnInit(): void {
     
     

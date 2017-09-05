@@ -1,4 +1,4 @@
-import { Component,ViewChild,Input,ElementRef,Renderer } from '@angular/core';
+import { Component,ViewChild,Input,Output,EventEmitter,ElementRef,Renderer } from '@angular/core';
 import { NavController, NavParams , ModalController , Events  } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
@@ -205,7 +205,7 @@ export class Page1Page {
 
      public newlayout() {
         setTimeout(() => {
-            // this.masonry._msnry.layout();
+            this.masonry._msnry.layout();
         },1000);
 
         // console.log('AngularMasonry:', 'Layout');
@@ -259,8 +259,6 @@ currentPage = 0;
      () => console.log('Next Page Loading completed')
      );
   } 
-
-
 
 
 

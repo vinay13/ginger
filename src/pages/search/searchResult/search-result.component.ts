@@ -1,5 +1,5 @@
 import {Component,OnInit,Input,ViewChild,Renderer} from '@angular/core';
-import {IonicPage,NavParams,NavController,Events,Nav} from 'ionic-angular';
+import {Platform,IonicPage,NavParams,NavController,Events,Nav} from 'ionic-angular';
 import {SearchService} from '../../../services/search.service';
 import {CustomService} from '../../../services/custom.service';
 import {GifDetailComponent} from '../../home/gifdetail/gifdetail.component';
@@ -31,7 +31,8 @@ export class SearchResultComponent implements OnInit {
                 private navCtrl : NavController,
                 public events : Events,
                 public renderer : Renderer,
-                public nav : Nav){ 
+                public nav : Nav,
+                private platform: Platform){ 
                 this.selectedIdiom = this.navparams.get('idiom');        
                 // this.navCtrl.remove(1,1);
                 events.subscribe('lessdata:created', (user) => {
@@ -47,6 +48,16 @@ export class SearchResultComponent implements OnInit {
                 else{
                     this.LessData = true;
                 }  
+
+                platform.ready().then(() => {
+                    platform.registerBackButtonAction(() => {
+                            if(this.nav.canGoBack()){
+                             this.events.publish('reloadLayout');
+                              this.navCtrl.pop(); 
+                             
+                        }
+                    })
+                })
     } 
 
     CustomNavRoot(){
