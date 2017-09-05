@@ -45,10 +45,10 @@ export class PreLoaderDirective  implements OnInit{
     //this.downloadingImage.height = "110px";
     this.downloadingImage.onload = () => { //Once image is completed, console.log confirmation and switch our host attribute
       console.log('image downloaded');
-      this.finalImage = this.baseUrl+this.targetSource;  //do the switch 
+      this.finalImage = this.targetSource;  //do the switch 
     }
    
-    this.downloadingImage.src =this.baseUrl + this.targetSource;
+    this.downloadingImage.src = this.targetSource;
     
   }
 

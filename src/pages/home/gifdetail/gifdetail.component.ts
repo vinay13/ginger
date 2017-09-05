@@ -85,23 +85,38 @@ export class GifDetailComponent {
 			if(this.loadProgress < 100){
 				this.loadProgress++;
                 
+                //  if(this.loadValue == true)
+                // {
+                //     this.hidebar = true;
+                // }
+
                 if(this.loadProgress == 1){
-                    this.gifurl = this.baseUrl+this.gifobject.lowResFN;
+                    this.gifurl = this.baseUrl+this.gifobject.thumbNailFN;
                 }
 
-                if(this.loadProgress == 33)
+                if(this.loadProgress == 13)
                 {
                      this.gifurl = this.baseUrl+this.gifobject.originalFN;
                 }
                  
-                if(this.loadProgress == 99)
-                {
-                    this.hidebar = true;
-                }
+               
 			}
 
-		},50);
+		},this.setCount);
 	} 
+
+      displaycount = 0;
+      loadValue :any; 
+      setCount = 100;
+     displayImage(){
+       this.displaycount += 1;
+       if(this.displaycount == 2){
+            
+           alert('gifs dwnld');
+           this.loadValue = true;
+           this.setCount = 0;
+       }
+    }
 
 
 setBackground(){
@@ -154,6 +169,15 @@ setBackground(){
         });
     }
 
+    gifData;
+    GifsViewviaId(tabid){
+      this.cs.showLoader();
+      this._homeserv.getGifviaID(tabid)
+          .subscribe((res) => { this.gifData = res; this.cs.hideLoader(); this.GIFviewer(res);},
+                        (err) => { this.cs.hideLoader();} )
+ 
+   }
+
     TagClicked(tag){
         this.navCtrl.push(SearchResultComponent,{
             'tag' : tag,
@@ -203,6 +227,9 @@ setBackground(){
         });
         toast.present();
     }
+
+
+   
 
 
     // webintent(){

@@ -17,7 +17,7 @@
 
 <ion-content class="gifdetail-content" hide-header [header]="head">
     <div class="gifviewer">
-        <img class="Gifdetail" src={{gifurl}}>
+        <img class="Gifdetail" src={{gifurl}} (load)="displayImage()">
     </div>
     
     <progress-bar [hidden]="hidebar" [progress]="loadProgress"></progress-bar>
@@ -83,9 +83,9 @@
     </div>-->
 
     <masonry class="grid" [options]="{ transitionDuration: '0.2s' , gutter : 4 , percentPosition : true}" [useImagesLoaded]="true" >
-       <masonry-brick class="brick" *ngFor="let rgifs of recomns"  (click)="GIFviewer(rgifs)" >
-         <img *ngIf="!LessData" width="100%" height="100%" [img-preloader]="rgifs.lowResWebpFN"/>
-         <img *ngIf="LessData" width="100%" height="100%" [img-preloader]="rgifs.thumbNailFN"/>
+       <masonry-brick class="brick" *ngFor="let rgifs of recomns"  (click)="GifsViewviaId(rgifs.id)" >
+         <img *ngIf="!LessData" width="100%" height="100%"  [img-preloader]="rgifs.baseUrl+'/'+rgifs.lowResWebpFN"/>
+         <img *ngIf="LessData" width="100%" height="100%" [img-preloader]="rgifs.baseUrl+'/'+rgifs.thumbNailFN"/>
        </masonry-brick>
     </masonry>
 
