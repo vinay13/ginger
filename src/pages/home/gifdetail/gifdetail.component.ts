@@ -29,7 +29,7 @@ export class GifDetailComponent {
     public scount;
     lessdata;
     LessData;
-     baseUrl = "https://gola-gif-dev-store-cf.xpresso.me/R2luZ2Vy/";
+   //  baseUrl = "https://gola-gif-dev-store-cf.xpresso.me/R2luZ2Vy/";
     constructor(public popoverCtrl : PopoverController,
                 public navCtrl : NavController,
                 public toastCtrl : ToastController,
@@ -88,12 +88,12 @@ export class GifDetailComponent {
                
 
                 if(this.loadProgress == 1){
-                    this.gifurl = this.baseUrl+this.gifobject.thumbNailFN;
+                    this.gifurl = this.gifobject.baseUrl+'/'+this.gifobject.thumbNailFN;
                 }
 
                 if(this.loadProgress == 13)
                 {
-                     this.gifurl = this.baseUrl+this.gifobject.originalFN;
+                     this.gifurl = this.gifobject.baseUrl+'/'+this.gifobject.originalFN;
                 }
 
                 if(this.loadProgress == 99){

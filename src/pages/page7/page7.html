@@ -16,7 +16,7 @@
               <img  *ngIf="!LessData" height="100px" width="275px" [img-placeholder]="item.baseUrl+'/'+item.lowResWebpFN"/>
               <img *ngIf="LessData" height="100px" width="245px" [img-placeholder]="item.baseUrl+'/'+item.thumbNailFN"/>
               <div [className]="ng_class">
-                  <h2 class="gif-text">{{item.displayName}}</h2>
+                  <h3 class="gif-text">{{item.displayName}}</h3>
               </div>
           </ion-col>
         </ion-row>

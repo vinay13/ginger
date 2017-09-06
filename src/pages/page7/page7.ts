@@ -15,6 +15,8 @@ import { MasonryModule,AngularMasonry } from 'angular2-masonry';
 
 export class Page7Page {
    rootNavCtrl: NavController;
+   lessdata;
+   LessData;
    selectedIdiom = localStorage.getItem('idiom');
    @ViewChild(AngularMasonry) public masonry: AngularMasonry;
    constructor(public navparams : NavParams,
@@ -29,6 +31,20 @@ export class Page7Page {
                         this.newlayout();
                   });
                     this.tabcat();
+                  
+                  events.subscribe('lessdata:created', (user) => {
+                    console.log('Welcome', user);
+                    this.lessdata = user;
+                    this.LessData = this.lessdata;
+                  });
+              
+                  this.lessdata = localStorage.getItem('lessdata');
+                  if(this.lessdata === "false"){
+                    this.LessData = false
+                   } 
+                  else{
+                    this.LessData = true;
+                }
             }
 
     public tabdata;

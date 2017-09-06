@@ -34,16 +34,16 @@ export class Page5Page {
 
                     this.tabcat();
 
-                            events.subscribe('lessdata:created', (user) => {
+                  events.subscribe('lessdata:created', (user) => {
                     console.log('Welcome', user);
                     this.lessdata = user;
                     this.LessData = this.lessdata;
-                });
+                  });
               
-                this.lessdata = localStorage.getItem('lessdata');
+                  this.lessdata = localStorage.getItem('lessdata');
                   if(this.lessdata === "false"){
                     this.LessData = false
-                  } 
+                   } 
                   else{
                     this.LessData = true;
                 }  
