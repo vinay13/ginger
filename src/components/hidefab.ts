@@ -22,10 +22,10 @@ export class HideFabDirective {
     }  
 
 
-    // @Output() onHide = new EventEmitter<boolean>();
-    // setHide(){
-    //    this.onHide.emit(true);
-    // }
+    @Output() onHide = new EventEmitter<boolean>();
+    setHide(){
+       this.onHide.emit(true);
+    }
 
 
     ngOnInit(){

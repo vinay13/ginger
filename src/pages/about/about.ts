@@ -157,9 +157,9 @@ export class AboutPage implements OnInit {
         this.navCtrl.push(SearchResultComponent,{
              'sitem' : val ,
              'idiom' : this.selectedIdiom
-      })
+      })  
+      this.myInput = '';
 
-      
     }
 
     @Input() myInput : any;

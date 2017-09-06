@@ -44,7 +44,7 @@
                 <span class="gin-label">
                   <ion-icon class="ic-share-alt" name="share-alt"></ion-icon>
                   <a [href]="giffSrc">
-                    <span class="gif-source" (click)="sourceClick()"> {{gifobject.source | ellipsis : 5}}</span>
+                    <span class="gif-source" (click)="sourceClick()"> {{gifobject.source | ellipsis : 10}}</span>
                   </a>
                 </span>
             </ion-col>
@@ -63,10 +63,10 @@
 
     <div class="gif-tags">
         <span *ngIf="hidetags">
-            <ion-badge *ngFor="let tag of tagslist | slice :0:3" class="tag-badge" item-right (click)="TagClicked(tag)">{{tag | ellipsis : 13}}</ion-badge>
+            <ion-badge *ngFor="let tag of tagslist | slice :0:3" class="tag-badge" item-right (click)="TagClicked(tag)">{{tag | ellipsis : 19}}</ion-badge>
         </span>
         <span *ngIf="showtags">
-            <ion-badge   *ngFor="let tag of tagslist" class="tag-badge" item-right (click)="TagClicked(tag)">{{tag | ellipsis : 13}}</ion-badge>
+            <ion-badge   *ngFor="let tag of tagslist" class="tag-badge" item-right (click)="TagClicked(tag)">{{tag | ellipsis : 19}}</ion-badge>
         </span>
 
         <ion-badge class="tag-badge" item-right (click)="expandTags()">

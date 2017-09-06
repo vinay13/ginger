@@ -94,19 +94,16 @@ export class SearchResultComponent implements OnInit {
     @Input() searchItem : any;
     searchBttn(val){
          this.getSearchGifs(val,this.selectedIdiom);
-    //    this.navCtrl.push(SearchResultComponent,{
-    //          'sitem' : val ,
-    //          'idiom' : this.selectedIdiom
-    //   })
-
-      // this.searchItem = '';
-      
+         this.searchItem2 = this.searchItem;
+         this.searchItem = '';    
     }
 
-    // public searchItem;
+    public searchItem2;
     ngOnInit(){
          this.searchItem = this.navparams.get('sitem') || this.navparams.get('tag');
          this.getSearchGifs(this.searchItem,this.selectedIdiom);
+         this.searchItem2 = this.searchItem;
+         this.searchItem = '';
          //  this.searchedGifs = this.navparams.get('relatedgifs');
          //  console.log('seeergifs',this.searchedGifs);
     }
@@ -114,11 +111,8 @@ export class SearchResultComponent implements OnInit {
     someFunction(event: KeyboardEvent) { 
         let val = (<HTMLInputElement>event.target).value;
         this.getSearchGifs(val,this.selectedIdiom);
-
-    //     this.navCtrl.push(SearchResultComponent,{
-    //         'sitem' : val ,
-    //         'relatedgifs' :  this.searchedGifs
-    //   });
+        this.searchItem2 = this.searchItem;
+         this.searchItem = '';
     }
 
     getItems(){
