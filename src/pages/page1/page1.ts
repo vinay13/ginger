@@ -52,7 +52,11 @@ export class Page1Page {
                 public fileChooser : FileChooser,
                 public modalCtrl : ModalController,
                 public events : Events,
-                public renderer : Renderer){
+                public renderer : Renderer,
+                public element : ElementRef){
+
+
+                  
                              
                   this.rootNavCtrl = this.navparams.get('rootNavCtrl');
                   this.newselectedIdiom = this.navparams.data;

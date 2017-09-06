@@ -161,6 +161,7 @@ export class AboutPage implements OnInit {
       this.myInput = '';
 
     }
+    
 
     @Input() myInput : any;
     searchBttn(val){

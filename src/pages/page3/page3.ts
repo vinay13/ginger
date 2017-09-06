@@ -1,4 +1,4 @@
-import { Component,ViewChild } from '@angular/core';
+import { Component,ViewChild,ElementRef } from '@angular/core';
 import { NavController, NavParams,Events } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { SearchResultComponent } from '../search/searchResult/search-result.component';
@@ -25,8 +25,13 @@ export class Page3Page {
                public navParams: NavParams,
                public _homeserv : HomeService,
                public cs : CustomService,
-               public events : Events)
+               public events : Events,
+               public element : ElementRef)
               { 
+
+                let parentElement = this.element.nativeElement;
+                  console.log('parentElement',parentElement);
+
                    this.rootNavCtrl = this.navParams.get('rootNavCtrl');
                   this.newselectedIdiom = this.navParams.data;
                   this.selectedIdiom = this.newselectedIdiom.idiom;
