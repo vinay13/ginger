@@ -21,7 +21,7 @@ column-count: 2;
 }
 
      masonry .grid{
-        column-count: 2;
+      //  column-count: 2;
       //  margin: 0 auto;
       display: inline-block;
       width:100%;
@@ -31,14 +31,14 @@ column-count: 2;
     }
 
     div .grid{
-        column-count: 2;
+    //    column-count: 2;
         display: inline-block;
         width:100%;
     }
  
 
      .brick{
-      width: 47%;
+    //   width: 47%;
       object-fit: contain;
    //   background-image:url('https://avatars3.githubusercontent.com/u/497125?v=4&s=88');
      

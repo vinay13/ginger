@@ -11,7 +11,7 @@ page-page3 {
         width:100%;
     }
       div .grid{
-        column-count: 2;
+      //  column-count: 2;
         display: inline-block;
         width:100%;
     }
@@ -21,7 +21,7 @@ page-page3 {
     }
 
     .col{
-        padding : 0px !important;
+        padding : 0px 3px 0px 3px !important;
         // margin:1px 1px -2px 0px;
     }
 
@@ -31,9 +31,10 @@ page-page3 {
 
  .wrapper{
     position:absolute; 
+    padding : 6px;
 	top:0px; 
-	left:0px;
-	width:100%;
+	left:3px;
+	width:97%;
     height:97%;
 	background-color:#924588;
 	color:white;
