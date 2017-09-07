@@ -7,6 +7,7 @@ import { Page4Page } from "../page4/page4";
 import { Page5Page } from "../page5/page5";
 import { Page6Page } from "../page6/page6";
 import { Page7Page } from "../page7/page7";
+import { Page8Page } from "../page8/page8";
 import { HomeService } from '../../services/home.service';
 import { IdiomComponent } from '../idiom/idiom.component';
 import { SearchComponent } from '../search/search.component';
@@ -35,6 +36,7 @@ export class AboutPage implements OnInit {
   public page5: any = Page5Page;
   public page6: any = Page6Page;
   public page7: any = Page7Page;
+  public page8: any = Page8Page;
   @ViewChild(SuperTabs) superTabs: SuperTabs;
 
   showIcons: boolean = false;
@@ -81,7 +83,7 @@ export class AboutPage implements OnInit {
                   //this.tabdata.splice(0,2);
                   //testing
                     this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs; this.tabdata2 = res.tabs; this.abcetc(this.tabdata[0].id);this.tabsLoaded = true;    },
+                    .subscribe( (res) => { this.tabdata = res.tabs; this.tabdata2 = res.tabs; this.abcetc(this.tabdata[0].id);this.tabsLoaded = true;},
                     (err) => { console.log(err)},
                     () => {})
 
@@ -206,7 +208,7 @@ export class AboutPage implements OnInit {
   toolbarColor = "primary";
   count = 0 ;
   onTabSelect(ev : any){
-    //  this.events.publish('tab:selected', ev.id);
+      this.events.publish('tab:selected', ev.id);
     // localStorage.setItem('tabIndex',ev.index);
     // localStorage.setItem('tabId',ev.id);
      
