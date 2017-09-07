@@ -77,6 +77,16 @@ page-about{
     color: #35EC97;
 }
 
+super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .tab-buttons super-tab-button.title-only .title {
+    line-height: 44px;
+    font-size: 13px;
+}
+
+super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .tab-buttons super-tab-button {
+    height : 44px !important;
+    padding: 0 11px;
+}
+
 .home-content{
     background-color: #202E3F;
 }

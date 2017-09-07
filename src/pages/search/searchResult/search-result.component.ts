@@ -132,7 +132,7 @@ currentPage = 0;
 
    this.currentPage = this.currentPage + 1;
     console.log('currentpage', this.currentPage);
-       this._searchService.GetGifsSearch(this.selectedIdiom,this.searchItem,this.currentPage).subscribe(data =>
+       this._searchService.GetGifsSearch(this.selectedIdiom,this.searchItem2,this.currentPage).subscribe(data =>
         {
           infiniteScroll.complete();
         //   this.hasMoreData = true;
