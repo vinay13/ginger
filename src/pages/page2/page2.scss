@@ -1,48 +1,44 @@
 page-page2 {
-    .home-content{
+     .home-content{
         background-color:  #202E3F;
     }
-     masonry .grid{
-      //  column-count: 2;
-        display: inline-block;
-        width:100%;
-      //  margin: 0 auto;
-    }
- 
- div .grid{
-      //  column-count: 2;
-        display: inline-block;
-        width:100%;
-    }
 
-     .grid{
+    masonry .grid{
+        column-count: 2;
+        display: inline-block;
+        width:100%;
+    }
+      div .grid{
       //  column-count: 2;
         display: inline-block;
         width:100%;
-       // margin : -0px -6px -0px -6px;
     }
+    
     img{
         width:100%;
     }
 
-      .col{
-         padding : 0px 3px 0px 3px !important;
+    .col{
+        padding : 0px 3px 0px 3px !important;
+        // margin:1px 1px -2px 0px;
     }
-      .brick{
-      width: 47%;           
-      }
 
+    .brick{
+      width: 100%;           
+    }
 
-.wrapper{
+ .wrapper{
     position:absolute; 
-	padding : 6px;
+    padding : 6px;
 	top:0px; 
 	left:3px;
 	width:97%;
     height:97%;
     font-size: 1vw;
 	background-color:#924588;
-	color:white; 
+	color:white;
+    text-align: center;
+    vertical-align: middle;
 	opacity:0.6; /* transparency */
 	filter:alpha(opacity=60); /* IE transparency */
 }
@@ -54,28 +50,9 @@ page-page2 {
 	width:100%;
     height:100%;	
 }
+
 .gif-text{
-        vertical-align: middle;
+    vertical-align: middle;
     text-align: center;
 }
-
-}
-.ios ,.md {
-    page-page2 {
-        .pins{
-            column-count : 2;
-            margin-left: 15px; margin-right: 15px;
-            margin-top: 2%;
-        }
-        .pin{
-            display: inline-block;
-            margin : -0px -6px -0px -6px;
-            padding: 0px;
-        }
-        .gifpin{
-            border-radius: 5px;
-            width: 100%;
-            background: #8463F2;
-        }
-    }
 }

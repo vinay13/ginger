@@ -1,0 +1,58 @@
+page-page8 {
+     .home-content{
+        background-color:  #202E3F;
+    }
+
+    masonry .grid{
+        column-count: 2;
+        display: inline-block;
+        width:100%;
+    }
+      div .grid{
+      //  column-count: 2;
+        display: inline-block;
+        width:100%;
+    }
+    
+    img{
+        width:100%;
+    }
+
+    .col{
+        padding : 0px 3px 0px 3px !important;
+        // margin:1px 1px -2px 0px;
+    }
+
+    .brick{
+      width: 100%;           
+    }
+
+ .wrapper{
+    position:absolute; 
+    padding : 6px;
+	top:0px; 
+	left:3px;
+	width:97%;
+    height:97%;
+    font-size: 1vw;
+	background-color:#924588;
+	color:white;
+    text-align: center;
+    vertical-align: middle;
+	opacity:0.6; /* transparency */
+	filter:alpha(opacity=60); /* IE transparency */
+}
+
+.wrapper2{
+    position:absolute; 
+	top:0px; 
+	left:0px;
+	width:100%;
+    height:100%;	
+}
+
+.gif-text{
+    vertical-align: middle;
+    text-align: center;
+}
+}

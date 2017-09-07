@@ -113,7 +113,7 @@ export class AboutPage implements OnInit {
 
   tablength;
   checkTabsLength(tabdata){
-    alert(this.tabdata.length);
+    // alert(this.tabdata.length);
     this.tablength = this.tabdata.length;
   }
 
