@@ -81,9 +81,13 @@ export class AboutPage implements OnInit {
               }
                  
                   //this.tabdata.splice(0,2);
+                  // this.abcetc(this.tabdata[0].id);
+                  //  this.tabdata = this.tabdata.splice(6,5);
+                  // this.abcetc(this.tabdata[0].id);
+                  //  this.tabdata = this.tabdata.splice(7,6);
                   //testing
                     this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs; this.tabdata2 = res.tabs; this.abcetc(this.tabdata[0].id);this.tabsLoaded = true;},
+                    .subscribe( (res) => { this.tabdata = res.tabs;  this.tabdata2 = res.tabs; this.checkTabsLength(this.tabdata );this.abcetc(this.tabdata[0].id); this.tabsLoaded = true;},
                     (err) => { console.log(err)},
                     () => {})
 
@@ -107,6 +111,12 @@ export class AboutPage implements OnInit {
 
   tabsLoaded =  false;
 
+  tablength;
+  checkTabsLength(tabdata){
+    alert(this.tabdata.length);
+    this.tablength = this.tabdata.length;
+  }
+
   ngOnInit(){
     this.lang =  "assets/icon/ic_"+ this.selectedIdiom +".png";
   }
@@ -124,7 +134,6 @@ export class AboutPage implements OnInit {
   }
 
   arbittt(ftdataa){
-  
   }
 
     device:number = 1;
@@ -136,7 +145,6 @@ export class AboutPage implements OnInit {
         this.events.publish('lessdata:created', this.isSelected);
     }
  
-
   checklogin(){
     if(localStorage.getItem("access_token") === null){
      this.navCtrl.push(LoginPage,{
@@ -150,7 +158,6 @@ export class AboutPage implements OnInit {
     });
   }
 }
-
 
     someFunction(event: KeyboardEvent) { 
         let val = (<HTMLInputElement>event.target).value;
@@ -208,7 +215,9 @@ export class AboutPage implements OnInit {
   toolbarColor = "primary";
   count = 0 ;
   onTabSelect(ev : any){
-      this.events.publish('tab:selected', ev.id);
+      // this.events.publish('tab:selected', ev.id);
+      //  this.abcetc(ev.id);
+      //alert(ev.id);
     // localStorage.setItem('tabIndex',ev.index);
     // localStorage.setItem('tabId',ev.id);
      

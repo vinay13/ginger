@@ -45,20 +45,18 @@
   <!--<accordion></accordion>-->
   <!---->
    <super-tabs *ngIf="tabsLoaded" no-shadow id="mainTabs"  [selectedTabIndex]="0"  [config]="{ sideMenu: 'left' }" scrollTabs toolbarColor="light" [indicatorColor]="toolbarColor" badgeColor="yellow" (tabSelect)="onTabSelect($event)" >
-      <!--<super-tab [root]="page1" [rootParams]="idiom3" [title]="tabdata2[0].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[0].id}} ></super-tab>
+      <super-tab [root]="page1" [rootParams]="idiom3" [title]="tabdata2[0].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[0].id}} ></super-tab>
       <super-tab [root]="page3" [rootParams]="idiom3" [title]="tabdata2[1].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[1].id}}></super-tab>
-      <super-tab [root]="page4" [rootParams]="idiom3" [title]="tabdata2[2].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[2].id}}></super-tab>
-      <super-tab [root]="page5" [rootParams]="idiom3" [title]="tabdata2[3].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[3].id}}></super-tab>
-      <super-tab [root]="page6" [rootParams]="idiom3" [title]="tabdata2[4].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[4].id}}></super-tab>
-      <super-tab [root]="page7" [rootParams]="idiom3" [title]="tabdata2[5].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[5].id}}></super-tab>-->
-      <super-tab  *ngFor="let tab of tabdata " [root]="page2" [rootParams]="idiom3" [title]=tab.name [icon]="showIcons? 'trending-up' : ''" id={{tab.id}}></super-tab>
-       <!--<super-tab [root]="page8" [rootParams]="idiom3" [title]="tabdata2[6].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[6].id}}></super-tab>-->
+      <super-tab *ngIf="tablength >= 3" [root]="page4" [rootParams]="idiom3" [title]="tabdata2[2].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[2].id}}></super-tab>
+      <super-tab *ngIf="tablength >= 4" [root]="page5" [rootParams]="idiom3" [title]="tabdata2[3].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[3].id}}></super-tab>
+      <super-tab *ngIf="tablength >=5" [root]="page6" [rootParams]="idiom3" [title]="tabdata2[4].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[4].id}}></super-tab>
+      <super-tab *ngIf="tablength >= 6" [root]="page7" [rootParams]="idiom3" [title]="tabdata2[5].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[5].id}}></super-tab>
+      <super-tab *ngIf="tablength >= 7" [root]="page8" [rootParams]="idiom3" [title]="tabdata2[6].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[6].id}}></super-tab>
+      <!--<super-tab  *ngFor="let tab of tabdata " [root]="page2" [rootParams]="idiom3" [title]=tab.name [icon]="showIcons? 'trending-up' : ''" id={{tab.id}}></super-tab>-->
+      <super-tab *ngIf="tablength >= 8" [root]="page2" [rootParams]="idiom3" [title]="tabdata2[7].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[7].id}}></super-tab>
       <!--<super-tab [root]="page8" [rootParams]="idiom3" [title]="tabdata2[7].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[7].id}}></super-tab>-->
       <!--<super-tab [root]="page9" [rootParams]="idiom3" [title]="tabdata2[8].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[6].id}}></super-tab>-->-->
       <!--<super-tab *ngFor="let tab of tabdata " [root]="page2" [rootParams]="idiom3" [title]=tab.name [icon]="showIcons? 'home': ''" id={{tab.id}}>-->
    <!--</super-tab>--> 
   </super-tabs>
-  
-
- 
 </ion-content>

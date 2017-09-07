@@ -50,7 +50,7 @@ export class Page8Page {
     public tabdata;
     public tabcat(){
          this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[5].id);  },
+                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[6].id);  },
                                 (err) => { console.log(err)},
                                 () => { })
     }
@@ -122,7 +122,7 @@ export class Page8Page {
    this.currentPage = this.currentPage + 1;
     console.log('currentpage', this.currentPage);
     // console.log('tabId',this.tabId);
-       this._homeserv.getTabDataviaTabId(this.selectedIdiom,this.tabdata[5].id,this.currentPage).subscribe(data =>
+       this._homeserv.getTabDataviaTabId(this.selectedIdiom,this.tabdata[6].id,this.currentPage).subscribe(data =>
         {
           infiniteScroll.complete();
         //   this.hasMoreData = true;

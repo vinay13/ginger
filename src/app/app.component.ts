@@ -58,6 +58,9 @@ export class MyApp {
                   //this.rootPage = NoInternetComponent;
                 }
 
+
+                localStorage.setItem('PageCount','0');
+
               //Deeplinks if from Ionic Native 
               // 'detail' : GifDetailPage
 	            this.deeplinks.routeWithNavController(this.navChild, {

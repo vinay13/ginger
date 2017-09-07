@@ -72,7 +72,7 @@ export class Page3Page {
        this.tabIddata = [];
         // this.cs.showLoader();
        this._homeserv.getTabDataviaTabId(idiom,tabid,0)
-                  .subscribe((res) => {this.tabIddata = res;this.textonGIFs();  this.gifs = this.tabIddata; },
+                  .subscribe((res) => {this.tabIddata = res;this.textonGIFs(); this.gifs = this.tabIddata; },
                   (err) => {console.log(err); this.cs.hideLoader();},
                   () => {console.log('page3data',this.tabIddata);})
     }
