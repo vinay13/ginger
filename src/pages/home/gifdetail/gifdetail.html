@@ -15,7 +15,7 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content class="gifdetail-content" hide-header [header]="head">
+<ion-content class="gifdetail-content" nav-transition [navheader]="head">
     <div class="gifviewer">
         <img class="Gifdetail" src={{gifurl}} (load)="displayImage()">
     </div>
