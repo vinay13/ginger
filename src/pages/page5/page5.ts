@@ -52,10 +52,22 @@ export class Page5Page {
     public tabdata;
     public tabcat(){
          this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs; this.gettabdata(this.selectedIdiom,this.tabdata[3].id);  },
+                    .subscribe( (res) => { this.tabdata = res.tabs; this.sortTabsByorder(); this.gettabdata(this.selectedIdiom,this.tabdata[3].id);  },
                                 (err) => { console.log(err)},
                                 () => { })
     }
+
+  sortTabsByorder(){
+      this.tabdata.sort(function(a, b){
+        if ( a.order < b.order )
+            return -1;
+        if ( a.order > b.order )
+            return 1;
+        return 0;
+      });
+          console.log('sorted tab data',this.tabdata);
+    }
+    
 
     public tabIddata;
     public gifs;

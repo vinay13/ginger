@@ -87,7 +87,7 @@ export class AboutPage implements OnInit {
                   //  this.tabdata = this.tabdata.splice(7,6);
                   //testing
                     this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs;  this.tabdata2 = res.tabs; this.checkTabsLength(this.tabdata );this.abcetc(this.tabdata[0].id); this.tabsLoaded = true;},
+                    .subscribe( (res) => { this.tabdata = res.tabs;  this.tabdata2 = res.tabs; this.sortTabsByorder(); this.checkTabsLength(this.tabdata );this.abcetc(this.tabdata[0].id); this.tabsLoaded = true;},
                     (err) => { console.log(err)},
                     () => {})
 
@@ -118,10 +118,18 @@ export class AboutPage implements OnInit {
   }
 
   sortTabsByorder(){
-    
+  this.tabdata.sort(function(a, b){
+    if ( a.order < b.order )
+        return -1;
+    if ( a.order > b.order )
+        return 1;
+    return 0;
+  });
+      console.log('sorted tab data',this.tabdata);
   }
 
   ngOnInit(){
+   
     this.lang =  "assets/icon/ic_"+ this.selectedIdiom +".png";
   }
 
