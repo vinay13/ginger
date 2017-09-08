@@ -117,6 +117,10 @@ export class AboutPage implements OnInit {
     this.tablength = this.tabdata.length;
   }
 
+  sortTabsByorder(){
+    
+  }
+
   ngOnInit(){
     this.lang =  "assets/icon/ic_"+ this.selectedIdiom +".png";
   }
