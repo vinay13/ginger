@@ -6,6 +6,7 @@ import { CustomService } from '../../../services/custom.service';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { AppRate } from '@ionic-native/app-rate';
 import { Market } from '@ionic-native/market';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 @Component({
     selector: 'page-popover',
@@ -24,7 +25,8 @@ export class PopOverComponent {
                 private socialSharing: SocialSharing,
                 public navparams : NavParams,
                 private appRate: AppRate,
-                private market: Market){
+                private market: Market,
+                private emailComposer: EmailComposer){
                   this.GIFurl  = this.navparams.get('gifURL');
                   console.log("GIFurl",this.GIFurl);
                 }
@@ -56,6 +58,26 @@ export class PopOverComponent {
     
     Rateus(){
         this.market.open('com.mobigraph.xpresso');
+    }
+
+    ReportAbuse(){
+        this.emailComposer.isAvailable().then((available: boolean) =>{
+                if(available) {
+            let email = {
+            to: 'max@mustermann.co',
+            cc: 'erika@mustermann.de',
+            bcc: [],
+            attachments: [
+            ],
+            subject: 'Report Gif',
+            body: '',
+            isHtml: true
+        }; 
+        this.emailComposer.open(email);
+    }
+     
+    });
+  
     }
 
     download(){

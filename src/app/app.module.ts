@@ -38,6 +38,7 @@ import { FileTransfer } from '@ionic-native/file-transfer';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { Device } from '@ionic-native/device';
 import { Market } from '@ionic-native/market';
+import { EmailComposer } from '@ionic-native/email-composer';
 //custom component
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { NoInternetComponent } from '../components/noInternet/noInternet.component';
@@ -204,7 +205,8 @@ const cloudSettings: CloudSettings = {
     OneSignal,
     Push,
     Device,
-    Market
+    Market,
+    EmailComposer
   ]
 })
 
