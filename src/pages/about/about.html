@@ -17,13 +17,19 @@
                 <!--<ion-label> Use less Data</ion-label> -->
                 
       <!--</ion-item>-->
+   <ion-buttons  class="search-icon">
+        <button class="options-icon" ion-button icon-only (click)="presentPopover($event,gifurl)">
+            <ion-icon name="more"></ion-icon>
+        </button>
+    </ion-buttons>    
   <ion-icon class="search-icon" name="md-contact" (click)="checklogin()"></ion-icon>
   <!--<ion-icon  class="search-icon" name="search" (click)="searchButton()"></ion-icon>-->
   <!--<ion-toggle class="search-icon" [checked]="isSelected" (ionChange)="ToggleChange($event)"></ion-toggle>-->
     <ion-icon *ngIf="!isSelected" class="search-icon"  (click)="ToggleChange($event)" name="pause"></ion-icon>
     <ion-icon *ngIf="isSelected" class="search-icon"  (click)="ToggleChange($event)" name="play"></ion-icon>
-
 </div>  
+
+
 
 <div class="search-bar-div">
      <ion-searchbar class="search-input-bar" #search

@@ -4,6 +4,8 @@ import { FileTransfer,FileUploadOptions,FileTransferObject } from  '@ionic-nativ
 import { File } from '@ionic-native/file';
 import { CustomService } from '../../../services/custom.service';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { AppRate } from '@ionic-native/app-rate';
+import { Market } from '@ionic-native/market';
 
 @Component({
     selector: 'page-popover',
@@ -20,7 +22,9 @@ export class PopOverComponent {
                 public file : File,
                 public cs : CustomService,
                 private socialSharing: SocialSharing,
-                public navparams : NavParams){
+                public navparams : NavParams,
+                private appRate: AppRate,
+                private market: Market){
                   this.GIFurl  = this.navparams.get('gifURL');
                   console.log("GIFurl",this.GIFurl);
                 }
@@ -50,6 +54,9 @@ export class PopOverComponent {
         () => { this.cs.hideLoader(); }) 
     }
     
+    Rateus(){
+        this.market.open('com.mobigraph.xpresso');
+    }
 
     download(){
         const fileTransfer: FileTransferObject = this.transfer.create();

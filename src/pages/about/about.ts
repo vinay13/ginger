@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter , ViewChild } from '@angular/core';
-import { IonicPage, NavController,NavParams ,Nav,Events , ModalController } from 'ionic-angular';
+import { IonicPage, NavController,PopoverController,NavParams ,Nav,Events , ModalController } from 'ionic-angular';
 import { Page1Page } from "../page1/page1";
 import { Page2Page } from "../page2/page2";
 import { Page3Page } from "../page3/page3";
@@ -15,6 +15,7 @@ import { LoginPage } from '../login/login.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { SuperTabsModule, SuperTabsConfig, SuperTabs } from 'ionic2-super-tabs';
 import { SearchResultComponent } from '../search/searchResult/search-result.component';
+import { PopOverComponent } from '../home/gifdetail/popover';
 //import { SuperTabsController } from 'ionic2-super-tabs';
 //import { SuperTabsController } from '../../ionic2-super-tabs/src';
 
@@ -65,7 +66,8 @@ export class AboutPage implements OnInit {
               public _homeserv : HomeService,
               public events: Events,
               public modalCtrl : ModalController,
-              public nav : Nav) { 
+              public nav : Nav,
+              public popover : PopoverController) { 
 
                               // this.hideToolbar();  
                   this.selectedIdiom = localStorage.getItem('idiom');  
@@ -116,6 +118,16 @@ export class AboutPage implements OnInit {
     // alert(this.tabdata.length);
     this.tablength = this.tabdata.length;
   }
+
+
+    presentPopover(myEvent){
+        let popover = this.popover.create(PopOverComponent);
+        // console.log('popOver',myEvent);
+        // // console.log('popgifurl',gifurl),
+        popover.present({
+            ev: myEvent,
+        });
+    }
 
   sortTabsByorder(){
   this.tabdata.sort(function(a, b){

@@ -36,6 +36,7 @@ export class HideHeaderDirective {
         if(event.scrollTop > 56){ 
            
          this.renderer.setElementStyle(this.header,'top','-56px');
+         
          this.renderer.setElementStyle(this.scrollContent,'margin-top','0px');
         } else{
             this.renderer.setElementStyle(this.header,'top','0px');

@@ -37,7 +37,7 @@ import { Clipboard } from '@ionic-native/clipboard';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { Device } from '@ionic-native/device';
-
+import { Market } from '@ionic-native/market';
 //custom component
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { NoInternetComponent } from '../components/noInternet/noInternet.component';
@@ -203,7 +203,8 @@ const cloudSettings: CloudSettings = {
     Deeplinks,
     OneSignal,
     Push,
-    Device
+    Device,
+    Market
   ]
 })
 

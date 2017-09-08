@@ -26,7 +26,8 @@
         <ion-grid>
         <ion-row>
             <ion-col col-4>
-                <ion-chip (click)="userProfile(guser)">
+                  <!--<ion-chip (click)="userProfile(guser)">-->
+                <ion-chip >
                     <ion-avatar>
                         <img src="assets/icon/avatar.png">
                     </ion-avatar>
@@ -84,7 +85,7 @@
 
     <masonry class="grid" [options]="{ transitionDuration: '0.2s' , gutter : 4 , percentPosition : true}" [useImagesLoaded]="true" >
        <masonry-brick class="brick" *ngFor="let rgifs of recomns"  (click)="GifsViewviaId(rgifs.id)" >
-         <img *ngIf="!LessData" width="100%" height="100%"  [img-preloader]="rgifs.baseUrl+'/'+rgifs.lowResWebpFN"/>
+         <img *ngIf="!LessData" width="100%" height="100%"  [img-preloader]="rgifs.baseUrl+'/'+(rgifs.lowResWebpFN || rgifs.lowResFN || rgifs.thumbNailFN)"/>
          <img *ngIf="LessData" width="100%" height="100%" [img-preloader]="rgifs.baseUrl+'/'+rgifs.thumbNailFN"/>
        </masonry-brick>
     </masonry>
