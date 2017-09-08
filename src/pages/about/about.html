@@ -24,10 +24,9 @@
     </ion-buttons>    -->
      <ion-icon class="search-icon" name="more" (click)="presentPopover($event,gifurl)"></ion-icon>
   <ion-icon class="search-icon" name="md-contact" (click)="checklogin()"></ion-icon>
-  <!--<ion-icon  class="search-icon" name="search" (click)="searchButton()"></ion-icon>-->
-  <!--<ion-toggle class="search-icon" [checked]="isSelected" (ionChange)="ToggleChange($event)"></ion-toggle>-->
-    <ion-icon *ngIf="!isSelected" class="search-icon"  (click)="ToggleChange($event)" name="pause"></ion-icon>
-    <ion-icon *ngIf="isSelected" class="search-icon"  (click)="ToggleChange($event)" name="play"></ion-icon>
+
+    <!--<ion-icon *ngIf="!isSelected" class="search-icon"  (click)="ToggleChange($event)" name="pause"></ion-icon>
+    <ion-icon *ngIf="isSelected" class="search-icon"  (click)="ToggleChange($event)" name="play"></ion-icon>-->
 </div>  
 
 
@@ -39,11 +38,14 @@
        (keyup.enter)="someFunction($event)" 
          (ionCancel)="onCancel($event)">
     </ion-searchbar>
-
+<ion-icon *ngIf="!isSelected" class="search-icon"  (click)="ToggleChange($event)" name="pause"></ion-icon>
+    <ion-icon *ngIf="isSelected" class="search-icon"  (click)="ToggleChange($event)" name="play"></ion-icon>
     <!--<ion-input class="search-input-bar" (keyup.enter)="someFunction($event)"  ></ion-input>-->
     <button class="custom-search-btn" ion-button (click)="searchBttn(myInput)">
       <ion-icon name="search"></ion-icon>
      </button>
+
+      
 </div>
   </ion-navbar>
 </ion-header>

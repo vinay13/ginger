@@ -61,23 +61,12 @@ export class PopOverComponent {
     }
 
     ReportAbuse(){
-        this.emailComposer.isAvailable().then((available: boolean) =>{
-                if(available) {
-            let email = {
-            to: 'max@mustermann.co',
-            cc: 'erika@mustermann.de',
-            bcc: [],
-            attachments: [
-            ],
-            subject: 'Report Gif',
-            body: '',
-            isHtml: true
-        }; 
-        this.emailComposer.open(email);
-    }
-     
-    });
-  
+         this.cs.showLoader();
+        this.socialSharing.shareViaEmail('', 'Report Gif',['hello@xpresso.me'])
+        .then( () =>{
+            this.cs.hideLoader();
+        },
+        () => { this.cs.hideLoader(); }) 
     }
 
     download(){
