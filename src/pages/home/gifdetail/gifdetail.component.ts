@@ -94,10 +94,6 @@ export class GifDetailComponent {
                              }else{
                                 this.navCtrl.pop();
                              }
-                             
-                         
-                             
-                             
                         }
                     })
                 })  
@@ -195,7 +191,7 @@ setBackground(){
     popover;
     Popflag = false;
     presentPopover(myEvent,gifurl){
-        this.popover = this.popoverCtrl.create(PopOverComponent,{gifURL : gifurl,detailPage: true});
+        this.popover = this.popoverCtrl.create(PopOverComponent,{gifURL : this.gifobject.id,detailPage: true});
         console.log('popOver',myEvent);
         console.log('popgifurl',gifurl),
         this.Popflag = true;

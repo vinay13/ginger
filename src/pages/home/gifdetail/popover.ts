@@ -64,7 +64,7 @@ export class PopOverComponent {
 
     ReportAbuse(){
          this.cs.showLoader();
-        this.socialSharing.shareViaEmail('', 'Report Gif',['hello@xpresso.me'])
+        this.socialSharing.shareViaEmail('', 'Report Gif'+' '+this.GIFurl,['hello@xpresso.me'])
         .then( () =>{
             this.cs.hideLoader();
         },

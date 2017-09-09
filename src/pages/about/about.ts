@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter , ViewChild } from '@angular/core';
-import { IonicPage, NavController,PopoverController,NavParams ,Nav,Events , ModalController } from 'ionic-angular';
+import { IonicPage,Platform, NavController,PopoverController,NavParams ,Nav,Events , ModalController } from 'ionic-angular';
 import { Page1Page } from "../page1/page1";
 import { Page2Page } from "../page2/page2";
 import { Page3Page } from "../page3/page3";
@@ -67,7 +67,8 @@ export class AboutPage implements OnInit {
               public events: Events,
               public modalCtrl : ModalController,
               public nav : Nav,
-              public popover : PopoverController) { 
+              public popoverCtrl : PopoverController,
+              public platform : Platform) { 
 
                               // this.hideToolbar();  
                   this.selectedIdiom = localStorage.getItem('idiom');  
@@ -82,6 +83,22 @@ export class AboutPage implements OnInit {
                   alert(this.tabIndex);
               }
                  
+
+                //   platform.ready().then(() => {
+                //       platform.registerBackButtonAction(() => {
+                //             if(this.nav.canGoBack()){
+                //              this.events.publish('reloadLayout');
+                //              if( this.Popflag ){
+                //                  this.Popflag = false;
+                //                  this.popover.dismiss();
+                //              }else{
+                //                 this.navCtrl.pop();
+                //              }
+                //         }
+                //     })
+                // })  
+
+
                   //this.tabdata.splice(0,2);
                   // this.abcetc(this.tabdata[0].id);
                   //  this.tabdata = this.tabdata.splice(6,5);
@@ -120,11 +137,14 @@ export class AboutPage implements OnInit {
   }
 
 
+    Popflag = false;
+    popover;
     presentPopover(myEvent){
-        let popover = this.popover.create(PopOverComponent);
+        this.popover = this.popoverCtrl.create(PopOverComponent);
         // console.log('popOver',myEvent);
         // // console.log('popgifurl',gifurl),
-        popover.present({
+        this.Popflag = true;
+        this.popover.present({
             ev: myEvent,
         });
     }

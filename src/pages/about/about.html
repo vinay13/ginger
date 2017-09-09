@@ -39,7 +39,7 @@
          (ionCancel)="onCancel($event)">
     </ion-searchbar>
 <ion-icon *ngIf="!isSelected" class="search-icon2"  (click)="ToggleChange($event)" name="pause"></ion-icon>
-    <ion-icon *ngIf="isSelected" class="search-icon"  (click)="ToggleChange($event)" name="play"></ion-icon>
+    <ion-icon *ngIf="isSelected" class="search-icon2"  (click)="ToggleChange($event)" name="play"></ion-icon>
     <!--<ion-input class="search-input-bar" (keyup.enter)="someFunction($event)"  ></ion-input>-->
     <button class="custom-search-btn" ion-button (click)="searchBttn(myInput)">
       <ion-icon name="search"></ion-icon>
