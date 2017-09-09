@@ -119,10 +119,10 @@ let click_func;
 
 
    doRefresh(refresher){
-  // this.cs.showLoader();
+   this.cs.showLoader();
      this.tabcat();
    setTimeout(() => {
-    //  this.cs.hideLoader();
+      this.cs.hideLoader();
       refresher.complete();
     }, 2000);
    

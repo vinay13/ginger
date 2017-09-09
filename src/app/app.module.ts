@@ -39,6 +39,7 @@ import { Deeplinks } from '@ionic-native/deeplinks';
 import { Device } from '@ionic-native/device';
 import { Market } from '@ionic-native/market';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 //custom component
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { NoInternetComponent } from '../components/noInternet/noInternet.component';
@@ -80,7 +81,7 @@ import { FilePath } from '@ionic-native/file-path';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { OneSignal } from '@ionic-native/onesignal';
-
+import { Diagnostic } from '@ionic-native/diagnostic';
 
 
 const cloudSettings: CloudSettings = {
@@ -206,7 +207,9 @@ const cloudSettings: CloudSettings = {
     Push,
     Device,
     Market,
-    EmailComposer
+    EmailComposer,
+    AndroidPermissions,
+    Diagnostic
   ]
 })
 

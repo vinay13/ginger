@@ -65,9 +65,9 @@ export class Page7Page {
 
     doRefresh(refresher){
    this.cs.showLoader();
-   // this.tabcat();
+    this.tabcat();
    setTimeout(() => {
-   //   this.cs.hideLoader();
+      this.cs.hideLoader();
       refresher.complete();
     }, 2000);
    

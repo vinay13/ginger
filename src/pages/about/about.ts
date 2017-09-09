@@ -84,21 +84,6 @@ export class AboutPage implements OnInit {
               }
                  
 
-                //   platform.ready().then(() => {
-                //       platform.registerBackButtonAction(() => {
-                //             if(this.nav.canGoBack()){
-                //              this.events.publish('reloadLayout');
-                //              if( this.Popflag ){
-                //                  this.Popflag = false;
-                //                  this.popover.dismiss();
-                //              }else{
-                //                 this.navCtrl.pop();
-                //              }
-                //         }
-                //     })
-                // })  
-
-
                   //this.tabdata.splice(0,2);
                   // this.abcetc(this.tabdata[0].id);
                   //  this.tabdata = this.tabdata.splice(6,5);

@@ -3,6 +3,8 @@ import { AddTagsComponent } from './add-tags/add-tags.component';
 import { NavController } from 'ionic-angular';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { FilePath } from '@ionic-native/file-path';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { Diagnostic } from '@ionic-native/diagnostic';
 
 @Component({
     selector : 'page-upload',
@@ -14,7 +16,9 @@ export class UploadComponent implements OnInit {
     weburl;
     constructor(private navCtrl : NavController,
                 private fileChooser : FileChooser,
-                private filePath : FilePath ){
+                private filePath : FilePath,
+                private androidPermissions: AndroidPermissions,
+                private diagnostic: Diagnostic ){
       //  this.selectedIdiom = this.navparmas.get();
     }
 
@@ -28,9 +32,26 @@ export class UploadComponent implements OnInit {
     public data_response; 
     ImagePick(){
       this.fileChooser.open()
-        .then(uri => {console.log(uri); this.imageFile = uri ; this.filePathfunc(uri);  } )
+        .then(uri => {console.log(uri);this.newpermissionGola(); this.permissionGola();  this.imageFile = uri ; this.filePathfunc(uri);  } )
         .catch(e => console.log(e));
     }
+
+    permissionGola(){
+        this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.READ_EXTERNAL_STORAGE).then(
+            success => {console.log('Permission granted')},
+            err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.READ_EXTERNAL_STORAGE)
+    );
+// this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA, this.androidPermissions.PERMISSION.GET_ACCOUNTS]);
+    }
+
+     newpermissionGola(){
+        this.diagnostic.requestExternalStorageAuthorization().then(()=>{
+            //User gave permission 
+            console.log('permissionGranted');
+            }).catch(error=>{
+            //Handle error
+        });
+     }
 
     filePathfunc(path){
         this.filePath.resolveNativePath(path)

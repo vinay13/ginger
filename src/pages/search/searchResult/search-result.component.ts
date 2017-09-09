@@ -61,16 +61,16 @@ export class SearchResultComponent implements OnInit {
                         this.versionFlag = true;
                   }
 
-                platform.ready().then(() => {
-                    platform.registerBackButtonAction(() => {
-                            if(this.nav.canGoBack()){
-                             this.events.publish('reloadLayout');
-                           //  this.viewCtrl.dismiss();
-                              this.navCtrl.pop(); 
+                // platform.ready().then(() => {
+                //     platform.registerBackButtonAction(() => {
+                //             if(this.nav.canGoBack()){
+                //              this.events.publish('reloadLayout');
+                //            //  this.viewCtrl.dismiss();
+                //               this.navCtrl.pop(); 
                              
-                        }
-                    })
-                })
+                //         }
+                //     })
+                // })
     } 
 
     CustomNavRoot(){

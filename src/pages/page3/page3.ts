@@ -97,10 +97,10 @@ export class Page3Page {
     }
 
     doRefresh(refresher){
-   //this.cs.showLoader();
+   this.cs.showLoader();
     this.tabcat();
    setTimeout(() => {
-   //   this.cs.hideLoader();
+      this.cs.hideLoader();
       refresher.complete();
     }, 2000);
    

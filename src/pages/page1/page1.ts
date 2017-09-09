@@ -1,5 +1,5 @@
 import { Component,ViewChild,Input,Output,EventEmitter,ElementRef,Renderer } from '@angular/core';
-import { NavController, NavParams , ModalController , Events  } from 'ionic-angular';
+import { Nav,NavController, NavParams , ModalController , Events  } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
 import { CustomService } from '../../services/custom.service';
@@ -45,6 +45,7 @@ export class Page1Page {
     isSelected;
    //  @Input('fab') fabContent: any;
     constructor(public navCtrl: NavController,
+                public nav : Nav,
                 public navparams: NavParams,
                 public _homeserv : HomeService,
                 public cs : CustomService,
@@ -207,6 +208,10 @@ export class Page1Page {
       });   
     }
 
+
+       
+
+
      public newlayout() {
         setTimeout(() => {
             this.masonry._msnry.layout();
@@ -244,10 +249,10 @@ export class Page1Page {
 
 
 doRefresh(refresher){
- //  this.cs.showLoader();
+  this.cs.showLoader();
      this.newlayout();
    setTimeout(() => {
-    //  this.cs.hideLoader();
+      this.cs.hideLoader();
       refresher.complete();
     }, 2000);
    

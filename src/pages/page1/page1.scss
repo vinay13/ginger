@@ -50,6 +50,14 @@ column-count: 2;
 }
 
 
+    .spinner-md-crescent circle {
+    stroke: #c34d4d;
+    }
+
+    .refresher-refreshing .spinner-ios line, .refresher-refreshing .spinner-ios-small line, .refresher-refreshing .spinner-crescent circle {
+    stroke: #c34d4d;
+}
+
 
 .ios ,.md {
     page-page2 {

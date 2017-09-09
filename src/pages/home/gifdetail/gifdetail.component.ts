@@ -84,19 +84,20 @@ export class GifDetailComponent {
                     this.LessData = true;
                   }    
 
-                   platform.ready().then(() => {
-                    platform.registerBackButtonAction(() => {
-                            if(this.nav.canGoBack()){
-                             this.events.publish('reloadLayout');
-                             if( this.Popflag ){
-                                 this.Popflag = false;
-                                 this.popover.dismiss();
-                             }else{
-                                this.navCtrl.pop();
-                             }
-                        }
-                    })
-                })  
+                //    platform.ready().then(() => {
+                       
+                //     platform.registerBackButtonAction(() => {
+                //             if(this.nav.canGoBack()){
+                //              this.events.publish('reloadLayout');
+                //              if( this.Popflag ){
+                //                  this.Popflag = false;
+                //                  this.popover.dismiss();
+                //              }else{
+                //                 this.navCtrl.pop();
+                //              }
+                //         }
+                //     })
+                // })  
             }
 
     loadProgress: number = 0;

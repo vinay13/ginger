@@ -51,7 +51,7 @@ export class PopOverComponent {
 
     shareApp(){
       this.cs.showLoader();
-      this.socialSharing.share("Explore best of GIF and share through social network",'gola',"","https://play.google.com/store/apps/details?id=com.mobigraph.xpresso")
+      this.socialSharing.share("Get Gola - The best Indian trending GIFs from your favourite actors,movies,regions ",'Get Gola App',"","https://play.google.com/store/apps/details?id=com.mobigraph.xpresso")
         .then( () =>{
             this.cs.hideLoader();
         },
