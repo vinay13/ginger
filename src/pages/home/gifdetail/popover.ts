@@ -16,6 +16,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 export class PopOverComponent {
 
     GIFurl;
+    detailPage;
     constructor(public navCtrl : NavController,
                 public toastCtrl : ToastController,
                 public viewCtrl: ViewController,
@@ -28,6 +29,7 @@ export class PopOverComponent {
                 private market: Market,
                 private emailComposer: EmailComposer){
                   this.GIFurl  = this.navparams.get('gifURL');
+                  this.detailPage  = this.navparams.get('detailPage');
                   console.log("GIFurl",this.GIFurl);
                 }
 

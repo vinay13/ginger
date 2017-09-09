@@ -12,12 +12,12 @@
         Download
     </ion-item>-->
 
-     <ion-item class="gin-popover" (click)="Rateus()">
+     <ion-item *ngIf="!detailPage" class="gin-popover" (click)="Rateus()">
         <ion-icon class="pop-icon" name="md-star"></ion-icon>
         Rate Us
     </ion-item>
 
-       <ion-item class="gin-popover" (click)="ReportAbuse()">
+       <ion-item *ngIf="detailPage" class="gin-popover" (click)="ReportAbuse()">
         <ion-icon class="pop-icon" name="md-clipboard"></ion-icon>
         Report Abuse
     </ion-item>

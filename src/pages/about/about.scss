@@ -14,7 +14,7 @@ page-about{
 
       .toolbar .searchbar-md {
         padding: 6px;
-        width: 70%;
+        width: 76%;
         position: absolute;
         font-size: 1.2rem;
       }
@@ -23,12 +23,12 @@ page-about{
           float: right;
           top: 2px;
           background: #35ec97;
-          margin-right: 13px;
+          margin-right: 6px;
           
       }
 
       .button-md{
-          font-size:2rem;
+          font-size:1.6rem;
           border-radius:4px;
       }
 
@@ -79,6 +79,15 @@ page-about{
     position: right;
     float: right;
     margin-right: 10px;
+    padding: 10px;
+    color: #35EC97;
+}
+
+.search-icon2{  
+    font-size: 30px;
+    position: right;
+    float: right;
+    margin-right: 0px;
     padding: 10px;
     color: #35EC97;
 }

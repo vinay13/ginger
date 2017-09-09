@@ -14,6 +14,8 @@ import { MasonryModule,AngularMasonry } from 'angular2-masonry';
 
 export class Page2Page {
    rootNavCtrl: NavController;
+   version;
+   versionFlag = false;
    selectedIdiom = localStorage.getItem('idiom');
   @ViewChild(AngularMasonry) public masonry: AngularMasonry;
    constructor(public navparams : NavParams,
@@ -27,6 +29,13 @@ export class Page2Page {
                       //  alert('newLayout called');
                         this.newlayout();
                   });
+
+                  
+                   this.version = localStorage.getItem('version');
+                  localStorage.getItem('platform');
+                  if(  this.version <  '5.0' ){
+                        this.versionFlag = true;
+                  }
 
 
                 //  this.newselectedIdiom = this.navparams.data;

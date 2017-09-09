@@ -1,5 +1,5 @@
 import {Component,OnInit,Input,ViewChild,Renderer} from '@angular/core';
-import {Platform,IonicPage,NavParams,NavController,Events,Nav} from 'ionic-angular';
+import {Platform,IonicPage,NavParams,ViewController,PopoverController,NavController,Events,Nav} from 'ionic-angular';
 import {SearchService} from '../../../services/search.service';
 import {HomeService} from '../../../services/home.service';
 import {CustomService} from '../../../services/custom.service';
@@ -36,7 +36,9 @@ export class SearchResultComponent implements OnInit {
                 public events : Events,
                 public renderer : Renderer,
                 public nav : Nav,
-                private platform: Platform){ 
+                private platform: Platform,
+                private viewCtrl : ViewController,
+                private popCtrl : PopoverController){ 
                 this.selectedIdiom = this.navparams.get('idiom');        
                 // this.navCtrl.remove(1,1);
                 events.subscribe('lessdata:created', (user) => {
@@ -63,6 +65,7 @@ export class SearchResultComponent implements OnInit {
                     platform.registerBackButtonAction(() => {
                             if(this.nav.canGoBack()){
                              this.events.publish('reloadLayout');
+                           //  this.viewCtrl.dismiss();
                               this.navCtrl.pop(); 
                              
                         }

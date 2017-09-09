@@ -3,7 +3,7 @@ import { PopoverController } from 'ionic-angular';
 import { PopOverComponent } from './popover';
 import { SearchComponent } from '../../search/search.component';
 import { SearchResultComponent } from '../../search/searchResult/search-result.component';
-import { Nav,NavController, ToastController , NavParams ,Events} from 'ionic-angular';
+import { Nav,Platform,ViewController,NavController, ToastController , NavParams ,Events} from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { CustomService } from '../../../services/custom.service';
 import { HomeService } from '../../../services/home.service';
@@ -42,7 +42,8 @@ export class GifDetailComponent {
                 private clipboard: Clipboard,
                 public navparams : NavParams,
                 public events : Events,
-                public nav : Nav
+                public nav : Nav,
+                public platform : Platform
                ){
                     this.gifobject = this.navparams.get('url');
                      this.selectedIdiom = this.navparams.get('idiom') || localStorage.getItem('idiom');
@@ -81,9 +82,26 @@ export class GifDetailComponent {
                   } 
                   else{
                     this.LessData = true;
-                  }      
-                   
-                }
+                  }    
+
+                   platform.ready().then(() => {
+                    platform.registerBackButtonAction(() => {
+                            if(this.nav.canGoBack()){
+                             this.events.publish('reloadLayout');
+                             if( this.Popflag ){
+                                 this.Popflag = false;
+                                 this.popover.dismiss();
+                             }else{
+                                this.navCtrl.pop();
+                             }
+                             
+                         
+                             
+                             
+                        }
+                    })
+                })  
+            }
 
     loadProgress: number = 0;
     public hidebar = false;	            
@@ -174,13 +192,17 @@ setBackground(){
                         () => console.log('related gifs',this.totalcount))
     }
 
+    popover;
+    Popflag = false;
     presentPopover(myEvent,gifurl){
-        let popover = this.popoverCtrl.create(PopOverComponent,{gifURL : gifurl});
+        this.popover = this.popoverCtrl.create(PopOverComponent,{gifURL : gifurl,detailPage: true});
         console.log('popOver',myEvent);
         console.log('popgifurl',gifurl),
-        popover.present({
+        this.Popflag = true;
+        this.popover.present({
             ev: myEvent,
         });
+        
     }
 
     gifData;
