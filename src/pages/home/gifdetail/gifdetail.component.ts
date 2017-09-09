@@ -29,6 +29,8 @@ export class GifDetailComponent {
     public scount;
     lessdata;
     LessData;
+    version;
+    versionFlag = false;
    //  baseUrl = "https://gola-gif-dev-store-cf.xpresso.me/R2luZ2Vy/";
     constructor(public popoverCtrl : PopoverController,
                 public navCtrl : NavController,
@@ -58,6 +60,13 @@ export class GifDetailComponent {
                     //    let el = document.getElementsByClassName('scroll-content')[0] as HTMLElement;
                     //     this.recomns.viewHeight = el.offsetHeight;
 
+
+                    
+                   this.version = localStorage.getItem('version');
+                  localStorage.getItem('platform');
+                  if(  this.version <  '5.0' ){
+                        this.versionFlag = true;
+                  }
 
                 events.subscribe('lessdata:created', (user) => {
                     console.log('Welcome', user);

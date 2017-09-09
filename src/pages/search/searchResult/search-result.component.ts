@@ -25,6 +25,8 @@ export class SearchResultComponent implements OnInit {
     totalCount;
     lessdata;
     LessData;
+    version;
+    versionFlag = false;
     baseUrl = "https://gola-gif-dev-store-cf.xpresso.me/R2luZ2Vy/";
     constructor(private navparams : NavParams,
                 private _searchService : SearchService,
@@ -50,6 +52,12 @@ export class SearchResultComponent implements OnInit {
                 else{
                     this.LessData = true;
                 }  
+
+                 this.version = localStorage.getItem('version');
+                  localStorage.getItem('platform');
+                  if(  this.version <  '5.0' ){
+                        this.versionFlag = true;
+                  }
 
                 platform.ready().then(() => {
                     platform.registerBackButtonAction(() => {

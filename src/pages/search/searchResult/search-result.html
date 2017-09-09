@@ -30,7 +30,9 @@
     
        <masonry class="grid" [options]="{ transitionDuration: '0.7s' , gutter :4, percentPosition: true }" [useImagesLoaded]="true"  >
           <masonry-brick class="brick" *ngFor="let gifs of searchedGifs"  (click)="GifsViewviaId(gifs.id)" >
-           <img *ngIf="!LessData"  width={{gifs.width}} [height]="gifs.height" [img-preloader]="gifs.baseUrl+'/'+(gifs.lowResWebpFN || gifs.lowResFN || gifs.thumbNailFN)" />
+           
+           <img *ngIf="!LessData && !versionFlag"  width={{gifs.width}} [height]="gifs.height" [img-preloader]="gifs.baseUrl+'/'+(gifs.lowResWebpFN || gifs.lowResFN || gifs.thumbNailFN)" />
+           <img *ngIf="!LessData && versionFlag" height="100px" width="275px" [img-placeholder]="gifs.baseUrl+'/'+(gifs.lowResFN || gifs.thumbNailFN)"/>
            <img *ngIf="LessData" [img-preloader]="gifs.baseUrl+'/'+gifs.thumbNailFN" width={{gifs.lowResWidth}} height={{gifs.thumbNailFN}}/>
          </masonry-brick> 
        </masonry>

@@ -147,6 +147,9 @@ export class MyApp {
                  "deviceToken": deviceId
     }
 
+      localStorage.setItem('version',this.device.version);
+      localStorage.setItem('platform',this.device.platform);
+
     // this._notiServ.notificationDeviceId(body)
     //         .subscribe( (data) => { console.log('notyData',data)},
     //                   (err) => { console.log(err)}

@@ -17,7 +17,9 @@ export class Page5Page {
    selectedIdiom = localStorage.getItem('idiom');
    lessdata;
     LessData;
-    // selectedIdiom:any;
+    version;
+    versionFlag = false;
+    //selectedIdiom:any;
     isSelected;
     @ViewChild(AngularMasonry) public masonry: AngularMasonry;
    constructor(public navparams : NavParams,
@@ -31,6 +33,12 @@ export class Page5Page {
                       //  alert('newLayout called');
                         this.newlayout();
                   });
+
+                   this.version = localStorage.getItem('version');
+                  localStorage.getItem('platform');
+                  if(  this.version <  '5.0' ){
+                        this.versionFlag = true;
+                  }
 
                     this.tabcat();
 

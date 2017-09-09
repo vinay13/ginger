@@ -17,6 +17,8 @@ export class Page8Page {
    rootNavCtrl: NavController;
    lessdata;
    LessData;
+   version;
+   versionFlag = false;
    selectedIdiom = localStorage.getItem('idiom');
    @ViewChild(AngularMasonry) public masonry: AngularMasonry;
    constructor(public navparams : NavParams,
@@ -32,6 +34,13 @@ export class Page8Page {
                   });
                     this.tabcat();
                   
+                     this.version = localStorage.getItem('version');
+                    localStorage.getItem('platform');
+                    if(  this.version <  '5.0' ){
+                        this.versionFlag = true;
+                  }
+
+
                   events.subscribe('lessdata:created', (user) => {
                     console.log('Welcome', user);
                     this.lessdata = user;

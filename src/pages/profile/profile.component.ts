@@ -22,12 +22,23 @@ export class ProfileComponent{
     lessdata;
     LessData;
     abcheight;
+    version;
+    versionFlag = false;
     constructor(private navCtrl : NavController,
                 private navparams : NavParams,
                 private _proServ : ProfileService,
                 private cs : CustomService,
                 public events: Events,
                 public renderer : Renderer2){
+
+                 
+
+                 this.version = localStorage.getItem('version');
+                    localStorage.getItem('platform');
+                    if(  this.version <  '5.0' ){
+                        this.versionFlag = true;
+                  }
+    
 
                 this.EmailId = this.navparams.get('email');
                 events.subscribe('lessdata:created', (user) => {

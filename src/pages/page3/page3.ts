@@ -20,6 +20,8 @@ export class Page3Page {
     LessData;
     // selectedIdiom:any;
     isSelected;
+    version;
+    versionFlag = false;
    @ViewChild(AngularMasonry) public masonry: AngularMasonry;
    constructor(public navCtrl: NavController,
                public navParams: NavParams,
@@ -41,6 +43,12 @@ export class Page3Page {
                       //  alert('newLayout called');
                         this.newlayout();
                   });
+
+                   this.version = localStorage.getItem('version');
+                  localStorage.getItem('platform');
+                  if(  this.version <  '5.0' ){
+                        this.versionFlag = true;
+                  }
 
                 events.subscribe('lessdata:created', (user) => {
                     console.log('Welcome', user);
