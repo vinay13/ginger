@@ -37,6 +37,10 @@
       <button ion-fab (click)="checkUserLogin()"><ion-icon name="md-add"></ion-icon></button>
     </ion-fab>
 
+  <ion-refresher [pullMax]="60" [pullMin]='60' (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
      <ion-infinite-scroll  direction="x" class="con-scroll-x" has-bouncing="true" (ionInfinite)="doInfinite($event)">
       <ion-infinite-scroll-content ></ion-infinite-scroll-content>
     </ion-infinite-scroll>

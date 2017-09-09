@@ -77,6 +77,17 @@ export class Page8Page {
     }
 
 
+    doRefresh(refresher){
+   //this.cs.showLoader();
+    this.tabcat();
+   setTimeout(() => {
+    //  this.cs.hideLoader();
+      refresher.complete();
+    }, 2000);
+   
+  }
+
+
     public tabIddata;
     public gifs;
     gettabdata(idiom,tabid){

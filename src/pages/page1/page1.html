@@ -23,6 +23,9 @@
 
 <ion-content class="home-content" hide-fab [fab]="head">
 
+
+
+
     <masonry class="grid"  [options]="{ transitionDuration: '0.2s' , gutter :4 ,percentPosition: true }" [useImagesLoaded]="true">
        <masonry-brick   class="brick" *ngFor="let item of gifs"  (click)="GifsViewviaId(item.gifId)" >
           <!--<div class="placeholder-1 placeholder-box" >
@@ -55,6 +58,10 @@
     <ion-fab right bottom #head>
       <button ion-fab (click)="checkUserLogin()"><ion-icon name="md-add"></ion-icon></button>
     </ion-fab>
+
+    <ion-refresher [pullMax]="60" [pullMin]='60' (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
     <ion-infinite-scroll  direction="x" class="con-scroll-x" has-bouncing="true" (ionInfinite)="doInfinite($event)">
       <ion-infinite-scroll-content ></ion-infinite-scroll-content>

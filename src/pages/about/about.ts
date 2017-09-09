@@ -165,6 +165,7 @@ export class AboutPage implements OnInit {
     this.lang =  "assets/icon/ic_"+ this.selectedIdiom +".png";
   }
 
+
   abcetc(tbid){
     console.log('abctabid',tbid);
        this.idiomdict = {

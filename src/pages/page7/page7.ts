@@ -63,6 +63,16 @@ export class Page7Page {
                                 () => { })
     }
 
+    doRefresh(refresher){
+   this.cs.showLoader();
+   // this.tabcat();
+   setTimeout(() => {
+   //   this.cs.hideLoader();
+      refresher.complete();
+    }, 2000);
+   
+  }
+
     
     sortTabsByorder(){
       this.tabdata.sort(function(a, b){

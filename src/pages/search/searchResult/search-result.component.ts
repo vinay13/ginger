@@ -102,6 +102,17 @@ export class SearchResultComponent implements OnInit {
  
    }
 
+//    doRefresh(refresher){
+//    this.cs.showLoader();
+//      this.newlayout();
+//    setTimeout(() => {
+//       this.cs.hideLoader();
+//       refresher.complete();
+//     }, 2000);
+   
+//   }
+
+
     @Input() searchItem : any;
     searchBttn(val){
          this.getSearchGifs(val,this.selectedIdiom);

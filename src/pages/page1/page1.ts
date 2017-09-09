@@ -243,6 +243,18 @@ export class Page1Page {
 
 
 
+doRefresh(refresher){
+ //  this.cs.showLoader();
+     this.newlayout();
+   setTimeout(() => {
+    //  this.cs.hideLoader();
+      refresher.complete();
+    }, 2000);
+   
+  }
+
+
+
 currentPage = 0;
  doInfinite(infiniteScroll) {
 

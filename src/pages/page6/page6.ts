@@ -117,6 +117,17 @@ let click_func;
       this.cs.hideLoader();
    }
 
+
+   doRefresh(refresher){
+  // this.cs.showLoader();
+     this.tabcat();
+   setTimeout(() => {
+    //  this.cs.hideLoader();
+      refresher.complete();
+    }, 2000);
+   
+  }
+
     checkUserLogin(){
        let token = localStorage.getItem('access_token');
       console.log('token',token);

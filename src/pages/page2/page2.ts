@@ -114,6 +114,17 @@ let click_func;
       }
   }
 
+
+  doRefresh(refresher){
+  // this.cs.showLoader();
+     this.newlayout();
+   setTimeout(() => {
+   //   this.cs.hideLoader();
+      refresher.complete();
+    }, 2000);
+   
+  }
+
     public newlayout() {
       setTimeout(() => {
             // this.masonry._msnry.layout();

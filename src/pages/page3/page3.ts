@@ -96,6 +96,16 @@ export class Page3Page {
                   () => {console.log('page3data',this.tabIddata);})
     }
 
+    doRefresh(refresher){
+   //this.cs.showLoader();
+    this.tabcat();
+   setTimeout(() => {
+   //   this.cs.hideLoader();
+      refresher.complete();
+    }, 2000);
+   
+  }
+
   ng_class;
   click_func= "EmotionClicked" ;
   textonGIFs(){
