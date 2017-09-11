@@ -1,0 +1,1 @@
+gif2webp -lossy $1 -o $2
