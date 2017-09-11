@@ -59,7 +59,7 @@ export class PopOverComponent {
     }
     
     Rateus(){
-        this.market.open('com.mobigraph.xpresso');
+        this.market.open('com.mobigraph.gola');
     }
 
     ReportAbuse(){
