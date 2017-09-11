@@ -1,4 +1,4 @@
-import { Component,ViewChild,Input,ElementRef,Renderer } from '@angular/core';
+import { Component,ViewChild,Input,Output,EventEmitter,ElementRef,Renderer } from '@angular/core';
 import { NavController, NavParams , ModalController , Events  } from 'ionic-angular';
 import { HomeService } from '../../services/home.service';
 import { GifDetailComponent } from '../home/gifdetail/gifdetail.component';
@@ -52,12 +52,22 @@ export class Page1Page {
                 public fileChooser : FileChooser,
                 public modalCtrl : ModalController,
                 public events : Events,
-                public renderer : Renderer){
+                public renderer : Renderer,
+                public element : ElementRef){
+
+
+                  
                              
                   this.rootNavCtrl = this.navparams.get('rootNavCtrl');
                   this.newselectedIdiom = this.navparams.data;
                   this.selectedIdiom = this.newselectedIdiom.idiom;
                    
+                   this.events.subscribe('reloadLayout',() => {
+                      //  alert('newLayout called');
+                        this.newlayout();
+                  });
+
+
                 platform.ready().then(() => {
                       this.tabcat();
                  })
@@ -146,9 +156,9 @@ export class Page1Page {
     public tabIddata;
     gettabdata(idiom,tabid){
        this.tabIddata = [];
-       //this.cs.showLoader();
+       this.cs.showLoader();
        this._homeserv.getTabDataviaTabId(idiom,tabid,0)
-                  .subscribe((res) => {this.tabIddata = res ; this.gifs = this.tabIddata;  this.putinGrid();},
+                  .subscribe((res) => {this.tabIddata = res ; this.cs.hideLoader(); this.gifs = this.tabIddata;  this.putinGrid();},
                   (err) => {console.log(err);},
                   () => console.log('data',this.tabIddata ))
     }
@@ -253,8 +263,6 @@ currentPage = 0;
      () => console.log('Next Page Loading completed')
      );
   } 
-
-
 
 
 

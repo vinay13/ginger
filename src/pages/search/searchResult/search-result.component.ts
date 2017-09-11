@@ -1,6 +1,7 @@
 import {Component,OnInit,Input,ViewChild,Renderer} from '@angular/core';
-import {IonicPage,NavParams,NavController,Events} from 'ionic-angular';
+import {Platform,IonicPage,NavParams,ViewController,PopoverController,NavController,Events,Nav} from 'ionic-angular';
 import {SearchService} from '../../../services/search.service';
+import {HomeService} from '../../../services/home.service';
 import {CustomService} from '../../../services/custom.service';
 import {GifDetailComponent} from '../../home/gifdetail/gifdetail.component';
 import {AboutPage} from '../../about/about.ts';
@@ -18,21 +19,28 @@ import {AboutPage} from '../../about/about.ts';
 
 export class SearchResultComponent implements OnInit {
 
-    public searchItem;
+    // public searchItem;
     public searchedGifs = [];
     selectedIdiom;
     totalCount;
     lessdata;
     LessData;
-
+    version;
+    versionFlag = false;
+    baseUrl = "https://gola-gif-dev-store-cf.xpresso.me/R2luZ2Vy/";
     constructor(private navparams : NavParams,
                 private _searchService : SearchService,
+                private _homeserv : HomeService,
                 private cs : CustomService,
                 private navCtrl : NavController,
                 public events : Events,
-                public renderer : Renderer){ 
+                public renderer : Renderer,
+                public nav : Nav,
+                private platform: Platform,
+                private viewCtrl : ViewController,
+                private popCtrl : PopoverController){ 
                 this.selectedIdiom = this.navparams.get('idiom');        
-
+                // this.navCtrl.remove(1,1);
                 events.subscribe('lessdata:created', (user) => {
                     console.log('Welcome', user);
                     this.lessdata = user;
@@ -46,17 +54,36 @@ export class SearchResultComponent implements OnInit {
                 else{
                     this.LessData = true;
                 }  
+
+                 this.version = localStorage.getItem('version');
+                  localStorage.getItem('platform');
+                  if(  this.version <  '5.0' ){
+                        this.versionFlag = true;
+                  }
+
+                platform.ready().then(() => {
+                    platform.registerBackButtonAction(() => {
+                            if(this.nav.canGoBack()){
+                             this.events.publish('reloadLayout');
+                           //  this.viewCtrl.dismiss();
+                              this.navCtrl.pop(); 
+                             
+                        }
+                    })
+                })
     } 
 
     CustomNavRoot(){
-        this.navCtrl.setRoot(AboutPage,{
-                'idiom': this.selectedIdiom
-        });
-
-       // this.navCtrl.push('something-else');
+        // this.navCtrl.setRoot(AboutPage,{
+        // 'idiom': this.selectedIdiom
+        // });
+        //this.nav.popToRoot();
+       
+       // This will remove the 'ResultPage' from stack.
+       this.navCtrl.pop(); 
+       this.events.publish('reloadLayout');
     }
      
-
     getSearchGifs(item,selectedIdiom){
         this.cs.showLoader();
         console.log('selectedIdiom',this.selectedIdiom);
@@ -66,10 +93,28 @@ export class SearchResultComponent implements OnInit {
                     () => console.log('search gifs',this.searchedGifs))
     }
 
-    // public searchItem;
+    public gifData;
+    GifsViewviaId(tabid){
+      this.cs.showLoader();
+      this._homeserv.getGifviaID(tabid)
+          .subscribe((res) => { this.gifData = res; this.cs.hideLoader(); this.viewGif(res);},
+                        (err) => { this.cs.hideLoader();} )
+ 
+   }
+
+    @Input() searchItem : any;
+    searchBttn(val){
+         this.getSearchGifs(val,this.selectedIdiom);
+         this.searchItem2 = this.searchItem;
+         this.searchItem = '';    
+    }
+
+    public searchItem2;
     ngOnInit(){
          this.searchItem = this.navparams.get('sitem') || this.navparams.get('tag');
          this.getSearchGifs(this.searchItem,this.selectedIdiom);
+         this.searchItem2 = this.searchItem;
+         this.searchItem = '';
          //  this.searchedGifs = this.navparams.get('relatedgifs');
          //  console.log('seeergifs',this.searchedGifs);
     }
@@ -77,11 +122,8 @@ export class SearchResultComponent implements OnInit {
     someFunction(event: KeyboardEvent) { 
         let val = (<HTMLInputElement>event.target).value;
         this.getSearchGifs(val,this.selectedIdiom);
-
-    //     this.navCtrl.push(SearchResultComponent,{
-    //         'sitem' : val ,
-    //         'relatedgifs' :  this.searchedGifs
-    //   });
+        this.searchItem2 = this.searchItem;
+         this.searchItem = '';
     }
 
     getItems(){
@@ -101,7 +143,7 @@ currentPage = 0;
 
    this.currentPage = this.currentPage + 1;
     console.log('currentpage', this.currentPage);
-       this._searchService.GetGifsSearch(this.selectedIdiom,this.searchItem,this.currentPage).subscribe(data =>
+       this._searchService.GetGifsSearch(this.selectedIdiom,this.searchItem2,this.currentPage).subscribe(data =>
         {
           infiniteScroll.complete();
         //   this.hasMoreData = true;

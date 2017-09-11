@@ -1,5 +1,5 @@
 import { Component,Input,ViewChild } from '@angular/core';
-import { Platform,Nav,NavController,NavParams} from 'ionic-angular';
+import { Platform,Nav,NavController,NavParams,ViewController} from 'ionic-angular';
 import { SearchResultComponent } from './searchResult/search-result.component';
 import { SearchService } from '../../services/search.service'; 
 import { Keyboard } from '@ionic-native/keyboard';
@@ -25,7 +25,8 @@ export class SearchComponent{
                 private navCtrl : NavController,
                 private navParmas : NavParams,
                 private _searchservice : SearchService,
-                private keyboard : Keyboard){
+                private keyboard : Keyboard,
+                private viewCtrl : ViewController){
                     this.selectedIdiom = this.navParmas.get('idiom');
                 // this.initializeitems();
                 //  this.getSuggestedItems(text);
@@ -33,11 +34,11 @@ export class SearchComponent{
                 this.TopSearchlist = true;
                 this.topsearches();
 
-                 this.platform.ready().then(() => {
-                         this.platform.registerBackButtonAction(() => {
-                         this.navChild.push(AboutPage); 
-                });
-        });
+        //          this.platform.ready().then(() => {
+        //                  this.platform.registerBackButtonAction(() => {
+        //                  this.navChild.push(AboutPage); 
+        //         });
+        // });
     }
 
     CustomNavRoot(){
@@ -120,8 +121,19 @@ export class SearchComponent{
             'sitem' : val ,
             'relatedgifs' :  this.searchedGifs,
              'idiom' : this.selectedIdiom
-      });
+      }).then(() => {
+
+            const index = this.viewCtrl.index;
+
+            for(let i = index; i > 0; i--){
+                this.navCtrl.remove(i);
+            }
+
+      
+    })
     }
+      
+    
 
 
     TagsClick(item){
@@ -132,6 +144,15 @@ export class SearchComponent{
             'sitem' : item ,
             'relatedgifs' :  this.searchedGifs ,
             'idiom' : this.selectedIdiom
-      });
+      }).then(() => {
+
+            const index = this.viewCtrl.index;
+
+            for(let i = index; i > 0; i--){
+                this.navCtrl.remove(i);
+            }
+
+      
+    })
     }
 }

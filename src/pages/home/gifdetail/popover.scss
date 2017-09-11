@@ -3,19 +3,19 @@
     margin: 10px auto;
   }
 
-
 }
 
 .gin-popover-list {
-  padding-top: 5%;
+ // padding-top: 5%;
+}
+.gin-popover ion-label {
+    color: #2b3a4f !important;
+    /* text-align: center; */
+    font-weight: 600;
 }
 
-.gin-popover ion-label 
-  {
-  color: #ed0e0e !important;
-  text-align: center;
-  font-weight: 600;
-
+.list-md{
+  margin: 0px;
 }
 
 .pop-icon {

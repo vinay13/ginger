@@ -4,6 +4,9 @@ import { FileTransfer,FileUploadOptions,FileTransferObject } from  '@ionic-nativ
 import { File } from '@ionic-native/file';
 import { CustomService } from '../../../services/custom.service';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { AppRate } from '@ionic-native/app-rate';
+import { Market } from '@ionic-native/market';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 @Component({
     selector: 'page-popover',
@@ -13,6 +16,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 export class PopOverComponent {
 
     GIFurl;
+    detailPage;
     constructor(public navCtrl : NavController,
                 public toastCtrl : ToastController,
                 public viewCtrl: ViewController,
@@ -20,8 +24,12 @@ export class PopOverComponent {
                 public file : File,
                 public cs : CustomService,
                 private socialSharing: SocialSharing,
-                public navparams : NavParams){
+                public navparams : NavParams,
+                private appRate: AppRate,
+                private market: Market,
+                private emailComposer: EmailComposer){
                   this.GIFurl  = this.navparams.get('gifURL');
+                  this.detailPage  = this.navparams.get('detailPage');
                   console.log("GIFurl",this.GIFurl);
                 }
 
@@ -50,6 +58,18 @@ export class PopOverComponent {
         () => { this.cs.hideLoader(); }) 
     }
     
+    Rateus(){
+        this.market.open('com.mobigraph.xpresso');
+    }
+
+    ReportAbuse(){
+         this.cs.showLoader();
+        this.socialSharing.shareViaEmail('', 'Report Gif'+' '+this.GIFurl,['hello@xpresso.me'])
+        .then( () =>{
+            this.cs.hideLoader();
+        },
+        () => { this.cs.hideLoader(); }) 
+    }
 
     download(){
         const fileTransfer: FileTransferObject = this.transfer.create();

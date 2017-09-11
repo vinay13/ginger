@@ -2,35 +2,34 @@
       <!--<masonry class="grid"  [options]="{ transitionDuration: '0.2s' , gutter :3, percentPosition: true  }" [useImagesLoaded]="true">
        <masonry-brick class="brick" *ngFor="let item of gifs"   (click)="this[click_func](item.tag)" >
          <img *ngIf="!LessData" height="100px" width="245px" img-placeholder={{item.lowResWebpFN}}/>
-          <img *ngIf="LessData" height="100px" width="245px" img-placeholder={{item.thumbNailUrl}}/>
+          <img *ngIf="LessData" height="100px" width="245px" img-placeholder={{item.thumbNailFN}}/>
          <div [className]="ng_class">
           <h2 class="gif-text">{{item.tag}}</h2>
          </div>
         </masonry-brick>
      </masonry>-->
 
-         <ion-grid class="grid">
-        <ion-row >
-          <!--<ion-list [virtualScroll]="gifs" approxItemHeight="85px">-->
-          <ion-col col-6  *ngFor="let item of gifs" (click)="this[click_func](item.text)" >
-              <img  *ngIf="!LessData  && !versionFlag" height="100px" width="275px" [img-placeholder]="item.baseUrl+'/'+(item.lowResFN || item.thumbNailFN)"/>
-                <img *ngIf="!LessData && versionFlag" height="100px" width="275px" [img-placeholder]="item.baseUrl+'/'+(item.lowResFN || item.thumbNailFN)"/>
+
+      <ion-grid class="grid">
+        <ion-row>
+          <ion-col col-6 *ngFor="let item of gifs" (click)="this[click_func](item.text)" >
+              <img  *ngIf="!LessData && !versionFlag" height="100px" width="275px" [img-placeholder]="item.baseUrl+'/'+(item.lowResWebpFN || item.thumbNailFN)"/>
+              <img *ngIf="!LessData && versionFlag" height="100px" width="275px" [img-placeholder]="item.baseUrl+'/'+(item.lowResFN || item.thumbNailFN)"/>
               <img *ngIf="LessData" height="100px" width="245px" [img-placeholder]="item.baseUrl+'/'+item.thumbNailFN"/>
               <div [className]="ng_class">
                   <h4 class="gif-text">{{item.displayName}}</h4>
               </div>
           </ion-col>
-          <!--</ion-list>-->
         </ion-row>
      </ion-grid>
 
-    <ion-fab right bottom #head>
+
+    <ion-fab right bottom #fab>
       <button ion-fab (click)="checkUserLogin()"><ion-icon name="md-add"></ion-icon></button>
     </ion-fab>
-
 
      <ion-infinite-scroll  direction="x" class="con-scroll-x" has-bouncing="true" (ionInfinite)="doInfinite($event)">
       <ion-infinite-scroll-content ></ion-infinite-scroll-content>
     </ion-infinite-scroll>
-    
+
 </ion-content>

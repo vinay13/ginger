@@ -1,4 +1,4 @@
-<ion-header  #head>
+<ion-header *ngIf="true"  #head>
   <ion-navbar hideBackButton  class="navbar"  hide-on-scroll="true">
     
 <div class="header-home">
@@ -13,35 +13,59 @@
   <span class="idiom-name"  (click)="navIdiom()">{{ selectedIdiom }}</span>
 </div>
 
+      <!--<ion-item class="list-item-style" >-->
+                <!--<ion-label> Use less Data</ion-label> -->
+                
+      <!--</ion-item>-->
+   <!--<ion-buttons  class="search-icon">
+        <button class="options-icon" ion-button icon-only (click)="presentPopover($event,gifurl)">
+            <ion-icon name="more"></ion-icon>
+        </button>
+    </ion-buttons>    -->
+     <ion-icon class="search-icon" name="more" (click)="presentPopover($event,gifurl)"></ion-icon>
   <ion-icon class="search-icon" name="md-contact" (click)="checklogin()"></ion-icon>
-  <ion-icon class="search-icon" name="search" (click)="searchButton()"></ion-icon>
 
+    <!--<ion-icon *ngIf="!isSelected" class="search-icon"  (click)="ToggleChange($event)" name="pause"></ion-icon>
+    <ion-icon *ngIf="isSelected" class="search-icon"  (click)="ToggleChange($event)" name="play"></ion-icon>-->
 </div>  
+
+
+
+<div class="search-bar-div">
+     <ion-searchbar class="search-input-bar" #search
+    (showCancelButton)="true"
+    [(ngModel)]="myInput"
+       (keyup.enter)="someFunction($event)" 
+         (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+<ion-icon *ngIf="!isSelected" class="search-icon2"  (click)="ToggleChange($event)" name="pause"></ion-icon>
+    <ion-icon *ngIf="isSelected" class="search-icon2"  (click)="ToggleChange($event)" name="play"></ion-icon>
+    <!--<ion-input class="search-input-bar" (keyup.enter)="someFunction($event)"  ></ion-input>-->
+    <button class="custom-search-btn" ion-button (click)="searchBttn(myInput)">
+      <ion-icon name="search"></ion-icon>
+     </button>
+
+      
+</div>
   </ion-navbar>
 </ion-header>
 
-<ion-content no-bounce class="home-content" >
+<ion-content no-bounce class="home-content">
   <!--<accordion></accordion>-->
-   <super-tabs *ngIf="tabsLoaded" no-shadow id="mainTabs"  [selectedTabIndex]="tabIndex"  [config]="{ sideMenu: 'left' }" scrollTabs toolbarColor="light" [indicatorColor]="toolbarColor" badgeColor="yellow" (tabSelect)="onTabSelect($event)" >
-      <super-tab [root]="page1" [rootParams]="idiom3" [title]="showTitles? 'Trending' : ''" [icon]="showIcons? 'trending-up' : ''" id={{tabdata[0].id}} ></super-tab>
-      <super-tab [root]="page3" [rootParams]="idiom3" [title]="showTitles? 'Emotions' : ''" [icon]="showIcons? 'trending-up' : ''" id={{tabdata[0].id}}></super-tab>
-      <!--<super-tab [root]="page4" [rootParams]="idiom3" [title]="showTitles? 'Celebrity' : ''" [icon]="showIcons? 'trending-up' : ''" id={{tabdata[2].id}}></super-tab>-->
-      <super-tab *ngFor="let tab of tabdata " [root]="page2" [rootParams]="idiom3" [title]=tab.name [icon]="showIcons? 'home': ''" id={{tab.id}}>
-   </super-tab>
-      
-      <!--<super-tab [root]="page2" *ngFor="let tab of tabdata " [title]=tab.name [icon]="showIcons? 'trending-up' : ''" id=page3></super-tab>-->-->
-      <!--<super-tab [root]="page1" [title]="showTitles? 'Hot' : ''" [icon]="showIcons? 'flame': ''" id="page1"></super-tab>
-      <super-tab [root]="page2" [title]="showTitles? 'Celebrity' : ''" [icon]="showIcons? 'pin' : ''" id="page5"></super-tab>-->
-      <!--<super-tab [root]="page3" [title]="showTitles? 'Analytics' : ''" [icon]="showIcons? 'analytics' : ''" id="page6"></super-tab>
-     <super-tab [root]="page1" [title]="showTitles? 'Home' : ''" [icon]="showIcons? 'home': ''" id="page7"></super-tab>
-      <super-tab [root]="page2" [title]="showTitles? 'Trending' : ''" [icon]="showIcons? 'trending-up' : ''" id="page8"></super-tab>
-      <super-tab [root]="page3" [title]="showTitles? 'Favorites' : ''" [icon]="showIcons? 'heart' : ''" id="page9"></super-tab>
-      <super-tab [root]="page1" [title]="showTitles? 'Hot' : ''" [icon]="showIcons? 'flame': ''" id="page10"></super-tab>
-      <super-tab [root]="page2" [title]="showTitles? 'Nearby' : ''" [icon]="showIcons? 'pin' : ''" id="page11"></super-tab>
-      <super-tab [root]="page3" [title]="showTitles? 'Analytics' : ''" [icon]="showIcons? 'analytics' : ''" id="page12"></super-tab>-->
- 
+  <!---->
+   <super-tabs *ngIf="tabsLoaded" no-shadow id="mainTabs"  [selectedTabIndex]="0"  [config]="{ sideMenu: 'left' }" scrollTabs toolbarColor="light" [indicatorColor]="toolbarColor" badgeColor="yellow" (tabSelect)="onTabSelect($event)" >
+      <super-tab [root]="page1" [rootParams]="idiom3" [title]="tabdata2[0].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[0].id}} ></super-tab>
+      <super-tab [root]="page3" [rootParams]="idiom3" [title]="tabdata2[1].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[1].id}}></super-tab>
+      <super-tab *ngIf="tablength >= 3" [root]="page4" [rootParams]="idiom3" [title]="tabdata2[2].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[2].id}}></super-tab>
+      <super-tab *ngIf="tablength >= 4" [root]="page5" [rootParams]="idiom3" [title]="tabdata2[3].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[3].id}}></super-tab>
+      <super-tab *ngIf="tablength >=5" [root]="page6" [rootParams]="idiom3" [title]="tabdata2[4].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[4].id}}></super-tab>
+      <super-tab *ngIf="tablength >= 6" [root]="page7" [rootParams]="idiom3" [title]="tabdata2[5].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[5].id}}></super-tab>
+      <super-tab *ngIf="tablength >= 7" [root]="page8" [rootParams]="idiom3" [title]="tabdata2[6].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[6].id}}></super-tab>
+      <!--<super-tab  *ngFor="let tab of tabdata " [root]="page2" [rootParams]="idiom3" [title]=tab.name [icon]="showIcons? 'trending-up' : ''" id={{tab.id}}></super-tab>-->
+     <super-tab *ngIf="tablength >= 8" [root]="page2" [rootParams]="idiom3" [title]="tabdata2[7].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[7].id}}></super-tab>
+      <!--<super-tab *ngIf="tablength >= 9" [root]="page9" [rootParams]="idiom3" [title]="tabdata2[8].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[8].id}}></super-tab>-->
+      <!--<super-tab *ngIf="tablength >= 10"[root]="page10" [rootParams]="idiom3" [title]="tabdata2[9].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[9].id}}></super-tab>-->-->
+      <!--<super-tab *ngFor="let tab of tabdata " [root]="page2" [rootParams]="idiom3" [title]=tab.name [icon]="showIcons? 'home': ''" id={{tab.id}}>-->
+   <!--</super-tab>--> 
   </super-tabs>
-  
-
- 
 </ion-content>

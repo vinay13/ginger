@@ -11,13 +11,13 @@ import {NavController} from 'ionic-angular';
 
 export class PreLoaderDirective  implements OnInit{
  @Input('img-preloader') targetSource: string;
-
-
+ baseUrl = "https://gola-gif-dev-store-cf.xpresso.me/R2luZ2Vy/";
+ 
      constructor(public element : ElementRef,
                 public renderer: Renderer2){}
 
- //@Input('img-height') targetHeight : string;
-//   '[attr.height]':'defaultImageHeight'
+  //@Input('img-height') targetHeight : string;
+  //'[attr.height]':'defaultImageHeight'
   downloadingImage : any; // In class holder of remote image
   finalImage: any; //property bound to our host attribute.
   defaultImageHeight:any;

@@ -1,18 +1,25 @@
 <ion-header #head>
   <ion-navbar class="navbar" hideBackButton >
+    <span>
         <button class="customIcon" ion-button icon-only (click)="CustomNavRoot()">
             <ion-icon  name="arrow-back"></ion-icon>
         </button>
-       <ion-searchbar  [(ngModel)]="searchItem" [showCancelButton]="true" 
-       (keyup.enter)="someFunction($event)"  (ionInput)="getItems($event)" >
+    </span>
+        
+       <ion-searchbar class="search-bar-div"  [(ngModel)]="searchItem" [showCancelButton]="true" 
+       (keyup.enter)="someFunction($event)"   (ionCancel)="onCancel($event)">
        </ion-searchbar>
+        <button class="custom-search-btn" ion-button (click)="searchBttn(searchItem)">
+      <ion-icon name="search"></ion-icon>
+     </button>
+      
   </ion-navbar>
 </ion-header>
 
 
 <ion-content class="background-theme" hide-header [header]="head">
     <div class="search-result-header">
-       {{totalCount}} GIFS found for  <b>"{{searchItem}}" </b>
+       {{totalCount}} GIFS found for  <b>"{{searchItem2}}" </b>
     </div>
 
      <!--<div class="pins">
@@ -20,10 +27,13 @@
             <img class="gifpin" src={{gifs.url}}>
           </div>
     </div>-->
-       <masonry class="grid" [options]="{ transitionDuration: '0.0001s' , gutter : 4 }" [useImagesLoaded]="true"  >
-          <masonry-brick class="brick" *ngFor="let gifs of searchedGifs"  (click)="viewGif(gifs)" >
-           <img *ngIf="!LessData"  width={{gifs.width}} [height]="gifs.height" img-placeholder [img-preloader]="gifs.lowResUrl" />
-           <img *ngIf="LessData" [src]="gifs.thumbNailUrl" width={{gifs.lowResWidth}} height={{gifs.lowResHeight}}/>
+    
+       <masonry class="grid" [options]="{ transitionDuration: '0.7s' , gutter :4, percentPosition: true }" [useImagesLoaded]="true"  >
+          <masonry-brick class="brick" *ngFor="let gifs of searchedGifs"  (click)="GifsViewviaId(gifs.id)" >
+           
+           <img *ngIf="!LessData && !versionFlag"  width={{gifs.width}} [height]="gifs.height" [img-preloader]="gifs.baseUrl+'/'+(gifs.lowResWebpFN || gifs.lowResFN || gifs.thumbNailFN)" />
+           <img *ngIf="!LessData && versionFlag" height="100px" width="275px" [img-placeholder]="gifs.baseUrl+'/'+(gifs.lowResFN || gifs.thumbNailFN)"/>
+           <img *ngIf="LessData" [img-preloader]="gifs.baseUrl+'/'+gifs.thumbNailFN" width={{gifs.lowResWidth}} height={{gifs.thumbNailFN}}/>
          </masonry-brick> 
        </masonry>
 

@@ -3,7 +3,7 @@ import { PopoverController } from 'ionic-angular';
 import { PopOverComponent } from './popover';
 import { SearchComponent } from '../../search/search.component';
 import { SearchResultComponent } from '../../search/searchResult/search-result.component';
-import { NavController, ToastController , NavParams ,Events} from 'ionic-angular';
+import { Nav,Platform,ViewController,NavController, ToastController , NavParams ,Events} from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { CustomService } from '../../../services/custom.service';
 import { HomeService } from '../../../services/home.service';
@@ -29,7 +29,9 @@ export class GifDetailComponent {
     public scount;
     lessdata;
     LessData;
- 
+    version;
+    versionFlag = false;
+   //  baseUrl = "https://gola-gif-dev-store-cf.xpresso.me/R2luZ2Vy/";
     constructor(public popoverCtrl : PopoverController,
                 public navCtrl : NavController,
                 public toastCtrl : ToastController,
@@ -39,7 +41,9 @@ export class GifDetailComponent {
                 private file: File,
                 private clipboard: Clipboard,
                 public navparams : NavParams,
-                public events : Events
+                public events : Events,
+                public nav : Nav,
+                public platform : Platform
                ){
                     this.gifobject = this.navparams.get('url');
                      this.selectedIdiom = this.navparams.get('idiom') || localStorage.getItem('idiom');
@@ -58,6 +62,13 @@ export class GifDetailComponent {
                     //     this.recomns.viewHeight = el.offsetHeight;
 
 
+                    
+                   this.version = localStorage.getItem('version');
+                  localStorage.getItem('platform');
+                  if(  this.version <  '5.0' ){
+                        this.versionFlag = true;
+                  }
+
                 events.subscribe('lessdata:created', (user) => {
                     console.log('Welcome', user);
                     this.lessdata = user;
@@ -71,9 +82,22 @@ export class GifDetailComponent {
                   } 
                   else{
                     this.LessData = true;
-                  }      
-                   
-                }
+                  }    
+
+                   platform.ready().then(() => {
+                    platform.registerBackButtonAction(() => {
+                            if(this.nav.canGoBack()){
+                             this.events.publish('reloadLayout');
+                             if( this.Popflag ){
+                                 this.Popflag = false;
+                                 this.popover.dismiss();
+                             }else{
+                                this.navCtrl.pop();
+                             }
+                        }
+                    })
+                })  
+            }
 
     loadProgress: number = 0;
     public hidebar = false;	            
@@ -84,23 +108,43 @@ export class GifDetailComponent {
 			if(this.loadProgress < 100){
 				this.loadProgress++;
                 
+               
+
                 if(this.loadProgress == 1){
-                    this.gifurl = this.gifobject.lowResUrl;
+                    this.gifurl = this.gifobject.baseUrl+'/'+this.gifobject.thumbNailFN;
                 }
 
-                if(this.loadProgress == 33)
+                if(this.loadProgress == 13)
                 {
-                     this.gifurl = this.gifobject.url;
+                     this.gifurl = this.gifobject.baseUrl+'/'+this.gifobject.originalFN;
+                }
+
+                if(this.loadProgress == 99){
+                   this.hidebar = true;
                 }
                  
-                if(this.loadProgress == 99)
+                 if(this.loadValue == true)
                 {
-                    this.hidebar = true;
+                    this.loadProgress = 99;
+                     
                 }
 			}
 
-		},50);
+		},100);
 	} 
+
+      displaycount = 0;
+      loadValue = false; 
+      setCount = 100;
+     displayImage(){
+       this.displaycount += 1;
+       if(this.displaycount == 2){
+            
+        //    alert('gifs dwnld');
+           this.loadValue = true;
+           this.setCount = 0;
+       }
+    }
 
 
 setBackground(){
@@ -108,9 +152,12 @@ setBackground(){
 }
  
     poptoHome(){
-        this.navCtrl.setRoot(AboutPage,{
-            'idiom': this.selectedIdiom
-        });
+        // this.navCtrl.setRoot(AboutPage,{
+        //     'idiom': this.selectedIdiom
+        // });
+
+        this.nav.popToRoot();
+        this.events.publish('reloadLayout');
     }
 
     hidetags = true;
@@ -124,8 +171,8 @@ setBackground(){
     golauser;
     guser;
     public GetUsername(){
-      this.guser =  this.gifobject.publishedBy;
-      this.golauser  = this.guser.split('@',1)
+      this.golauser =  this.gifobject.publishedBy;
+  //    this.golauser  = this.guser.split('@',1)
          
     } 
     
@@ -141,14 +188,27 @@ setBackground(){
                         () => console.log('related gifs',this.totalcount))
     }
 
+    popover;
+    Popflag = false;
     presentPopover(myEvent,gifurl){
-        let popover = this.popoverCtrl.create(PopOverComponent,{gifURL : gifurl});
+        this.popover = this.popoverCtrl.create(PopOverComponent,{gifURL : this.gifobject.id,detailPage: true});
         console.log('popOver',myEvent);
         console.log('popgifurl',gifurl),
-        popover.present({
+        this.Popflag = true;
+        this.popover.present({
             ev: myEvent,
         });
+        
     }
+
+    gifData;
+    GifsViewviaId(tabid){
+      this.cs.showLoader();
+      this._homeserv.getGifviaID(tabid)
+          .subscribe((res) => { this.gifData = res; this.cs.hideLoader(); this.GIFviewer(res);},
+                        (err) => { this.cs.hideLoader();} )
+ 
+   }
 
     TagClicked(tag){
         this.navCtrl.push(SearchResultComponent,{
@@ -199,6 +259,9 @@ setBackground(){
         });
         toast.present();
     }
+
+
+   
 
 
     // webintent(){

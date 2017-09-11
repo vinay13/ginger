@@ -23,6 +23,10 @@ import { Page1Page } from "../pages/page1/page1";
 import { Page2Page } from "../pages/page2/page2";
 import { Page3Page } from "../pages/page3/page3";
 import { Page4Page } from "../pages/page4/page4";
+import { Page5Page } from "../pages/page5/page5";
+import { Page6Page } from "../pages/page6/page6";
+import { Page7Page } from "../pages/page7/page7";
+import { Page8Page } from "../pages/page8/page8";
 import { MasonryModule } from 'angular2-masonry';
 // import Masonry from 'masonry-layout'
 //third party imports 
@@ -33,7 +37,8 @@ import { Clipboard } from '@ionic-native/clipboard';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { Device } from '@ionic-native/device';
-
+import { Market } from '@ionic-native/market';
+import { EmailComposer } from '@ionic-native/email-composer';
 //custom component
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { NoInternetComponent } from '../components/noInternet/noInternet.component';
@@ -62,7 +67,7 @@ import {HideFabDirective} from '../components/hidefab';
 import {AccordionComponent} from '../components/accordion/accordion';
 import {PreLoaderDirective} from '../components/preloader';
 import {PlaceholderDirective} from '../components/placeholder';
-
+import {NavbarTransitionDirective} from '../components/navbarTransition';
 //other imports
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -119,6 +124,10 @@ const cloudSettings: CloudSettings = {
     Page2Page,
     Page3Page,
     Page4Page,
+    Page5Page,
+    Page6Page,
+    Page7Page,
+    Page8Page,
     TOScomponent,
     EllipsisPipe,
     ErrorPage,
@@ -126,7 +135,8 @@ const cloudSettings: CloudSettings = {
     HideFabDirective,
     AccordionComponent,
     PreLoaderDirective,
-    PlaceholderDirective
+    PlaceholderDirective,
+    NavbarTransitionDirective
   ],
   imports: [
     HttpModule,
@@ -159,6 +169,10 @@ const cloudSettings: CloudSettings = {
     Page2Page,
     Page3Page,
     Page4Page,
+    Page5Page,
+    Page6Page,
+    Page7Page,
+    Page8Page,
     TOScomponent,
     ErrorPage
   ],
@@ -190,7 +204,9 @@ const cloudSettings: CloudSettings = {
     Deeplinks,
     OneSignal,
     Push,
-    Device
+    Device,
+    Market,
+    EmailComposer
   ]
 })
 

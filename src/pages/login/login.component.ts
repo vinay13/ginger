@@ -100,14 +100,14 @@ export class LoginPage implements OnInit{
          'offline': true,
       })
          .then((res) => { this.googleResponse = JSON.stringify(res); this.gauthcallBack(res.serverAuthCode);  })
-         .catch(err => { console.log(err),alert(err)})
+         .catch(err => { console.log(err)})
   }
 
   public fbresponse : any;
   public facebookLogin(){
     this.fb.login(['email'])
       .then((res: FacebookLoginResponse) => { this.fbresponse = res; this.fbauthcallBack(this.fbresponse.authResponse.accessToken);})
-      .catch(e => alert(e));
+      .catch(e => console.log(e));
   }
 
   public postacesstoken(){
@@ -119,14 +119,14 @@ export class LoginPage implements OnInit{
   public gauthcallBack(serverauthcode){
     this._authServ.gAuthCallback(serverauthcode)
       .subscribe((res) => {this.verifySuccessfully(res);this.NavLogin(); this.getprofile(); }, 
-                 (err) => {alert(err)})      
+                 (err) => {console.log(err)})      
   }
 
   public fbauthcallBack(serverauthcode){
    
     this._authServ.fbAuthCallback(serverauthcode)
       .subscribe((res) => {this.verifySuccessfully(res);this.NavLogin(); this.getprofile(); }, 
-                 (err) => {alert(err)})      
+                 (err) => {console.log(err)})      
   }
 
   public navSignup(){

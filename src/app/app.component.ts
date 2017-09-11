@@ -58,6 +58,9 @@ export class MyApp {
                   //this.rootPage = NoInternetComponent;
                 }
 
+
+                localStorage.setItem('PageCount','0');
+
               //Deeplinks if from Ionic Native 
               // 'detail' : GifDetailPage
 	            this.deeplinks.routeWithNavController(this.navChild, {
@@ -143,6 +146,9 @@ export class MyApp {
                  "osVersion":this.device.uuid,
                  "deviceToken": deviceId
     }
+
+      localStorage.setItem('version',this.device.version);
+      localStorage.setItem('platform',this.device.platform);
 
     // this._notiServ.notificationDeviceId(body)
     //         .subscribe( (data) => { console.log('notyData',data)},

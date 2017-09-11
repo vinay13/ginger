@@ -153,14 +153,14 @@ page-gifdetail .toolbar-background-md {
 
 page-gifdetail{
     masonry .grid{
-      column-count: 2;
+    //   column-count: 2;
       display: inline-block;
       overflow:visible;
       width:100%;
-      min-width: 940px !important;
+       min-width: 940px !important;
     }
     .brick{
-        width: 47%;
+      //  width: 47%;
         object-fit: contain;
     }
 }

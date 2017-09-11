@@ -15,9 +15,9 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content class="gifdetail-content" hide-header [header]="head">
+<ion-content class="gifdetail-content" nav-transition [navheader]="head">
     <div class="gifviewer">
-        <img class="Gifdetail" src={{gifurl}}>
+        <img class="Gifdetail" src={{gifurl}} (load)="displayImage()">
     </div>
     
     <progress-bar [hidden]="hidebar" [progress]="loadProgress"></progress-bar>
@@ -26,7 +26,8 @@
         <ion-grid>
         <ion-row>
             <ion-col col-4>
-                <ion-chip (click)="userProfile(guser)">
+                  <!--<ion-chip (click)="userProfile(guser)">-->
+                <ion-chip >
                     <ion-avatar>
                         <img src="assets/icon/avatar.png">
                     </ion-avatar>
@@ -44,7 +45,7 @@
                 <span class="gin-label">
                   <ion-icon class="ic-share-alt" name="share-alt"></ion-icon>
                   <a [href]="giffSrc">
-                    <span class="gif-source" (click)="sourceClick()"> {{gifobject.source | ellipsis : 5}}</span>
+                    <span class="gif-source" (click)="sourceClick()"> {{gifobject.source | ellipsis : 10}}</span>
                   </a>
                 </span>
             </ion-col>
@@ -63,10 +64,10 @@
 
     <div class="gif-tags">
         <span *ngIf="hidetags">
-            <ion-badge *ngFor="let tag of tagslist | slice :0:3" class="tag-badge" item-right (click)="TagClicked(tag)">{{tag | ellipsis : 13}}</ion-badge>
+            <ion-badge *ngFor="let tag of tagslist | slice :0:3" class="tag-badge" item-right (click)="TagClicked(tag)">{{tag | ellipsis : 19}}</ion-badge>
         </span>
         <span *ngIf="showtags">
-            <ion-badge   *ngFor="let tag of tagslist" class="tag-badge" item-right (click)="TagClicked(tag)">{{tag | ellipsis : 13}}</ion-badge>
+            <ion-badge   *ngFor="let tag of tagslist" class="tag-badge" item-right (click)="TagClicked(tag)">{{tag | ellipsis : 19}}</ion-badge>
         </span>
 
         <ion-badge class="tag-badge" item-right (click)="expandTags()">
@@ -82,10 +83,11 @@
         </div>   
     </div>-->
 
-    <masonry class="grid" [options]="{ transitionDuration: '0.0001s' , gutter : 4 }" [useImagesLoaded]="true" >
-       <masonry-brick class="brick" *ngFor="let rgifs of recomns"  (click)="GIFviewer(rgifs)" >
-         <img *ngIf="!LessData" width="100%" height="100%" [src]="rgifs.lowResWebpUrl || rgifs.lowResUrl"/>
-         <img *ngIf="LessData" width="100%" height="100%" [src]="rgifs.thumbNailUrl"/>
+    <masonry class="grid" [options]="{ transitionDuration: '0.2s' , gutter : 4 , percentPosition : true}" [useImagesLoaded]="true" >
+       <masonry-brick class="brick" *ngFor="let rgifs of recomns"  (click)="GifsViewviaId(rgifs.id)" >
+         <img *ngIf="!LessData && !versionFlag" width="100%" height="100%"  [img-preloader]="rgifs.baseUrl+'/'+(rgifs.lowResWebpFN || rgifs.lowResFN || rgifs.thumbNailFN)"/>
+          <img *ngIf="!LessData && versionFlag" height="100px" width="275px" [img-placeholder]="rgifs.baseUrl+'/'+(rgifs.lowResFN || rgifs.thumbNailFN)"/>
+         <img *ngIf="LessData" width="100%" height="100%" [img-preloader]="rgifs.baseUrl+'/'+rgifs.thumbNailFN"/>
        </masonry-brick>
     </masonry>
 

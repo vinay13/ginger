@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController,NavParams } from 'ionic-angular'; 
+import { NavController,NavParams, Nav } from 'ionic-angular'; 
 import { HomeComponent } from '../home/home.component'; 
 import { AboutPage } from '../about/about.ts';
 import { Page2Page} from '../page2/page2.ts';
@@ -13,7 +13,8 @@ export class IdiomComponent{
  
     public selectedHero : string = "white";
      constructor( private navCtrl : NavController ,
-                  private navparams : NavParams){
+                  private navparams : NavParams,
+                  public nav : Nav){
         //  this.selectedIdiom();
     }
 
@@ -42,7 +43,8 @@ export class IdiomComponent{
     navHomePage(){
          console.log('idiom',this.idioms[this.selectedIndex].name);
          this.storeIdiom();
-         this.navCtrl.push(AboutPage,{
+        //  this.nav.(AboutPage);
+         this.nav.setRoot(AboutPage,{
              'idiom': this.idioms[this.selectedIndex].name 
          });
     }
