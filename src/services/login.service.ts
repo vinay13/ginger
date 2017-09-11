@@ -9,8 +9,8 @@ import { Http, XHRBackend, RequestOptions, Request, RequestOptionsArgs, Response
 @Injectable()
 export class LoginService{
 
-    public baseUrl2 : string = "https://goladev.mobigraph.co/ginger/ginger/";
-    public baseUrl : string = "https://golaapi.mobigraph.co/";
+    public baseUrl2 : string = "https://goladev.mobigraph.co/ginger/";
+    public baseUrl : string = "https://golaapi.mobigraph.co/ginger";
     public serverUrl : string;
     public headers;
     public options;
@@ -72,7 +72,7 @@ export class LoginService{
          headers : this.headers
         });
 
-      return this.http.post('https://goladev.mobigraph.co/ginger/fauth/oauth2callback?code='+body,options)
+      return this.http.post('https://golaapi.mobigraph.co/ginger/fauth/oauth2callback?code='+body,options)
           .map(this.extractData)
           .catch(this.handleError)
     }

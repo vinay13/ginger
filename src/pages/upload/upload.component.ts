@@ -32,7 +32,7 @@ export class UploadComponent implements OnInit {
     public data_response; 
     ImagePick(){
       this.fileChooser.open()
-        .then(uri => {console.log(uri);this.newpermissionGola(); this.permissionGola();  this.imageFile = uri ; this.filePathfunc(uri);  } )
+        .then(uri => {console.log(uri);this.newpermissionGola(uri); } )
         .catch(e => console.log(e));
     }
 
@@ -44,9 +44,11 @@ export class UploadComponent implements OnInit {
 // this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA, this.androidPermissions.PERMISSION.GET_ACCOUNTS]);
     }
 
-     newpermissionGola(){
+     newpermissionGola(uri){
         this.diagnostic.requestExternalStorageAuthorization().then(()=>{
             //User gave permission 
+             this.imageFile = uri ; 
+             this.filePathfunc(uri); 
             console.log('permissionGranted');
             }).catch(error=>{
             //Handle error

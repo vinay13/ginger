@@ -1,5 +1,5 @@
 import { Component, Input, Output,EventEmitter, OnChanges} from '@angular/core';
-import { NavController,Events} from 'ionic-angular';
+import { Nav,NavController,Events} from 'ionic-angular';
 import { TOScomponent} from '../../../components/termsofservice/tos.ts';
 import {AboutPage} from '../../about/about';
 import { SocialSharing } from '@ionic-native/social-sharing';
@@ -15,6 +15,7 @@ export class SettingsComponent {
     ranval = false;
     isSelected = false;
     constructor(public navCtrl : NavController,
+                public nav : Nav,
                 public cs : CustomService,
                 private socialSharing: SocialSharing,
                 public events: Events){
@@ -34,7 +35,8 @@ export class SettingsComponent {
     }
 
     poptoHome(){
-        this.navCtrl.setRoot(AboutPage);
+        //this.navCtrl.setRoot(AboutPage);
+         this.nav.popToRoot();
     }
 
     device:number = 1;
@@ -59,7 +61,7 @@ export class SettingsComponent {
          localStorage.removeItem('access_token');
          localStorage.removeItem('username');
        // localStorage.clear();
-        this.navCtrl.push(AboutPage);
+         this.nav.popToRoot();
     }
 }
 
