@@ -9,7 +9,8 @@ import { Http, XHRBackend, RequestOptions, Request, RequestOptionsArgs, Response
 @Injectable()
 export class LoginService{
 
-    public baseUrl : string = "https://goladev.mobigraph.co/ginger";
+    public baseUrl2 : string = "https://goladev.mobigraph.co/ginger/ginger/";
+    public baseUrl : string = "https://golaapi.mobigraph.co/";
     public serverUrl : string;
     public headers;
     public options;

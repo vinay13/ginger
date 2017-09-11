@@ -10,7 +10,7 @@ import { Configuration } from './app.constant';
 export class SearchService{
 
     public url;
-    public baseUrl : string = "https://goladev.mobigraph.co/ginger";
+    public baseUrl : string = "https://golaapi.mobigraph.co/ginger/ginger/";
     public serverUrl : string;
     public headers;
     public options;

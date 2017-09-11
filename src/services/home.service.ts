@@ -10,7 +10,7 @@ import { Configuration } from './app.constant';
 export class HomeService{
 
     public url;
-    public golaurl = 'https://goladev.mobigraph.co/ginger/';   
+    public golaurl = 'https://golaapi.mobigraph.co/ginger/';   
     public giphyurl = 'http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC';
     public serverUrl : string;
     public headers;

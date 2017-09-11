@@ -51,7 +51,7 @@ export class UploadGifService{
          headers : headers
         });
     
-		return this.http.post('https://goladev.mobigraph.co/ginger/uploadFromUrl',body, options)
+		return this.http.post('https://golaapi.mobigraph.co/ginger/uploadFromUrl',body, options)
 			   .map(this.extractData)
 			   .catch(this.handleError);
 	}

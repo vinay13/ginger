@@ -10,7 +10,7 @@ import { Configuration } from './app.constant';
 export class NotificationService{
 
     constructor(private http : Http){}
-    golaurl = 'https://goladev.mobigraph.co/ginger/';  
+    golaurl = 'https://golaapi.mobigraph.co/ginger/';  
 
     public notificationDeviceId(body){
         let headers = new Headers({

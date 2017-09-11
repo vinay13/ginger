@@ -11,7 +11,7 @@ export class AppRateService{
     constructor(public platform : Platform){
         this.platform.ready().then(
             () =>  this.appRate.preferences.storeAppURL = {
-            android : 'market://details?id=com.ionicframework.ginger700193'
+            android : 'market://details?id=com.mobigraph.gola'
             }
         )
     }

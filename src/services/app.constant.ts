@@ -12,7 +12,7 @@ export class Configuration {
     public options;
     constructor(){}
 
-    public baseUrl : string = "https://goladev.mobigraph.co/ginger/";
+    public baseUrl : string = "https://golaapi.mobigraph.co/ginger/";
    
     getAuthToken(){
         let token = localStorage.getItem('auth_token');

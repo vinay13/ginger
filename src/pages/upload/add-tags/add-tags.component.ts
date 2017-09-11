@@ -79,7 +79,7 @@ export class AddTagsComponent {
     const fileTransfer: FileTransferObject = this.transfer.create();
        let filename = _.uniqueId('file_') + ".gif";
        console.log('filename',filename);
-       let url = 'https://goladev.mobigraph.co/ginger/uploadGif';
+       let url = 'https://golaapi.mobigraph.co/ginger/uploadGif';
        let uploadUrl = encodeURI(url);
        this.access_token = 'Bearer ' + localStorage.getItem('access_token');
        let access_key =  'AzG7Co20vVl7cBC4Cgi1rmp7w';
