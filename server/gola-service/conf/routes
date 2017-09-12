@@ -1,0 +1,188 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+OPTIONS /*all                           controllers.GifSearchController.preflight(all)
+
+GET     /ginger/:idiom/suggest/:text                  controllers.GifSearchController.getSuggestionsForIdiom(idiom:String, text: String)
+
+GET     /ginger/suggest/text/:text                  controllers.GifSearchController.getSuggestions(text: String)
+
+GET     /ginger/:idiom/gifs/:page/:size                           controllers.GifSearchController.getGifForIdiom(idiom:String, page:Int, size: Int)
+
+GET     /ginger/:idiom/gifs/:text                           controllers.GifSearchController.getGifForIdiomAndText(idiom:String, text: String)
+
+GET     /ginger/:idiom/gifs/:text/:pageIndex/:pageSize                           controllers.GifSearchController.getPageForPrimaryIdiomAndText(idiom:String, text: String,  pageIndex: Int, pageSize: Int, exclude: Option[String])
+
+GET     /ginger/:idiom/gifsMetaData/:text/:pageIndex/:pageSize                           controllers.GifSearchController.getGifsMetaDataForPrimaryIdiomAndText(idiom:String, text: String, pageIndex: Int, pageSize: Int)
+
+GET     /ginger/idiom/:idiom/mygifs/:text/:pageIndex/:pageSize                           controllers.GifSearchController.getMyGifsForIdiomAndText(idiom:String, text: String, pageIndex: Int, pageSize: Int)
+
+GET     /ginger/:idiom/relatedGifs/:gifId/:pageIndex/:pageSize                           controllers.GifSearchController.getRelatedGifs(idiom:String, gifId: String, pageIndex: Int, pageSize: Int)
+
+GET     /ginger/gifs/metaData/:gifId                           controllers.GifController.getGifById(gifId: String)
+
+GET     /ginger/gifs/convertToNewFormat                           controllers.GifController.convertToNewFormat()
+
+
+
+GET     /ginger/user/:emailId                           controllers.SignUpController.getUser(emailId:String)
+
+POST     /ginger/signup                              controllers.SignUpController.signUp()
+
+POST     /ginger/signin                              controllers.SignUpController.signIn()
+
+POST     /ginger/signinForWeb                              controllers.SignUpController.signInForWeb()
+
+POST     /ginger/uploadGif                          controllers.GifUploadController.uploadGif()
+
+POST    /ginger/uploadFromUrl                    controllers.GifUploadController.uploadFromUrl()
+
+POST     /ginger/profile                          controllers.SignUpController.updateUserProfile()
+
+GET     /ginger/profile                          controllers.SignUpController.getUserProfile()
+
+
+
+POST    /ginger/gif/tag                         controllers.GifUploadController.updateTags()
+
+POST    /ginger/gif/category                    controllers.GifUploadController.updateCategories()
+
+POST    /ginger/view/gif/:gifId                    controllers.GifHitController.viewGif(gifId: String)
+
+POST    /ginger/share/gif/:gifId                    controllers.GifHitController.shareGif(gifId: String)
+
+GET    /ginger/tabs/:idiom                    controllers.HomeController.getTabs(idiom: String)
+
+POST    /ginger/tabs                    controllers.TabsController.createTabs()
+
+POST    /ginger/tabs/:idiom                    controllers.TabsController.saveTab(idiom:String)
+
+POST   /ginger/:idiom/tabs/:tabId            controllers.TabsController.removeTab(idiom:String,tabId:String)
+
+
+POST    /ginger/defaultTabs                    controllers.TabsController.createDefaultTabs()
+
+POST    /ginger/trendingGifs                    controllers.GifHitController.getTrending()
+
+GET    /ginger/:idiom/topItems/:tabId                    controllers.HomeController.getAllTopItems(idiom: String, tabId: String)
+
+GET    /ginger/topItems/pages/:tabId/:from/:size                    controllers.HomeController.getTopItemPages(tabId: String, from: Int, size: Int)
+
+GET    /ginger/:idiom/topItems/:tabId/:from/:size                    controllers.HomeController.getTopItems(idiom: String, tabId: String, from: Int, size: Int)
+
+GET    /ginger/:idiom/topSearches/:trendingPeriod                    controllers.GifSearchController.getTopSearches(idiom: String, trendingPeriod: String)
+
+GET    /ginger/gifs/mygifs                                  controllers.GifHitController.getGifPublishedByMe()
+
+GET    /ginger/gifs/mygifs/:page/:size                    controllers.GifHitController.getGifPublishedByMeInPages(page: Int, size:Int)
+
+GET    /ginger/gifs/mygifs/idiom/:idiom/:page/:size                    controllers.GifHitController.getGifPublishedByMeInPagesForIdiom(idiom:String, page: Int, size:Int)
+
+GET    /ginger/gifs/:publishedBy/:page/:size                    controllers.GifHitController.getGifPublishedBy(publishedBy: String, page: Int, size: Int)
+
+GET    /ginger/gifs/taggedBy/:taggedBy/:page/:size                    controllers.GifHitController.getGifTaggedBy(taggedBy: String, page: Int, size: Int)
+
+GET    /ginger/gifs/contentCreators                    controllers.GifHitController.getContentCreators()
+
+GET    /ginger/gifs/taggers                    controllers.GifHitController.getTaggers()
+
+
+GET    /ginger/gifs/:idiom/noTags/:page/:size                    controllers.GifSearchController.getGifsWithNoTags(idiom: String, page: Int, size: Int)
+
+GET    /ginger/gifs/mygifs/idiom/:idiom/noTags/:page/:size                    controllers.GifSearchController.getMyGifsWithNoTags(idiom:String, page: Int, size:Int)
+
+POST    /ginger/gifs/censor                    controllers.GifController.censorGif()
+
+POST    /ginger/gifs/updateIdioms/:gifId                    controllers.GifController.updateIdioms(gifId: String)
+
+
+GET    /ginger/getUserAuthStatus                    controllers.SignUpController.getUserAuthStatus()
+
+GET    /ginger/gifs/viewedgifs                    controllers.GifHitController.getGifViewedByMe()
+
+GET    /ginger/gifs/favourites                    controllers.GifHitController.getFaviourites()
+
+POST    /ginger/gifs/favourite/:gifId                    controllers.GifHitController.markAsFaviourite(gifId: String)
+
+DELETE    /ginger/gifs/favourite/:gifId                    controllers.GifHitController.unMarkAsFaviourite(gifId: String)
+
+
+POST    /ginger/gifs/bulkUpload                    controllers.GifUploadController.bulkUploadZip()
+
+POST    /ginger/fauth/oauth2callback    controllers.FaceBookAuthController.oauth2callback(code: String)
+
+POST    /ginger/gauth/oauth2callback    controllers.GoogleAuthController.oauth2callback(state: String, code: String)
+
+POST    /ginger/gauth/:code/:state    controllers.GoogleAuthController.oauth2callback(state: String, code: String)
+
+POST    /ginger/admin/curatedTab                    controllers.TabsController.saveCuratedTab()
+
+GET    /ginger/allTags                    controllers.GifController.getAllTags()
+
+
+GET     /ginger/activateUser/:emailId/:token                           controllers.SignUpController.activateUser(emailId:String, token: String)
+
+POST     /ginger/gifs/filter/:page/:size                           controllers.GifSearchController.filterGifs(page: Int, size: Int)
+
+POST    /ginger/gifs/:gifId/source/:source                    controllers.GifController.updateGifSource(gifId: String, source: String)
+
+POST    /ginger/gifs/:gifId/trigger                    controllers.GifController.updateGifTriggerData(gifId: String, triggerData: String)
+
+DELETE    /ginger/gifs/:gifId/trigger                    controllers.GifController.deleteTriggerData(gifId: String)
+
+GET    /ginger/gifs/trendingDetails/:gifId                    controllers.GifController.getTrendingDetails(gifId: String)
+
+POST /ginger/gifs/bulkUploadFromLocalPath                controllers.GifUploadController.bulkUploadFromLocalPath()
+
+POST /ginger/gifs/bulkUploadFromTumblrMetaData                controllers.GifUploadController.bulkUploadFromTumblrMetaData()
+
+POST /ginger/gifs/updateTagsUsingTumblrMetadata                controllers.GifUploadController.updateTagsUsingTumbleMetaData()
+
+POST /ginger/gifs/superBulkTagUpdate                controllers.GifUploadController.superBulkTagUpdate()
+
+POST /ginger/gifs/resumeBulkUpload                controllers.GifUploadController.resumeBulkUpload()
+
+GET /ginger/gifs/orderedTopItems/idiom/:idiom/tab/:tabId                controllers.HomeController.getOrderedTopItems(idiom: String, tabId: String)
+
+POST /ginger/staticData/customTags  controllers.GifController.saveCustomTags()
+
+GET /ginger/staticData/customTags  controllers.GifController.getCategoriesAndTags()
+
+GET /ginger/staticData/cleanUpTags  controllers.GifSearchController.cleanUpTags()
+
+GET /ginger/staticData/customTags  controllers.GifController.getCategoriesAndTags()
+
+GET /ginger/stats/trending  controllers.GifController.getTrendingStats()
+
+GET /ginger/stats/count  controllers.GifController.getCountStats()
+
+GET /ginger/tagCount/:userId  controllers.GifController.getTagCount(userId: String)
+
+POST /ginger/user/device controllers.SignUpController.saveUserDeviceDetails()
+
+GET /ginger/gif/s3/lowres  controllers.GifUploadController.listObjectInS3()
+
+POST /ginger/gifsMetaData  controllers.GifController.getGifsByIdList()
+
+GET /ginger/tags/tbd  controllers.GifSearchController.getTbdTags()
+
+POST /ginger/gifs/uploadInGolaFormat  controllers.GifUploadController.uploadInGolaFormat()
+
+POST /ginger/:idiom/upload/tags/:tabId   controllers.GifUploadController.uploadTags(idiom: String, tabId: String)
+
+POST /ginger/gifs/updateUrlStatus  controllers.GifController.updateGifUrlStatus()
+
+POST /ginger/gifs/trigger/lowRes  controllers.GifUploadController.triggerLowResGifGenerator()
+
+POST /ginger/update/topItems   controllers.HomeController.updateAllTopItems()
+
+POST /ginger/:idiom/gif/add/topItem   controllers.HomeController.addItemToTrendingTab(idiom:String)
+
+POST /ginger/:idiom/gif/:gifId/remove/topItem   controllers.HomeController.removeItemFromTrendingTab(idiom:String,gifId:String)
+
+GET /ginger/:idiom/trending/topItems  controllers.HomeController.getAllTrendingTabItems(idiom:String)
+
+POST /ginger/gifs/create/searchTags   controllers.GifController.createSearchTagsInGifMetaData()
+
+POST /ginger/migrateBaseUrl controllers.GifController.migrateBaseUrl()

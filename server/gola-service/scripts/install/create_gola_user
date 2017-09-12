@@ -1,0 +1,5 @@
+sudo adduser gola
+sudo usermod -a -G sudo gola
+sudo cp -r ~ubuntu/.ssh ~gola
+sudo chown -R gola:gola ~gola/.ssh
+echo "gola    ALL=(ALL)       NOPASSWD: ALL" > /etc/sudoers.d/gola

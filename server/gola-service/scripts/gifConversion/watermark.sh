@@ -1,0 +1,1 @@
+convert $1 -coalesce -gravity $2  null: ~/gola_watermark_text@1.5x.png  -layers composite -layers optimize $3
