@@ -88,6 +88,13 @@ export class HomeService{
                 .catch(this.handleError)
     }
 
+    GetGifsSearch(idiom,text,pageno,exclude){
+        let exclude2 = btoa(exclude);
+        return this.http.get(this.url + idiom + '/gifs/' + text+"/"+pageno+"/20"+'?exclude='+exclude2,this.options)
+                .map(this.extractData)
+                .catch(this.handleError)
+    }
+
     public favoritesGifs(gifId){
          let headers = new Headers({
             'X-Gola-Access-Key':'AzG7Co20vVl7cBC4Cgi1rmp7w',

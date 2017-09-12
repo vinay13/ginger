@@ -48,7 +48,15 @@ export class SearchService{
 	}
 
     GetGifsSearch(idiom,text,pageno){
+        
         return this.http.get(this.url + idiom + '/gifs/' + text+"/"+pageno+"/20",this.options)
+                .map(this.extractData)
+                .catch(this.handleError)
+    }
+
+    GetGifsSearchExclude(idiom,text,pageno,exclude){
+          let exclude2 = btoa(exclude);
+        return this.http.get(this.url + idiom + '/gifs/' + text+"/"+pageno+"/20"+'?exclude='+exclude2,this.options)
                 .map(this.extractData)
                 .catch(this.handleError)
     }

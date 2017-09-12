@@ -92,6 +92,16 @@ export class SearchResultComponent implements OnInit {
                     () => console.log('search gifs',this.searchedGifs))
     }
 
+
+     getSearchGifsExclude(item,selectedIdiom,exclude){
+        this.cs.showLoader();
+        console.log('selectedIdiom',this.selectedIdiom);
+        this._searchService.GetGifsSearchExclude(selectedIdiom,item,this.currentPage,exclude)
+        .subscribe( (res) => { this.searchedGifs = res.contents; this.totalCount = res.totalCount ; this.cs.hideLoader();  },
+                    (err) => { console.log(err); this.cs.hideLoader();},
+                    () => console.log('search gifs',this.searchedGifs))
+    }
+
     public gifData;
     GifsViewviaId(tabid){
       this.cs.showLoader();
@@ -120,9 +130,17 @@ export class SearchResultComponent implements OnInit {
     }
 
     public searchItem2;
+    public excludeItem;
     ngOnInit(){
          this.searchItem = this.navparams.get('sitem') || this.navparams.get('tag');
-         this.getSearchGifs(this.searchItem,this.selectedIdiom);
+         this.excludeItem = this.navparams.get('exclude');
+          if(this.excludeItem){
+               this.getSearchGifsExclude(this.searchItem,this.selectedIdiom,this.excludeItem);
+          }
+          else{
+               this.getSearchGifs(this.searchItem,this.selectedIdiom);
+          }
+       
          this.searchItem2 = this.searchItem;
          this.searchItem = '';
          //  this.searchedGifs = this.navparams.get('relatedgifs');
@@ -153,20 +171,26 @@ currentPage = 0;
 
    this.currentPage = this.currentPage + 1;
     console.log('currentpage', this.currentPage);
-       this._searchService.GetGifsSearch(this.selectedIdiom,this.searchItem2,this.currentPage).subscribe(data =>
-        {
-          infiniteScroll.complete();
-        //   this.hasMoreData = true;
-        //   this.trendingGIFs = data;
-          this.searchedGifs =  this.searchedGifs.concat(data.contents); 
-      }, 
-    err => {
-      infiniteScroll.complete();
-      this.currentPage -= 1;
-   //   this.onError(err);
-    },
-     () => console.log('Next Page Loading completed')
-     );
+
+    if(this.excludeItem){
+
+       this._searchService.GetGifsSearchExclude(this.selectedIdiom,this.searchItem2,this.currentPage,this.excludeItem).subscribe(data =>
+                    {
+                    infiniteScroll.complete();
+                    this.searchedGifs =  this.searchedGifs.concat(data.contents); 
+                    }, 
+                err => {infiniteScroll.complete();this.currentPage -= 1;});
+    
+        }
+        else{
+            this._searchService.GetGifsSearch(this.selectedIdiom,this.searchItem2,this.currentPage).subscribe(data =>
+                    {
+                    infiniteScroll.complete();
+                    this.searchedGifs =  this.searchedGifs.concat(data.contents); 
+                    }, 
+                err => {infiniteScroll.complete();this.currentPage -= 1;});
+        }
+
   }
 
 } 

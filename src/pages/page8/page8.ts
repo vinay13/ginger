@@ -113,13 +113,22 @@ export class Page8Page {
     }
   }
 
-    EmotionClicked(tag){
-      console.log('tag',tag);
+    excludeData;
+    EmotionClicked(item){
+      console.log('tag',item);
       console.log('idiom',this.selectedIdiom);
-      this.rootNavCtrl.push(SearchResultComponent,{
-            'tag' : tag,
+    //   if(item.exclude != null ){
+    //     alert(item.exclude);
+    //     this._homeserv.GetGifsSearch(item.text,this.selectedIdiom,0,item.exclude).subscribe( data =>{ this.excludeData = data;console.log('excludeData',data);} )
+    //     this.rootNavCtrl.push(SearchResultComponent,{ });
+    //  }
+            this.rootNavCtrl.push(SearchResultComponent,{
+            'tag' : item.text,
+            'exclude':item.exclude,
             'idiom': this.selectedIdiom
-      });
+        });
+      
+  
   }
 
      UploadviaWeb(){

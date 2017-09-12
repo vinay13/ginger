@@ -22,7 +22,7 @@
 
      <ion-grid class="grid">
         <ion-row >
-          <ion-col col-6 *ngFor="let item of gifs" (click)="this[click_func](item.text)" >
+          <ion-col col-6 *ngFor="let item of gifs" (click)="this[click_func](item)" >
               <img *ngIf="!LessData && !versionFlag" height="100px" width="275px" [img-placeholder]="item.baseUrl+'/'+(item.lowResWebpFN || item.thumbNailFN)"/>
               <img *ngIf="!LessData && versionFlag" height="100px" width="275px" [img-placeholder]="item.baseUrl+'/'+(item.lowResFN || item.thumbNailFN)"/>
               <img *ngIf="LessData" height="100px" width="245px" [img-placeholder]="item.baseUrl+'/'+item.thumbNailFN"/>

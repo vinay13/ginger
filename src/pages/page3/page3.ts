@@ -120,13 +120,15 @@ export class Page3Page {
     }
   }
 
-  EmotionClicked(tag){
-      console.log('tag',tag);
+  EmotionClicked(item){
+      console.log('tag',item.text);
       console.log('idiom',this.selectedIdiom);
-      this.rootNavCtrl.push(SearchResultComponent,{
-            'tag' : tag,
-            'idiom': this.selectedIdiom
-      });
+   
+        this.rootNavCtrl.push(SearchResultComponent,{
+                  'tag' : item.text,
+                  'exclude':item.exclude,
+                  'idiom': this.selectedIdiom
+            });
   }
 
   UploadviaWeb(){

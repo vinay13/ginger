@@ -76,25 +76,23 @@ export class Page2Page {
   ng_class;
   click_func= "EmotionClicked" ;
   textonGIFs(){
-let click_func;
+    let click_func;
       console.log('text1',this.tabIddata[0]['text']);
       console.log('text2',this.tabIddata[0].text);
-    if(this.tabIddata[0].text != '' && this.tabIddata[0]['text']){
-    
+    if(this.tabIddata[0].text != '' && this.tabIddata[0]['text']){    
         this.ng_class =  'wrapper';
-     
     }
     else{
       this.ng_class = 'wrapper2';
-
     }
   }
 
-    EmotionClicked(tag){
-      console.log('tag',tag);
+    EmotionClicked(item){
+      console.log('tag',item);
       console.log('idiom',this.selectedIdiom);
       this.rootNavCtrl.push(SearchResultComponent,{
-            'tag' : tag,
+            'tag' : item.text,
+            'exclude':item.exclude,
             'idiom': this.selectedIdiom
       });
   }

@@ -110,11 +110,12 @@ export class Page7Page {
     }
   }
 
-    EmotionClicked(tag){
-      console.log('tag',tag);
+    EmotionClicked(item){
+      console.log('tag',item);
       console.log('idiom',this.selectedIdiom);
       this.rootNavCtrl.push(SearchResultComponent,{
-            'tag' : tag,
+            'tag' : item.text,
+             'exclude':item.exclude,
             'idiom': this.selectedIdiom
       });
   }
