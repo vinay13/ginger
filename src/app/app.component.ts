@@ -99,7 +99,12 @@ export class MyApp {
                           internetConnected= false;
                             console.log('Offline');
                 this.navChild.push(NoInternetComponent);
+
+                // connectSubscription.unsubscribe();
         });
+
+        // stop disconnect watch
+        // 
                 
 
         let connectSubscription = this.network.onConnect().subscribe(() => {
@@ -107,8 +112,12 @@ export class MyApp {
                 if(internetConnected) return;
                   internetConnected= true;
                 this.navChild.pop();
+                // disconnectSubscription.unsubscribe();
                
         });
+
+        // 
+
                 //connectSubscription.unsubscribe();
                 // this.ga.startTrackerWithId('YOUR_TRACKER_ID')
                 // .then(() => {

@@ -64,9 +64,13 @@
       <!--<super-tab  *ngFor="let tab of tabdata " [root]="page2" [rootParams]="idiom3" [title]=tab.name [icon]="showIcons? 'trending-up' : ''" id={{tab.id}}></super-tab>-->
      <super-tab *ngIf="tablength >= 8" [root]="page2" [rootParams]="idiom3" [title]="tabdata2[7].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[7].id}}></super-tab>
       <!--<super-tab *ngIf="tablength >= 9" [root]="page9" [rootParams]="idiom3" [title]="tabdata2[8].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[8].id}}></super-tab>-->
-      <!--<super-tab *ngIf="tablength >= 10"[root]="page10" [rootParams]="idiom3" [title]="tabdata2[9].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[9].id}}></super-tab>-->-->
+      <!--<super-tab *ngIf="tablength >= 10"[root]="page10" [rootParams]="idiom3" [title]="tabdata2[9].name" [icon]="showIcons? 'trending-up' : ''" id={{tabdata2[9].id}}></super-tab>-->
       <!--<super-tab *ngFor="let tab of tabdata " [root]="page2" [rootParams]="idiom3" [title]=tab.name [icon]="showIcons? 'home': ''" id={{tab.id}}>-->
    <!--</super-tab>--> 
   </super-tabs>
+
+
+  <img *ngIf="!tabsLoaded" class="spinner" src="http://www.betafish.co/images/loader.gif"/>
+
 
 </ion-content>

@@ -65,7 +65,6 @@ export class SearchResultComponent implements OnInit {
                 //     platform.registerBackButtonAction(() => {
                 //             if(this.nav.canGoBack()){
                 //              this.events.publish('reloadLayout');
-                //            //  this.viewCtrl.dismiss();
                 //               this.navCtrl.pop(); 
                              
                 //         }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter , ViewChild } from '@angular/core';
-import { IonicPage,Platform, NavController,PopoverController,NavParams ,Nav,Events , ModalController } from 'ionic-angular';
+import { IonicPage,Platform, NavController,PopoverController,NavParams ,Nav,Events , ToastController , ModalController } from 'ionic-angular';
 import { Page1Page } from "../page1/page1";
 import { Page2Page } from "../page2/page2";
 import { Page3Page } from "../page3/page3";
@@ -16,6 +16,7 @@ import { ProfileComponent } from '../profile/profile.component';
 import { SuperTabsModule, SuperTabsConfig, SuperTabs } from 'ionic2-super-tabs';
 import { SearchResultComponent } from '../search/searchResult/search-result.component';
 import { PopOverComponent } from '../home/gifdetail/popover';
+import { CustomService } from '../../services/custom.service';
 //import { SuperTabsController } from 'ionic2-super-tabs';
 //import { SuperTabsController } from '../../ionic2-super-tabs/src';
 
@@ -62,13 +63,16 @@ export class AboutPage implements OnInit {
  rootPage:any;
   colors =  ["secondary","danger","primary","favcolor1","favcolor2"];
   constructor(public navCtrl: NavController, 
+              public toastCtrl : ToastController,
               private navParams: NavParams,
               public _homeserv : HomeService,
               public events: Events,
               public modalCtrl : ModalController,
               public nav : Nav,
               public popoverCtrl : PopoverController,
-              public platform : Platform) { 
+              public platform : Platform,
+              public cs : CustomService) { 
+               //  this.cs.showLoader();
 
                               // this.hideToolbar();  
                   this.selectedIdiom = localStorage.getItem('idiom');  
@@ -82,7 +86,7 @@ export class AboutPage implements OnInit {
                   this.tabIndex = "0";
                   alert(this.tabIndex);
               }
-                 
+              
 
                   //this.tabdata.splice(0,2);
                   // this.abcetc(this.tabdata[0].id);
@@ -90,9 +94,15 @@ export class AboutPage implements OnInit {
                   // this.abcetc(this.tabdata[0].id);
                   //  this.tabdata = this.tabdata.splice(7,6);
                   //testing
+
+                  setTimeout(()=>{
+                    this.tabsLoaded = true;
+
+                  },1500)
+                
                     this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe( (res) => { this.tabdata = res.tabs;  this.tabdata2 = res.tabs; this.sortTabsByorder(); this.checkTabsLength(this.tabdata );this.abcetc(this.tabdata[0].id); this.tabsLoaded = true;},
-                    (err) => { console.log(err)},
+                    .subscribe((res) => { this.tabdata = res.tabs;  this.tabdata2 = res.tabs; this.sortTabsByorder(); this.checkTabsLength(this.tabdata );this.abcetc(this.tabdata[0].id);  },
+                    (err) => { console.log(err); },
                     () => {})
 
                   //end here

@@ -50,7 +50,7 @@ export class SettingsComponent {
 
     shareApp(){
       this.cs.showLoader();
-      this.socialSharing.share("Must try",'gola',"","https://play.google.com/store/apps/details?id=com.mobigraph.xpresso")
+      this.socialSharing.share("Must try",'gola',"","https://play.google.com/store/apps/details?id=com.mobigraph.gola")
         .then( () =>{
             this.cs.hideLoader();
         },

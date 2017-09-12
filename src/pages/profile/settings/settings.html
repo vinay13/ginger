@@ -16,6 +16,15 @@
                 Tell a Friend
             </ion-item>
 
+             <ion-item class="list-item-style">
+                <a style="text-decoration:none; color : white;" href="http://gola.desi/privacy.html">Privacy</a>
+            </ion-item>
+
+             <ion-item class="list-item-style">
+                <a style="text-decoration:none; color : white;" href="http://gola.desi/terms.html">Terms of use</a>
+            </ion-item>
+    </div>   
+
             <!--<ion-item class="list-item-style" >
                 <ion-label> Use less Data</ion-label> 
                 <ion-toggle [checked]="isSelected"   (ionChange)="ToggleChange($event)"></ion-toggle>
@@ -26,13 +35,15 @@
                 <ion-toggle checked="false" ></ion-toggle>
             </ion-item>-->
 
-           <accordion-page [inputHeader]="'About'" [inputContent]="'About content here...'"></accordion-page>
-           <accordion-page [inputHeader]="'Privacy Policy'" [inputContent]="'privacy policy content here...'"></accordion-page>
-           
+           <!--<accordion-page [inputHeader]="'About'" [inputContent]="'About content here...'"></accordion-page>
+           <accordion-page [inputHeader]="'Privacy Policy'" [inputContent]="'privacy policy content here...'"></accordion-page>-->
+<!--           
             <ion-item class="list-item-style" (click)="TOSfunc()">
                 Terms of Service
-            </ion-item>
-    </div>   
+            </ion-item>-->
+
+            
+            
 
             <div class="gin-center-txt">
                 <button class="gin-button-2" ion-button round (click)="logout()"> Logout </button>

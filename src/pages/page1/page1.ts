@@ -63,7 +63,7 @@ export class Page1Page {
                   this.newselectedIdiom = this.navparams.data;
                   this.selectedIdiom = this.newselectedIdiom.idiom;
                    
-                   this.events.subscribe('reloadLayout',() => {
+                  this.events.subscribe('reloadLayout',() => {
                       //  alert('newLayout called');
                         this.newlayout();
                   });
@@ -72,6 +72,18 @@ export class Page1Page {
                 platform.ready().then(() => {
                       this.tabcat();
                  })
+
+                // platform.ready().then(() => {
+                //     platform.registerBackButtonAction(() => {
+                //             if(this.nav.canGoBack()){
+                //              this.events.publish('reloadLayout');
+                //          //     this.navCtrl.pop(); 
+                //          alert('back_button');
+                //              navigator['app'].exitApp();    
+                             
+                //         }
+                //     })
+                // })
            
                 events.subscribe('lessdata:created', (user) => {
                     console.log('Welcome', user);
@@ -144,9 +156,9 @@ export class Page1Page {
     
     public tabdata;
     public tabcat(){
-      this.cs.showLoader();
+    
          this._homeserv.getTabCategories(this.selectedIdiom)
-                    .subscribe((res) => { this.tabdata = res.tabs; this.cs.hideLoader();this.gettabdata(this.selectedIdiom,this.tabdata[0].id);  },
+                    .subscribe((res) => { this.tabdata = res.tabs;this.gettabdata(this.selectedIdiom,this.tabdata[0].id);  },
                                 (err) => { console.log(err); this.cs.hideLoader();},
                                 () => { console.log('tabdata',this.tabdata[0].id)})
     }

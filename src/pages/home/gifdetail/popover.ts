@@ -51,19 +51,23 @@ export class PopOverComponent {
 
     shareApp(){
       this.cs.showLoader();
+      this.dismiss();
       this.socialSharing.share("Get Gola - The best Indian trending GIFs from your favourite actors,movies,regions ",'Get Gola App',"","http://gola.desi")
         .then( () =>{
             this.cs.hideLoader();
+            
         },
         () => { this.cs.hideLoader(); }) 
     }
     
     Rateus(){
+        this.dismiss();
         this.market.open('com.mobigraph.gola');
     }
 
     ReportAbuse(){
          this.cs.showLoader();
+          this.dismiss();
         this.socialSharing.shareViaEmail('', 'Report Gif'+' '+this.GIFurl,['hello@xpresso.me'])
         .then( () =>{
             this.cs.hideLoader();
